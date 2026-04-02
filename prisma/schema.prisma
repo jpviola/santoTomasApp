@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Debate {
+  id          String   @id @default(cuid())
+  question    String
+  audience    String
+  context     String?
+  objections  Json
+  sedContra   String
+  respondeo   String
+  replies     Json
+  application String
+  sources     Json
+  generatedAt DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum DebateTaskStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model DebateTask {
+  id        String          @id @default(cuid())
+  status    DebateTaskStatus
+  progress  Int             @default(0)
+  message   String?
+  error     String?
+  question  String
+  audience  String
+  context   String?
+  recordId  String?
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
