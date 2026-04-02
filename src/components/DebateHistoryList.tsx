@@ -48,18 +48,18 @@ export default function DebateHistoryList({
         };
 
   return (
-    <aside className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+    <aside className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <h2 className="text-base font-semibold text-slate-900">{t.title}</h2>
-          <p className="text-xs text-slate-500">{t.subtitle}</p>
+          <h2 className="text-base font-semibold tracking-tight text-slate-100">{t.title}</h2>
+          <p className="text-xs text-slate-300/70">{t.subtitle}</p>
         </div>
 
         {onRefresh ? (
           <button
             type="button"
             onClick={() => onRefresh()}
-            className="rounded-md border border-slate-300 px-2.5 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
+            className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200 transition hover:bg-white/10"
           >
             {t.refresh}
           </button>
@@ -69,24 +69,24 @@ export default function DebateHistoryList({
       {isLoading ? (
         <div className="space-y-3">
           {Array.from({ length: 5 }).map((_, index) => (
-            <div key={index} className="animate-pulse rounded-lg border border-slate-200 p-3">
-              <div className="h-4 w-5/6 rounded bg-slate-200" />
-              <div className="mt-2 h-3 w-2/3 rounded bg-slate-100" />
-              <div className="mt-2 h-3 w-1/2 rounded bg-slate-100" />
+            <div key={index} className="animate-pulse rounded-xl border border-white/10 bg-white/5 p-3">
+              <div className="h-4 w-5/6 rounded bg-white/10" />
+              <div className="mt-2 h-3 w-2/3 rounded bg-white/5" />
+              <div className="mt-2 h-3 w-1/2 rounded bg-white/5" />
             </div>
           ))}
         </div>
       ) : null}
 
       {!isLoading && error ? (
-        <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="rounded-xl border border-red-500/25 bg-red-500/10 p-3 text-sm text-red-100">
           <p className="font-medium">{t.loadingErrorTitle}</p>
-          <p className="mt-1">{error}</p>
+          <p className="mt-1 text-red-100/90">{error}</p>
         </div>
       ) : null}
 
       {!isLoading && !error && items.length === 0 ? (
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-600">
+        <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-200/80">
           {t.empty}
         </div>
       ) : null}
@@ -101,15 +101,17 @@ export default function DebateHistoryList({
                 <button
                   type="button"
                   onClick={() => onSelect(item.id)}
-                  className={`w-full rounded-lg border p-3 text-left transition ${
-                    isActive ? "border-slate-900 bg-slate-900 text-white" : "border-slate-200 bg-white hover:bg-slate-50"
+                  className={`w-full rounded-xl border p-3 text-left transition ${
+                    isActive
+                      ? "border-white/20 bg-gradient-to-r from-violet-500/20 via-white/5 to-blue-500/20 text-slate-100"
+                      : "border-white/10 bg-white/5 hover:bg-white/10"
                   }`}
                 >
-                  <p className={`text-sm font-medium leading-6 ${isActive ? "text-white" : "text-slate-900"}`}>
+                  <p className="text-sm font-medium leading-6 text-slate-100">
                     {item.question}
                   </p>
 
-                  <div className={`mt-2 text-xs ${isActive ? "text-slate-200" : "text-slate-500"}`}>
+                  <div className={`mt-2 text-xs ${isActive ? "text-slate-200/80" : "text-slate-300/70"}`}>
                     <p>
                       {t.audience}: {item.audience}
                     </p>
@@ -119,7 +121,11 @@ export default function DebateHistoryList({
                   </div>
 
                   {item.context ? (
-                    <p className={`mt-2 line-clamp-2 text-xs leading-5 ${isActive ? "text-slate-200" : "text-slate-600"}`}>
+                    <p
+                      className={`mt-2 line-clamp-2 text-xs leading-5 ${
+                        isActive ? "text-slate-200/80" : "text-slate-200/70"
+                      }`}
+                    >
                       {item.context}
                     </p>
                   ) : null}

@@ -110,17 +110,17 @@ export default function ExportMetadataPanel({ recordId, language = "en" }: Expor
   if (!recordId) return null;
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h3 className="text-sm font-semibold text-slate-900">{t.title}</h3>
-          <p className="mt-1 text-xs text-slate-500">{t.subtitle}</p>
+          <h3 className="text-sm font-semibold text-slate-100">{t.title}</h3>
+          <p className="mt-1 text-xs text-slate-300/70">{t.subtitle}</p>
         </div>
 
         <button
           type="button"
           onClick={() => setIsOpen((value) => !value)}
-          className="rounded-md border border-slate-300 px-2.5 py-1.5 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
+          className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200 transition hover:bg-white/10"
         >
           {isOpen ? t.hide : t.show}
         </button>
@@ -129,64 +129,64 @@ export default function ExportMetadataPanel({ recordId, language = "en" }: Expor
       {isOpen ? (
         <div className="mt-4 space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-700">{t.course}</label>
+            <label className="mb-1 block text-xs font-medium text-slate-200/80">{t.course}</label>
             <input
               value={course}
               onChange={(e) => setCourse(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-400 outline-none transition focus:border-violet-400/60 focus:bg-black/30"
               placeholder="Philosophical Anthropology"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-700">{t.module}</label>
+            <label className="mb-1 block text-xs font-medium text-slate-200/80">{t.module}</label>
             <input
               value={module}
               onChange={(e) => setModule(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-400 outline-none transition focus:border-violet-400/60 focus:bg-black/30"
               placeholder="Intellect and Knowledge"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-700">{t.topic}</label>
+            <label className="mb-1 block text-xs font-medium text-slate-200/80">{t.topic}</label>
             <input
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-400 outline-none transition focus:border-violet-400/60 focus:bg-black/30"
               placeholder="intellect-and-understanding"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-700">{t.status}</label>
+            <label className="mb-1 block text-xs font-medium text-slate-200/80">{t.status}</label>
             <input
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-400 outline-none transition focus:border-violet-400/60 focus:bg-black/30"
               placeholder="evergreen"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-700">{t.archivePath}</label>
+            <label className="mb-1 block text-xs font-medium text-slate-200/80">{t.archivePath}</label>
             <input
               value={archivePath}
               onChange={(e) => setArchivePath(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-400 outline-none transition focus:border-violet-400/60 focus:bg-black/30"
               placeholder="Resources/Philosophy/AI"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-700">{t.customTags}</label>
+            <label className="mb-1 block text-xs font-medium text-slate-200/80">{t.customTags}</label>
             <input
               value={customTags}
               onChange={(e) => setCustomTags(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+              className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-400 outline-none transition focus:border-violet-400/60 focus:bg-black/30"
               placeholder="husserl, consciousness, seminar"
             />
-            <p className="mt-1 text-[11px] text-slate-500">{t.customTagsHelp}</p>
+            <p className="mt-1 text-[11px] text-slate-300/70">{t.customTagsHelp}</p>
           </div>
 
           <div className="flex items-center gap-3">
@@ -194,13 +194,13 @@ export default function ExportMetadataPanel({ recordId, language = "en" }: Expor
               type="button"
               onClick={handleExport}
               disabled={isExporting}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded-full bg-gradient-to-r from-violet-500 to-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(124,58,237,0.25)] transition hover:from-violet-400 hover:to-blue-400 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isExporting ? t.exporting : t.download}
             </button>
           </div>
 
-          {error ? <p className="text-xs text-red-600">{error}</p> : null}
+          {error ? <p className="text-xs text-red-200/90">{error}</p> : null}
         </div>
       ) : null}
     </div>

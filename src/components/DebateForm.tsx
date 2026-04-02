@@ -67,10 +67,13 @@ export default function DebateForm({ onSubmit, isLoading, language = "en" }: Deb
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur"
+    >
       <div className="space-y-5">
         <div>
-          <label htmlFor="question" className="mb-2 block text-sm font-medium text-slate-800">
+          <label htmlFor="question" className="mb-2 block text-sm font-medium text-slate-100">
             {t.question}
           </label>
           <textarea
@@ -78,20 +81,20 @@ export default function DebateForm({ onSubmit, isLoading, language = "en" }: Deb
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             rows={3}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-500"
+            className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 outline-none transition placeholder:text-slate-400 focus:border-violet-400/60 focus:bg-black/30"
             placeholder={t.questionPlaceholder}
           />
         </div>
 
         <div>
-          <label htmlFor="audience" className="mb-2 block text-sm font-medium text-slate-800">
+          <label htmlFor="audience" className="mb-2 block text-sm font-medium text-slate-100">
             {t.audience}
           </label>
           <select
             id="audience"
             value={audience}
             onChange={(e) => setAudience(e.target.value as Audience)}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-500"
+            className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 outline-none transition focus:border-violet-400/60 focus:bg-black/30"
           >
             <option value="undergraduate">{t.undergraduate}</option>
             <option value="graduate">{t.graduate}</option>
@@ -100,7 +103,7 @@ export default function DebateForm({ onSubmit, isLoading, language = "en" }: Deb
         </div>
 
         <div>
-          <label htmlFor="context" className="mb-2 block text-sm font-medium text-slate-800">
+          <label htmlFor="context" className="mb-2 block text-sm font-medium text-slate-100">
             {t.context}
           </label>
           <textarea
@@ -108,7 +111,7 @@ export default function DebateForm({ onSubmit, isLoading, language = "en" }: Deb
             value={context}
             onChange={(e) => setContext(e.target.value)}
             rows={4}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-500"
+            className="w-full rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-sm text-slate-100 outline-none transition placeholder:text-slate-400 focus:border-violet-400/60 focus:bg-black/30"
             placeholder={t.contextPlaceholder}
           />
         </div>
@@ -116,7 +119,7 @@ export default function DebateForm({ onSubmit, isLoading, language = "en" }: Deb
         <button
           type="submit"
           disabled={isLoading}
-          className="inline-flex items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(124,58,237,0.25)] transition hover:from-violet-400 hover:to-blue-400 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isLoading ? t.running : t.run}
         </button>

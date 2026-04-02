@@ -47,6 +47,8 @@ export default function HomePageClient() {
 
   const [isLoadingSavedDebate, setIsLoadingSavedDebate] = useState(false);
   const [activeTask, setActiveTask] = useState<DebateTask | null>(null);
+  const [bannerSrc, setBannerSrc] = useState("/aquinas-banner.webp");
+  const [isBannerAvailable, setIsBannerAvailable] = useState(true);
 
   const selectedId = useMemo(() => searchParams.get("id"), [searchParams]);
 
@@ -386,25 +388,69 @@ export default function HomePageClient() {
         };
 
   return (
-    <main className="min-h-screen bg-slate-100">
+    <main className="min-h-screen">
       <div className="mx-auto max-w-7xl px-4 py-10">
         <header className="mb-8">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold tracking-tight text-slate-950">{t.title}</h1>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">{t.subtitle}</p>
+              <h1 className="text-3xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-slate-200 to-slate-300">
+                {t.title}
+              </h1>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300/80">{t.subtitle}</p>
             </div>
             <button
               type="button"
               onClick={() => setLanguage((v) => (v === "es" ? "en" : "es"))}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 transition hover:bg-slate-50"
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur transition hover:bg-white/10"
             >
               {t.langToggle}
             </button>
           </div>
         </header>
 
-        <div className="grid gap-6 xl:grid-cols-[320px_380px_minmax(0,1fr)]">
+        <div className="mb-10 overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur">
+          <div className="grid gap-0 md:grid-cols-[1.2fr_1fr]">
+            <div className="relative min-h-[220px] md:min-h-[260px]">
+              {isBannerAvailable ? (
+                <img
+                  src={bannerSrc}
+                  alt={language === "es" ? "Ilustración inspirada en Santo Tomás de Aquino" : "Illustration inspired by Thomas Aquinas"}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  onError={() => {
+                    if (bannerSrc.endsWith(".webp")) {
+                      setBannerSrc("/aquinas-banner.jpg");
+                      return;
+                    }
+                    setIsBannerAvailable(false);
+                  }}
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-violet-500/25 via-white/5 to-blue-500/20" />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
+            </div>
+
+            <div className="flex items-center p-6 md:p-8">
+              <div className="space-y-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-200/70">
+                  {language === "es" ? "Disputatio" : "Disputatio"}
+                </p>
+                <h2 className="text-xl font-semibold tracking-tight text-slate-100">
+                  {language === "es"
+                    ? "Formula una cuestión. Obtén una disputa. Guarda y exporta."
+                    : "Ask a question. Get a disputation. Save and export."}
+                </h2>
+                <p className="text-sm leading-6 text-slate-200/75">
+                  {language === "es"
+                    ? "Pipeline multi‑agente con progreso, historial reutilizable y exportación a Markdown."
+                    : "Multi-agent pipeline with progress, reusable history, and Markdown export."}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-6 xl:grid-cols-[340px_420px_minmax(0,1fr)]">
           <div>
             <DebateHistoryList
               items={historyItems}
@@ -431,9 +477,9 @@ export default function HomePageClient() {
             )}
 
             {runError ? (
-              <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+              <div className="rounded-2xl border border-red-500/25 bg-red-500/10 p-4 text-sm text-red-100 shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur">
                 <p className="font-medium">{t.errorTitle}</p>
-                <p className="mt-1">{runError}</p>
+                <p className="mt-1 text-red-100/90">{runError}</p>
               </div>
             ) : null}
 
@@ -442,8 +488,8 @@ export default function HomePageClient() {
             ) : null}
 
             {!isRunningDebate && !isLoadingSavedDebate && !runError && !result ? (
-              <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                <p className="text-sm leading-7 text-slate-600">{t.empty}</p>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
+                <p className="text-sm leading-7 text-slate-200/85">{t.empty}</p>
               </div>
             ) : null}
           </div>
