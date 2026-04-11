@@ -2,10 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 import DebateForm from "@/components/DebateForm";
 import DebateHistoryList from "@/components/DebateHistoryList";
 import DebateOutput from "@/components/DebateOutput";
 import LoadingState from "@/components/LoadingState";
+import AuthControls from "@/components/AuthControls";
 import type { DebateOutput as DebateOutputType } from "@/types/debate";
 import type { DebateHistoryItem } from "@/types/history";
 
@@ -30,20 +32,34 @@ export default function HomePageClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [language, setLanguage] = useState<"es" | "en">(() => {
-    if (typeof navigator !== "undefined" && navigator.language.toLowerCase().startsWith("es")) {
-      return "es";
+    if (typeof window !== "undefined") {
+      const stored = window.localStorage.getItem("stotomas.language");
+      if (stored === "es" || stored === "en") {
+        return stored;
+      }
     }
-    return "en";
+    return "es";
+  });
+  const [answerLanguage, setAnswerLanguage] = useState<"es" | "en" | "la">(() => {
+    if (typeof window !== "undefined") {
+      const stored = window.localStorage.getItem("stotomas.answerLanguage");
+      if (stored === "es" || stored === "en" || stored === "la") {
+        return stored;
+      }
+    }
+    return "es";
   });
   const [result, setResult] = useState<DebateOutputType | null>(null);
   const [activeRecordId, setActiveRecordId] = useState<string | null>(null);
 
   const [isRunningDebate, setIsRunningDebate] = useState(false);
   const [runError, setRunError] = useState<string | null>(null);
+  const [outputLanguage, setOutputLanguage] = useState<"es" | "en" | "la">("es");
 
   const [historyItems, setHistoryItems] = useState<DebateHistoryItem[]>([]);
   const [isHistoryLoading, setIsHistoryLoading] = useState(true);
   const [historyError, setHistoryError] = useState<string | null>(null);
+  const [historyWarning, setHistoryWarning] = useState<string | null>(null);
 
   const [isLoadingSavedDebate, setIsLoadingSavedDebate] = useState(false);
   const [activeTask, setActiveTask] = useState<DebateTask | null>(null);
@@ -102,12 +118,15 @@ export default function HomePageClient() {
   const fetchHistory = useCallback(async () => {
     setIsHistoryLoading(true);
     setHistoryError(null);
+    setHistoryWarning(null);
 
     try {
       const { response, data } = await fetchJsonWithTimeout("/api/debate/history", { method: "GET" }, 20000);
 
       if (!response.ok) {
-        throw new Error(getApiError(data, "Failed to fetch debate history."));
+        throw new Error(
+          getApiError(data, language === "es" ? "No se pudo cargar el historial de debates." : "Failed to fetch debate history."),
+        );
       }
 
       if (!data || typeof data !== "object" || !("items" in (data as Record<string, unknown>))) {
@@ -117,6 +136,11 @@ export default function HomePageClient() {
       const itemsValue = (data as Record<string, unknown>).items;
       if (!Array.isArray(itemsValue)) {
         throw new Error("Malformed history response.");
+      }
+
+      const warningValue = (data as Record<string, unknown>).warning;
+      if (typeof warningValue === "string" && warningValue.trim().length > 0) {
+        setHistoryWarning(warningValue);
       }
       setHistoryItems(itemsValue as DebateHistoryItem[]);
     } catch (err) {
@@ -179,6 +203,7 @@ export default function HomePageClient() {
           recordId: data.id,
         };
 
+        setOutputLanguage(language);
         setResult(hydratedResult);
         setActiveRecordId(data.id);
         if (updateUrl) {
@@ -242,6 +267,7 @@ export default function HomePageClient() {
       setActiveTask(null);
       setResult(null);
       setActiveRecordId(null);
+      setOutputLanguage(answerLanguage);
 
       try {
         const { response: createResponse, data: createData } = await requestWithRetry(
@@ -253,7 +279,7 @@ export default function HomePageClient() {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ ...payload, language }),
+                body: JSON.stringify({ ...payload, language: answerLanguage }),
               },
               20000,
             ),
@@ -351,12 +377,24 @@ export default function HomePageClient() {
         setIsRunningDebate(false);
       }
     },
-    [fetchDebateById, fetchHistory, fetchJsonWithTimeout, language, requestWithRetry, setUrlId],
+    [answerLanguage, fetchDebateById, fetchHistory, fetchJsonWithTimeout, language, requestWithRetry, setUrlId],
   );
 
   useEffect(() => {
     fetchHistory();
   }, [fetchHistory]);
+
+  useEffect(() => {
+    window.localStorage.setItem("stotomas.language", language);
+  }, [language]);
+
+  useEffect(() => {
+    setAnswerLanguage((current) => (current === "la" ? "la" : language));
+  }, [language]);
+
+  useEffect(() => {
+    window.localStorage.setItem("stotomas.answerLanguage", answerLanguage);
+  }, [answerLanguage]);
 
   useEffect(() => {
     if (!selectedId) {
@@ -388,7 +426,7 @@ export default function HomePageClient() {
         };
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <div className="mx-auto max-w-7xl px-4 py-10">
         <header className="mb-8">
           <div className="flex items-start justify-between gap-4">
@@ -398,13 +436,28 @@ export default function HomePageClient() {
               </h1>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300/80">{t.subtitle}</p>
             </div>
-            <button
-              type="button"
-              onClick={() => setLanguage((v) => (v === "es" ? "en" : "es"))}
-              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur transition hover:bg-white/10"
-            >
-              {t.langToggle}
-            </button>
+            <div className="flex items-center gap-2">
+              <AuthControls language={language} />
+              <button
+                type="button"
+                onClick={() => setAnswerLanguage((v) => (v === "la" ? language : "la"))}
+                aria-pressed={answerLanguage === "la"}
+                className={`rounded-full border px-4 py-2 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur transition ${
+                  answerLanguage === "la"
+                    ? "border-white/20 bg-gradient-to-r from-violet-500/25 via-white/5 to-blue-500/20 text-slate-100"
+                    : "border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
+                }`}
+              >
+                LAT
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage((v) => (v === "es" ? "en" : "es"))}
+                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur transition hover:bg-white/10"
+              >
+                {t.langToggle}
+              </button>
+            </div>
           </div>
         </header>
 
@@ -412,10 +465,12 @@ export default function HomePageClient() {
           <div className="grid gap-0 md:grid-cols-[1.2fr_1fr]">
             <div className="relative min-h-[220px] md:min-h-[260px]">
               {isBannerAvailable ? (
-                <img
+                <Image
                   src={bannerSrc}
                   alt={language === "es" ? "Ilustración inspirada en Santo Tomás de Aquino" : "Illustration inspired by Thomas Aquinas"}
-                  className="absolute inset-0 h-full w-full object-cover"
+                  fill
+                  priority
+                  className="object-cover"
                   onError={() => {
                     if (bannerSrc.endsWith(".webp")) {
                       setBannerSrc("/aquinas-banner.jpg");
@@ -457,6 +512,7 @@ export default function HomePageClient() {
               activeId={activeRecordId}
               isLoading={isHistoryLoading}
               error={historyError}
+              warning={historyWarning}
               onSelect={fetchDebateById}
               onRefresh={fetchHistory}
               language={language}
@@ -484,7 +540,7 @@ export default function HomePageClient() {
             ) : null}
 
             {!isRunningDebate && !isLoadingSavedDebate && !runError && result ? (
-              <DebateOutput result={result} language={language} />
+              <DebateOutput result={result} language={language} contentLanguage={outputLanguage} />
             ) : null}
 
             {!isRunningDebate && !isLoadingSavedDebate && !runError && !result ? (

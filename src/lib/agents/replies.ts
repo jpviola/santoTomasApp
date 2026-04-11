@@ -11,20 +11,23 @@ type RunRepliesParams = {
   question: string;
   objections: string[];
   respondeo: string;
-  language?: "en" | "es";
+  language?: "en" | "es" | "la";
 };
 
 export async function runReplies({ question, objections, respondeo, language = "en" }: RunRepliesParams): Promise<RepliesOutput> {
+  const targetLabel = language === "es" ? "Spanish" : language === "la" ? "Latin" : "English";
   const systemPrompt =
     language === "es"
       ? `${repliesSystemPrompt}\n\nAll JSON string fields must be written in Spanish.\n`
+      : language === "la"
+        ? `${repliesSystemPrompt}\n\nAll JSON string fields must be written in Latin.\n`
       : repliesSystemPrompt;
 
   const objectionsText = objections.map((o, i) => `${i + 1}. ${o}`).join("\n");
 
   const userPrompt = `
 Target language:
-${language === "es" ? "Spanish" : "English"}
+${targetLabel}
 Write all generated text fields in the target language.
 
 Question:

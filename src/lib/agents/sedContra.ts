@@ -10,13 +10,16 @@ import { JsonExtractionError, JsonParseError, ModelResponseValidationError } fro
 type RunSedContraParams = {
   question: string;
   sources: SourceSnippet[];
-  language?: "en" | "es";
+  language?: "en" | "es" | "la";
 };
 
 export async function runSedContra({ question, sources, language = "en" }: RunSedContraParams): Promise<SedContraOutput> {
+  const targetLabel = language === "es" ? "Spanish" : language === "la" ? "Latin" : "English";
   const systemPrompt =
     language === "es"
       ? `${sedContraSystemPrompt}\n\nAll JSON string fields must be written in Spanish.\n`
+      : language === "la"
+        ? `${sedContraSystemPrompt}\n\nAll JSON string fields must be written in Latin.\n`
       : sedContraSystemPrompt;
 
   const sourcesText = sources
@@ -30,7 +33,7 @@ Text: ${s.text}`,
 
   const userPrompt = `
 Target language:
-${language === "es" ? "Spanish" : "English"}
+${targetLabel}
 Write all generated text fields in the target language.
 
 Question:

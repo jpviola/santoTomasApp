@@ -34,3 +34,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+:focus-visible {
+  outline: 2px solid rgba(167, 139, 250, 0.9);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}

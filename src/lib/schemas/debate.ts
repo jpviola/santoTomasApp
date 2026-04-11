@@ -7,7 +7,7 @@ export const DebateInputSchema = z
     question: z.string().min(5, "Question must be at least 5 characters."),
     audience: AudienceSchema.optional().default("graduate"),
     context: z.string().optional(),
-    language: z.enum(["en", "es"]).optional().default("en"),
+    language: z.enum(["en", "es", "la"]).optional().default("es"),
   })
   .strip();
 
@@ -17,6 +17,7 @@ export const SourceSnippetSchema = z
     title: z.string(),
     citation: z.string(),
     text: z.string(),
+    url: z.string().url().optional(),
   })
   .strip();
 

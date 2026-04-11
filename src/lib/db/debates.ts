@@ -11,7 +11,13 @@ function isMissingTableError(error: unknown) {
   const record = error as Record<string, unknown>;
   const code = typeof record.code === "string" ? record.code : null;
   const message = typeof record.message === "string" ? record.message : "";
-  return code === "P2021" || message.toLowerCase().includes("no such table") || message.toLowerCase().includes("does not exist");
+  const normalized = message.toLowerCase();
+  return (
+    code === "P2021" ||
+    normalized.includes("no such table") ||
+    normalized.includes("does not exist") ||
+    normalized.includes("environment variable not found: database_url")
+  );
 }
 
 type SaveDebateParams = {
@@ -21,10 +27,11 @@ type SaveDebateParams = {
   result: DebateOutput;
 };
 
-export async function saveDebate({ question, audience, context, result }: SaveDebateParams) {
+export async function saveDebate(userId: string, { question, audience, context, result }: SaveDebateParams) {
   try {
     return await prisma.debate.create({
       data: {
+        userId,
         question,
         audience,
         context,
@@ -45,9 +52,10 @@ export async function saveDebate({ question, audience, context, result }: SaveDe
   }
 }
 
-export async function listDebates(limit = 20) {
+export async function listDebates(userId: string, limit = 20) {
   try {
     return await prisma.debate.findMany({
+      where: { userId },
       orderBy: {
         createdAt: "desc",
       },
@@ -69,10 +77,10 @@ export async function listDebates(limit = 20) {
   }
 }
 
-export async function getDebateById(id: string) {
+export async function getDebateById(userId: string, id: string) {
   try {
-    return await prisma.debate.findUnique({
-      where: { id },
+    return await prisma.debate.findFirst({
+      where: { id, userId },
     });
   } catch (error) {
     if (isMissingTableError(error)) {
@@ -96,10 +104,11 @@ type UpdateDebateTaskParams = {
   recordId?: string | null;
 };
 
-export async function createDebateTask({ question, audience, context }: CreateDebateTaskParams) {
+export async function createDebateTask(userId: string, { question, audience, context }: CreateDebateTaskParams) {
   try {
     return await prisma.debateTask.create({
       data: {
+        userId,
         status: "PENDING",
         progress: 0,
         message: "Queued",
@@ -126,10 +135,10 @@ export async function createDebateTask({ question, audience, context }: CreateDe
   }
 }
 
-export async function updateDebateTask(id: string, update: UpdateDebateTaskParams) {
+export async function updateDebateTask(userId: string, id: string, update: UpdateDebateTaskParams) {
   try {
-    return await prisma.debateTask.update({
-      where: { id },
+    await prisma.debateTask.updateMany({
+      where: { id, userId },
       data: {
         status: update.status,
         progress: update.progress,
@@ -137,6 +146,10 @@ export async function updateDebateTask(id: string, update: UpdateDebateTaskParam
         error: update.error === undefined ? undefined : update.error,
         recordId: update.recordId === undefined ? undefined : update.recordId,
       },
+    });
+
+    return await prisma.debateTask.findFirst({
+      where: { id, userId },
       select: {
         id: true,
         status: true,
@@ -156,10 +169,10 @@ export async function updateDebateTask(id: string, update: UpdateDebateTaskParam
   }
 }
 
-export async function getDebateTaskById(id: string) {
+export async function getDebateTaskById(userId: string, id: string) {
   try {
-    return await prisma.debateTask.findUnique({
-      where: { id },
+    return await prisma.debateTask.findFirst({
+      where: { id, userId },
       select: {
         id: true,
         status: true,

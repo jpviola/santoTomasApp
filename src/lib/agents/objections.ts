@@ -12,7 +12,7 @@ type RunObjectionsParams = {
   framing: string;
   precisionNotes: string[];
   sources: SourceSnippet[];
-  language?: "en" | "es";
+  language?: "en" | "es" | "la";
 };
 
 export async function runObjections({
@@ -22,9 +22,12 @@ export async function runObjections({
   sources,
   language = "en",
 }: RunObjectionsParams): Promise<ObjectionsOutput> {
+  const targetLabel = language === "es" ? "Spanish" : language === "la" ? "Latin" : "English";
   const systemPrompt =
     language === "es"
       ? `${objectionsSystemPrompt}\n\nAll JSON string fields must be written in Spanish.\n`
+      : language === "la"
+        ? `${objectionsSystemPrompt}\n\nAll JSON string fields must be written in Latin.\n`
       : objectionsSystemPrompt;
 
   const sourcesText = sources
@@ -38,7 +41,7 @@ Text: ${s.text}`,
 
   const userPrompt = `
 Target language:
-${language === "es" ? "Spanish" : "English"}
+${targetLabel}
 Write all generated text fields in the target language.
 
 Question:

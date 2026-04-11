@@ -11,18 +11,21 @@ type RunModeratorParams = {
   question: string;
   audience: "undergraduate" | "graduate" | "seminary";
   context?: string;
-  language?: "en" | "es";
+  language?: "en" | "es" | "la";
 };
 
 export async function runModerator({ question, audience, context, language = "en" }: RunModeratorParams): Promise<ModeratorOutput> {
+  const targetLabel = language === "es" ? "Spanish" : language === "la" ? "Latin" : "English";
   const systemPrompt =
     language === "es"
       ? `${moderatorSystemPrompt}\n\nAll JSON string fields must be written in Spanish.\n`
+      : language === "la"
+        ? `${moderatorSystemPrompt}\n\nAll JSON string fields must be written in Latin.\n`
       : moderatorSystemPrompt;
 
   const userPrompt = `
 Target language:
-${language === "es" ? "Spanish" : "English"}
+${targetLabel}
 Write all generated text fields in the target language.
 
 Question:

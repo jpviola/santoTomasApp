@@ -7,6 +7,7 @@ type DebateHistoryListProps = {
   activeId?: string | null;
   isLoading?: boolean;
   error?: string | null;
+  warning?: string | null;
   onSelect: (id: string) => Promise<void> | void;
   onRefresh?: () => Promise<void> | void;
   language?: "es" | "en";
@@ -22,6 +23,7 @@ export default function DebateHistoryList({
   activeId,
   isLoading = false,
   error = null,
+  warning = null,
   onSelect,
   onRefresh,
   language = "en",
@@ -82,6 +84,13 @@ export default function DebateHistoryList({
         <div className="rounded-xl border border-red-500/25 bg-red-500/10 p-3 text-sm text-red-100">
           <p className="font-medium">{t.loadingErrorTitle}</p>
           <p className="mt-1 text-red-100/90">{error}</p>
+        </div>
+      ) : null}
+
+      {!isLoading && !error && warning ? (
+        <div className="rounded-xl border border-amber-400/30 bg-amber-400/10 p-3 text-sm text-amber-100">
+          <p className="font-medium">{language === "es" ? "Aviso" : "Notice"}</p>
+          <p className="mt-1 text-amber-100/90">{warning}</p>
         </div>
       ) : null}
 

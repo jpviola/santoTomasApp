@@ -1,13 +1,16 @@
 import type { DebateOutput } from "@/types/debate";
 import SourceList from "@/components/SourceList";
 import ExportMetadataPanel from "@/components/ExportMetadataPanel";
+import SpeechButton from "@/components/SpeechButton";
 
 type DebateOutputProps = {
   result: DebateOutput;
   language?: "es" | "en";
+  contentLanguage?: "es" | "en" | "la";
 };
 
-export default function DebateOutput({ result, language = "en" }: DebateOutputProps) {
+export default function DebateOutput({ result, language = "en", contentLanguage }: DebateOutputProps) {
+  const contentLang = contentLanguage ?? language;
   const t =
     language === "es"
       ? {
@@ -61,14 +64,20 @@ export default function DebateOutput({ result, language = "en" }: DebateOutputPr
       <div className="space-y-4">
         <div className="flex justify-end">
           <div className="max-w-[85%] rounded-2xl border border-white/10 bg-gradient-to-r from-violet-500/20 via-white/5 to-blue-500/20 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.question}</div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.question}</div>
+              <SpeechButton text={result.question} lang={contentLang} />
+            </div>
             <p className="mt-2 text-sm leading-7 text-slate-100">{result.question}</p>
           </div>
         </div>
 
         <div className="flex justify-start">
           <div className="max-w-[92%] rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.objections}</div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.objections}</div>
+              <SpeechButton text={result.objections.join("\n")} lang={contentLang} />
+            </div>
             <ol className="mt-3 list-decimal space-y-3 pl-5 text-sm leading-7 text-slate-200/90">
               {result.objections.map((objection, index) => (
                 <li key={index}>{objection}</li>
@@ -79,21 +88,30 @@ export default function DebateOutput({ result, language = "en" }: DebateOutputPr
 
         <div className="flex justify-start">
           <div className="max-w-[92%] rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.sedContra}</div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.sedContra}</div>
+              <SpeechButton text={result.sedContra} lang={contentLang} />
+            </div>
             <p className="mt-2 text-sm leading-7 text-slate-200/90">{result.sedContra}</p>
           </div>
         </div>
 
         <div className="flex justify-start">
           <div className="max-w-[92%] rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.respondeo}</div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.respondeo}</div>
+              <SpeechButton text={result.respondeo} lang={contentLang} />
+            </div>
             <p className="mt-2 text-sm leading-7 text-slate-200/90">{result.respondeo}</p>
           </div>
         </div>
 
         <div className="flex justify-start">
           <div className="max-w-[92%] rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.replies}</div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.replies}</div>
+              <SpeechButton text={result.replies.join("\n")} lang={contentLang} />
+            </div>
             <ol className="mt-3 list-decimal space-y-3 pl-5 text-sm leading-7 text-slate-200/90">
               {result.replies.map((reply, index) => (
                 <li key={index}>{reply}</li>
@@ -104,7 +122,10 @@ export default function DebateOutput({ result, language = "en" }: DebateOutputPr
 
         <div className="flex justify-start">
           <div className="max-w-[92%] rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.application}</div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.application}</div>
+              <SpeechButton text={result.application} lang={contentLang} />
+            </div>
             <p className="mt-2 text-sm leading-7 text-slate-200/90">{result.application}</p>
           </div>
         </div>

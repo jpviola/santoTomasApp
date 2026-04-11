@@ -9,6 +9,12 @@ import { logger } from "@/lib/utils/logger";
 
 type RankedSnippet = SourceSnippet & { score: number };
 
+type ParsedStCitation = {
+  part: "I" | "I-II" | "II-II" | "III";
+  question: number;
+  article: number;
+};
+
 const normalize = (text: string): string[] => {
   return text
     .toLowerCase()
@@ -43,6 +49,7 @@ export async function retrieveAquinasSources(question: string, topK = 3): Promis
     title: item.title,
     citation: item.citation,
     text: item.text,
+    url: item.url,
   }));
 }
 
@@ -56,12 +63,125 @@ const TranslatedSourceSchema = z
 
 const TranslatedSourcesSchema = z.array(TranslatedSourceSchema);
 
+const globalForSourceCache = globalThis as unknown as { __st_sourceCache?: Map<string, string> };
+const sourceHtmlCache = globalForSourceCache.__st_sourceCache ?? new Map<string, string>();
+globalForSourceCache.__st_sourceCache = sourceHtmlCache;
+
+function stripHtml(input: string) {
+  return input
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function parseStCitation(citation: string): ParsedStCitation | null {
+  const match = citation.match(/ST\s+(I-II|II-II|III|I)\s*,\s*q\.(\d+)\s*,\s*a\.(\d+)/i);
+  if (!match) return null;
+  const part = match[1].toUpperCase() as ParsedStCitation["part"];
+  const question = Number(match[2]);
+  const article = Number(match[3]);
+  if (!Number.isFinite(question) || !Number.isFinite(article)) return null;
+  return { part, question, article };
+}
+
+function pad3(value: number) {
+  return String(value).padStart(3, "0");
+}
+
+function buildSumatUrl(c: ParsedStCitation) {
+  const partLetter = c.part === "I" ? "a" : c.part === "I-II" ? "b" : c.part === "II-II" ? "c" : "d";
+  return `https://hjg.com.ar/sumat/${partLetter}/c${c.question}.html`;
+}
+
+function buildCorpusThomisticumUrl(c: ParsedStCitation) {
+  const digit = c.part === "I" ? "1" : c.part === "I-II" ? "2" : c.part === "II-II" ? "3" : "4";
+  return `https://www.corpusthomisticum.org/sth${digit}${pad3(c.question)}.html`;
+}
+
+async function fetchTextCached(url: string) {
+  const cached = sourceHtmlCache.get(url);
+  if (cached) return cached;
+  const response = await fetch(url, { method: "GET" });
+  const text = await response.text();
+  sourceHtmlCache.set(url, text);
+  return text;
+}
+
+function extractSpanishExcerptFromSumat(html: string, articleNumber: number) {
+  const plain = stripHtml(html);
+  const marker = `Artículo ${articleNumber}:`;
+  const start = plain.indexOf(marker);
+  if (start < 0) return null;
+  const next = plain.indexOf("Artículo ", start + marker.length);
+  const articleBlock = next > 0 ? plain.slice(start, next) : plain.slice(start);
+  const respondeoStart = articleBlock.indexOf("Respondo:");
+  const respondeoBlock = respondeoStart >= 0 ? articleBlock.slice(respondeoStart) : articleBlock;
+  const end = respondeoBlock.indexOf("A las objeciones:");
+  const excerpt = end > 0 ? respondeoBlock.slice(0, end) : respondeoBlock;
+  return excerpt.trim();
+}
+
+function extractLatinExcerptFromCorpus(html: string, articleNumber: number) {
+  const plain = stripHtml(html);
+  const marker = `Articulus ${articleNumber}`;
+  const start = plain.indexOf(marker);
+  if (start < 0) return null;
+  const next = plain.indexOf("Articulus ", start + marker.length);
+  const articleBlock = next > 0 ? plain.slice(start, next) : plain.slice(start);
+  const respondeoStart = articleBlock.toLowerCase().indexOf("respondeo dicendum");
+  const block = respondeoStart >= 0 ? articleBlock.slice(respondeoStart) : articleBlock;
+  const adStart = block.toLowerCase().indexOf("ad primum");
+  const excerpt = adStart > 0 ? block.slice(0, adStart) : block;
+  return excerpt.trim();
+}
+
 export async function localizeAquinasSources(
   sources: SourceSnippet[],
-  language: "en" | "es",
+  language: "en" | "es" | "la",
 ): Promise<SourceSnippet[]> {
-  if (language !== "es" || sources.length === 0) {
+  if (language === "en" || sources.length === 0) {
     return sources;
+  }
+
+  const localizedViaWeb = await Promise.all(
+    sources.map(async (s) => {
+      const parsed = parseStCitation(s.citation);
+      if (!parsed) return null;
+
+      try {
+        if (language === "es") {
+          const url = buildSumatUrl(parsed);
+          const html = await fetchTextCached(url);
+          const excerpt = extractSpanishExcerptFromSumat(html, parsed.article);
+          if (!excerpt) return null;
+          return { ...s, url, text: excerpt };
+        }
+
+        const url = buildCorpusThomisticumUrl(parsed);
+        const html = await fetchTextCached(url);
+        const excerpt = extractLatinExcerptFromCorpus(html, parsed.article);
+        if (!excerpt) return null;
+        return { ...s, url, text: excerpt };
+      } catch (error) {
+        logger.warn("Failed to localize source via web", {
+          citation: s.citation,
+          language,
+          errorMessage: error instanceof Error ? error.message : String(error),
+        });
+        return null;
+      }
+    }),
+  );
+
+  const haveWebLocalization = localizedViaWeb.some(Boolean);
+  if (haveWebLocalization) {
+    return localizedViaWeb.map((item, index) => item ?? sources[index]);
   }
 
   const userPromptParts = sources
@@ -73,16 +193,17 @@ text: ${s.text}`,
     )
     .join("\n\n");
 
+  const targetLabel = language === "es" ? "Spanish" : "Latin";
   const systemPrompt = `
 You are a precise translator. Return JSON only.
 Input is a list of items with id/title/text (English).
 Output must be a JSON array of objects: { "id": string, "title": string, "text": string }.
-Translate title and text into Spanish faithfully. Keep "id" untouched. Do NOT add, remove, or reorder items.
+Translate title and text into ${targetLabel} faithfully. Keep "id" untouched. Do NOT add, remove, or reorder items.
 Do NOT include any commentary or extra fields. Valid JSON only.
 `;
 
   const userPrompt = `
-Items to translate to Spanish:
+Items to translate to ${targetLabel}:
 
 ${userPromptParts}
 `;

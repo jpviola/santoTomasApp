@@ -3,6 +3,7 @@ import { getDebateById } from "@/lib/db/debates";
 import { buildDebateMarkdown } from "@/lib/export/markdown";
 import { logger } from "@/lib/utils/logger";
 import { ExportOverridesSchema } from "@/lib/schemas/export";
+import { getUserFromRequest } from "@/lib/auth/requireUser";
 
 type RouteContext = {
   params: Promise<{
@@ -31,7 +32,7 @@ const getStringArray = (obj: Record<string, unknown> | null, key: string): strin
   return strings.length > 0 ? strings : [];
 };
 
-const exportFromDb = async (id: string, overrides?: unknown) => {
+const exportFromDb = async (userId: string, id: string, overrides?: unknown) => {
   const overrideObj = getRecord(overrides);
   const parsedOverrides = ExportOverridesSchema.parse({
     course: getString(overrideObj, "course"),
@@ -42,7 +43,7 @@ const exportFromDb = async (id: string, overrides?: unknown) => {
     customTags: getStringArray(overrideObj, "customTags"),
   });
 
-  const debate = await getDebateById(id);
+  const debate = await getDebateById(userId, id);
   if (!debate) {
     return {
       status: 404,
@@ -87,7 +88,18 @@ export async function POST(request: NextRequest, context: RouteContext) {
     const { id } = await context.params;
     const body = await request.json().catch(() => ({}));
 
-    const exported = await exportFromDb(id, body);
+    const user = await getUserFromRequest(request);
+    if (!user) {
+      return NextResponse.json(
+        {
+          error: "Authentication required.",
+          code: "AUTH_REQUIRED",
+        },
+        { status: 401 },
+      );
+    }
+
+    const exported = await exportFromDb(user.id, id, body);
 
     if ("json" in exported) {
       return NextResponse.json(exported.json, { status: exported.status });
@@ -120,7 +132,18 @@ export async function GET(_request: NextRequest, context: RouteContext) {
   try {
     const { id } = await context.params;
 
-    const exported = await exportFromDb(id, {});
+    const user = await getUserFromRequest(_request);
+    if (!user) {
+      return NextResponse.json(
+        {
+          error: "Authentication required.",
+          code: "AUTH_REQUIRED",
+        },
+        { status: 401 },
+      );
+    }
+
+    const exported = await exportFromDb(user.id, id, {});
 
     if ("json" in exported) {
       return NextResponse.json(exported.json, { status: exported.status });

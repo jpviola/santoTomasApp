@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDebateById } from "@/lib/db/debates";
 import { logger } from "@/lib/utils/logger";
+import { getUserFromRequest } from "@/lib/auth/requireUser";
 
 type RouteContext = {
   params: Promise<{
@@ -8,11 +9,22 @@ type RouteContext = {
   }>;
 };
 
-export async function GET(_request: NextRequest, context: RouteContext) {
+export async function GET(request: NextRequest, context: RouteContext) {
   try {
     const { id } = await context.params;
 
-    const debate = await getDebateById(id);
+    const user = await getUserFromRequest(request);
+    if (!user) {
+      return NextResponse.json(
+        {
+          error: "Authentication required.",
+          code: "AUTH_REQUIRED",
+        },
+        { status: 401 },
+      );
+    }
+
+    const debate = await getDebateById(user.id, id);
 
     if (!debate) {
       return NextResponse.json(

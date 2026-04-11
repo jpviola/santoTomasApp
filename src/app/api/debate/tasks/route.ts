@@ -5,19 +5,22 @@ import { runDebate } from "@/lib/orchestrator/runDebate";
 import { saveDebate } from "@/lib/db/debates";
 import { isAppError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
+import { getUserFromRequest } from "@/lib/auth/requireUser";
 
 function clampPercent(value: number) {
   if (!Number.isFinite(value)) return 0;
   return Math.max(0, Math.min(100, Math.round(value)));
 }
 
-async function runDebateTask(taskId: string, parsed: ReturnType<typeof parseDebateInput>) {
+type ParsedWithUser = ReturnType<typeof parseDebateInput> & { userId: string };
+
+async function runDebateTask(taskId: string, parsed: ParsedWithUser) {
   try {
-    await updateDebateTask(taskId, { status: "PROCESSING", progress: 1, message: "start", error: null });
+    await updateDebateTask(parsed.userId, taskId, { status: "PROCESSING", progress: 1, message: "start", error: null });
 
     const result = await runDebate(parsed, {
       onProgress: async (update) => {
-        await updateDebateTask(taskId, {
+        await updateDebateTask(parsed.userId, taskId, {
           status: "PROCESSING",
           progress: clampPercent(update.progress),
           message: update.stage,
@@ -25,14 +28,14 @@ async function runDebateTask(taskId: string, parsed: ReturnType<typeof parseDeba
       },
     });
 
-    const saved = await saveDebate({
+    const saved = await saveDebate(parsed.userId, {
       question: parsed.question,
       audience: parsed.audience,
       context: parsed.context,
       result,
     });
 
-    await updateDebateTask(taskId, {
+    await updateDebateTask(parsed.userId, taskId, {
       status: "COMPLETED",
       progress: 100,
       message: "done",
@@ -48,7 +51,7 @@ async function runDebateTask(taskId: string, parsed: ReturnType<typeof parseDeba
       errorCode: isAppError(err) ? err.code : undefined,
     });
 
-    await updateDebateTask(taskId, {
+    await updateDebateTask(parsed.userId, taskId, {
       status: "FAILED",
       progress: 100,
       message: "failed",
@@ -59,16 +62,28 @@ async function runDebateTask(taskId: string, parsed: ReturnType<typeof parseDeba
 
 export async function POST(request: NextRequest) {
   try {
+    const user = await getUserFromRequest(request);
+    if (!user) {
+      return NextResponse.json(
+        {
+          error: "Authentication required.",
+          code: "AUTH_REQUIRED",
+        },
+        { status: 401 },
+      );
+    }
+
     const body = await request.json();
     const parsed = parseDebateInput(body);
+    const parsedWithUser: ParsedWithUser = { ...parsed, userId: user.id };
 
-    const task = await createDebateTask({
+    const task = await createDebateTask(user.id, {
       question: parsed.question,
       audience: parsed.audience,
       context: parsed.context,
     });
 
-    void runDebateTask(task.id, parsed);
+    void runDebateTask(task.id, parsedWithUser);
 
     return NextResponse.json({ taskId: task.id }, { status: 202 });
   } catch (err) {

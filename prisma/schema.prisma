@@ -9,6 +9,7 @@ datasource db {
 
 model Debate {
   id          String   @id @default(cuid())
+  userId      String
   question    String
   audience    String
   context     String?
@@ -21,6 +22,8 @@ model Debate {
   generatedAt DateTime
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@index([userId, createdAt])
 }
 
 enum DebateTaskStatus {
@@ -32,6 +35,7 @@ enum DebateTaskStatus {
 
 model DebateTask {
   id        String          @id @default(cuid())
+  userId    String
   status    DebateTaskStatus
   progress  Int             @default(0)
   message   String?
@@ -42,4 +46,6 @@ model DebateTask {
   recordId  String?
   createdAt DateTime        @default(now())
   updatedAt DateTime        @updatedAt
+
+  @@index([userId, createdAt])
 }

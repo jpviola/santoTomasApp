@@ -42,9 +42,12 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
     ]);
 
     const sources =
-      parsedInput.language === "es"
-        ? await (await import("@/lib/retrieval/aquinasRetriever")).localizeAquinasSources(sourcesRaw, "es")
-        : sourcesRaw;
+      parsedInput.language === "en"
+        ? sourcesRaw
+        : await (await import("@/lib/retrieval/aquinasRetriever")).localizeAquinasSources(
+            sourcesRaw,
+            parsedInput.language,
+          );
 
     await options?.onProgress?.({ stage: "objections_and_sed_contra", progress: 38, message: "Generating objections and sed contra" });
     const [objectionsResult, sedContraResult] = await Promise.all([

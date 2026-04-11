@@ -15,7 +15,7 @@ type RunRespondeoParams = {
   sedContra: string;
   sources: SourceSnippet[];
   audience: "undergraduate" | "graduate" | "seminary";
-  language?: "en" | "es";
+  language?: "en" | "es" | "la";
 };
 
 export async function runRespondeo({
@@ -28,9 +28,12 @@ export async function runRespondeo({
   audience,
   language = "en",
 }: RunRespondeoParams): Promise<RespondeoOutput> {
+  const targetLabel = language === "es" ? "Spanish" : language === "la" ? "Latin" : "English";
   const systemPrompt =
     language === "es"
       ? `${respondeoSystemPrompt}\n\nAll JSON string fields must be written in Spanish.\n`
+      : language === "la"
+        ? `${respondeoSystemPrompt}\n\nAll JSON string fields must be written in Latin.\n`
       : respondeoSystemPrompt;
 
   const objectionsText = objections.map((o, i) => `${i + 1}. ${o}`).join("\n");
@@ -45,7 +48,7 @@ Text: ${s.text}`,
 
   const userPrompt = `
 Target language:
-${language === "es" ? "Spanish" : "English"}
+${targetLabel}
 Write all generated text fields in the target language.
 
 Question:

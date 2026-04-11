@@ -4,14 +4,26 @@ import { parseDebateInput } from "@/lib/schemas/debate";
 import { saveDebate } from "@/lib/db/debates";
 import { isAppError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
+import { getUserFromRequest } from "@/lib/auth/requireUser";
 
 export async function POST(request: NextRequest) {
   try {
+    const user = await getUserFromRequest(request);
+    if (!user) {
+      return NextResponse.json(
+        {
+          error: "Authentication required.",
+          code: "AUTH_REQUIRED",
+        },
+        { status: 401 },
+      );
+    }
+
     const body = await request.json();
     const parsed = parseDebateInput(body);
     const result = await runDebate(parsed);
 
-    const saved = await saveDebate({
+    const saved = await saveDebate(user.id, {
       question: parsed.question,
       audience: parsed.audience,
       context: parsed.context,

@@ -12,7 +12,7 @@ export default function LoadingState({ language = "en", progress = null, message
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur">
-      <div className="space-y-3 animate-pulse">
+      <div className="space-y-3 motion-safe:animate-pulse">
         <div className="h-5 w-40 rounded bg-white/10" />
         <div className="h-4 w-full rounded bg-white/5" />
         <div className="h-4 w-5/6 rounded bg-white/5" />
