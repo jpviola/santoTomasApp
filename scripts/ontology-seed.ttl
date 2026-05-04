@@ -1,0 +1,325 @@
+@prefix st: <https://stotomas.ai/ontology/> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# ============================================
+# Ontología StoTomas AI - Conceptos Filosóficos
+# ============================================
+
+# Intellectus (Intelecto)
+<https://stotomas.ai/ontology/Intellectus> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Intellectus" ;
+    <https://stotomas.ai/ontology/nameEs> "Intelecto" ;
+    <http://schema.org/description> "The power of the soul by which the truth of things is understood. The immaterial cognitive faculty that grasps the essence of things." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Potencia del alma por la cual se entiende la verdad de las cosas. Es la facultad cognoscitiva inmaterial que alcanza la esencia de las cosas." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/Anima> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Voluntas>, <https://stotomas.ai/ontology/Ratio>, <https://stotomas.ai/ontology/Veritas> .
+
+# Anima (Alma)
+<https://stotomas.ai/ontology/Anima> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Anima" ;
+    <https://stotomas.ai/ontology/nameEs> "Alma" ;
+    <http://schema.org/description> "The first principle of life in living beings. The substantial form of a natural body that has life in potentiality." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Primer principio de vida en los seres vivos. Forma sustancial del cuerpo natural que tiene vida en potencia." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Intellectus>, <https://stotomas.ai/ontology/Voluntas>, <https://stotomas.ai/ontology/Potentia>, <https://stotomas.ai/ontology/Actus> .
+
+# Voluntas (Voluntad)
+<https://stotomas.ai/ontology/Voluntas> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Voluntas" ;
+    <https://stotomas.ai/ontology/nameEs> "Voluntad" ;
+    <http://schema.org/description> "Rational appetite that tends toward the good apprehended by the intellect. The faculty by which man moves freely toward an end." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Apetito racional que tiende al bien apprehendido por el intelecto. Es la facultad por la que el hombre se mueve libremente hacia un fin." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Intellectus>, <https://stotomas.ai/ontology/LibertumArbitrium>, <https://stotomas.ai/ontology/Bonum> .
+
+# Ratio (Razón)
+<https://stotomas.ai/ontology/Ratio> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Ratio" ;
+    <https://stotomas.ai/ontology/nameEs> "Razón" ;
+    <http://schema.org/description> "The discursive power of the soul that proceeds from the known to the unknown. Distinguished from intellect which immediately grasps truth." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Potencia discursiva del alma que procede de lo conocido a lo desconocido. Distingue del intelecto que capta inmediatamente la verdad." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/Intellectus> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Intellectus>, <https://stotomas.ai/ontology/Veritas>, <https://stotomas.ai/ontology/Scientia> .
+
+# Epistemologia (Teoría del conocimiento)
+<https://stotomas.ai/ontology/Epistemologia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Epistemologia" ;
+    <https://stotomas.ai/ontology/nameEs> "Teoría del conocimiento" ;
+    <http://schema.org/description> "Thomistic doctrine on the origin and nature of human knowledge. Knowledge begins with the senses and is perfected by the agent intellect." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Doctrina tomista sobre el origen y naturaleza del conocimiento humano. El conocimiento comienza por los sentidos y se perfecciona por el intelecto agente." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Philosophia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Intellectus>, <https://stotomas.ai/ontology/Sensus>, <https://stotomas.ai/ontology/Species>, <https://stotomas.ai/ontology/Veritas> .
+
+# Hilemorfismo (Hilemorfismo)
+<https://stotomas.ai/ontology/Hilemorfismo> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Hilemorfismo" ;
+    <https://stotomas.ai/ontology/nameEs> "Hilemorfismo" ;
+    <http://schema.org/description> "Doctrine holding that every corporeal substance is composed of matter (hyle) and form (morphe). Form gives specific being to matter." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Doctrina que sostiene que toda sustancia corpórea se compone de materia (hyle) y forma (morphe). La forma da el ser específico a la materia." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Metaphysica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Materia>, <https://stotomas.ai/ontology/Forma>, <https://stotomas.ai/ontology/Actus>, <https://stotomas.ai/ontology/Potentia>, <https://stotomas.ai/ontology/Substantia> .
+
+# Veritas (Verdad)
+<https://stotomas.ai/ontology/Veritas> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Veritas" ;
+    <https://stotomas.ai/ontology/nameEs> "Verdad" ;
+    <http://schema.org/description> "Adequation of intellect and thing. Truth is found in the intellect that composes and divides, not in the senses." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Adecuación del intelecto y la cosa. La verdad se encuentra en el intelecto que compone y divide, no en los sentidos." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Intellectus>, <https://stotomas.ai/ontology/Ratio>, <https://stotomas.ai/ontology/Bonum>, <https://stotomas.ai/ontology/Ens> .
+
+# Bonum (Bien)
+<https://stotomas.ai/ontology/Bonum> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Bonum" ;
+    <https://stotomas.ai/ontology/nameEs> "Bien" ;
+    <http://schema.org/description> "That which all things desire. The good is convertible with being but adds the notion of desirability." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Lo que todas las cosas apetecen. El bien es convertible con el ser pero añade la razón de apetecible." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Voluntas>, <https://stotomas.ai/ontology/Veritas>, <https://stotomas.ai/ontology/Ens>, <https://stotomas.ai/ontology/Finis> .
+
+# Ens (Ser)
+<https://stotomas.ai/ontology/Ens> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Ens" ;
+    <https://stotomas.ai/ontology/nameEs> "Ser" ;
+    <http://schema.org/description> "The first thing that falls under the apprehension of the intellect. Being is said in many ways but is reduced to substance and accident." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Lo primero que cae en la apprehensión del intelecto. El ente se dice de muchas maneras pero se reduce a la sustancia y el accidente." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Metaphysica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Essentia>, <https://stotomas.ai/ontology/Existere>, <https://stotomas.ai/ontology/Veritas>, <https://stotomas.ai/ontology/Bonum>, <https://stotomas.ai/ontology/Substantia> .
+
+# Essentia (Esencia)
+<https://stotomas.ai/ontology/Essentia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Essentia" ;
+    <https://stotomas.ai/ontology/nameEs> "Esencia" ;
+    <http://schema.org/description> "That by which a thing is what it is. In creatures it is really distinct from existence, except in God." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Lo por lo que una cosa es lo que es. En las criaturas se distingue realmente de la existencia, excepto en Dios." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Ens>, <https://stotomas.ai/ontology/Existere>, <https://stotomas.ai/ontology/Natura>, <https://stotomas.ai/ontology/Substantia> .
+
+# Existere (Existencia)
+<https://stotomas.ai/ontology/Existere> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Existere" ;
+    <https://stotomas.ai/ontology/nameEs> "Existencia" ;
+    <http://schema.org/description> "The act of being. The actus essendi is the most perfect of all acts, for without it no thing can exist." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Acto de ser. El actus essendi es el acto más perfecto de todos, pues sin él ninguna cosa puede existir." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Essentia>, <https://stotomas.ai/ontology/Ens>, <https://stotomas.ai/ontology/Actus> .
+
+# Actus (Acto)
+<https://stotomas.ai/ontology/Actus> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Actus" ;
+    <https://stotomas.ai/ontology/nameEs> "Acto" ;
+    <http://schema.org/description> "The perfection of a being insofar as it is in act. Opposed to potency as the perfect to the imperfect." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Perfección de un ser en cuanto está en acto. Se opone a la potencia como lo perfecto a lo imperfecto." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Metaphysica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Potentia>, <https://stotomas.ai/ontology/Essentia>, <https://stotomas.ai/ontology/Existere>, <https://stotomas.ai/ontology/Forma> .
+
+# Potentia (Potencia)
+<https://stotomas.ai/ontology/Potentia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Potentia" ;
+    <https://stotomas.ai/ontology/nameEs> "Potencia" ;
+    <http://schema.org/description> "The capacity or aptitude of a being to receive a perfection. Potency is reduced to act by the action of an agent." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Capacidad o aptitud de un ser para recibir una perfección. La potencia se reduce a acto por la acción de un agente." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Metaphysica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Actus>, <https://stotomas.ai/ontology/Materia>, <https://stotomas.ai/ontology/Forma>, <https://stotomas.ai/ontology/Anima> .
+
+# Substantia (Sustancia)
+<https://stotomas.ai/ontology/Substantia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Substantia" ;
+    <https://stotomas.ai/ontology/nameEs> "Sustancia" ;
+    <http://schema.org/description> "That which exists in itself and not in another as in a subject. First of the ten Aristotelian categories." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Lo que existe en sí y no en otro como en sujeto. Primera de las diez categorías aristotélicas." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Metaphysica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Ens>, <https://stotomas.ai/ontology/Accidens>, <https://stotomas.ai/ontology/Essentia>, <https://stotomas.ai/ontology/Materia>, <https://stotomas.ai/ontology/Forma> .
+
+# Accidens (Accidente)
+<https://stotomas.ai/ontology/Accidens> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Accidens" ;
+    <https://stotomas.ai/ontology/nameEs> "Accidente" ;
+    <http://schema.org/description> "That which exists in another as in a subject. The nine remaining categories after substance." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Lo que existe en otro como en sujeto. Las nueve categorías restantes después de la sustancia." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Substantia>, <https://stotomas.ai/ontology/Ens>, <https://stotomas.ai/ontology/Forma> .
+
+# Materia (Materia)
+<https://stotomas.ai/ontology/Materia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Materia" ;
+    <https://stotomas.ai/ontology/nameEs> "Materia" ;
+    <http://schema.org/description> "The potential principle of corporeal substance. Prime matter is pure potency without any formal determination." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Principio potencial de la sustancia corpórea. La materia prima es pura potencia sin ninguna determinación formal." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Hilemorfismo> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Forma>, <https://stotomas.ai/ontology/Potentia>, <https://stotomas.ai/ontology/Actus>, <https://stotomas.ai/ontology/Hilemorfismo> .
+
+# Forma (Forma)
+<https://stotomas.ai/ontology/Forma> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Forma" ;
+    <https://stotomas.ai/ontology/nameEs> "Forma" ;
+    <http://schema.org/description> "The actual principle of corporeal substance. Substantial form gives specific being to matter." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Principio actual de la sustancia corpórea. La forma sustancial da el ser específico a la materia." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Hilemorfismo> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Materia>, <https://stotomas.ai/ontology/Actus>, <https://stotomas.ai/ontology/Essentia>, <https://stotomas.ai/ontology/Substantia> .
+
+# Philosophia (Filosofía)
+<https://stotomas.ai/ontology/Philosophia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Philosophia" ;
+    <https://stotomas.ai/ontology/nameEs> "Filosofía" ;
+    <http://schema.org/description> "The science of all things through their ultimate causes. Divided into theoretical, practical, and productive." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Ciencia de todas las cosas por sus causas últimas. Se divide en teórica, práctica y productiva." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Theologia>, <https://stotomas.ai/ontology/Scientia>, <https://stotomas.ai/ontology/Metaphysica> .
+
+# Theologia (Teología)
+<https://stotomas.ai/ontology/Theologia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Theologia" ;
+    <https://stotomas.ai/ontology/nameEs> "Teología" ;
+    <http://schema.org/description> "The science that treats of God and divine things. Sacred theology is a science more certain than philosophy." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Ciencia que trata de Dios y de las cosas divinas. La teología sagrada es ciencia más cierta que la filosofía." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Philosophia>, <https://stotomas.ai/ontology/Deus>, <https://stotomas.ai/ontology/Fides>, <https://stotomas.ai/ontology/Revelatio> .
+
+# Deus (Dios)
+<https://stotomas.ai/ontology/Deus> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Deus" ;
+    <https://stotomas.ai/ontology/nameEs> "Dios" ;
+    <http://schema.org/description> "First unmoved mover, first cause, necessary being. In God, essence and existence are identical." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Primer motor inmóvil, causa primera, ser necesario. En Dios la esencia y la existencia son idénticas." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Theologia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Ens>, <https://stotomas.ai/ontology/Essentia>, <https://stotomas.ai/ontology/Existere>, <https://stotomas.ai/ontology/Bonum>, <https://stotomas.ai/ontology/Veritas> .
+
+# Metaphysica (Metafísica)
+<https://stotomas.ai/ontology/Metaphysica> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Metaphysica" ;
+    <https://stotomas.ai/ontology/nameEs> "Metafísica" ;
+    <http://schema.org/description> "The science that considers being as being and the properties that follow from it. It is first philosophy." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Ciencia que considera el ser en cuanto ser y las propiedades que le siguen. Es la filosofía primera." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/Philosophia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Ens>, <https://stotomas.ai/ontology/Substantia>, <https://stotomas.ai/ontology/Actus>, <https://stotomas.ai/ontology/Potentia>, <https://stotomas.ai/ontology/Causa> .
+
+# Causa (Causa)
+<https://stotomas.ai/ontology/Causa> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Causa" ;
+    <https://stotomas.ai/ontology/nameEs> "Causa" ;
+    <http://schema.org/description> "A principle on which the being of another thing depends. There are four causes: material, formal, efficient, and final." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Principio del cual depende el ser de otra cosa. Hay cuatro causas: material, formal, eficiente y final." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/Metaphysica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Effectus>, <https://stotomas.ai/ontology/Metaphysica>, <https://stotomas.ai/ontology/Deus> .
+
+# Finis (Fin)
+<https://stotomas.ai/ontology/Finis> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Finis" ;
+    <https://stotomas.ai/ontology/nameEs> "Fin" ;
+    <http://schema.org/description> "That for the sake of which something is done. The final cause is the cause of causes, for it moves the efficient cause." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Aquello por lo cual se hace algo. La causa final es la causa de las causas, pues mueve a la causa eficiente." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Causa>, <https://stotomas.ai/ontology/Voluntas>, <https://stotomas.ai/ontology/Bonum>, <https://stotomas.ai/ontology/Beatitudo> .
+
+# Beatitudo (Bienaventuranza)
+<https://stotomas.ai/ontology/Beatitudo> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Beatitudo" ;
+    <https://stotomas.ai/ontology/nameEs> "Bienaventuranza" ;
+    <http://schema.org/description> "The ultimate end of man. Perfect happiness consists in the beatific vision of God." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Fin último del hombre. La bienaventuranza perfecta consiste en la visión beatífica de Dios." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Finis>, <https://stotomas.ai/ontology/Deus>, <https://stotomas.ai/ontology/Voluntas>, <https://stotomas.ai/ontology/Bonum> .
+
+# Virtus (Virtud)
+<https://stotomas.ai/ontology/Virtus> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Virtus" ;
+    <https://stotomas.ai/ontology/nameEs> "Virtud" ;
+    <http://schema.org/description> "A good quality of the mind by which one lives rightly. The cardinal virtues are prudence, justice, fortitude, and temperance." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Buena cualidad de la mente por la que se vive rectamente. Las virtudes cardinales son prudencia, justicia, fortaleza y templanza." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Bonum>, <https://stotomas.ai/ontology/Voluntas>, <https://stotomas.ai/ontology/Habitus>, <https://stotomas.ai/ontology/Ethica> .
+
+# Habitus (Hábito)
+<https://stotomas.ai/ontology/Habitus> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Habitus" ;
+    <https://stotomas.ai/ontology/nameEs> "Hábito" ;
+    <http://schema.org/description> "A quality difficult to change that disposes the subject well or ill. Virtue is a good operative habit." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Cualidad difícil de mudar que dispone bien o mal al sujeto. La virtud es un hábito operativo bueno." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Virtus>, <https://stotomas.ai/ontology/Potentia>, <https://stotomas.ai/ontology/Actus> .
+
+# Fides (Fe)
+<https://stotomas.ai/ontology/Fides> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Fides" ;
+    <https://stotomas.ai/ontology/nameEs> "Fe" ;
+    <http://schema.org/description> "Theological virtue by which we believe in God and in the truths He has revealed." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Virtud teologal por la cual creemos en Dios y en las verdades que Él ha revelado." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Theologia>, <https://stotomas.ai/ontology/Revelatio>, <https://stotomas.ai/ontology/Virtus>, <https://stotomas.ai/ontology/Deus> .
+
+# Revelatio (Revelación)
+<https://stotomas.ai/ontology/Revelatio> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Revelatio" ;
+    <https://stotomas.ai/ontology/nameEs> "Revelación" ;
+    <http://schema.org/description> "Manifestation of supernatural truths that surpass the natural capacity of the human intellect." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Manifestación de verdades sobrenaturales que superan la capacidad natural del intelecto humano." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Fides>, <https://stotomas.ai/ontology/Theologia>, <https://stotomas.ai/ontology/Deus> .
+
+# Scientia (Ciencia)
+<https://stotomas.ai/ontology/Scientia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Scientia" ;
+    <https://stotomas.ai/ontology/nameEs> "Ciencia" ;
+    <http://schema.org/description> "Certain knowledge through causes. Intellectual habit by which we know things through their causes." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Conocimiento cierto por las causas. Hábito intelectual por el cual conocemos las cosas por sus causas." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Ratio>, <https://stotomas.ai/ontology/Causa>, <https://stotomas.ai/ontology/Intellectus>, <https://stotomas.ai/ontology/Veritas> .
+
+# Sensus (Sentido)
+<https://stotomas.ai/ontology/Sensus> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Sensus" ;
+    <https://stotomas.ai/ontology/nameEs> "Sentido" ;
+    <http://schema.org/description> "Power of the soul that knows sensible objects. There are five exterior senses and four interior senses." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Potencia del alma que conoce los objetos sensibles. Hay cinco sentidos exteriores y cuatro interiores." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Epistemologia>, <https://stotomas.ai/ontology/Anima>, <https://stotomas.ai/ontology/Intellectus>, <https://stotomas.ai/ontology/Species> .
+
+# Species (Especie inteligible)
+<https://stotomas.ai/ontology/Species> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Species" ;
+    <https://stotomas.ai/ontology/nameEs> "Especie inteligible" ;
+    <http://schema.org/description> "The form by which the intellect knows. The intelligible species is the formal principle of the act of knowing." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Forma por la cual el intelecto conoce. La especie inteligible es el principio formal del acto de conocer." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Intellectus>, <https://stotomas.ai/ontology/Epistemologia>, <https://stotomas.ai/ontology/Sensus>, <https://stotomas.ai/ontology/Veritas> .
+
+# LibertumArbitrium (Libre albedrío)
+<https://stotomas.ai/ontology/LibertumArbitrium> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "LibertumArbitrium" ;
+    <https://stotomas.ai/ontology/nameEs> "Libre albedrío" ;
+    <http://schema.org/description> "The faculty of choosing among several means to attain an end. It presupposes the knowledge of reason." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Facultad de elegir entre varios medios para alcanzar un fin. Presupone el conocimiento de la razón." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Voluntas>, <https://stotomas.ai/ontology/Ratio>, <https://stotomas.ai/ontology/Intellectus> .
+
+# Ethica (Ética)
+<https://stotomas.ai/ontology/Ethica> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "Ethica" ;
+    <https://stotomas.ai/ontology/nameEs> "Ética" ;
+    <http://schema.org/description> "Part of practical philosophy that orders human acts to the ultimate end through virtues." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Parte de la filosofía práctica que ordena los actos humanos al fin último mediante las virtudes." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/Philosophia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/Virtus>, <https://stotomas.ai/ontology/Finis>, <https://stotomas.ai/ontology/Bonum>, <https://stotomas.ai/ontology/Voluntas> .
+
+# ============================================
+# Artículos de la Summa Theologiae
+# ============================================
+
+# ST I, q.79, a.1
+<https://stotomas.ai/ontology/st-i-q79-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Summa Theologiae I, Question 79, Article 1" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.79, a.1" ;
+    <https://stotomas.ai/ontology/text> "The intellect is a power of the soul and not the very essence of the soul. To understand belongs properly to an immaterial power." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/st:Intellectus>, <https://stotomas.ai/ontology/st:Anima> .
+
+# ST I, q.75, a.2
+<https://stotomas.ai/ontology/st-i-q75-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Summa Theologiae I, Question 75, Article 2" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.75, a.2" ;
+    <https://stotomas.ai/ontology/text> "The human soul is something subsistent. The operation of understanding is performed without a corporeal organ." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/st:Anima>, <https://stotomas.ai/ontology/st:Epistemologia> .
+
+# ST I, q.76, a.1
+<https://stotomas.ai/ontology/st-i-q76-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Summa Theologiae I, Question 76, Article 1" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.76, a.1" ;
+    <https://stotomas.ai/ontology/text> "The intellectual principle which we call the mind or the intellect is united to the body as its form." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/st:Intellectus>, <https://stotomas.ai/ontology/st:Hilemorfismo> .
+
+# ST I, q.85, a.2
+<https://stotomas.ai/ontology/st-i-q85-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Summa Theologiae I, Question 85, Article 2" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.85, a.2" ;
+    <https://stotomas.ai/ontology/text> "The object of the intellect is the quiddity and nature existing in corporeal matter, though not as existing in this individual matter." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/st:Intellectus>, <https://stotomas.ai/ontology/st:Epistemologia> .
+
+# ST I, q.14, a.1
+<https://stotomas.ai/ontology/st-i-q14-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Summa Theologiae I, Question 14, Article 1" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.14, a.1" ;
+    <https://stotomas.ai/ontology/text> "Knowledge implies an immateriality of the knower. A thing is known according as it is in the knower." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/st:Epistemologia> .
+

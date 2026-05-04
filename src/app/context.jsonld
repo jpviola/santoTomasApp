@@ -1,0 +1,24 @@
+{
+  "@context": {
+    "st": "https://stotomas.ai/ontology/",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "SummaArticle": "st:SummaArticle",
+    "Question": "st:Question",
+    "Objection": "st:Objection",
+    "Respondeo": "st:Respondeo",
+    "Reply": "st:Reply",
+    "topic": {
+      "@id": "st:topic",
+      "@type": "@id"
+    },
+    "cites": {
+      "@id": "st:cites",
+      "@type": "@id"
+    },
+    "refutes": {
+      "@id": "st:refutes",
+      "@type": "@id"
+    }
+  }
+}

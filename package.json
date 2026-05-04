@@ -1,0 +1,35 @@
+{
+  "name": "stotomas-ai",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "postinstall": "prisma generate",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@prisma/client": "6.19.3",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.1",
+    "next": "15.5.14",
+    "openai": "^5.23.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sparql-http-client": "^3.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.14",
+    "prisma": "6.19.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

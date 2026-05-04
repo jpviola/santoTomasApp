@@ -1,0 +1,254 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import type { DebateOutput as DebateOutputType } from "@/types/debate";
+import type { DebateHistoryItem } from "@/types/history";
+import { CreateTaskResponseSchema, DebateTaskSchema, type DebateTask } from "@/lib/schemas/task";
+
+export type RunDebatePayload = {
+  question: string;
+};
+
+export function useDebateManager(
+  language: "es" | "en",
+  answerLanguage: "es" | "en" | "la",
+) {
+  const [result, setResult] = useState<DebateOutputType | null>(null);
+  const [activeRecordId, setActiveRecordId] = useState<string | null>(null);
+  const [isRunningDebate, setIsRunningDebate] = useState(false);
+  const [runError, setRunError] = useState<string | null>(null);
+  const [outputLanguage, setOutputLanguage] = useState<"es" | "en" | "la">("es");
+
+  const [historyItems, setHistoryItems] = useState<DebateHistoryItem[]>([]);
+  const [isHistoryLoading, setIsHistoryLoading] = useState(true);
+
+  const [isLoadingSavedDebate, setIsLoadingSavedDebate] = useState(false);
+  const [activeTask, setActiveTask] = useState<DebateTask | null>(null);
+
+  const fetchJsonWithTimeout = useCallback(async (url: string, init: RequestInit, timeoutMs: number) => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(url, { ...init, signal: controller.signal });
+      const data = await response.json().catch(() => null);
+      return { response, data };
+    } finally {
+      clearTimeout(timeout);
+    }
+  }, []);
+
+  const requestWithRetry = useCallback(async <T,>(
+    operation: () => Promise<T>,
+    maxRetries = 3,
+    initialDelayMs = 600,
+  ): Promise<T> => {
+    let lastError: unknown = null;
+    for (let attempt = 0; attempt < maxRetries; attempt += 1) {
+      try {
+        return await operation();
+      } catch (err) {
+        lastError = err;
+        if (attempt === maxRetries - 1) throw err;
+        const delay = initialDelayMs * Math.pow(2, attempt);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      }
+    }
+    throw lastError instanceof Error ? lastError : new Error("Retry failed.");
+  }, []);
+
+  const fetchHistory = useCallback(async () => {
+    setIsHistoryLoading(true);
+    try {
+      const { response, data } = await fetchJsonWithTimeout("/api/debate/history", { method: "GET" }, 20000);
+      if (!response.ok) throw new Error("Failed to fetch debate history.");
+      if (!data || !Array.isArray((data as Record<string, unknown>).items)) throw new Error("Malformed response.");
+      setHistoryItems((data as Record<string, unknown>).items as DebateHistoryItem[]);
+    } catch {
+      setHistoryItems([]);
+    } finally {
+      setIsHistoryLoading(false);
+    }
+  }, [fetchJsonWithTimeout]);
+
+  const fetchDebateById = useCallback(
+    async (id: string) => {
+      setIsLoadingSavedDebate(true);
+      setRunError(null);
+      try {
+        const { response, data } = await requestWithRetry(() =>
+          fetchJsonWithTimeout(`/api/debate/${id}`, { method: "GET" }, 20000),
+        );
+        if (!response.ok) throw new Error(data?.error || "Failed to fetch saved debate.");
+
+        const hydratedResult: DebateOutputType = {
+          question: data.question,
+          objections: data.objections,
+          sedContra: data.sedContra,
+          respondeo: data.respondeo,
+          replies: data.replies,
+          application: data.application,
+          sources: data.sources,
+          metadata: {
+            audience: data.audience,
+            generatedAt: new Date(data.generatedAt).toISOString(),
+          },
+          recordId: data.id,
+        };
+
+        setOutputLanguage(language);
+        setResult(hydratedResult);
+        setActiveRecordId(data.id);
+      } catch (err) {
+        setRunError(err instanceof Error ? err.message : "Unknown error loading debate.");
+      } finally {
+        setIsLoadingSavedDebate(false);
+      }
+    },
+    [fetchJsonWithTimeout, language, requestWithRetry],
+  );
+
+  const formatTaskMessage = useCallback(
+    (stage: string | null) => {
+      if (!stage) return null;
+      const dict = language === "es"
+        ? {
+            start: "Iniciando…",
+            moderate_and_retrieve: "Moderando la pregunta y recuperando fuentes…",
+            objections_and_sed_contra: "Generando objeciones y sed contra…",
+            respondeo: "Redactando el respondeo…",
+            replies: "Escribiendo las réplicas…",
+            finalize: "Finalizando…",
+            done: "Listo.",
+            failed: "Falló.",
+          }
+        : {
+            start: "Starting…",
+            moderate_and_retrieve: "Moderating question and retrieving sources…",
+            objections_and_sed_contra: "Generating objections and sed contra…",
+            respondeo: "Drafting respondeo…",
+            replies: "Writing replies…",
+            finalize: "Finalizing…",
+            done: "Done.",
+            failed: "Failed.",
+          };
+      return (dict as Record<string, string>)[stage] ?? stage;
+    },
+    [language],
+  );
+
+  const handleRunDebate = useCallback(
+    async (payload: RunDebatePayload | { question: string; audience?: string; context?: string }, lang?: "es" | "en" | "la") => {
+      setIsRunningDebate(true);
+      setRunError(null);
+      setActiveTask(null);
+      setResult(null);
+      setActiveRecordId(null);
+      const langToUse = lang ?? answerLanguage;
+      setOutputLanguage(langToUse);
+
+      try {
+        const { response: createResponse, data: createData } = await requestWithRetry(
+          () =>
+            fetchJsonWithTimeout(
+              "/api/debate/tasks",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question: payload.question, language: langToUse }),
+              },
+              20000,
+            ),
+          3,
+          700,
+        );
+
+        if (!createResponse.ok) {
+          throw new Error(createData?.details || createData?.error || "Failed to start debate task.");
+        }
+
+        const parsedCreate = CreateTaskResponseSchema.safeParse(createData);
+        if (!parsedCreate.success) throw new Error("Invalid response from task creation API.");
+
+        const { taskId } = parsedCreate.data;
+        setActiveTask({
+          id: taskId,
+          status: "PENDING",
+          progress: 0,
+          message: "start",
+          error: null,
+          recordId: null,
+        });
+
+        const startedAt = Date.now();
+        while (true) {
+          if (Date.now() - startedAt > 300000) throw new Error("Generation timed out.");
+
+          const { response: statusResponse, data: statusData } = await requestWithRetry(
+            () => fetchJsonWithTimeout(`/api/debate/tasks/${taskId}`, { method: "GET" }, 20000),
+            2,
+            600,
+          );
+
+          if (!statusResponse.ok) throw new Error(statusData?.error || "Failed to fetch task status.");
+
+          const parsedStatus = DebateTaskSchema.safeParse(statusData);
+          if (!parsedStatus.success) throw new Error("Invalid task status data received.");
+
+          const task: DebateTask = parsedStatus.data;
+          setActiveTask(task);
+
+          if (task.status === "COMPLETED" && task.recordId) {
+            await fetchDebateById(task.recordId);
+            await fetchHistory();
+            setActiveTask(null);
+            break;
+          }
+
+          if (task.status === "FAILED") throw new Error(task.error || "Debate task failed.");
+          await new Promise((resolve) => setTimeout(resolve, 1200));
+        }
+      } catch (err) {
+        const message = err instanceof Error && err.name === "AbortError"
+          ? "Request timed out."
+          : err instanceof Error
+            ? err.message
+            : "Unknown error occurred.";
+        setRunError(message);
+        setResult(null);
+        setActiveRecordId(null);
+        setActiveTask(null);
+      } finally {
+        setIsRunningDebate(false);
+      }
+    },
+    [answerLanguage, fetchDebateById, fetchHistory, fetchJsonWithTimeout, requestWithRetry],
+  );
+
+  const handleNewQuestion = useCallback(() => {
+    setResult(null);
+    setActiveRecordId(null);
+    setRunError(null);
+    setActiveTask(null);
+  }, []);
+
+  useEffect(() => {
+    fetchHistory();
+  }, [fetchHistory]);
+
+  return {
+    result,
+    isRunningDebate,
+    runError,
+    outputLanguage,
+    historyItems,
+    isHistoryLoading,
+    isLoadingSavedDebate,
+    activeTask,
+    fetchHistory,
+    fetchDebateById,
+    formatTaskMessage,
+    handleRunDebate,
+    handleNewQuestion,
+    setOutputLanguage,
+  };
+}

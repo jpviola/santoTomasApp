@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f1729;
+  --foreground: #f1f5f9;
+  --card: rgba(255, 255, 255, 0.08);
+  --card-strong: rgba(255, 255, 255, 0.12);
+  --border: rgba(148, 163, 184, 0.22);
+  --muted: rgba(148, 163, 184, 0.85);
+  --accent-1: 139 92 246;
+  --accent-2: 96 165 250;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f1729;
+    --foreground: #f1f5f9;
+  }
+}
+
+body {
+  background:
+    radial-gradient(900px circle at 18% 12%, rgba(var(--accent-1) / 0.28), transparent 58%),
+    radial-gradient(900px circle at 86% 20%, rgba(var(--accent-2) / 0.22), transparent 55%),
+    radial-gradient(700px circle at 50% 92%, rgba(var(--accent-1) / 0.16), transparent 55%),
+    linear-gradient(180deg, #131b33 0%, #0f1729 55%, #0f1729 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(167, 139, 250, 0.9);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}

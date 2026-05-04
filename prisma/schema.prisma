@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Debate {
+  id          String   @id @default(cuid())
+  question    String
+  audience    String   @default("graduate")
+  context     String?
+  objections  String
+  sedContra   String
+  respondeo   String
+  replies     String
+  application String
+  sources     String
+  generatedAt String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([createdAt])
+}

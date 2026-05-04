@@ -1,0 +1,33 @@
+{
+  "@context": "../lib/ontology/context.jsonld",
+  "@graph": [
+    {
+      "@id": "st:ST:1:84:1",
+      "@type": "SummaArticle",
+      "title": "Utrum anima cognoscat corpora per intellectum?",
+      "part": "Prima Pars",
+      "questionNumber": 84,
+      "articleNumber": 1,
+      "topics": [
+        "st:Intellectus",
+        "st:Epistemologia",
+        "st:Hilemorfismo"
+      ],
+      "cites": [
+        "st:Aristoteles_DeAnima",
+        "st:ST:1:12:1"
+      ],
+      "relatedTo": [
+        "st:ST:1:85:1"
+      ]
+    },
+    {
+      "@id": "st:Intellectus",
+      "@type": "schema:DefinedTerm",
+      "name": "Intelecto",
+      "description": "Potencia del alma por la cual se entiende la verdad de las cosas.",
+      "narrowerThan": "st:Anima",
+      "relatedTo": ["st:Voluntas", "st:Ratio"]
+    }
+  ]
+}
