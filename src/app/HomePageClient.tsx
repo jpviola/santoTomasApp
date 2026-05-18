@@ -1,45 +1,39 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import Image from "next/image";
 import { useDebateManager } from "@/app/useDebateManager";
 import DebateForm from "@/components/DebateForm";
 import DebateSidebar from "@/components/DebateSidebar";
 import DebateOutput from "@/components/DebateOutput";
 import LoadingState from "@/components/LoadingState";
+import BmcSticker from "@/components/BmcSticker";
+import content from "@/data/content.json";
+import { DebateOutput as DebateOutputType } from "@/types/debate";
 
-const SUGGESTED_QUESTIONS_ES = [
-  "¿Puede la inteligencia artificial entender verdaderamente?",
-  "¿Existe Dios? Demuéstralo con cinco vías.",
-  "¿El alma humana es inmortal?",
-  "¿Qué es la verdad según Tomás de Aquino?",
-];
+interface ContentStructure {
+  [key: string]: {
+    suggested: string[];
+  };
+}
 
-const SUGGESTED_QUESTIONS_EN = [
-  "Can artificial intelligence truly understand?",
-  "Does God exist? Demonstrate via the five ways.",
-  "Is the human soul immortal?",
-  "What is truth according to Thomas Aquinas?",
-];
+const typedContent = content as ContentStructure;
 
 export default function HomePageClient() {
-  const [language, setLanguage] = useState<"es" | "en">("es");
-  const [answerLanguage, setAnswerLanguage] = useState<"es" | "en" | "la">("es");
+  // Inicialización inteligente para evitar parpadeos de UI
+  const [language, setLanguage] = useState<"es" | "en">(() => {
+    if (typeof window === "undefined") return "es";
+    const stored = window.localStorage.getItem("stotomas.language");
+    return (stored === "en") ? "en" : "es";
+  });
+
+  const [answerLanguage, setAnswerLanguage] = useState<"es" | "en" | "la">(() => {
+    if (typeof window === "undefined") return "es";
+    const stored = window.localStorage.getItem("stotomas.answerLanguage");
+    return (stored === "en" || stored === "la") ? stored : "es";
+  });
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  useEffect(() => {
-    const storedLang = window.localStorage.getItem("stotomas.language") as "es" | "en" | null;
-    const storedAns = window.localStorage.getItem("stotomas.answerLanguage") as "es" | "en" | "la" | null;
-    if (storedLang === "es" || storedLang === "en") setLanguage(storedLang);
-    if (storedAns === "es" || storedAns === "en" || storedAns === "la") setAnswerLanguage(storedAns);
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("stotomas.language", language);
-  }, [language]);
-
-  useEffect(() => {
-    window.localStorage.setItem("stotomas.answerLanguage", answerLanguage);
-  }, [answerLanguage]);
 
   const {
     result,
@@ -54,27 +48,62 @@ export default function HomePageClient() {
     handleRunDebate,
     handleNewQuestion,
     setOutputLanguage,
+    // Asumo que useDebateManager permite setear el resultado manualmente
+    setResult, 
   } = useDebateManager(language, answerLanguage);
 
+  // Guardar en caché automáticamente cuando el resultado cambie y sea válido
+  useEffect(() => {
+    if (result && result.question && !isRunningDebate) {
+      const cacheKey = `st_cache_${answerLanguage}_${result.question.toLowerCase().trim()}`;
+      if (!window.localStorage.getItem(cacheKey)) {
+        window.localStorage.setItem(cacheKey, JSON.stringify(result));
+      }
+    }
+  }, [result, isRunningDebate, answerLanguage]);
+
+  // Función envolvente con lógica de caché
+  const runDebateWithCache = useCallback(async (params: { question: string }, langOverride?: "es" | "en" | "la") => {
+    const targetLang = langOverride || answerLanguage;
+    const cacheKey = `st_cache_${targetLang}_${params.question.toLowerCase().trim()}`;
+    const cached = window.localStorage.getItem(cacheKey);
+
+    if (cached) {
+      setResult(JSON.parse(cached) as DebateOutputType);
+      return;
+    }
+
+    await handleRunDebate(params, langOverride);
+  }, [answerLanguage, handleRunDebate, setResult]);
+
+  // Persistencia en Storage
+  useEffect(() => {
+    window.localStorage.setItem("stotomas.language", language);
+    window.localStorage.setItem("stotomas.answerLanguage", answerLanguage);
+  }, [language, answerLanguage]);
+
+  // Ajustar idioma de respuesta automáticamente si no hay debate activo
   useEffect(() => {
     if (!result) {
       setAnswerLanguage((current) => (current === "la" ? "la" : language));
     }
   }, [language, result]);
 
-  const suggested = language === "es" ? SUGGESTED_QUESTIONS_ES : SUGGESTED_QUESTIONS_EN;
-
-  const switchAnswerLanguage = (newLang: "es" | "en" | "la") => {
+  const switchAnswerLanguage = useCallback((newLang: "es" | "en" | "la") => {
     setAnswerLanguage(newLang);
     if (result && result.question && !isRunningDebate) {
       setOutputLanguage(newLang);
-      handleRunDebate({ question: result.question }, newLang);
+      runDebateWithCache({ question: result.question }, newLang);
     }
-  };
+  }, [result, isRunningDebate, setOutputLanguage, runDebateWithCache]);
 
-  const toggleUILanguage = () => {
+  const suggested = useMemo(() => 
+    typedContent[language]?.suggested || [], 
+  [language]);
+
+  const toggleUILanguage = useCallback(() => {
     setLanguage((v) => (v === "es" ? "en" : "es"));
-  };
+  }, []);
 
   return (
     <main id="main-content" className="relative flex h-screen overflow-hidden">
@@ -96,6 +125,8 @@ export default function HomePageClient() {
           <button
             type="button"
             onClick={() => setSidebarOpen(true)}
+            aria-label={language === "es" ? "Abrir historial" : "Open history"}
+            aria-expanded={sidebarOpen}
             className="rounded-lg p-2 text-slate-400 transition hover:bg-white/5 hover:text-slate-200"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -105,55 +136,40 @@ export default function HomePageClient() {
 
           <div className="flex items-center gap-2">
             <div className="h-7 w-7 overflow-hidden rounded-lg border border-white/20">
-              <img
+              <Image
                 src="/aquinas-banner.webp"
-                alt=""
+                alt={language === "es" ? "Icono de Santo Tomás" : "St. Thomas Icon"}
+                width={28}
+                height={28}
                 className="h-full w-full object-cover"
               />
             </div>
-            <h1 className="text-sm font-medium text-slate-300">
+            <h1 className="text-sm font-semibold text-slate-200">
               {language === "es" ? "Disputa con Santo Tomás" : "Debate with St. Thomas"}
             </h1>
           </div>
 
           <div className="flex items-center gap-1">
-            <button
-              type="button"
-              onClick={() => switchAnswerLanguage("la")}
-              className={`rounded-md px-2 py-1 text-xs font-medium transition ${
-                answerLanguage === "la"
-                  ? "bg-blue-500/25 text-blue-200"
-                  : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
-              }`}
-            >
-              LAT
-            </button>
-            <button
-              type="button"
-              onClick={() => switchAnswerLanguage("es")}
-              className={`rounded-md px-2 py-1 text-xs font-medium transition ${
-                answerLanguage === "es"
-                  ? "bg-blue-500/25 text-blue-200"
-                  : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
-              }`}
-            >
-              ES
-            </button>
-            <button
-              type="button"
-              onClick={() => switchAnswerLanguage("en")}
-              className={`rounded-md px-2 py-1 text-xs font-medium transition ${
-                answerLanguage === "en"
-                  ? "bg-blue-500/25 text-blue-200"
-                  : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
-              }`}
-            >
-              EN
-            </button>
+            {(["la", "es", "en"] as const).map((lang) => (
+              <button
+                key={lang}
+                type="button"
+                onClick={() => switchAnswerLanguage(lang)}
+                aria-label={`${language === "es" ? "Respuesta en" : "Answer in"}: ${lang === "la" ? "Latín" : lang.toUpperCase()}`}
+                className={`rounded-md px-2 py-1 text-xs font-medium uppercase transition ${
+                  answerLanguage === lang
+                    ? "bg-blue-500/25 text-blue-200"
+                    : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
+                }`}
+              >
+                {lang === "la" ? "LAT" : lang}
+              </button>
+            ))}
             <div className="mx-1 h-4 w-px bg-white/10" />
             <button
               type="button"
               onClick={toggleUILanguage}
+              aria-label={language === "es" ? "Cambiar idioma de interfaz" : "Change UI language"}
               className="rounded-md px-2 py-1 text-xs font-medium text-slate-400 transition hover:bg-white/5 hover:text-slate-200"
             >
               {language === "es" ? "ES" : "EN"}
@@ -207,11 +223,13 @@ export default function HomePageClient() {
                 {/* Hero section */}
                 <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
                   <div className="relative z-10 flex gap-6 px-6 py-6 sm:px-8 sm:py-8">
-                    <div className="flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-xl sm:h-36 sm:w-36">
-                      <img
+                    <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-xl sm:h-36 sm:w-36">
+                      <Image
                         src="/aquinas-banner.webp"
                         alt="Santo Tomás de Aquino"
-                        className="h-full w-full object-cover"
+                        fill
+                        sizes="(max-width: 640px) 112px, 144px"
+                        className="object-cover"
                       />
                     </div>
                     <div className="flex flex-col justify-center">
@@ -237,7 +255,7 @@ export default function HomePageClient() {
                     {suggested.map((q, i) => (
                       <button
                         key={i}
-                        onClick={() => handleRunDebate({ question: q })}
+                        onClick={() => runDebateWithCache({ question: q })}
                         className="line-clamp-2 rounded-xl border border-white/10 bg-white/5 p-3 text-left text-sm text-slate-300 transition hover:border-blue-400/30 hover:bg-blue-500/10 hover:text-slate-100"
                       >
                         {q}
@@ -253,10 +271,13 @@ export default function HomePageClient() {
         {/* Chat bar */}
         <div className="border-t border-white/10 bg-blue-950/40 p-4 backdrop-blur">
           <div className="mx-auto max-w-3xl">
-            <DebateForm onSubmit={handleRunDebate} isLoading={isRunningDebate} language={language} />
+            <DebateForm onSubmit={runDebateWithCache} isLoading={isRunningDebate} language={language} />
           </div>
         </div>
       </div>
+
+      {/* BuyMeACoffee floating sticker */}
+      <BmcSticker />
     </main>
   );
 }

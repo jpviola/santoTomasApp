@@ -35,14 +35,26 @@ export interface SummaArticleMetadata {
 export class OntologyEngine {
   private sparqlClient: SparqlClient;
   private graphDbEndpoint: string;
+  private relevantTermsCache = new Map<string, OntologyTerm[]>();
+  private articlesByTopicCache = new Map<string, SummaArticleMetadata[]>();
+  private readonly queryTimeoutMs = 2500;
 
   constructor() {
-    this.graphDbEndpoint = process.env.GRAPHDB_ENDPOINT_URL || 'http://JPVIOLA-PC2026:7200/repositories/santoTomas';
+    const endpoint = process.env.GRAPHDB_ENDPOINT_URL;
+    if (!endpoint) {
+      throw new Error('GRAPHDB_ENDPOINT_URL environment variable is required but not set.');
+    }
+    this.graphDbEndpoint = endpoint;
     this.sparqlClient = new SparqlClient({ endpointUrl: this.graphDbEndpoint });
   }
 
   private async executeSelect(query: string): Promise<SparqlBinding[]> {
-    const response = await this.sparqlClient.query.select(query);
+    const response = await Promise.race([
+      this.sparqlClient.query.select(query),
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error(`SPARQL query timed out after ${this.queryTimeoutMs}ms`)), this.queryTimeoutMs),
+      ),
+    ]);
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error(`SPARQL query failed (${response.status}): ${errorText}`);
@@ -52,6 +64,10 @@ export class OntologyEngine {
   }
 
   public async findRelevantTerms(query: string): Promise<OntologyTerm[]> {
+    const cacheKey = query.trim().toLowerCase();
+    const cached = this.relevantTermsCache.get(cacheKey);
+    if (cached) return cached;
+
     const escapedQuery = query.replace(/"/g, '\\"');
     
     const sparqlQuery = `
@@ -108,7 +124,9 @@ export class OntologyEngine {
         }
       }
       
-      return Array.from(termsMap.values());
+      const terms = Array.from(termsMap.values());
+      this.relevantTermsCache.set(cacheKey, terms);
+      return terms;
     } catch (error) {
       console.error('Error querying GraphDB for terms:', error);
       return [];
@@ -117,6 +135,9 @@ export class OntologyEngine {
 
   public async getArticlesByTopic(topicId: string): Promise<SummaArticleMetadata[]> {
     const cleanTopicId = topicId.replace('st:', '').replace(ONTOLOGY_PREFIX, '');
+    const cached = this.articlesByTopicCache.get(cleanTopicId);
+    if (cached) return cached;
+
     const topicUri = `${ONTOLOGY_PREFIX}${cleanTopicId}`;
     
     const sparqlQuery = `
@@ -157,7 +178,9 @@ export class OntologyEngine {
         }
       }
       
-      return Array.from(articlesMap.values());
+      const articles = Array.from(articlesMap.values());
+      this.articlesByTopicCache.set(cleanTopicId, articles);
+      return articles;
     } catch (error) {
       console.error('Error querying GraphDB for articles:', error);
       return [];

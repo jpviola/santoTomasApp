@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { DebateOutput as DebateOutputType } from "@/types/debate";
 import type { DebateHistoryItem } from "@/types/history";
 import { CreateTaskResponseSchema, DebateTaskSchema, type DebateTask } from "@/lib/schemas/task";
@@ -14,7 +14,6 @@ export function useDebateManager(
   answerLanguage: "es" | "en" | "la",
 ) {
   const [result, setResult] = useState<DebateOutputType | null>(null);
-  const [activeRecordId, setActiveRecordId] = useState<string | null>(null);
   const [isRunningDebate, setIsRunningDebate] = useState(false);
   const [runError, setRunError] = useState<string | null>(null);
   const [outputLanguage, setOutputLanguage] = useState<"es" | "en" | "la">("es");
@@ -24,6 +23,8 @@ export function useDebateManager(
 
   const [isLoadingSavedDebate, setIsLoadingSavedDebate] = useState(false);
   const [activeTask, setActiveTask] = useState<DebateTask | null>(null);
+  const mountedRef = useRef(true);
+  useEffect(() => () => { mountedRef.current = false; }, []);
 
   const fetchJsonWithTimeout = useCallback(async (url: string, init: RequestInit, timeoutMs: number) => {
     const controller = new AbortController();
@@ -97,7 +98,6 @@ export function useDebateManager(
 
         setOutputLanguage(language);
         setResult(hydratedResult);
-        setActiveRecordId(data.id);
       } catch (err) {
         setRunError(err instanceof Error ? err.message : "Unknown error loading debate.");
       } finally {
@@ -142,7 +142,6 @@ export function useDebateManager(
       setRunError(null);
       setActiveTask(null);
       setResult(null);
-      setActiveRecordId(null);
       const langToUse = lang ?? answerLanguage;
       setOutputLanguage(langToUse);
 
@@ -181,6 +180,7 @@ export function useDebateManager(
 
         const startedAt = Date.now();
         while (true) {
+          if (!mountedRef.current) return;
           if (Date.now() - startedAt > 300000) throw new Error("Generation timed out.");
 
           const { response: statusResponse, data: statusData } = await requestWithRetry(
@@ -198,7 +198,11 @@ export function useDebateManager(
           setActiveTask(task);
 
           if (task.status === "COMPLETED" && task.recordId) {
-            await fetchDebateById(task.recordId);
+            if (task.result) {
+              setResult({ ...task.result, recordId: task.recordId });
+            } else {
+              await fetchDebateById(task.recordId);
+            }
             await fetchHistory();
             setActiveTask(null);
             break;
@@ -215,7 +219,6 @@ export function useDebateManager(
             : "Unknown error occurred.";
         setRunError(message);
         setResult(null);
-        setActiveRecordId(null);
         setActiveTask(null);
       } finally {
         setIsRunningDebate(false);
@@ -226,7 +229,6 @@ export function useDebateManager(
 
   const handleNewQuestion = useCallback(() => {
     setResult(null);
-    setActiveRecordId(null);
     setRunError(null);
     setActiveTask(null);
   }, []);
@@ -237,6 +239,7 @@ export function useDebateManager(
 
   return {
     result,
+    setResult,
     isRunningDebate,
     runError,
     outputLanguage,

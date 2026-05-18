@@ -107,10 +107,16 @@ function buildCorpusThomisticumUrl(c: ParsedStCitation) {
 async function fetchTextCached(url: string) {
   const cached = sourceHtmlCache.get(url);
   if (cached) return cached;
-  const response = await fetch(url, { method: "GET" });
-  const text = await response.text();
-  sourceHtmlCache.set(url, text);
-  return text;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 2500);
+  try {
+    const response = await fetch(url, { method: "GET", signal: controller.signal });
+    const text = await response.text();
+    sourceHtmlCache.set(url, text);
+    return text;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function extractSpanishExcerptFromSumat(html: string, articleNumber: number) {

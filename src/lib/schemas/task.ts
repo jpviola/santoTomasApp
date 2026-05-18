@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { DebateOutputSchema } from "@/lib/schemas/debate";
 
 /**
  * Esquema para la respuesta de la creación de una tarea de debate.
@@ -23,6 +24,7 @@ export const DebateTaskSchema = z.object({
   message: z.string().nullable(),
   error: z.string().nullable(),
   recordId: z.string().nullable(),
+  result: DebateOutputSchema.optional(),
 });
 
 export type DebateTask = z.infer<typeof DebateTaskSchema>;

@@ -1,8 +1,6 @@
+import { ontologyEngine } from "@/lib/agents/OntologyEngine";
 import { runModerator } from "@/lib/agents/moderator";
-import { runObjections } from "@/lib/agents/objections";
-import { runSedContra } from "@/lib/agents/sedContra";
-import { runRespondeo } from "@/lib/agents/respondeo";
-import { runReplies } from "@/lib/agents/replies";
+import { runScholasticDebate } from "@/lib/agents/scholasticDebate";
 import { retrieveOntologyEnrichedSources } from "@/lib/retrieval/ontologyRetriever";
 import { DebateInputSchema, DebateOutputSchema } from "@/lib/schemas/debate";
 import type { DebateInput, DebateOutput } from "@/lib/schemas/debate";
@@ -20,6 +18,14 @@ type RunDebateOptions = {
 };
 
 export async function runDebate(input: DebateInput, options?: RunDebateOptions): Promise<DebateOutput> {
+  const pipelineStartedAt = Date.now();
+  const logStage = (stage: string, startedAt: number) => {
+    logger.info("Debate pipeline stage completed", {
+      stage,
+      durationMs: Date.now() - startedAt,
+    });
+  };
+
   try {
     const parsedInput = DebateInputSchema.parse(input);
     await options?.onProgress?.({ stage: "start", progress: 2, message: "Starting pipeline" });
@@ -31,8 +37,10 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
     });
 
     await options?.onProgress?.({ stage: "moderate_and_retrieve", progress: 12, message: "Moderating question and retrieving sources" });
+    const retrievalStartedAt = Date.now();
+    const relevantTerms = await ontologyEngine.findRelevantTerms(parsedInput.question);
     const [sourcesRaw, moderated] = await Promise.all([
-      retrieveOntologyEnrichedSources(parsedInput.question),
+      retrieveOntologyEnrichedSources(parsedInput.question, 5, relevantTerms),
       runModerator({
         question: parsedInput.question,
         audience: parsedInput.audience,
@@ -40,7 +48,9 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
         language: parsedInput.language,
       }),
     ]);
+    logStage("moderate_and_retrieve", retrievalStartedAt);
 
+    const localizationStartedAt = Date.now();
     const sources =
       parsedInput.language === "en"
         ? sourcesRaw
@@ -48,51 +58,30 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
             sourcesRaw,
             parsedInput.language,
           );
+    logStage("localize_sources", localizationStartedAt);
 
     await options?.onProgress?.({ stage: "objections_and_sed_contra", progress: 38, message: "Generating objections and sed contra" });
-    const [objectionsResult, sedContraResult] = await Promise.all([
-      runObjections({
-        question: moderated.question,
-        framing: moderated.framing,
-        precisionNotes: moderated.precisionNotes,
-        sources,
-        language: parsedInput.language,
-      }),
-      runSedContra({
-        question: moderated.question,
-        sources,
-        language: parsedInput.language,
-      }),
-    ]);
-
-    await options?.onProgress?.({ stage: "respondeo", progress: 62, message: "Drafting respondeo and application" });
-    const respondeoResult = await runRespondeo({
+    const generationStartedAt = Date.now();
+    const debateResult = await runScholasticDebate({
       question: moderated.question,
-      framing: moderated.framing,
-      precisionNotes: moderated.precisionNotes,
-      objections: objectionsResult.objections,
-      sedContra: sedContraResult.sedContra,
       sources,
       audience: parsedInput.audience,
+      context: parsedInput.context,
+      ontologyTerms: relevantTerms.map((term) => term.name),
       language: parsedInput.language,
     });
+    logStage("single_pass_generation", generationStartedAt);
 
-    await options?.onProgress?.({ stage: "replies", progress: 82, message: "Writing replies to objections" });
-    const repliesResult = await runReplies({
-      question: moderated.question,
-      objections: objectionsResult.objections,
-      respondeo: respondeoResult.respondeo,
-      language: parsedInput.language,
-    });
+    await options?.onProgress?.({ stage: "respondeo", progress: 78, message: "Drafting respondeo and replies" });
 
     await options?.onProgress?.({ stage: "finalize", progress: 94, message: "Finalizing structured output" });
     const result: DebateOutput = {
       question: moderated.question,
-      objections: objectionsResult.objections,
-      sedContra: sedContraResult.sedContra,
-      respondeo: respondeoResult.respondeo,
-      replies: repliesResult.replies,
-      application: respondeoResult.application,
+      objections: debateResult.objections,
+      sedContra: debateResult.sedContra,
+      respondeo: debateResult.respondeo,
+      replies: debateResult.replies,
+      application: debateResult.application,
       sources,
       metadata: {
         audience: parsedInput.audience,
@@ -104,6 +93,7 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
       question: result.question,
       objectionsCount: result.objections.length,
       repliesCount: result.replies.length,
+      durationMs: Date.now() - pipelineStartedAt,
     });
 
     const parsedOutput = DebateOutputSchema.parse(result);
