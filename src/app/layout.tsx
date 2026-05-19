@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   title: "StoTomas AI",
   description: "Scholastic multi-agent debate system inspired by Thomas Aquinas.",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: [{ url: "/favicon.ico", type: "image/x-icon" }],
+    shortcut: [{ url: "/favicon.ico", type: "image/x-icon" }],
   },
 };
 

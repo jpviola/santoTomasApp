@@ -1,7 +1,6 @@
 "use client";
 
 import type { DebateHistoryItem } from "@/types/history";
-import BuyMeACoffeeButton from "@/components/BuyMeACoffeeButton";
 
 type DebateSidebarProps = {
   items: DebateHistoryItem[];
@@ -129,10 +128,6 @@ export default function DebateSidebar({
               ))}
             </ul>
           )}
-        </div>
-
-        <div className="border-t border-[var(--border)]">
-          <BuyMeACoffeeButton />
         </div>
       </aside>
     </>

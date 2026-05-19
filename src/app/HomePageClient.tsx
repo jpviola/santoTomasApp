@@ -9,6 +9,7 @@ import DebateOutput from "@/components/DebateOutput";
 import DebateProgressBar from "@/components/DebateProgressBar";
 import LoadingState from "@/components/LoadingState";
 import ThemeToggle from "@/components/ThemeToggle";
+import BuyMeACoffeeButton from "@/components/BuyMeACoffeeButton";
 import content from "@/data/content.json";
 import { DebateOutput as DebateOutputType } from "@/types/debate";
 
@@ -213,7 +214,7 @@ export default function HomePageClient() {
 
             <div className="h-8 w-8 shrink-0 overflow-hidden rounded-md border border-[var(--border)] bg-white p-1">
               <Image
-                src="/santotomas_logo_vector.svg"
+                src="/santotomas_logo_vector.png"
                 alt={language === "es" ? "Santo Tomás" : "Thomas Aquinas"}
                 width={32}
                 height={32}
@@ -387,6 +388,7 @@ export default function HomePageClient() {
             </span>
           </div>
           <nav aria-label={language === "es" ? "Redes sociales" : "Social networks"} className="flex items-center gap-3">
+            <BuyMeACoffeeButton compact />
             <div className="flex items-center gap-2">
               <a href="https://www.linkedin.com/in/jpviola/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex h-7 w-7 items-center justify-center rounded-md text-[var(--muted)] transition hover:bg-[var(--surface-muted)] hover:text-[var(--accent)]">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

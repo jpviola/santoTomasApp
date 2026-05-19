@@ -3,13 +3,17 @@
 const KOFI_ID = process.env.NEXT_PUBLIC_KOFI_ID || "P2V01ZT620";
 const KOFI_ENABLED = process.env.NEXT_PUBLIC_KOFI_ENABLED !== "false" && process.env.NEXT_PUBLIC_KOFI_ENABLED !== "0";
 
-export default function BuyMeACoffeeButton() {
+type BuyMeACoffeeButtonProps = {
+  compact?: boolean;
+};
+
+export default function BuyMeACoffeeButton({ compact = false }: BuyMeACoffeeButtonProps) {
   if (!KOFI_ENABLED) {
     return null;
   }
 
   return (
-    <div className="flex justify-center px-2 py-2.5">
+    <div className={compact ? "flex justify-center" : "flex justify-center px-2 py-2.5"}>
       <a
         href={`https://ko-fi.com/${KOFI_ID}`}
         target="_blank"
@@ -21,7 +25,7 @@ export default function BuyMeACoffeeButton() {
           height={36}
           src="https://storage.ko-fi.com/cdn/kofi2.png?v=6"
           alt="Buy Me a Coffee at ko-fi.com"
-          className="h-8 border-0"
+          className={compact ? "h-7 border-0" : "h-8 border-0"}
         />
       </a>
     </div>
