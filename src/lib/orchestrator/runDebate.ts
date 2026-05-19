@@ -40,7 +40,7 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
     await options?.onProgress?.({ stage: "moderate_and_retrieve", progress: 12, message: "Moderating question and retrieving sources" });
     const retrievalStartedAt = Date.now();
     
-    const retrievalResult = await runWithSpan("debate.moderate_retrieve", async (span) => {
+    const retrievalResult = await runWithSpan("debate.moderate_retrieve", async () => {
       const relevantTerms = await getOntologyEngine().findRelevantTerms(parsedInput.question);
       const [sourcesRaw, moderated] = await Promise.all([
         retrieveOntologyEnrichedSources(parsedInput.question, 5, relevantTerms),
@@ -51,7 +51,6 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
           language: parsedInput.language,
         }),
       ]);
-      span?.setAttribute("sourcesCount", sourcesRaw.length);
       return { relevantTerms, sourcesRaw, moderated };
     });
     const { relevantTerms, sourcesRaw, moderated } = retrievalResult;
@@ -72,7 +71,7 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
     await options?.onProgress?.({ stage: "objections_and_sed_contra", progress: 38, message: "Generating objections and sed contra" });
     const generationStartedAt = Date.now();
     
-    const debateResult = await runWithSpan("debate.generate_objections", async (span) => {
+    const debateResult = await runWithSpan("debate.generate_objections", async () => {
       const result = await runScholasticDebate({
         question: moderated.question,
         sources,
@@ -81,8 +80,6 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
         ontologyTerms: relevantTerms.map((term) => term.name),
         language: parsedInput.language,
       });
-      span?.setAttribute("objectionsCount", result.objections.length);
-      span?.setAttribute("repliesCount", result.replies.length);
       return result;
     });
     logStage("single_pass_generation", generationStartedAt);
