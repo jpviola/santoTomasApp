@@ -48,9 +48,18 @@ export default function DebateSidebar({
       {open && <div className="fixed inset-0 z-30 bg-black/25 backdrop-blur-sm lg:hidden" onClick={onClose} />}
 
       <aside
-        className={`fixed left-0 top-0 z-40 flex h-full w-[19rem] flex-col border-r border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-soft)] transition-transform duration-300 lg:static lg:z-auto lg:translate-x-0 lg:shadow-none ${
-          open ? "translate-x-0" : "-translate-x-full"
-        }`}
+        id="debate-sidebar"
+        className={[
+          "flex flex-shrink-0 flex-col overflow-hidden bg-[var(--surface)]",
+          "border-[var(--border)] transition-[width,transform] duration-300 ease-in-out",
+          // Mobile: fixed overlay, always 19rem wide, slide in/out
+          "fixed left-0 top-0 z-40 h-full shadow-[var(--shadow-soft)]",
+          // Desktop: static in flex row, no shadow, width-based open/close
+          "lg:static lg:z-auto lg:h-auto lg:shadow-none lg:translate-x-0",
+          open
+            ? "w-[19rem] translate-x-0 border-r"
+            : "w-[19rem] -translate-x-full lg:w-0 lg:border-r-0",
+        ].join(" ")}
       >
         <div className="border-b border-[var(--border)] px-4 py-4">
           <div className="flex items-start justify-between gap-3">

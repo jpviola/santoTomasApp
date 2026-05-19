@@ -27,13 +27,19 @@ function CopyButton({ text, label }: { text: string; label: string }) {
     setTimeout(() => setCopied(false), 1600);
   }
 
+  const displayLabel = copied ? "✓" : label;
+  const ariaLabel = copied ? (label.includes("opiar") ? "Copiado" : "Copied") : label;
+
   return (
     <button
       type="button"
       onClick={handleCopy}
+      aria-label={ariaLabel}
+      aria-live="polite"
+      aria-atomic="true"
       className="rounded-md border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1.5 text-xs font-medium text-[var(--muted-strong)] transition hover:border-[var(--border-strong)] hover:text-[var(--foreground)]"
     >
-      {copied ? "Copied" : label}
+      {displayLabel}
     </button>
   );
 }

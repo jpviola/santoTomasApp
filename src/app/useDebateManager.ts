@@ -167,7 +167,12 @@ export function useDebateManager(
 
       try {
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 90000);
+        let inactivityTimeout: ReturnType<typeof setTimeout> | null = null;
+        const resetInactivityTimeout = () => {
+          if (inactivityTimeout) clearTimeout(inactivityTimeout);
+          inactivityTimeout = setTimeout(() => controller.abort(), 120000);
+        };
+        resetInactivityTimeout();
 
         // Cambiamos a un endpoint que soporte streaming (ej: /api/debate/process)
         const response = await fetch(
@@ -243,6 +248,7 @@ export function useDebateManager(
           while (mountedRef.current) {
             const { done, value } = await reader.read();
             if (done) break;
+            resetInactivityTimeout();
 
             buffer += decoder.decode(value, { stream: true });
 
@@ -259,11 +265,11 @@ export function useDebateManager(
             await handleLine(buffer);
           }
         } finally {
-          clearTimeout(timeout);
+          if (inactivityTimeout) clearTimeout(inactivityTimeout);
         }
       } catch (err) {
         const message = err instanceof Error && err.name === "AbortError"
-          ? "Request timed out."
+          ? "La generación tardó demasiado sin enviar avances. Probá de nuevo con una pregunta más breve."
           : err instanceof Error
             ? err.message
             : "Unknown error occurred.";

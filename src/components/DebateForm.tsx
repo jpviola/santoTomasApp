@@ -63,6 +63,8 @@ export default function DebateForm({ onSubmit, isLoading, language }: DebateForm
             onChange={(e) => setQuestion(e.target.value)}
             onKeyDown={handleKeyDown}
             rows={1}
+            aria-label={t.placeholder}
+            aria-required="true"
             className="min-h-[44px] max-h-[144px] flex-1 resize-none bg-transparent px-2 py-2 text-[15px] leading-6 text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:!outline-none focus-visible:!outline-none"
             placeholder={t.placeholder}
             disabled={isLoading}
@@ -70,6 +72,8 @@ export default function DebateForm({ onSubmit, isLoading, language }: DebateForm
           <button
             type="submit"
             disabled={isLoading || !question.trim()}
+            aria-busy={isLoading}
+            aria-label={isLoading ? (language === "es" ? "Procesando..." : "Processing...") : t.send}
             className="mb-1 rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
           >
             {isLoading ? "..." : t.send}

@@ -17,6 +17,7 @@ interface ContentStructure {
 }
 
 const typedContent = content as ContentStructure;
+const SUGGESTED_COUNT = 4;
 
 function isFallbackDebate(result: DebateOutputType | null) {
   if (!result) return false;
@@ -25,7 +26,14 @@ function isFallbackDebate(result: DebateOutputType | null) {
   );
 }
 
+function rotateSuggested(items: string[], seed: number) {
+  if (items.length <= SUGGESTED_COUNT) return items;
+  return Array.from({ length: SUGGESTED_COUNT }, (_, index) => items[(seed + index) % items.length]);
+}
+
 export default function HomePageClient() {
+  const [suggestedSeed, setSuggestedSeed] = useState(0);
+
   const [language, setLanguage] = useState<"es" | "en">(() => {
     if (typeof window === "undefined") return "es";
     const stored = window.localStorage.getItem("stotomas.language");
@@ -39,6 +47,13 @@ export default function HomePageClient() {
   });
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    setSuggestedSeed(Math.floor(Math.random() * 1000));
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      setSidebarOpen(true);
+    }
+  }, []);
 
   const {
     result,
@@ -85,6 +100,7 @@ export default function HomePageClient() {
       }
 
       await handleRunDebate(params, langOverride);
+      setSuggestedSeed((seed) => seed + 1);
     },
     [answerLanguage, handleRunDebate, setResult],
   );
@@ -111,7 +127,10 @@ export default function HomePageClient() {
     [result, isRunningDebate, setOutputLanguage, runDebateWithCache],
   );
 
-  const suggested = useMemo(() => typedContent[language]?.suggested || [], [language]);
+  const suggested = useMemo(
+    () => rotateSuggested(typedContent[language]?.suggested || [], suggestedSeed),
+    [language, suggestedSeed],
+  );
 
   const toggleUILanguage = useCallback(() => {
     setLanguage((v) => (v === "es" ? "en" : "es"));
@@ -126,10 +145,14 @@ export default function HomePageClient() {
           suggested: "Cuestiones sugeridas",
           newQuestion: "Nueva cuestion",
           answerLanguage: "Idioma de respuesta",
-          interfaceLanguage: "Interfaz",
+          answerLabel: "Respuesta",
+          interfaceLanguage: "Cambiar idioma de la interfaz",
+          interfaceLabel: "Interfaz",
           error: "Error",
           emptyTitle: "Santo Tomas de Aquino",
           emptyCopy: "Formula una cuestion y recibe una disputa organizada con objeciones, sed contra, respondeo, replicas y fuentes.",
+          footer: "hecho con",
+          footerBy: "por",
         }
       : {
           menu: "Open library",
@@ -138,10 +161,14 @@ export default function HomePageClient() {
           suggested: "Suggested questions",
           newQuestion: "New question",
           answerLanguage: "Answer language",
-          interfaceLanguage: "Interface",
+          answerLabel: "Answer",
+          interfaceLanguage: "Switch interface language",
+          interfaceLabel: "Interface",
           error: "Error",
           emptyTitle: "Thomas Aquinas",
           emptyCopy: "Ask a question and receive a structured disputation with objections, sed contra, respondeo, replies, and sources.",
+          footer: "made with",
+          footerBy: "by",
         };
 
   return (
@@ -161,10 +188,11 @@ export default function HomePageClient() {
           <div className="flex min-w-0 items-center gap-3">
             <button
               type="button"
-              onClick={() => setSidebarOpen(true)}
+              onClick={() => setSidebarOpen((v) => !v)}
               aria-label={t.menu}
               aria-expanded={sidebarOpen}
-              className="rounded-md border border-[var(--border)] bg-[var(--surface)] p-2 text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)] lg:hidden"
+              aria-controls="debate-sidebar"
+              className="rounded-md border border-[var(--border)] bg-[var(--surface)] p-2 text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h7a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -186,39 +214,56 @@ export default function HomePageClient() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-1">
-              {(["la", "es", "en"] as const).map((lang) => (
-                <button
-                  key={lang}
-                  type="button"
-                  onClick={() => switchAnswerLanguage(lang)}
-                  aria-label={`${t.answerLanguage}: ${lang}`}
-                  className={`rounded-md px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] transition ${
-                    answerLanguage === lang
-                      ? "bg-[var(--accent-soft)] text-[var(--accent)]"
-                      : "text-[var(--muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
-                  }`}
-                >
-                  {lang === "la" ? "LAT" : lang}
-                </button>
-              ))}
+          <div className="flex items-end gap-2">
+            <div className="flex flex-col items-center gap-1">
+              <span className="hidden font-mono text-[9px] uppercase tracking-[0.12em] text-[var(--muted)] sm:block">
+                {t.answerLabel}
+              </span>
+              <div
+                className="flex items-center gap-1 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-1"
+                title={t.answerLanguage}
+                role="group"
+                aria-label={t.answerLanguage}
+              >
+                {(["la", "es", "en"] as const).map((lang) => (
+                  <button
+                    key={lang}
+                    type="button"
+                    onClick={() => switchAnswerLanguage(lang)}
+                    aria-label={`${t.answerLanguage}: ${lang === "la" ? "Latín" : lang === "es" ? "Español" : "English"}`}
+                    aria-pressed={answerLanguage === lang}
+                    className={`rounded-md px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] transition ${
+                      answerLanguage === lang
+                        ? "bg-[var(--accent-soft)] text-[var(--accent)]"
+                        : "text-[var(--muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
+                    }`}
+                  >
+                    {lang === "la" ? "LAT" : lang.toUpperCase()}
+                  </button>
+                ))}
+              </div>
             </div>
-            <button
-              type="button"
-              onClick={toggleUILanguage}
-              aria-label={t.interfaceLanguage}
-              className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
-            >
-              {language === "es" ? "ES" : "EN"}
-            </button>
+            <div className="flex flex-col items-center gap-1">
+              <span className="hidden font-mono text-[9px] uppercase tracking-[0.12em] text-[var(--muted)] sm:block">
+                {t.interfaceLabel}
+              </span>
+              <button
+                type="button"
+                onClick={toggleUILanguage}
+                aria-label={t.interfaceLanguage}
+                title={t.interfaceLanguage}
+                className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
+              >
+                {language === "es" ? "ES" : "EN"}
+              </button>
+            </div>
           </div>
         </header>
 
-        <div className="scholarly-scrollbar min-h-0 flex-1 overflow-y-auto px-3 py-5 sm:px-6 lg:px-8">
+        <div className="scholarly-scrollbar min-h-0 flex-1 overflow-y-auto px-3 py-4 sm:px-5 lg:px-7">
           <div className="mx-auto max-w-6xl">
             {isRunningDebate && activeTask && (
-              <div className="mx-auto mb-5 max-w-3xl">
+              <div className="mx-auto mb-5 max-w-3xl" role="status" aria-live="polite" aria-label={formatTaskMessage(activeTask.message ?? null) ?? undefined}>
                 <LoadingState
                   language={language}
                   progress={activeTask.progress}
@@ -228,16 +273,16 @@ export default function HomePageClient() {
             )}
 
             {runError && (
-              <div className="mx-auto mb-5 max-w-3xl rounded-[10px] border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-700 dark:text-red-200">
+              <div role="alert" className="mx-auto mb-5 max-w-3xl rounded-[10px] border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-700 dark:text-red-200">
                 <span className="font-semibold">{t.error}: </span>
                 {runError}
               </div>
             )}
 
             {result && (
-              <div className="pb-7">
+              <div className="pb-5">
                 <DebateOutput result={result} language={language} contentLanguage={answerLanguage} />
-                <div className="mt-6 flex justify-center">
+                <div className="mt-4 flex justify-center">
                   <button
                     type="button"
                     onClick={handleNewQuestion}
@@ -250,8 +295,8 @@ export default function HomePageClient() {
             )}
 
             {!result && !isRunningDebate && (
-              <div className="mx-auto max-w-4xl space-y-8 pb-7">
-                <section className="grid gap-5 rounded-[12px] border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[var(--shadow-soft)] sm:grid-cols-[160px_minmax(0,1fr)] sm:p-7">
+              <div className="mx-auto max-w-4xl space-y-5 pb-5">
+                <section className="grid gap-4 rounded-[12px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow-soft)] sm:grid-cols-[140px_minmax(0,1fr)] sm:p-5">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[10px] border border-[var(--border)] bg-[var(--surface-muted)]">
                     <Image
                       src="/aquinas-banner.webp"
@@ -264,10 +309,10 @@ export default function HomePageClient() {
                   </div>
                   <div className="flex flex-col justify-center">
                     <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">Quaestio</p>
-                    <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-[var(--foreground)] sm:text-4xl">
+                    <h2 className="mt-2 font-serif text-3xl font-semibold leading-tight text-[var(--foreground)] sm:text-[2.25rem]">
                       {t.emptyTitle}
                     </h2>
-                    <p className="mt-4 max-w-2xl font-serif text-lg leading-8 text-[var(--muted-strong)]">{t.emptyCopy}</p>
+                    <p className="mt-3 max-w-2xl font-serif text-[17px] leading-7 text-[var(--muted-strong)]">{t.emptyCopy}</p>
                   </div>
                 </section>
 
@@ -279,8 +324,10 @@ export default function HomePageClient() {
                     {suggested.map((q, i) => (
                       <button
                         key={i}
+                        type="button"
                         onClick={() => runDebateWithCache({ question: q })}
-                        className="min-h-[88px] rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-4 text-left font-serif text-[16px] leading-6 text-[var(--muted-strong)] shadow-[var(--shadow-soft)] transition hover:border-[var(--border-strong)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
+                        aria-label={q}
+                        className="min-h-[70px] rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-3 text-left font-serif text-[15px] leading-6 text-[var(--muted-strong)] shadow-[var(--shadow-soft)] transition hover:border-[var(--border-strong)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
                       >
                         {q}
                       </button>
@@ -297,6 +344,39 @@ export default function HomePageClient() {
             <DebateForm onSubmit={runDebateWithCache} isLoading={isRunningDebate} language={language} />
           </div>
         </div>
+
+        <footer className="flex items-center justify-between border-t border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_82%,transparent)] px-4 py-2 text-xs text-[var(--muted)] backdrop-blur sm:px-5">
+          <p className="flex items-center gap-1.5">
+            <span>{t.footer}</span>
+            <span aria-hidden="true" className="text-[var(--accent)]">♥</span>
+            <span>{t.footerBy}</span>
+            <a
+              href="https://www.jpviola.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-[var(--muted-strong)] underline decoration-transparent underline-offset-4 transition hover:text-[var(--accent)] hover:decoration-[var(--accent)]"
+            >
+              jpviola
+            </a>
+          </p>
+          <nav aria-label={language === "es" ? "Redes sociales" : "Social networks"} className="flex items-center gap-3">
+            <a href="https://www.linkedin.com/in/jpviola/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[var(--muted)] transition hover:text-[var(--accent)]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a href="https://www.github.com/jpviola" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-[var(--muted)] transition hover:text-[var(--accent)]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/jpviola2" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[var(--muted)] transition hover:text-[var(--accent)]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+          </nav>
+        </footer>
       </div>
 
     </main>

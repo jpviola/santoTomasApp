@@ -8,7 +8,7 @@ import { logger } from "@/lib/utils/logger";
 
 // Importante: Vercel Hobby tiene un limite de 10s.
 // maxDuration intenta extenderlo (funciona mejor en planes Pro).
-export const maxDuration = 60;
+export const maxDuration = 180;
 
 async function buildLocalFallbackDebate(input: DebateInput): Promise<DebateOutput> {
   const sources = await retrieveAquinasSources(input.question, 3);
