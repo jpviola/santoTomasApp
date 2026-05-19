@@ -9,7 +9,7 @@ export default function BuyMeACoffeeButton() {
   }
 
   return (
-    <div className="flex justify-center px-3 py-4">
+    <div className="flex justify-center px-2 py-2.5">
       <a
         href={`https://ko-fi.com/${KOFI_ID}`}
         target="_blank"
@@ -21,7 +21,7 @@ export default function BuyMeACoffeeButton() {
           height={36}
           src="https://storage.ko-fi.com/cdn/kofi2.png?v=6"
           alt="Buy Me a Coffee at ko-fi.com"
-          className="h-9 border-0"
+          className="h-8 border-0"
         />
       </a>
     </div>

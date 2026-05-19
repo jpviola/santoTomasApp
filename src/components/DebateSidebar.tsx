@@ -57,15 +57,15 @@ export default function DebateSidebar({
           // Desktop: static in flex row, no shadow, width-based open/close
           "lg:static lg:z-auto lg:h-auto lg:shadow-none lg:translate-x-0",
           open
-            ? "w-[19rem] translate-x-0 border-r"
-            : "w-[19rem] -translate-x-full lg:w-0 lg:border-r-0",
+            ? "w-[17rem] translate-x-0 border-r"
+            : "w-[17rem] -translate-x-full lg:w-0 lg:border-r-0",
         ].join(" ")}
       >
-        <div className="border-b border-[var(--border)] px-4 py-4">
+        <div className="border-b border-[var(--border)] px-3 py-3">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h2 className="font-serif text-xl font-semibold text-[var(--foreground)]">{t.title}</h2>
-              <p className="mt-0.5 text-xs text-[var(--muted)]">{t.subtitle}</p>
+              <h2 className="font-serif text-lg font-semibold leading-5 text-[var(--foreground)]">{t.title}</h2>
+              <p className="mt-0.5 text-[11px] text-[var(--muted)]">{t.subtitle}</p>
             </div>
             <div className="flex items-center gap-1">
               {onRefresh && (
@@ -94,11 +94,11 @@ export default function DebateSidebar({
           </div>
         </div>
 
-        <div className="scholarly-scrollbar flex-1 overflow-y-auto p-3">
+        <div className="scholarly-scrollbar flex-1 overflow-y-auto p-2">
           {isLoading && (
             <div className="space-y-2">
               {Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="animate-pulse rounded-[10px] border border-[var(--border)] bg-[var(--surface-muted)] p-3">
+                <div key={i} className="animate-pulse rounded-lg border border-[var(--border)] bg-[var(--surface-muted)] p-2.5">
                   <div className="h-3 w-4/5 rounded bg-[var(--surface-strong)]" />
                   <div className="mt-2 h-2 w-2/5 rounded bg-[var(--surface-strong)]" />
                 </div>
@@ -107,7 +107,7 @@ export default function DebateSidebar({
           )}
 
           {!isLoading && items.length === 0 && (
-            <p className="py-8 text-center text-sm text-[var(--muted)]">{t.empty}</p>
+            <p className="py-6 text-center text-xs text-[var(--muted)]">{t.empty}</p>
           )}
 
           {!isLoading && items.length > 0 && (
@@ -120,10 +120,10 @@ export default function DebateSidebar({
                       onSelect(item.id);
                       onClose();
                     }}
-                    className="w-full rounded-[10px] border border-transparent p-3 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-muted)]"
+                    className="w-full rounded-lg border border-transparent px-2.5 py-2 text-left transition hover:border-[var(--border)] hover:bg-[var(--surface-muted)]"
                   >
-                    <p className="line-clamp-2 text-sm font-medium leading-5 text-[var(--foreground)]">{item.question}</p>
-                    <p className="mt-1 font-mono text-[11px] text-[var(--muted)]">{formatDate(item.createdAt)}</p>
+                    <p className="line-clamp-2 text-xs font-medium leading-4 text-[var(--foreground)]">{item.question}</p>
+                    <p className="mt-0.5 font-mono text-[10px] text-[var(--muted)]">{formatDate(item.createdAt)}</p>
                   </button>
                 </li>
               ))}

@@ -8,7 +8,7 @@ import DebateSidebar from "@/components/DebateSidebar";
 import DebateOutput from "@/components/DebateOutput";
 import DebateProgressBar from "@/components/DebateProgressBar";
 import LoadingState from "@/components/LoadingState";
-import Footer from "@/components/Footer";
+import ThemeToggle from "@/components/ThemeToggle";
 import content from "@/data/content.json";
 import { DebateOutput as DebateOutputType } from "@/types/debate";
 
@@ -152,23 +152,23 @@ export default function HomePageClient() {
     language === "es"
       ? {
           menu: "Abrir biblioteca",
-          title: "Santo Tomas App",
-          subtitle: "Disputa con Santo Tomas",
+          title: "Santo Tomás App",
+          subtitle: "Disputa con Santo Tomás",
           suggested: "Cuestiones sugeridas",
-          newQuestion: "Nueva cuestion",
+          newQuestion: "Nueva cuestión",
           answerLanguage: "Idioma de respuesta",
           answerLabel: "Respuesta",
           interfaceLanguage: "Cambiar idioma de la interfaz",
           interfaceLabel: "Interfaz",
           error: "Error",
-          emptyTitle: "Santo Tomas de Aquino",
-          emptyCopy: "Formula una cuestion y recibe una disputa organizada con objeciones, sed contra, respondeo, replicas y fuentes.",
+          emptyTitle: "Santo Tomás de Aquino",
+          emptyCopy: "Formula una cuestión y recibe una disputa organizada con objeciones, sed contra, respondeo, réplicas y fuentes.",
           footer: "hecho con",
           footerBy: "por",
         }
       : {
           menu: "Open library",
-          title: "Santo Tomas App",
+          title: "Santo Tomás App",
           subtitle: "Debate with St. Thomas",
           suggested: "Suggested questions",
           newQuestion: "New question",
@@ -196,43 +196,43 @@ export default function HomePageClient() {
       />
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="flex min-h-[64px] items-center justify-between border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--surface)_88%,transparent)] px-3 backdrop-blur sm:px-5">
-          <div className="flex min-w-0 items-center gap-3">
+        <header className="flex min-h-[52px] items-center justify-between border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--surface)_88%,transparent)] px-2.5 backdrop-blur sm:px-4">
+          <div className="flex min-w-0 items-center gap-2.5">
             <button
               type="button"
               onClick={() => setSidebarOpen((v) => !v)}
               aria-label={t.menu}
               aria-expanded={sidebarOpen}
               aria-controls="debate-sidebar"
-              className="rounded-md border border-[var(--border)] bg-[var(--surface)] p-2 text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
+              className="rounded-md border border-[var(--border)] bg-[var(--surface)] p-1.5 text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h7a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
               </svg>
             </button>
 
-            <div className="h-9 w-9 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface-muted)]">
+            <div className="h-8 w-8 shrink-0 overflow-hidden rounded-md border border-[var(--border)] bg-white p-1">
               <Image
-                src="/aquinas-banner.webp"
-                alt={language === "es" ? "Santo Tomas" : "Thomas Aquinas"}
-                width={36}
-                height={36}
-                className="h-full w-full object-cover"
+                src="/santotomas_logo_vector.svg"
+                alt={language === "es" ? "Santo Tomás" : "Thomas Aquinas"}
+                width={32}
+                height={32}
+                className="h-full w-full object-contain"
               />
             </div>
             <div className="min-w-0">
-              <h1 className="truncate font-serif text-lg font-semibold leading-5 text-[var(--foreground)]">{t.title}</h1>
+              <h1 className="truncate font-serif text-base font-semibold leading-5 text-[var(--foreground)] sm:text-[17px]">{t.title}</h1>
               <p className="hidden truncate text-xs text-[var(--muted)] sm:block">{t.subtitle}</p>
             </div>
           </div>
 
-          <div className="flex items-end gap-2">
+          <div className="flex items-center gap-1.5">
             <div className="flex flex-col items-center gap-1">
-              <span className="hidden font-mono text-[9px] uppercase tracking-[0.12em] text-[var(--muted)] sm:block">
+              <span className="sr-only">
                 {t.answerLabel}
               </span>
               <div
-                className="flex items-center gap-1 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-1"
+                className="flex items-center gap-0.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-0.5"
                 title={t.answerLanguage}
                 role="group"
                 aria-label={t.answerLanguage}
@@ -244,7 +244,7 @@ export default function HomePageClient() {
                     onClick={() => switchAnswerLanguage(lang)}
                     aria-label={`${t.answerLanguage}: ${lang === "la" ? "Latín" : lang === "es" ? "Español" : "English"}`}
                     aria-pressed={answerLanguage === lang}
-                    className={`rounded-md px-2.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] transition ${
+                    className={`rounded-md px-2 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] transition sm:px-2.5 ${
                       answerLanguage === lang
                         ? "bg-[var(--accent-soft)] text-[var(--accent)]"
                         : "text-[var(--muted)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
@@ -256,7 +256,7 @@ export default function HomePageClient() {
               </div>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <span className="hidden font-mono text-[9px] uppercase tracking-[0.12em] text-[var(--muted)] sm:block">
+              <span className="sr-only">
                 {t.interfaceLabel}
               </span>
               <button
@@ -264,11 +264,12 @@ export default function HomePageClient() {
                 onClick={toggleUILanguage}
                 aria-label={t.interfaceLanguage}
                 title={t.interfaceLanguage}
-                className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-3 py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
+                className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-2.5 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
               >
                 {language === "es" ? "ES" : "EN"}
               </button>
             </div>
+            <ThemeToggle className="h-8 w-8 shrink-0" />
           </div>
         </header>
 
@@ -365,8 +366,8 @@ export default function HomePageClient() {
           </div>
         </div>
 
-        <footer className="flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_82%,transparent)] px-4 py-6 text-xs text-[var(--muted)] backdrop-blur sm:flex-row sm:px-5">
-          <div className="flex items-center gap-4">
+        <footer className="flex flex-col items-center justify-between gap-2 border-t border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_82%,transparent)] px-3 py-2 text-[11px] text-[var(--muted)] backdrop-blur sm:flex-row sm:px-4">
+          <div className="flex items-center gap-3">
             <p className="flex items-center gap-1.5">
               <span>{t.footer}</span>
               <span aria-hidden="true" className="text-[var(--accent)]">♥</span>
@@ -385,7 +386,7 @@ export default function HomePageClient() {
               v0.1
             </span>
           </div>
-          <nav aria-label={language === "es" ? "Redes sociales" : "Social networks"} className="flex items-center gap-4">
+          <nav aria-label={language === "es" ? "Redes sociales" : "Social networks"} className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <a href="https://www.linkedin.com/in/jpviola/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex h-7 w-7 items-center justify-center rounded-md text-[var(--muted)] transition hover:bg-[var(--surface-muted)] hover:text-[var(--accent)]">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

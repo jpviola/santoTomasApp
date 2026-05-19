@@ -85,9 +85,6 @@ export default function DebateOutput({ result, language, contentLanguage }: Deba
           listen: "Escuchar",
           document: "Disputa escolástica",
           sourceCount: "fuentes",
-          reading: "Lectura",
-          width: "Ancho",
-          type: "Tipo",
           focus: "Foco",
           default: "Normal",
           wide: "Amplio",
@@ -104,9 +101,6 @@ export default function DebateOutput({ result, language, contentLanguage }: Deba
           listen: "Listen",
           document: "Scholastic disputation",
           sourceCount: "sources",
-          reading: "Reading",
-          width: "Width",
-          type: "Type",
           focus: "Focus",
           default: "Default",
           wide: "Wide",
@@ -126,22 +120,12 @@ export default function DebateOutput({ result, language, contentLanguage }: Deba
   );
 
   const widthClass =
-    readerWidth === "focus" ? "max-w-[680px]" : readerWidth === "wide" ? "max-w-[920px]" : "max-w-[780px]";
+    readerWidth === "focus" ? "max-w-[760px]" : readerWidth === "wide" ? "max-w-[1040px]" : "max-w-[900px]";
   const textClass =
     readerSize === "compact" ? "text-[16px]" : readerSize === "large" ? "text-[20px]" : "text-[18px]";
 
-  const sections = [
-    { id: "question", label: t.question },
-    { id: "objections", label: t.objections },
-    { id: "sed-contra", label: t.sedContra },
-    { id: "respondeo", label: t.respondeo },
-    { id: "replies", label: t.replies },
-    { id: "application", label: t.application },
-    { id: "sources", label: t.sources },
-  ];
-
   return (
-    <article className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_240px]">
+    <article>
       <div className={`mx-auto w-full ${widthClass}`}>
         <div className="rounded-[12px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-soft)]">
           <header className="border-b border-[var(--border)] px-5 py-5 sm:px-8 sm:py-7">
@@ -263,69 +247,6 @@ export default function DebateOutput({ result, language, contentLanguage }: Deba
           </div>
         </div>
       </div>
-
-      <aside className="hidden lg:block">
-        <div className="sticky top-5 space-y-4">
-          <div className="rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-3 shadow-[var(--shadow-soft)]">
-            <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">{t.reading}</p>
-            <div className="space-y-3">
-              <div>
-                <p className="mb-1.5 text-xs font-medium text-[var(--muted)]">{t.width}</p>
-                <div className="grid grid-cols-3 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] p-1">
-                  {(["focus", "default", "wide"] as const).map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => setReaderWidth(option)}
-                      className={`rounded px-2 py-1 text-xs transition ${
-                        readerWidth === option
-                          ? "bg-[var(--surface)] text-[var(--foreground)] shadow-sm"
-                          : "text-[var(--muted)] hover:text-[var(--foreground)]"
-                      }`}
-                    >
-                      {option === "focus" ? t.focus : option === "wide" ? t.wide : t.default}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <p className="mb-1.5 text-xs font-medium text-[var(--muted)]">{t.type}</p>
-                <div className="grid grid-cols-3 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] p-1">
-                  {(["compact", "default", "large"] as const).map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => setReaderSize(option)}
-                      className={`rounded px-2 py-1 text-xs transition ${
-                        readerSize === option
-                          ? "bg-[var(--surface)] text-[var(--foreground)] shadow-sm"
-                          : "text-[var(--muted)] hover:text-[var(--foreground)]"
-                      }`}
-                    >
-                      {option === "compact" ? "A-" : option === "large" ? "A+" : "A"}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <nav className="rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-3 shadow-[var(--shadow-soft)]">
-            <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">Index</p>
-            <div className="space-y-1">
-              {sections.map((section) => (
-                <a
-                  key={section.id}
-                  href={`#${section.id}`}
-                  className="block rounded-md px-2 py-1.5 text-sm text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
-                >
-                  {section.label}
-                </a>
-              ))}
-            </div>
-          </nav>
-        </div>
-      </aside>
     </article>
   );
 }
