@@ -4,7 +4,7 @@
  * Uso: $env:GRAPHDB_ENDPOINT_URL='http://JPVIOLA-PC2026:7200/repositories/santoTomas'; npx tsx scripts/testGraphDbIntegration.ts
  */
 
-import { ontologyEngine } from '../src/lib/agents/OntologyEngine';
+import { getOntologyEngine } from '../src/lib/agents/OntologyEngine';
 import { retrieveOntologyEnrichedSources } from '../src/lib/retrieval/ontologyRetriever';
 
 const GREEN = '\x1b[32m';
@@ -28,7 +28,7 @@ function assert(condition: boolean, label: string) {
 
 async function test1_FindRelevantTerms_Intellectus() {
   console.log(`\n${CYAN}Test 1: Buscar términos por "intelecto"${RESET}`);
-  const terms = await ontologyEngine.findRelevantTerms('intelecto');
+  const terms = await getOntologyEngine().findRelevantTerms('intelecto');
   
   assert(terms.length > 0, `Encontró ${terms.length} términos`);
   
@@ -49,7 +49,7 @@ async function test1_FindRelevantTerms_Intellectus() {
 
 async function test2_FindRelevantTerms_Agenda() {
   console.log(`\n${CYAN}Test 2: Buscar términos por "alma"${RESET}`);
-  const terms = await ontologyEngine.findRelevantTerms('alma');
+  const terms = await getOntologyEngine().findRelevantTerms('alma');
   
   assert(terms.length > 0, `Encontró ${terms.length} términos`);
   
@@ -59,7 +59,7 @@ async function test2_FindRelevantTerms_Agenda() {
 
 async function test3_GetArticlesByTopic() {
   console.log(`\n${CYAN}Test 3: Obtener artículos por tema Intellectus${RESET}`);
-  const articles = await ontologyEngine.getArticlesByTopic('Intellectus');
+  const articles = await getOntologyEngine().getArticlesByTopic('Intellectus');
   
   assert(articles.length > 0, `Encontró ${articles.length} artículos`);
   
@@ -78,14 +78,14 @@ async function test3_GetArticlesByTopic() {
 
 async function test4_GetArticlesByTopic_Anima() {
   console.log(`\n${CYAN}Test 4: Obtener artículos por tema Anima${RESET}`);
-  const articles = await ontologyEngine.getArticlesByTopic('Anima');
+  const articles = await getOntologyEngine().getArticlesByTopic('Anima');
   
   assert(articles.length > 0, `Encontró ${articles.length} artículos`);
 }
 
 async function test5_FindRelatedConcepts() {
   console.log(`\n${CYAN}Test 5: Buscar conceptos relacionados con Intellectus${RESET}`);
-  const related = await ontologyEngine.findRelatedConcepts('https://stotomas.ai/ontology/Intellectus');
+  const related = await getOntologyEngine().findRelatedConcepts('https://stotomas.ai/ontology/Intellectus');
   
   assert(related.length > 0, `Encontró ${related.length} conceptos relacionados`);
   
@@ -121,7 +121,7 @@ async function test7_OntologyRetriever_Soul() {
 
 async function test8_NoResults_GraphDB() {
   console.log(`\n${CYAN}Test 8: Búsqueda sin resultados - "quantum physics"${RESET}`);
-  const terms = await ontologyEngine.findRelevantTerms('quantum physics');
+  const terms = await getOntologyEngine().findRelevantTerms('quantum physics');
   
   assert(terms.length === 0, 'No encontró términos (correcto para tema no tomista)');
 }

@@ -6,7 +6,7 @@ import type { ModeratorOutput } from "@/lib/schemas/debate";
 import { withRetry } from "@/lib/llm/withRetry";
 import { logger } from "@/lib/utils/logger";
 import { JsonExtractionError, JsonParseError, ModelResponseValidationError } from "@/lib/utils/errors";
-import { ontologyEngine } from "@/lib/agents/OntologyEngine";
+import { getOntologyEngine } from "@/lib/agents/OntologyEngine";
 
 type RunModeratorParams = {
   question: string;
@@ -17,7 +17,7 @@ type RunModeratorParams = {
 
 export async function runModerator({ question, audience, context, language = "en" }: RunModeratorParams): Promise<ModeratorOutput> {
   // 1. Consultar la Ontología para obtener contexto semántico
-  const relevantTerms = await ontologyEngine.findRelevantTerms(question);
+  const relevantTerms = await getOntologyEngine().findRelevantTerms(question);
   const ontologyContext = relevantTerms.length > 0 
     ? `Relevant Scholastic Concepts identified (IDs to include in 'ontologyTopics' if applicable):\n${relevantTerms.map(t => `- ${t.name} (${t.id}): ${t.description}`).join('\n')}`
     : "";

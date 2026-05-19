@@ -1,4 +1,4 @@
-import { ontologyEngine } from "@/lib/agents/OntologyEngine";
+import { getOntologyEngine } from "@/lib/agents/OntologyEngine";
 import { runModerator } from "@/lib/agents/moderator";
 import { runScholasticDebate } from "@/lib/agents/scholasticDebate";
 import { retrieveOntologyEnrichedSources } from "@/lib/retrieval/ontologyRetriever";
@@ -38,7 +38,7 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
 
     await options?.onProgress?.({ stage: "moderate_and_retrieve", progress: 12, message: "Moderating question and retrieving sources" });
     const retrievalStartedAt = Date.now();
-    const relevantTerms = await ontologyEngine.findRelevantTerms(parsedInput.question);
+    const relevantTerms = await getOntologyEngine().findRelevantTerms(parsedInput.question);
     const [sourcesRaw, moderated] = await Promise.all([
       retrieveOntologyEnrichedSources(parsedInput.question, 5, relevantTerms),
       runModerator({

@@ -1,5 +1,5 @@
 import type { SourceSnippet } from "@/lib/schemas/debate";
-import { ontologyEngine, type OntologyTerm } from "@/lib/agents/OntologyEngine";
+import { getOntologyEngine, type OntologyTerm } from "@/lib/agents/OntologyEngine";
 import { retrieveAquinasSources } from "./aquinasRetriever";
 
 type OntologyEnrichedSnippet = SourceSnippet & {
@@ -12,7 +12,7 @@ export async function retrieveOntologyEnrichedSources(
   topK = 5,
   knownTerms?: OntologyTerm[],
 ): Promise<SourceSnippet[]> {
-  const relevantTerms = knownTerms ?? await ontologyEngine.findRelevantTerms(question);
+  const relevantTerms = knownTerms ?? await getOntologyEngine().findRelevantTerms(question);
   
   if (relevantTerms.length === 0) {
     return retrieveAquinasSources(question, topK);
@@ -20,7 +20,7 @@ export async function retrieveOntologyEnrichedSources(
 
   const articlePromises = relevantTerms
     .slice(0, 3)
-    .map(term => ontologyEngine.getArticlesByTopic(term.id));
+    .map(term => getOntologyEngine().getArticlesByTopic(term.id));
   
   const articleResults = await Promise.all(articlePromises);
   const allArticles = articleResults.flat();

@@ -33,22 +33,29 @@ export interface SummaArticleMetadata {
 }
 
 export class OntologyEngine {
-  private sparqlClient: SparqlClient;
-  private graphDbEndpoint: string;
+  private sparqlClient: SparqlClient | null = null;
+  private graphDbEndpoint: string | null = null;
   private relevantTermsCache = new Map<string, OntologyTerm[]>();
   private articlesByTopicCache = new Map<string, SummaArticleMetadata[]>();
   private readonly queryTimeoutMs = 2500;
 
   constructor() {
     const endpoint = process.env.GRAPHDB_ENDPOINT_URL;
-    if (!endpoint) {
-      throw new Error('GRAPHDB_ENDPOINT_URL environment variable is required but not set.');
+    if (endpoint) {
+      this.graphDbEndpoint = endpoint;
+      this.sparqlClient = new SparqlClient({ endpointUrl: this.graphDbEndpoint });
+    } else {
+      this.graphDbEndpoint = null;
+      this.sparqlClient = null;
+      console.warn("GRAPHDB_ENDPOINT_URL not set. GraphDB retrieval will be disabled.");
     }
-    this.graphDbEndpoint = endpoint;
-    this.sparqlClient = new SparqlClient({ endpointUrl: this.graphDbEndpoint });
   }
 
   private async executeSelect(query: string): Promise<SparqlBinding[]> {
+    if (!this.sparqlClient) {
+      return [];
+    }
+
     const response = await Promise.race([
       this.sparqlClient.query.select(query),
       new Promise<never>((_, reject) =>
@@ -221,4 +228,11 @@ export class OntologyEngine {
   }
 }
 
-export const ontologyEngine = new OntologyEngine();
+let ontologyEngineInstance: OntologyEngine | null = null;
+
+export const getOntologyEngine = (): OntologyEngine => {
+  if (!ontologyEngineInstance) {
+    ontologyEngineInstance = new OntologyEngine();
+  }
+  return ontologyEngineInstance;
+};
