@@ -9,7 +9,6 @@ import DebateOutput from "@/components/DebateOutput";
 import DebateProgressBar from "@/components/DebateProgressBar";
 import LoadingState from "@/components/LoadingState";
 import Footer from "@/components/Footer";
-import BuyMeACoffeeButton from "@/components/BuyMeACoffeeButton";
 import content from "@/data/content.json";
 import { DebateOutput as DebateOutputType } from "@/types/debate";
 
@@ -256,7 +255,6 @@ export default function HomePageClient() {
                 ))}
               </div>
             </div>
-            <BuyMeACoffeeButton />
             <div className="flex flex-col items-center gap-1">
               <span className="hidden font-mono text-[9px] uppercase tracking-[0.12em] text-[var(--muted)] sm:block">
                 {t.interfaceLabel}

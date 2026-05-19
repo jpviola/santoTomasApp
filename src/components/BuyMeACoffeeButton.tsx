@@ -1,10 +1,10 @@
 "use client";
 
-const KOFI_ID = process.env.NEXT_PUBLIC_KOFI_ID;
+const KOFI_ID = process.env.NEXT_PUBLIC_KOFI_ID || "P2V01ZT620";
 const KOFI_ENABLED = process.env.NEXT_PUBLIC_KOFI_ENABLED !== "false" && process.env.NEXT_PUBLIC_KOFI_ENABLED !== "0";
 
 export default function BuyMeACoffeeButton() {
-  if (!KOFI_ENABLED || !KOFI_ID) {
+  if (!KOFI_ENABLED) {
     return null;
   }
 
