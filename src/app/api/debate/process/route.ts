@@ -133,8 +133,9 @@ export async function POST(req: Request) {
           });
 
           const saved = await persistDebate(parsed, result);
-
-          // Enviamos el resultado final.
+          if (!saved) {
+            throw new DatabaseError("Debate was generated but could not be retrieved after saving.");
+          }
           send({ type: "result", data: { result: { ...result, recordId: saved.id }, recordId: saved.id } });
         } catch (error: unknown) {
           logger.error("Pipeline Error", {
