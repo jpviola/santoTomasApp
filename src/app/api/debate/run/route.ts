@@ -5,6 +5,7 @@ import { saveDebate } from "@/lib/db/debates";
 import { isAppError, DatabaseError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
+import { assertQuestionInScope } from "@/lib/guardrails/questionScope";
 
 export async function POST(request: Request) {
   const clientKey = getClientKey(request);
@@ -20,6 +21,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const parsed = parseDebateInput({ ...body, audience: "graduate" });
+    assertQuestionInScope(parsed.question, parsed.language);
     const result = await runDebate(parsed);
 
     const saved = await saveDebate({

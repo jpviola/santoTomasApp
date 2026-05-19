@@ -6,6 +6,7 @@ import { parseDebateInput, type DebateInput, type DebateOutput } from "@/lib/sch
 import { isAppError, DatabaseError, LlmProviderError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
+import { assertQuestionInScope } from "@/lib/guardrails/questionScope";
 
 // Importante: Vercel Hobby tiene un limite de 10s.
 // maxDuration intenta extenderlo (funciona mejor en planes Pro).
@@ -123,6 +124,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const parsed = parseDebateInput(body);
+    assertQuestionInScope(parsed.question, parsed.language);
 
     if (!parsed.question) {
       return NextResponse.json({ error: "La pregunta es obligatoria" }, { status: 400 });
@@ -204,7 +206,13 @@ export async function POST(req: Request) {
         "Cache-Control": "no-cache, no-transform",
       },
     });
-  } catch {
+  } catch (error: unknown) {
+    if (isAppError(error)) {
+      return NextResponse.json(
+        { error: error.message, code: error.code, details: error.details ?? null },
+        { status: error.statusCode },
+      );
+    }
     return NextResponse.json({ error: "No se pudo iniciar el proceso" }, { status: 500 });
   }
 }

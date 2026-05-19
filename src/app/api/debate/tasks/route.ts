@@ -6,6 +6,7 @@ import { CreateTaskResponseSchema } from "@/lib/schemas/task";
 import { taskStore } from "@/lib/task-store";
 import { DatabaseError } from "@/lib/utils/errors";
 import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
+import { assertQuestionInScope } from "@/lib/guardrails/questionScope";
 
 export async function POST(req: Request) {
   const clientKey = getClientKey(req);
@@ -20,6 +21,8 @@ export async function POST(req: Request) {
 
   try {
     const body = await req.json();
+    const parsed = parseDebateInput({ ...body, audience: "graduate" });
+    assertQuestionInScope(parsed.question, parsed.language);
     const taskId = crypto.randomUUID();
 
     taskStore.set(taskId, {
@@ -48,7 +51,6 @@ export async function POST(req: Request) {
         };
 
         update({ status: "PROCESSING", progress: 10, message: "moderate_and_retrieve" });
-        const parsed = parseDebateInput({ ...body, audience: "graduate" });
 
         const result = await runDebate(parsed, {
           onProgress: (u) => update({ progress: u.progress, message: u.stage }),
