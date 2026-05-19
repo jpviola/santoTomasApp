@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { runDebate } from "@/lib/orchestrator/runDebate";
 import { parseDebateInput } from "@/lib/schemas/debate";
 import { saveDebate } from "@/lib/db/debates";
-import { isAppError } from "@/lib/utils/errors";
+import { isAppError, DatabaseError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
 
 export async function POST(request: Request) {
@@ -23,6 +23,10 @@ export async function POST(request: Request) {
       sources: result.sources,
       generatedAt: result.metadata.generatedAt,
     });
+
+    if (!saved) {
+      throw new DatabaseError("Debate generated but could not be retrieved after saving.");
+    }
 
     return NextResponse.json({ ...result, recordId: saved.id }, { status: 200 });
   } catch (err) {
