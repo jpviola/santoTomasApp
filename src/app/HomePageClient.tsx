@@ -17,7 +17,7 @@ interface ContentStructure {
 }
 
 const typedContent = content as ContentStructure;
-const SUGGESTED_COUNT = 4;
+const SUGGESTED_COUNT = 3;
 
 function isFallbackDebate(result: DebateOutputType | null) {
   if (!result) return false;
@@ -260,7 +260,7 @@ export default function HomePageClient() {
           </div>
         </header>
 
-        <div className="scholarly-scrollbar min-h-0 flex-1 overflow-y-auto px-3 py-4 sm:px-5 lg:px-7">
+        <div className="scholarly-scrollbar min-h-0 flex-1 overflow-y-auto px-3 py-2 sm:px-5 lg:px-7">
           <div className="mx-auto max-w-6xl">
             {isRunningDebate && activeTask && (
               <div className="mx-auto mb-5 max-w-3xl" role="status" aria-live="polite" aria-label={formatTaskMessage(activeTask.message ?? null) ?? undefined}>
@@ -295,39 +295,39 @@ export default function HomePageClient() {
             )}
 
             {!result && !isRunningDebate && (
-              <div className="mx-auto max-w-4xl space-y-5 pb-5">
-                <section className="grid gap-4 rounded-[12px] border border-[var(--border)] bg-[var(--surface)] p-4 shadow-[var(--shadow-soft)] sm:grid-cols-[140px_minmax(0,1fr)] sm:p-5">
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[10px] border border-[var(--border)] bg-[var(--surface-muted)]">
+              <div className="mx-auto max-w-4xl space-y-3 pb-2">
+                <section className="grid gap-3 rounded-[12px] border border-[var(--border)] bg-[var(--surface)] p-3 shadow-[var(--shadow-soft)] sm:grid-cols-[96px_minmax(0,1fr)] sm:p-4">
+                  <div className="relative aspect-[3/1] overflow-hidden rounded-[8px] border border-[var(--border)] bg-[var(--surface-muted)] sm:aspect-[4/5]">
                     <Image
                       src="/aquinas-banner.webp"
                       alt={t.emptyTitle}
                       fill
-                      sizes="(max-width: 640px) 100vw, 160px"
+                      sizes="(max-width: 640px) 100vw, 110px"
                       className="object-cover object-[18%_50%]"
                       priority
                     />
                   </div>
                   <div className="flex flex-col justify-center">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">Quaestio</p>
-                    <h2 className="mt-2 font-serif text-3xl font-semibold leading-tight text-[var(--foreground)] sm:text-[2.25rem]">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)]">Quaestio</p>
+                    <h2 className="mt-1 font-serif text-xl font-semibold leading-tight text-[var(--foreground)] sm:text-2xl">
                       {t.emptyTitle}
                     </h2>
-                    <p className="mt-3 max-w-2xl font-serif text-[17px] leading-7 text-[var(--muted-strong)]">{t.emptyCopy}</p>
+                    <p className="mt-2 line-clamp-3 font-serif text-[14px] leading-[1.55] text-[var(--muted-strong)]">{t.emptyCopy}</p>
                   </div>
                 </section>
 
                 <section>
-                  <div className="mb-3 flex items-center justify-between">
-                    <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">{t.suggested}</h3>
+                  <div className="mb-1.5 flex items-center justify-between">
+                    <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">{t.suggested}</h3>
                   </div>
-                  <div className="grid gap-2 sm:grid-cols-2">
+                  <div className="grid gap-2 sm:grid-cols-3">
                     {suggested.map((q, i) => (
                       <button
                         key={i}
                         type="button"
                         onClick={() => runDebateWithCache({ question: q })}
                         aria-label={q}
-                        className="min-h-[70px] rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-3 text-left font-serif text-[15px] leading-6 text-[var(--muted-strong)] shadow-[var(--shadow-soft)] transition hover:border-[var(--border-strong)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
+                        className="min-h-[48px] rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-2.5 text-left font-serif text-[13px] leading-[1.5] text-[var(--muted-strong)] shadow-[var(--shadow-soft)] transition hover:border-[var(--border-strong)] hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
                       >
                         {q}
                       </button>
@@ -339,7 +339,7 @@ export default function HomePageClient() {
           </div>
         </div>
 
-        <div className="border-t border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_82%,transparent)] p-3 backdrop-blur sm:p-4">
+        <div className="border-t border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_82%,transparent)] p-2 backdrop-blur sm:p-3">
           <div className="mx-auto max-w-3xl">
             <DebateForm onSubmit={runDebateWithCache} isLoading={isRunningDebate} language={language} />
           </div>
