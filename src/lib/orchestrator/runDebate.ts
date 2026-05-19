@@ -6,7 +6,7 @@ import { DebateInputSchema, DebateOutputSchema } from "@/lib/schemas/debate";
 import type { DebateInput, DebateOutput } from "@/lib/schemas/debate";
 import { DebatePipelineError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
-import { runWithSpan, TracingConfig } from "@/lib/tracing";
+import { runWithSpan } from "@/lib/tracing";
 
 type DebateProgressUpdate = {
   stage: "start" | "moderate_and_retrieve" | "objections_and_sed_contra" | "respondeo" | "replies" | "finalize" | "done";
