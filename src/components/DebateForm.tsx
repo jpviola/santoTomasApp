@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useState, useRef, useEffect } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 
 type DebateFormProps = {
   onSubmit: (payload: { question: string }) => Promise<void>;
@@ -16,12 +16,20 @@ export default function DebateForm({ onSubmit, isLoading, language }: DebateForm
     textareaRef.current?.focus();
   }, []);
 
-  const placeholder =
+  const t =
     language === "es"
-      ? "Haz una pregunta filosófica..."
-      : "Ask a philosophical question...";
-
-  const sendLabel = language === "es" ? "Enviar" : "Send";
+      ? {
+          placeholder: "Formula una cuestión filosófica o teológica...",
+          send: "Enviar",
+          mode: "Disputa",
+          context: "Fuentes tomistas",
+        }
+      : {
+          placeholder: "Ask a philosophical or theological question...",
+          send: "Send",
+          mode: "Dispute",
+          context: "Thomistic sources",
+        };
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -39,24 +47,34 @@ export default function DebateForm({ onSubmit, isLoading, language }: DebateForm
 
   return (
     <form onSubmit={handleSubmit} className="relative">
-      <div className="group flex items-end gap-2 rounded-2xl border border-white/10 bg-white/8 px-4 py-2 backdrop-blur transition">
-        <textarea
-          ref={textareaRef}
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          onKeyDown={handleKeyDown}
-          rows={1}
-          className="min-h-[40px] max-h-[120px] flex-1 resize-none bg-transparent text-sm text-slate-100 outline-none placeholder:text-slate-500 focus:!outline-none focus:outline-0 focus-visible:!outline-none"
-          placeholder={placeholder}
-          disabled={isLoading}
-        />
-        <button
-          type="submit"
-          disabled={isLoading || !question.trim()}
-          className="mb-0.5 rounded-xl bg-gradient-to-r from-blue-500 to-blue-400 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:from-blue-400 hover:to-blue-300 disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          {isLoading ? "..." : sendLabel}
-        </button>
+      <div className="rounded-[12px] border border-[var(--border)] bg-[var(--surface)] p-2 shadow-[var(--shadow-soft)]">
+        <div className="mb-2 flex flex-wrap items-center gap-2 px-2 pt-1">
+          <span className="rounded-md border border-[var(--border)] bg-[var(--surface-muted)] px-2 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--accent)]">
+            {t.mode}
+          </span>
+          <span className="rounded-md border border-[var(--border)] bg-[var(--surface-muted)] px-2 py-1 text-xs text-[var(--muted)]">
+            {t.context}
+          </span>
+        </div>
+        <div className="flex items-end gap-2">
+          <textarea
+            ref={textareaRef}
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            onKeyDown={handleKeyDown}
+            rows={1}
+            className="min-h-[44px] max-h-[144px] flex-1 resize-none bg-transparent px-2 py-2 text-[15px] leading-6 text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:!outline-none focus-visible:!outline-none"
+            placeholder={t.placeholder}
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            disabled={isLoading || !question.trim()}
+            className="mb-1 rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {isLoading ? "..." : t.send}
+          </button>
+        </div>
       </div>
     </form>
   );

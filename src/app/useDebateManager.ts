@@ -9,6 +9,26 @@ export type RunDebatePayload = {
   question: string;
 };
 
+function getStreamErrorMessage(data: unknown) {
+  if (typeof data === "string") return data;
+  if (typeof data === "object" && data !== null) {
+    const errorData = data as { message?: unknown; error?: unknown; code?: unknown };
+    const message = typeof errorData.message === "string"
+      ? errorData.message
+      : typeof errorData.error === "string"
+        ? errorData.error
+        : null;
+    const code = typeof errorData.code === "string" ? errorData.code : null;
+
+    if (message && code === "LLM_PROVIDER_ERROR") {
+      return `${message} Verifica que el modelo configurado este disponible y que la API key tenga credito/permisos.`;
+    }
+
+    return message ?? "Unexpected stream error.";
+  }
+  return "Unexpected stream error.";
+}
+
 export function useDebateManager(
   language: "es" | "en",
   answerLanguage: "es" | "en" | "la",
@@ -146,17 +166,24 @@ export function useDebateManager(
       setOutputLanguage(langToUse);
 
       try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 90000);
+
         // Cambiamos a un endpoint que soporte streaming (ej: /api/debate/process)
-        const response = await fetch("/api/debate/process", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            question: payload.question,
-            language: langToUse,
-            audience: payload.audience || "undergraduate",
-            context: payload.context || "",
-          }),
-        });
+        const response = await fetch(
+          "/api/debate/process",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            signal: controller.signal,
+            body: JSON.stringify({
+              question: payload.question,
+              language: langToUse,
+              audience: payload.audience || "undergraduate",
+              context: payload.context || "",
+            }),
+          },
+        );
 
         if (!response.ok) {
           const errorText = await response.text().catch(() => "");
@@ -176,48 +203,63 @@ export function useDebateManager(
         if (!reader) throw new Error("No se pudo inicializar el lector de flujo.");
 
         let buffer = "";
-        
-        while (mountedRef.current) {
-          const { done, value } = await reader.read();
-          if (done) break;
 
-          buffer += decoder.decode(value, { stream: true });
-          
-          // Procesamos cada línea (cada evento del stream)
-          const lines = buffer.split("\n");
-          buffer = lines.pop() || ""; // Guardamos el resto incompleto
+        const handleLine = async (line: string) => {
+          if (!line.trim()) return;
 
-          for (const line of lines) {
-            if (!line.trim()) continue;
-            
-            try {
-              const chunk = JSON.parse(line);
-              
-              if (chunk.type === "progress") {
-                setActiveTask({
-                  id: "streaming",
-                  status: "PENDING",
-                  progress: chunk.data.progress,
-                  message: chunk.data.stage,
-                  error: null,
-                  recordId: null,
-                });
-              } else if (chunk.type === "result") {
-                const taskData = chunk.data;
-                if (taskData.result) {
-                  setResult({ ...taskData.result, recordId: taskData.recordId });
-                } else if (taskData.recordId) {
-                  await fetchDebateById(taskData.recordId);
-                }
-                await fetchHistory();
-                setActiveTask(null);
-              } else if (chunk.type === "error") {
-                throw new Error(chunk.data);
-              }
-            } catch (e) {
-              console.error("Error parseando chunk de stream", e);
+          let chunk: { type?: string; data?: unknown };
+          try {
+            chunk = JSON.parse(line);
+          } catch (e) {
+            console.error("Error parseando chunk de stream", e);
+            return;
+          }
+
+          if (chunk.type === "progress") {
+            const progressData = chunk.data as { progress?: number; stage?: string } | null;
+            setActiveTask({
+              id: "streaming",
+              status: "PENDING",
+              progress: progressData?.progress ?? 0,
+              message: progressData?.stage ?? null,
+              error: null,
+              recordId: null,
+            });
+          } else if (chunk.type === "result") {
+            const taskData = chunk.data as { result?: DebateOutputType; recordId?: string | null };
+            if (taskData.result) {
+              setResult({ ...taskData.result, recordId: taskData.recordId ?? undefined });
+            } else if (taskData.recordId) {
+              await fetchDebateById(taskData.recordId);
+            }
+            setActiveTask(null);
+            void fetchHistory();
+          } else if (chunk.type === "error") {
+            throw new Error(getStreamErrorMessage(chunk.data));
+          }
+        };
+
+        try {
+          while (mountedRef.current) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            buffer += decoder.decode(value, { stream: true });
+
+            // Procesamos cada línea (cada evento del stream)
+            const lines = buffer.split("\n");
+            buffer = lines.pop() || ""; // Guardamos el resto incompleto
+
+            for (const line of lines) {
+              await handleLine(line);
             }
           }
+
+          if (buffer.trim()) {
+            await handleLine(buffer);
+          }
+        } finally {
+          clearTimeout(timeout);
         }
       } catch (err) {
         const message = err instanceof Error && err.name === "AbortError"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { DebateOutput } from "@/types/debate";
 import SourceList from "@/components/SourceList";
 import SpeechButton from "@/components/SpeechButton";
@@ -11,127 +11,261 @@ type DebateOutputProps = {
   contentLanguage?: "es" | "en" | "la";
 };
 
-function CopyButton({ text }: { text: string }) {
+type ScholasticSectionProps = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  children: React.ReactNode;
+};
+
+function CopyButton({ text, label }: { text: string; label: string }) {
   const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
     await navigator.clipboard.writeText(text);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 1600);
   }
 
   return (
     <button
       type="button"
       onClick={handleCopy}
-      className="rounded-md p-1 text-slate-400 transition hover:bg-white/10 hover:text-slate-200"
-      title={copied ? "Copied!" : "Copy"}
+      className="rounded-md border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1.5 text-xs font-medium text-[var(--muted-strong)] transition hover:border-[var(--border-strong)] hover:text-[var(--foreground)]"
     >
-      {copied ? (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-        </svg>
-      ) : (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-          <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
-        </svg>
-      )}
+      {copied ? "Copied" : label}
     </button>
   );
 }
 
-function ChatBubble({
-  label,
-  text,
-  children,
-  isUser,
-  contentLang,
-}: {
-  label: string;
-  text: string;
-  children?: React.ReactNode;
-  isUser?: boolean;
-  contentLang: "es" | "en" | "la";
-}) {
+function ScholasticSection({ id, eyebrow, title, children }: ScholasticSectionProps) {
   return (
-    <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
-      <div
-        className={`max-w-[92%] rounded-2xl border p-4 backdrop-blur ${
-          isUser
-            ? "border-blue-400/20 bg-gradient-to-r from-blue-500/15 via-white/8 to-blue-400/15"
-            : "border-white/10 bg-white/8"
-        }`}
-      >
-        <div className="flex items-center justify-between gap-3">
-          <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{label}</div>
-          <div className="flex items-center gap-1">
-            <SpeechButton text={text} lang={contentLang} />
-            <CopyButton text={text} />
-          </div>
-        </div>
-        <div className="mt-2 text-sm leading-7 text-slate-200/90">{children ?? text}</div>
-      </div>
-    </div>
+    <section id={id} className="scroll-mt-24 border-t border-[var(--border)] pt-8">
+      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--accent)]">{eyebrow}</p>
+      <h2 className="mt-2 font-serif text-2xl font-semibold leading-tight text-[var(--foreground)]">{title}</h2>
+      <div className="reading-prose mt-5 space-y-4 text-[var(--muted-strong)]">{children}</div>
+    </section>
   );
 }
 
 export default function DebateOutput({ result, language, contentLanguage }: DebateOutputProps) {
   const contentLang = contentLanguage ?? language;
+  const [readerWidth, setReaderWidth] = useState<"focus" | "default" | "wide">("default");
+  const [readerSize, setReaderSize] = useState<"compact" | "default" | "large">("default");
+
   const t =
     language === "es"
       ? {
-          question: "Pregunta",
+          question: "Cuestión",
           objections: "Objeciones",
           sedContra: "Sed contra",
           respondeo: "Respondeo",
           replies: "Réplicas",
           application: "Aplicación",
           sources: "Fuentes",
+          copied: "Copiar",
+          listen: "Escuchar",
+          document: "Disputa escolástica",
+          sourceCount: "fuentes",
+          reading: "Lectura",
+          width: "Ancho",
+          type: "Tipo",
+          focus: "Foco",
+          default: "Normal",
+          wide: "Amplio",
         }
       : {
           question: "Question",
           objections: "Objections",
-          sedContra: "Sed Contra",
+          sedContra: "Sed contra",
           respondeo: "Respondeo",
           replies: "Replies",
           application: "Application",
           sources: "Sources",
+          copied: "Copy",
+          listen: "Listen",
+          document: "Scholastic disputation",
+          sourceCount: "sources",
+          reading: "Reading",
+          width: "Width",
+          type: "Type",
+          focus: "Focus",
+          default: "Default",
+          wide: "Wide",
         };
 
+  const allText = useMemo(
+    () =>
+      [
+        result.question,
+        ...result.objections,
+        result.sedContra,
+        result.respondeo,
+        ...result.replies,
+        result.application,
+      ].join("\n\n"),
+    [result],
+  );
+
+  const widthClass =
+    readerWidth === "focus" ? "max-w-[680px]" : readerWidth === "wide" ? "max-w-[920px]" : "max-w-[780px]";
+  const textClass =
+    readerSize === "compact" ? "text-[16px]" : readerSize === "large" ? "text-[20px]" : "text-[18px]";
+
+  const sections = [
+    { id: "question", label: t.question },
+    { id: "objections", label: t.objections },
+    { id: "sed-contra", label: t.sedContra },
+    { id: "respondeo", label: t.respondeo },
+    { id: "replies", label: t.replies },
+    { id: "application", label: t.application },
+    { id: "sources", label: t.sources },
+  ];
+
   return (
-    <div className="space-y-4">
-      <ChatBubble label={t.question} text={result.question} isUser contentLang={contentLang} />
+    <article className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_240px]">
+      <div className={`mx-auto w-full ${widthClass}`}>
+        <div className="rounded-[12px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-soft)]">
+          <header className="border-b border-[var(--border)] px-5 py-5 sm:px-8 sm:py-7">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--accent)]">{t.document}</p>
+                <h1 className="mt-3 max-w-3xl font-serif text-3xl font-semibold leading-tight text-[var(--foreground)] sm:text-4xl">
+                  {result.question}
+                </h1>
+              </div>
+              <div className="flex items-center gap-2">
+                <SpeechButton text={allText} lang={contentLang} />
+                <CopyButton text={allText} label={t.copied} />
+              </div>
+            </div>
+            <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-[var(--muted)]">
+              <span className="rounded-md border border-[var(--border)] bg-[var(--surface-muted)] px-2.5 py-1 font-mono uppercase tracking-[0.08em]">
+                {contentLang}
+              </span>
+              <span className="rounded-md border border-[var(--border)] bg-[var(--surface-muted)] px-2.5 py-1">
+                {result.sources.length} {t.sourceCount}
+              </span>
+              <span className="rounded-md border border-[var(--border)] bg-[var(--surface-muted)] px-2.5 py-1">
+                {new Date(result.metadata.generatedAt).toLocaleDateString()}
+              </span>
+            </div>
+          </header>
 
-      <ChatBubble label={t.objections} text={result.objections.join("\n")} contentLang={contentLang}>
-        <ol className="list-decimal space-y-3 pl-5">
-          {result.objections.map((o, i) => (
-            <li key={i}>{o}</li>
-          ))}
-        </ol>
-      </ChatBubble>
+          <div className={`px-5 py-8 sm:px-8 ${textClass}`}>
+            <ScholasticSection id="question" eyebrow="Quaestio" title={t.question}>
+              <p>{result.question}</p>
+            </ScholasticSection>
 
-      <ChatBubble label={t.sedContra} text={result.sedContra} contentLang={contentLang} />
+            <ScholasticSection id="objections" eyebrow="Videtur quod non" title={t.objections}>
+              <ol className="space-y-4 pl-5">
+                {result.objections.map((objection, index) => (
+                  <li key={index} className="pl-2">
+                    {objection}
+                  </li>
+                ))}
+              </ol>
+            </ScholasticSection>
 
-      <ChatBubble label={t.respondeo} text={result.respondeo} contentLang={contentLang} />
+            <ScholasticSection id="sed-contra" eyebrow="Sed contra" title={t.sedContra}>
+              <blockquote className="border-l-2 border-[var(--accent)] pl-5 italic text-[var(--foreground)]">
+                {result.sedContra}
+              </blockquote>
+            </ScholasticSection>
 
-      <ChatBubble label={t.replies} text={result.replies.join("\n")} contentLang={contentLang}>
-        <ol className="list-decimal space-y-3 pl-5">
-          {result.replies.map((r, i) => (
-            <li key={i}>{r}</li>
-          ))}
-        </ol>
-      </ChatBubble>
+            <ScholasticSection id="respondeo" eyebrow="Respondeo dicendum" title={t.respondeo}>
+              <p>{result.respondeo}</p>
+            </ScholasticSection>
 
-      <ChatBubble label={t.application} text={result.application} contentLang={contentLang} />
+            <ScholasticSection id="replies" eyebrow="Ad primum" title={t.replies}>
+              <ol className="space-y-4 pl-5">
+                {result.replies.map((reply, index) => (
+                  <li key={index} className="pl-2">
+                    {reply}
+                  </li>
+                ))}
+              </ol>
+            </ScholasticSection>
 
-      {/* Sources - full width */}
-      <div className="w-full rounded-2xl border border-white/10 bg-white/8 p-4 backdrop-blur">
-        <div className="text-xs font-semibold uppercase tracking-wide text-slate-200/80">{t.sources}</div>
-        <div className="mt-3">
-          <SourceList sources={result.sources} language={language} />
+            <ScholasticSection id="application" eyebrow="Applicatio" title={t.application}>
+              <p>{result.application}</p>
+            </ScholasticSection>
+
+            <section id="sources" className="scroll-mt-24 border-t border-[var(--border)] pt-8">
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--accent)]">Apparatus</p>
+                  <h2 className="mt-2 font-serif text-2xl font-semibold leading-tight text-[var(--foreground)]">{t.sources}</h2>
+                </div>
+              </div>
+              <SourceList sources={result.sources} language={language} />
+            </section>
+          </div>
         </div>
       </div>
-    </div>
+
+      <aside className="hidden lg:block">
+        <div className="sticky top-5 space-y-4">
+          <div className="rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-3 shadow-[var(--shadow-soft)]">
+            <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">{t.reading}</p>
+            <div className="space-y-3">
+              <div>
+                <p className="mb-1.5 text-xs font-medium text-[var(--muted)]">{t.width}</p>
+                <div className="grid grid-cols-3 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] p-1">
+                  {(["focus", "default", "wide"] as const).map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => setReaderWidth(option)}
+                      className={`rounded px-2 py-1 text-xs transition ${
+                        readerWidth === option
+                          ? "bg-[var(--surface)] text-[var(--foreground)] shadow-sm"
+                          : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                      }`}
+                    >
+                      {option === "focus" ? t.focus : option === "wide" ? t.wide : t.default}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="mb-1.5 text-xs font-medium text-[var(--muted)]">{t.type}</p>
+                <div className="grid grid-cols-3 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] p-1">
+                  {(["compact", "default", "large"] as const).map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => setReaderSize(option)}
+                      className={`rounded px-2 py-1 text-xs transition ${
+                        readerSize === option
+                          ? "bg-[var(--surface)] text-[var(--foreground)] shadow-sm"
+                          : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                      }`}
+                    >
+                      {option === "compact" ? "A-" : option === "large" ? "A+" : "A"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <nav className="rounded-[10px] border border-[var(--border)] bg-[var(--surface)] p-3 shadow-[var(--shadow-soft)]">
+            <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]">Index</p>
+            <div className="space-y-1">
+              {sections.map((section) => (
+                <a
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className="block rounded-md px-2 py-1.5 text-sm text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
+                >
+                  {section.label}
+                </a>
+              ))}
+            </div>
+          </nav>
+        </div>
+      </aside>
+    </article>
   );
 }

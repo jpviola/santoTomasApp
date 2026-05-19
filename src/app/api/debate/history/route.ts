@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { listDebates } from "@/lib/db/debates";
 import { isAppError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
