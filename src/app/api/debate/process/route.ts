@@ -147,6 +147,10 @@ export async function POST(req: Request) {
           if (error instanceof LlmProviderError) {
             const fallback = await buildLocalFallbackDebate(parsed);
             const saved = await persistDebate(parsed, fallback);
+            if (!saved) {
+              send({ type: "error", data: { message: "Debate fallback generado pero no se pudo guardar." } });
+              return;
+            }
             send({
               type: "result",
               data: {
