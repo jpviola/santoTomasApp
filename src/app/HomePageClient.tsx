@@ -34,18 +34,8 @@ function rotateSuggested(items: string[], seed: number) {
 export default function HomePageClient() {
   const [suggestedSeed, setSuggestedSeed] = useState(0);
 
-  const [language, setLanguage] = useState<"es" | "en">(() => {
-    if (typeof window === "undefined") return "es";
-    const stored = window.localStorage.getItem("stotomas.language");
-    return stored === "en" ? "en" : "es";
-  });
-
-  const [answerLanguage, setAnswerLanguage] = useState<"es" | "en" | "la">(() => {
-    if (typeof window === "undefined") return "es";
-    const stored = window.localStorage.getItem("stotomas.answerLanguage");
-    return stored === "en" || stored === "la" ? stored : "es";
-  });
-
+  const [language, setLanguage] = useState<"es" | "en">("es");
+  const [answerLanguage, setAnswerLanguage] = useState<"es" | "en" | "la">("es");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -53,6 +43,10 @@ export default function HomePageClient() {
     if (window.matchMedia("(min-width: 1024px)").matches) {
       setSidebarOpen(true);
     }
+    const storedLang = window.localStorage.getItem("stotomas.language");
+    if (storedLang === "en") setLanguage("en");
+    const storedAnswerLang = window.localStorage.getItem("stotomas.answerLanguage");
+    if (storedAnswerLang === "en" || storedAnswerLang === "la") setAnswerLanguage(storedAnswerLang);
   }, []);
 
   const {
