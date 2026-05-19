@@ -31,6 +31,19 @@ const getStringArray = (obj: Record<string, unknown> | null, key: string): strin
   return strings.length > 0 ? strings : [];
 };
 
+function parseJsonArray<T>(value: unknown): T[] {
+  if (Array.isArray(value)) return value;
+  if (typeof value === "string") {
+    try {
+      const parsed = JSON.parse(value);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
 const exportFromDb = async (id: string, overrides?: unknown) => {
   const overrideObj = getRecord(overrides);
   const parsedOverrides = ExportOverridesSchema.parse({
@@ -59,14 +72,12 @@ const exportFromDb = async (id: string, overrides?: unknown) => {
       question: debate.question,
       audience: debate.audience,
       context: debate.context,
-      objections: Array.isArray(debate.objections) ? (debate.objections as string[]) : [],
+      objections: parseJsonArray<string>(debate.objections),
       sedContra: debate.sedContra,
       respondeo: debate.respondeo,
-      replies: Array.isArray(debate.replies) ? (debate.replies as string[]) : [],
+      replies: parseJsonArray<string>(debate.replies),
       application: debate.application,
-      sources: Array.isArray(debate.sources)
-        ? (debate.sources as Array<{ id: string; title: string; citation: string; text: string }>)
-        : [],
+      sources: parseJsonArray<{ id: string; title: string; citation: string; text: string }>(debate.sources),
       generatedAt: debate.generatedAt,
       createdAt: debate.createdAt,
     },

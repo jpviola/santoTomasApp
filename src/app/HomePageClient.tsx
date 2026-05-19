@@ -65,38 +65,54 @@ export default function HomePageClient() {
     setResult,
   } = useDebateManager(language, answerLanguage);
 
+  const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+  const getCachedDebate = useCallback((cacheKey: string): DebateOutputType | null => {
+    const raw = window.localStorage.getItem(cacheKey);
+    if (!raw) return null;
+    try {
+      const entry = JSON.parse(raw) as { data?: DebateOutputType; cachedAt?: number };
+      if (!entry.data || !entry.cachedAt) return null;
+      if (Date.now() - entry.cachedAt > CACHE_TTL_MS) {
+        window.localStorage.removeItem(cacheKey);
+        return null;
+      }
+      return entry.data;
+    } catch {
+      window.localStorage.removeItem(cacheKey);
+      return null;
+    }
+  }, [CACHE_TTL_MS]);
+
+  const setCachedDebate = useCallback((cacheKey: string, data: DebateOutputType) => {
+    const entry = { data, cachedAt: Date.now() };
+    window.localStorage.setItem(cacheKey, JSON.stringify(entry));
+  }, []);
+
   useEffect(() => {
     if (result && result.question && !isRunningDebate && !isFallbackDebate(result)) {
       const cacheKey = `st_cache_${answerLanguage}_${result.question.toLowerCase().trim()}`;
-      if (!window.localStorage.getItem(cacheKey)) {
-        window.localStorage.setItem(cacheKey, JSON.stringify(result));
+      if (!getCachedDebate(cacheKey)) {
+        setCachedDebate(cacheKey, result);
       }
     }
-  }, [result, isRunningDebate, answerLanguage]);
+  }, [result, isRunningDebate, answerLanguage, getCachedDebate, setCachedDebate]);
 
   const runDebateWithCache = useCallback(
-    async (params: { question: string }, langOverride?: "es" | "en" | "la") => {
+    async (params: { question: string; context?: string }, langOverride?: "es" | "en" | "la") => {
       const targetLang = langOverride || answerLanguage;
       const cacheKey = `st_cache_${targetLang}_${params.question.toLowerCase().trim()}`;
-      const cached = window.localStorage.getItem(cacheKey);
+      const cachedResult = getCachedDebate(cacheKey);
 
-      if (cached) {
-        try {
-          const cachedResult = JSON.parse(cached) as DebateOutputType;
-          if (!isFallbackDebate(cachedResult)) {
-            setResult(cachedResult);
-            return;
-          }
-        } catch {
-          // Ignore malformed local cache and regenerate below.
-        }
-        window.localStorage.removeItem(cacheKey);
+      if (cachedResult) {
+        setResult(cachedResult);
+        return;
       }
 
       await handleRunDebate(params, langOverride);
       setSuggestedSeed((seed) => seed + 1);
     },
-    [answerLanguage, handleRunDebate, setResult],
+    [answerLanguage, getCachedDebate, handleRunDebate, setResult],
   );
 
   useEffect(() => {

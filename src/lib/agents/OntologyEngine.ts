@@ -32,6 +32,20 @@ export interface SummaArticleMetadata {
   topics: string[];
 }
 
+function escapeSparqlLiteral(input: string): string {
+  return input
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r')
+    .replace(/\t/g, '\\t')
+    .replace(/\f/g, '\\f');
+}
+
+function escapeSparqlUri(input: string): string {
+  return input.replace(/[<>]/g, '');
+}
+
 export class OntologyEngine {
   private sparqlClient: SparqlClient | null = null;
   private graphDbEndpoint: string | null = null;
@@ -75,8 +89,9 @@ export class OntologyEngine {
     const cached = this.relevantTermsCache.get(cacheKey);
     if (cached) return cached;
 
-    const escapedQuery = query.replace(/"/g, '\\"');
-    
+    const safeQuery = escapeSparqlLiteral(query);
+    const safePrefix = escapeSparqlLiteral(query.trim().slice(0, 50));
+
     const sparqlQuery = `
       PREFIX schema: <http://schema.org/>
       PREFIX st: <${ONTOLOGY_PREFIX}>
@@ -88,10 +103,11 @@ export class OntologyEngine {
         OPTIONAL { ?termId st:nameEs ?nameEs . }
         OPTIONAL { ?termId st:descriptionEs ?descriptionEs . }
         FILTER (
-          CONTAINS(LCASE(?name), LCASE("${escapedQuery}")) || 
-          CONTAINS(LCASE(?description), LCASE("${escapedQuery}")) ||
-          CONTAINS(LCASE(COALESCE(?nameEs, "")), LCASE("${escapedQuery}")) ||
-          CONTAINS(LCASE(COALESCE(?descriptionEs, "")), LCASE("${escapedQuery}"))
+          CONTAINS(LCASE(?name), LCASE("${safeQuery}")) || 
+          CONTAINS(LCASE(?description), LCASE("${safeQuery}")) ||
+          CONTAINS(LCASE(COALESCE(?nameEs, "")), LCASE("${safeQuery}")) ||
+          CONTAINS(LCASE(COALESCE(?descriptionEs, "")), LCASE("${safeQuery}")) ||
+          STRSTARTS(LCASE(?name), LCASE("${safePrefix}"))
         )
         OPTIONAL { ?termId st:broaderThan ?broader . }
         OPTIONAL { ?termId st:narrowerThan ?narrower . }
@@ -145,7 +161,7 @@ export class OntologyEngine {
     const cached = this.articlesByTopicCache.get(cleanTopicId);
     if (cached) return cached;
 
-    const topicUri = `${ONTOLOGY_PREFIX}${cleanTopicId}`;
+    const safeTopicUri = escapeSparqlUri(`${ONTOLOGY_PREFIX}${cleanTopicId}`);
     
     const sparqlQuery = `
       PREFIX schema: <http://schema.org/>
@@ -155,7 +171,7 @@ export class OntologyEngine {
         ?articleId a st:SummaArticle ;
                    schema:name ?title ;
                    st:citation ?citation ;
-                   st:hasTopic <${topicUri}> .
+                   st:hasTopic <${safeTopicUri}> .
         OPTIONAL { ?articleId st:text ?text . }
         OPTIONAL { ?articleId st:hasTopic ?topic . }
       }
@@ -195,12 +211,14 @@ export class OntologyEngine {
   }
 
   public async findRelatedConcepts(termId: string): Promise<OntologyTerm[]> {
+    const safeTermId = escapeSparqlUri(termId);
+
     const sparqlQuery = `
       PREFIX schema: <http://schema.org/>
       PREFIX st: <${ONTOLOGY_PREFIX}>
 
       SELECT ?relatedId ?name ?description WHERE {
-        <${termId}> st:relatedTo ?relatedId .
+        <${safeTermId}> st:relatedTo ?relatedId .
         ?relatedId a schema:DefinedTerm ;
                    schema:name ?name ;
                    schema:description ?description .

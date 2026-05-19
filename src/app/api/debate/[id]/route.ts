@@ -2,6 +2,19 @@ import { NextResponse } from "next/server";
 import { getDebateById } from "@/lib/db/debates";
 import { logger } from "@/lib/utils/logger";
 
+function parseJsonField(value: unknown) {
+  if (value === null || value === undefined) return null;
+  if (typeof value === "object" || Array.isArray(value)) return value;
+  if (typeof value === "string") {
+    try {
+      return JSON.parse(value);
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
 export async function GET(_request: Request, context: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await context.params;
@@ -17,10 +30,20 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
 
     return NextResponse.json(
       {
-        ...debate,
-        objections: JSON.parse(debate.objections as string) ?? [],
-        replies: JSON.parse(debate.replies as string) ?? [],
-        sources: JSON.parse(debate.sources as string) ?? [],
+        id: debate.id,
+        userId: debate.userId,
+        question: debate.question,
+        audience: debate.audience,
+        context: debate.context,
+        objections: parseJsonField(debate.objections) ?? [],
+        sedContra: debate.sedContra,
+        respondeo: debate.respondeo,
+        replies: parseJsonField(debate.replies) ?? [],
+        application: debate.application,
+        sources: parseJsonField(debate.sources) ?? [],
+        generatedAt: debate.generatedAt,
+        createdAt: debate.createdAt,
+        updatedAt: debate.updatedAt,
       },
       { status: 200 },
     );

@@ -19,8 +19,11 @@ function isMissingTableError(error: unknown) {
   );
 }
 
+const DEFAULT_USER_ID = "legacy";
+
 type SaveDebateParams = {
   question: string;
+  userId?: string;
   audience?: string;
   context?: string;
   objections: unknown;
@@ -32,19 +35,20 @@ type SaveDebateParams = {
   generatedAt: string;
 };
 
-export async function saveDebate({ question, audience, context, ...result }: SaveDebateParams) {
+export async function saveDebate({ question, userId, audience, context, ...result }: SaveDebateParams) {
   try {
     return await prisma.debate.create({
       data: {
+        userId: userId ?? DEFAULT_USER_ID,
         question,
         audience: audience ?? "graduate",
         context,
-        objections: JSON.stringify(result.objections),
+        objections: result.objections as object,
         sedContra: result.sedContra,
         respondeo: result.respondeo,
-        replies: JSON.stringify(result.replies),
+        replies: result.replies as object,
         application: result.application,
-        sources: JSON.stringify(result.sources),
+        sources: result.sources as object,
         generatedAt: result.generatedAt,
       },
     });
@@ -56,11 +60,12 @@ export async function saveDebate({ question, audience, context, ...result }: Sav
   }
 }
 
-export async function listDebates(limit = 30) {
+export async function listDebates(limit = 30, userId?: string) {
   try {
     return await prisma.debate.findMany({
       orderBy: { createdAt: "desc" },
       take: limit,
+      where: userId ? { userId } : undefined,
       select: {
         id: true,
         question: true,

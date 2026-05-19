@@ -3,24 +3,50 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DebateTaskStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
 }
 
 model Debate {
   id          String   @id @default(cuid())
+  userId      String
   question    String
   audience    String   @default("graduate")
   context     String?
-  objections  String
+  objections  Json
   sedContra   String
   respondeo   String
-  replies     String
+  replies     Json
   application String
-  sources     String
+  sources     Json
   generatedAt String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  @@index([userId, createdAt])
   @@index([createdAt])
+}
+
+model DebateTask {
+  id        String            @id @default(cuid())
+  userId    String
+  status    DebateTaskStatus
+  progress  Int               @default(0)
+  message   String?
+  error     String?
+  question  String
+  audience  String
+  context   String?
+  recordId  String?
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@index([userId, createdAt])
 }
