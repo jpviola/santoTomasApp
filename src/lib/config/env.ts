@@ -30,8 +30,9 @@ export const getEnv = (): Env => {
   });
 
   if (!parsed.success) {
-    console.error("Invalid environment variables:", parsed.error.flatten().fieldErrors);
-    throw new Error("Invalid environment variables.");
+    const details = parsed.error.flatten().fieldErrors;
+    console.error("Invalid environment variables:", JSON.stringify(details, null, 2));
+    throw new Error(`Invalid environment variables: ${Object.keys(details).join(", ")}`);
   }
 
   cached = parsed.data;
