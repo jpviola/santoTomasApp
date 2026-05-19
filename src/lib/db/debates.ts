@@ -35,27 +35,31 @@ type SaveDebateParams = {
   generatedAt: string;
 };
 
-function sanitizeJson(value: unknown): object {
-  return JSON.parse(JSON.stringify(value)) as object;
-}
-
 export async function saveDebate({ question, userId, audience, context, ...result }: SaveDebateParams) {
   try {
-    return await prisma.debate.create({
-      data: {
-        userId: userId ?? DEFAULT_USER_ID,
-        question,
-        audience: audience ?? "graduate",
-        context,
-        objections: sanitizeJson(result.objections),
-        sedContra: result.sedContra,
-        respondeo: result.respondeo,
-        replies: sanitizeJson(result.replies),
-        application: result.application,
-        sources: sanitizeJson(result.sources),
-        generatedAt: result.generatedAt,
-      },
-    });
+    const id = `cuid_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+    const finalUserId = userId ?? DEFAULT_USER_ID;
+    const finalAudience = audience ?? "graduate";
+    const finalContext = context ?? null;
+    const now = new Date().toISOString();
+
+    const objectionsJson = JSON.stringify(result.objections ?? []);
+    const repliesJson = JSON.stringify(result.replies ?? []);
+    const sourcesJson = JSON.stringify(result.sources ?? []);
+
+    await prisma.$executeRaw`
+      INSERT INTO "Debate" (
+        id, "userId", question, audience, context,
+        objections, "sedContra", respondeo, replies,
+        application, sources, "generatedAt", "createdAt", "updatedAt"
+      ) VALUES (
+        ${id}, ${finalUserId}, ${question}, ${finalAudience}, ${finalContext},
+        ${objectionsJson}::jsonb, ${result.sedContra}, ${result.respondeo}, ${repliesJson}::jsonb,
+        ${result.application}, ${sourcesJson}::jsonb, ${result.generatedAt}, ${now}::timestamp, ${now}::timestamp
+      )
+    `;
+
+    return await prisma.debate.findUnique({ where: { id } });
   } catch (error) {
     if (isMissingTableError(error)) {
       throw new DatabaseError(formatDbInitHint(), { cause: error });
