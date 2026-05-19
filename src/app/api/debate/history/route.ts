@@ -2,8 +2,19 @@ import { NextResponse } from "next/server";
 import { listDebates } from "@/lib/db/debates";
 import { isAppError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
+import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const clientKey = getClientKey(request);
+  const rateCheck = checkRateLimit(clientKey, RATE_LIMITS.history);
+
+  if (!rateCheck.allowed) {
+    return NextResponse.json(
+      { error: "Too many requests", code: "RATE_LIMITED" },
+      { status: 429 }
+    );
+  }
+
   try {
     const debates = await listDebates(30);
 

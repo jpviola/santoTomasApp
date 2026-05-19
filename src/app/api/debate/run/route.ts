@@ -4,8 +4,19 @@ import { parseDebateInput } from "@/lib/schemas/debate";
 import { saveDebate } from "@/lib/db/debates";
 import { isAppError, DatabaseError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
+import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+  const clientKey = getClientKey(request);
+  const rateCheck = checkRateLimit(clientKey, RATE_LIMITS.debate);
+
+  if (!rateCheck.allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later.", code: "RATE_LIMITED", retryAfter: Math.ceil(rateCheck.resetIn / 1000) },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(rateCheck.resetIn / 1000)) } }
+    );
+  }
+
   try {
     const body = await request.json();
     const parsed = parseDebateInput({ ...body, audience: "graduate" });

@@ -6,6 +6,7 @@ import { DebateInputSchema, DebateOutputSchema } from "@/lib/schemas/debate";
 import type { DebateInput, DebateOutput } from "@/lib/schemas/debate";
 import { DebatePipelineError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
+import { runWithSpan, TracingConfig } from "@/lib/tracing";
 
 type DebateProgressUpdate = {
   stage: "start" | "moderate_and_retrieve" | "objections_and_sed_contra" | "respondeo" | "replies" | "finalize" | "done";
@@ -38,37 +39,51 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
 
     await options?.onProgress?.({ stage: "moderate_and_retrieve", progress: 12, message: "Moderating question and retrieving sources" });
     const retrievalStartedAt = Date.now();
-    const relevantTerms = await getOntologyEngine().findRelevantTerms(parsedInput.question);
-    const [sourcesRaw, moderated] = await Promise.all([
-      retrieveOntologyEnrichedSources(parsedInput.question, 5, relevantTerms),
-      runModerator({
-        question: parsedInput.question,
-        audience: parsedInput.audience,
-        context: parsedInput.context,
-        language: parsedInput.language,
-      }),
-    ]);
+    
+    const retrievalResult = await runWithSpan("debate.moderate_retrieve", async (span) => {
+      const relevantTerms = await getOntologyEngine().findRelevantTerms(parsedInput.question);
+      const [sourcesRaw, moderated] = await Promise.all([
+        retrieveOntologyEnrichedSources(parsedInput.question, 5, relevantTerms),
+        runModerator({
+          question: parsedInput.question,
+          audience: parsedInput.audience,
+          context: parsedInput.context,
+          language: parsedInput.language,
+        }),
+      ]);
+      span?.setAttribute("sourcesCount", sourcesRaw.length);
+      return { relevantTerms, sourcesRaw, moderated };
+    });
+    const { relevantTerms, sourcesRaw, moderated } = retrievalResult;
     logStage("moderate_and_retrieve", retrievalStartedAt);
 
     const localizationStartedAt = Date.now();
     const sources =
       parsedInput.language === "en"
         ? sourcesRaw
-        : await (await import("@/lib/retrieval/aquinasRetriever")).localizeAquinasSources(
+        : await runWithSpan("debate.localize_sources", async () => 
+          await (await import("@/lib/retrieval/aquinasRetriever")).localizeAquinasSources(
             sourcesRaw,
             parsedInput.language,
-          );
+          )
+        );
     logStage("localize_sources", localizationStartedAt);
 
     await options?.onProgress?.({ stage: "objections_and_sed_contra", progress: 38, message: "Generating objections and sed contra" });
     const generationStartedAt = Date.now();
-    const debateResult = await runScholasticDebate({
-      question: moderated.question,
-      sources,
-      audience: parsedInput.audience,
-      context: parsedInput.context,
-      ontologyTerms: relevantTerms.map((term) => term.name),
-      language: parsedInput.language,
+    
+    const debateResult = await runWithSpan("debate.generate_objections", async (span) => {
+      const result = await runScholasticDebate({
+        question: moderated.question,
+        sources,
+        audience: parsedInput.audience,
+        context: parsedInput.context,
+        ontologyTerms: relevantTerms.map((term) => term.name),
+        language: parsedInput.language,
+      });
+      span?.setAttribute("objectionsCount", result.objections.length);
+      span?.setAttribute("repliesCount", result.replies.length);
+      return result;
     });
     logStage("single_pass_generation", generationStartedAt);
 

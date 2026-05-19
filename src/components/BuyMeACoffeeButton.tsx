@@ -1,8 +1,17 @@
+"use client";
+
+const KOFI_ID = process.env.NEXT_PUBLIC_KOFI_ID;
+const KOFI_ENABLED = process.env.NEXT_PUBLIC_KOFI_ENABLED !== "false" && process.env.NEXT_PUBLIC_KOFI_ENABLED !== "0";
+
 export default function BuyMeACoffeeButton() {
+  if (!KOFI_ENABLED || !KOFI_ID) {
+    return null;
+  }
+
   return (
     <div className="flex justify-center px-3 py-4">
       <a
-        href="https://ko-fi.com/P2V01ZT620"
+        href={`https://ko-fi.com/${KOFI_ID}`}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex rounded-md transition hover:-translate-y-0.5"

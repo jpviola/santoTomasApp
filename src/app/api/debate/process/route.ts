@@ -5,6 +5,7 @@ import { retrieveAquinasSources } from "@/lib/retrieval/aquinasRetriever";
 import { parseDebateInput, type DebateInput, type DebateOutput } from "@/lib/schemas/debate";
 import { isAppError, DatabaseError, LlmProviderError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
+import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
 
 // Importante: Vercel Hobby tiene un limite de 10s.
 // maxDuration intenta extenderlo (funciona mejor en planes Pro).
@@ -109,6 +110,16 @@ async function persistDebate(input: DebateInput, result: DebateOutput) {
 }
 
 export async function POST(req: Request) {
+  const clientKey = getClientKey(req);
+  const rateCheck = checkRateLimit(clientKey, RATE_LIMITS.debateStream);
+
+  if (!rateCheck.allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later.", code: "RATE_LIMITED", retryAfter: Math.ceil(rateCheck.resetIn / 1000) },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(rateCheck.resetIn / 1000)) } }
+    );
+  }
+
   try {
     const body = await req.json();
     const parsed = parseDebateInput(body);

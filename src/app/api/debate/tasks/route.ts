@@ -5,8 +5,19 @@ import { saveDebate } from "@/lib/db/debates";
 import { CreateTaskResponseSchema } from "@/lib/schemas/task";
 import { taskStore } from "@/lib/task-store";
 import { DatabaseError } from "@/lib/utils/errors";
+import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
 
 export async function POST(req: Request) {
+  const clientKey = getClientKey(req);
+  const rateCheck = checkRateLimit(clientKey, RATE_LIMITS.debate);
+
+  if (!rateCheck.allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later.", code: "RATE_LIMITED", retryAfter: Math.ceil(rateCheck.resetIn / 1000) },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(rateCheck.resetIn / 1000)) } }
+    );
+  }
+
   try {
     const body = await req.json();
     const taskId = crypto.randomUUID();
