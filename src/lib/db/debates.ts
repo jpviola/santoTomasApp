@@ -35,6 +35,10 @@ type SaveDebateParams = {
   generatedAt: string;
 };
 
+function sanitizeJson(value: unknown): unknown {
+  return JSON.parse(JSON.stringify(value));
+}
+
 export async function saveDebate({ question, userId, audience, context, ...result }: SaveDebateParams) {
   try {
     return await prisma.debate.create({
@@ -43,12 +47,12 @@ export async function saveDebate({ question, userId, audience, context, ...resul
         question,
         audience: audience ?? "graduate",
         context,
-        objections: result.objections as object,
+        objections: sanitizeJson(result.objections),
         sedContra: result.sedContra,
         respondeo: result.respondeo,
-        replies: result.replies as object,
+        replies: sanitizeJson(result.replies),
         application: result.application,
-        sources: result.sources as object,
+        sources: sanitizeJson(result.sources),
         generatedAt: result.generatedAt,
       },
     });
