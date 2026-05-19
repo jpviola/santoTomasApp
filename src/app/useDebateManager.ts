@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DebateOutput as DebateOutputType } from "@/types/debate";
 import type { DebateHistoryItem } from "@/types/history";
-import { CreateTaskResponseSchema, DebateTaskSchema, type DebateTask } from "@/lib/schemas/task";
+import { DebateTaskSchema, type DebateTask } from "@/lib/schemas/task";
 
 export type RunDebatePayload = {
   question: string;
@@ -146,70 +146,66 @@ export function useDebateManager(
       setOutputLanguage(langToUse);
 
       try {
-        const { response: createResponse, data: createData } = await requestWithRetry(
-          () =>
-            fetchJsonWithTimeout(
-              "/api/debate/tasks",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ question: payload.question, language: langToUse }),
-              },
-              20000,
-            ),
-          3,
-          700,
-        );
-
-        if (!createResponse.ok) {
-          throw new Error(createData?.details || createData?.error || "Failed to start debate task.");
-        }
-
-        const parsedCreate = CreateTaskResponseSchema.safeParse(createData);
-        if (!parsedCreate.success) throw new Error("Invalid response from task creation API.");
-
-        const { taskId } = parsedCreate.data;
-        setActiveTask({
-          id: taskId,
-          status: "PENDING",
-          progress: 0,
-          message: "start",
-          error: null,
-          recordId: null,
+        // Cambiamos a un endpoint que soporte streaming (ej: /api/debate/process)
+        const response = await fetch("/api/debate/process", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: payload.question, language: langToUse }),
         });
 
-        const startedAt = Date.now();
-        while (true) {
-          if (!mountedRef.current) return;
-          if (Date.now() - startedAt > 300000) throw new Error("Generation timed out.");
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || "Error al procesar el debate.");
+        }
 
-          const { response: statusResponse, data: statusData } = await requestWithRetry(
-            () => fetchJsonWithTimeout(`/api/debate/tasks/${taskId}`, { method: "GET" }, 20000),
-            2,
-            600,
-          );
+        const reader = response.body?.getReader();
+        const decoder = new TextDecoder();
+        
+        if (!reader) throw new Error("No se pudo inicializar el lector de flujo.");
 
-          if (!statusResponse.ok) throw new Error(statusData?.error || "Failed to fetch task status.");
+        let buffer = "";
+        
+        while (mountedRef.current) {
+          const { done, value } = await reader.read();
+          if (done) break;
 
-          const parsedStatus = DebateTaskSchema.safeParse(statusData);
-          if (!parsedStatus.success) throw new Error("Invalid task status data received.");
+          buffer += decoder.decode(value, { stream: true });
+          
+          // Procesamos cada línea (cada evento del stream)
+          const lines = buffer.split("\n");
+          buffer = lines.pop() || ""; // Guardamos el resto incompleto
 
-          const task: DebateTask = parsedStatus.data;
-          setActiveTask(task);
-
-          if (task.status === "COMPLETED" && task.recordId) {
-            if (task.result) {
-              setResult({ ...task.result, recordId: task.recordId });
-            } else {
-              await fetchDebateById(task.recordId);
+          for (const line of lines) {
+            if (!line.trim()) continue;
+            
+            try {
+              const chunk = JSON.parse(line);
+              
+              if (chunk.type === "progress") {
+                setActiveTask({
+                  id: "streaming",
+                  status: "PENDING",
+                  progress: chunk.data.progress,
+                  message: chunk.data.stage,
+                  error: null,
+                  recordId: null,
+                });
+              } else if (chunk.type === "result") {
+                const taskData = chunk.data;
+                if (taskData.result) {
+                  setResult({ ...taskData.result, recordId: taskData.recordId });
+                } else if (taskData.recordId) {
+                  await fetchDebateById(taskData.recordId);
+                }
+                await fetchHistory();
+                setActiveTask(null);
+              } else if (chunk.type === "error") {
+                throw new Error(chunk.data);
+              }
+            } catch (e) {
+              console.error("Error parseando chunk de stream", e);
             }
-            await fetchHistory();
-            setActiveTask(null);
-            break;
           }
-
-          if (task.status === "FAILED") throw new Error(task.error || "Debate task failed.");
-          await new Promise((resolve) => setTimeout(resolve, 1200));
         }
       } catch (err) {
         const message = err instanceof Error && err.name === "AbortError"
