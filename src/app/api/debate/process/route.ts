@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { saveDebate } from "@/lib/db/debates";
 import { retrieveAquinasSources } from "@/lib/retrieval/aquinasRetriever";
 import { parseDebateInput, type DebateInput, type DebateOutput } from "@/lib/schemas/debate";
-import { isAppError, LlmProviderError } from "@/lib/utils/errors";
+import { isAppError, DatabaseError, LlmProviderError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
 
 // Importante: Vercel Hobby tiene un limite de 10s.
