@@ -4,6 +4,7 @@ import { parseDebateInput } from "@/lib/schemas/debate";
 import { saveDebate } from "@/lib/db/debates";
 import { CreateTaskResponseSchema } from "@/lib/schemas/task";
 import { taskStore } from "@/lib/task-store";
+import { DatabaseError } from "@/lib/utils/errors";
 
 export async function POST(req: Request) {
   try {
@@ -55,6 +56,10 @@ export async function POST(req: Request) {
           sources: result.sources,
           generatedAt: result.metadata.generatedAt,
         });
+
+        if (!saved) {
+          throw new DatabaseError("Debate generated but could not be retrieved after saving.");
+        }
 
         update({
           status: "COMPLETED",
