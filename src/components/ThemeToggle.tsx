@@ -20,7 +20,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={cycleTheme}
-      className="fixed top-4 right-4 z-50 p-2 rounded-md bg-[var(--surface)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
+      className="fixed bottom-4 left-4 z-50 p-2 rounded-md bg-[var(--surface)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
       title={`Tema: ${label[theme]} (${resolvedTheme})`}
       aria-label={`Cambiar tema. Actual: ${label[theme]}`}
     >

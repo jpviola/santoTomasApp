@@ -143,6 +143,39 @@ export default function DebateOutput({ result, language, contentLanguage }: Deba
               <div className="flex items-center gap-2">
                 <SpeechButton text={allText} lang={contentLang} />
                 <CopyButton text={allText} label={t.copied} />
+                <div className="ml-2 flex items-center gap-1 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] p-1">
+                  {(["focus", "default", "wide"] as const).map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => setReaderWidth(option)}
+                      className={`rounded px-1.5 py-0.5 text-[10px] transition ${
+                        readerWidth === option
+                          ? "bg-[var(--surface)] text-[var(--foreground)] shadow-sm"
+                          : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                      }`}
+                      title={option === "focus" ? t.focus : option === "wide" ? t.wide : t.default}
+                    >
+                      {option === "focus" ? "◉" : option === "wide" ? "◎" : "○"}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex items-center gap-1 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] p-1">
+                  {(["compact", "default", "large"] as const).map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => setReaderSize(option)}
+                      className={`rounded px-1.5 py-0.5 text-[10px] transition ${
+                        readerSize === option
+                          ? "bg-[var(--surface)] text-[var(--foreground)] shadow-sm"
+                          : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                      }`}
+                    >
+                      {option === "compact" ? "A-" : option === "large" ? "A+" : "A"}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-[var(--muted)]">
