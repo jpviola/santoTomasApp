@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DebateOutput as DebateOutputType } from "@/types/debate";
 import type { DebateHistoryItem } from "@/types/history";
-import { DebateTaskSchema, type DebateTask } from "@/lib/schemas/task";
+import { type DebateTask } from "@/lib/schemas/task";
 
 export type RunDebatePayload = {
   question: string;
@@ -137,7 +137,7 @@ export function useDebateManager(
   );
 
   const handleRunDebate = useCallback(
-    async (payload: RunDebatePayload | { question: string; audience?: string; context?: string }, lang?: "es" | "en" | "la") => {
+    async (payload: { question: string; audience?: string; context?: string }, lang?: "es" | "en" | "la") => {
       setIsRunningDebate(true);
       setRunError(null);
       setActiveTask(null);
@@ -150,12 +150,24 @@ export function useDebateManager(
         const response = await fetch("/api/debate/process", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question: payload.question, language: langToUse }),
+          body: JSON.stringify({
+            question: payload.question,
+            language: langToUse,
+            audience: payload.audience || "undergraduate",
+            context: payload.context || "",
+          }),
         });
 
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.error || "Error al procesar el debate.");
+          const errorText = await response.text().catch(() => "");
+          let errorMessage = "Error al procesar el debate.";
+          try {
+            const errorData = JSON.parse(errorText);
+            errorMessage = errorData.error || errorData.details || errorMessage;
+          } catch {
+            errorMessage = `Server error (${response.status}): ${errorText.slice(0, 100)}`;
+          }
+          throw new Error(errorMessage);
         }
 
         const reader = response.body?.getReader();
@@ -220,7 +232,7 @@ export function useDebateManager(
         setIsRunningDebate(false);
       }
     },
-    [answerLanguage, fetchDebateById, fetchHistory, fetchJsonWithTimeout, requestWithRetry],
+    [answerLanguage, fetchDebateById, fetchHistory],
   );
 
   const handleNewQuestion = useCallback(() => {
