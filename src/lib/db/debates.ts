@@ -56,7 +56,10 @@ export async function saveDebate({ question, userId, audience, context, ...resul
     if (isMissingTableError(error)) {
       throw new DatabaseError(formatDbInitHint(), { cause: error });
     }
-    throw new DatabaseError("Failed to save debate.", { cause: error });
+    const errMsg = error instanceof Error ? error.message : String(error);
+    const errCode = error && typeof error === 'object' && 'code' in error ? (error as Record<string, unknown>).code : 'N/A';
+    console.error("[saveDebate] Database error:", { code: errCode, message: errMsg, fullError: JSON.stringify(error, null, 2) });
+    throw new DatabaseError(`Failed to save debate: [${errCode}] ${errMsg}`, { cause: error });
   }
 }
 
