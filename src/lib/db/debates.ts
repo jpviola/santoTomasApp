@@ -35,8 +35,8 @@ type SaveDebateParams = {
   generatedAt: string;
 };
 
-function sanitizeJson(value: unknown): unknown {
-  return JSON.parse(JSON.stringify(value));
+function sanitizeJson(value: unknown): object {
+  return JSON.parse(JSON.stringify(value)) as object;
 }
 
 export async function saveDebate({ question, userId, audience, context, ...result }: SaveDebateParams) {
