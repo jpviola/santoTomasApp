@@ -372,7 +372,7 @@ async function main() {
   let turtle = `@prefix st: <${ONTOLOGY_PREFIX}> .\n@prefix schema: <${SCHEMA}> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n`;
 
   turtle += '# ============================================\n';
-  turtle += '# Ontología StoTomas AI - Conceptos Filosóficos\n';
+  turtle += '# Ontología Sto. Tomás AI - Conceptos Filosóficos\n';
   turtle += '# ============================================\n\n';
 
   for (const term of TERMS) {

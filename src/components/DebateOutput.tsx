@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import type { DebateOutput } from "@/types/debate";
 import SourceList from "@/components/SourceList";
 import SpeechButton from "@/components/SpeechButton";
+import ExportMarkdownButton from "@/components/ExportMarkdownButton";
 
 type DebateOutputProps = {
   result: DebateOutput;
@@ -139,6 +140,7 @@ export default function DebateOutput({ result, language, contentLanguage }: Deba
               <div className="flex items-center gap-2">
                 <SpeechButton text={allText} lang={contentLang} />
                 <CopyButton text={allText} label={t.copied} />
+                <ExportMarkdownButton recordId={result.recordId} language={language} />
                 <div className="ml-2 flex items-center gap-1 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] p-1">
                   {(["focus", "default", "wide"] as const).map((option) => (
                     <button

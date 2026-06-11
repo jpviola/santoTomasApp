@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getDebateById } from "@/lib/db/debates";
+import { ANONYMOUS_USER_ID, getDebateById } from "@/lib/db/debates";
+import { getAuthUser } from "@/lib/auth/getUser";
 import { logger } from "@/lib/utils/logger";
 
 function parseJsonField(value: unknown) {
@@ -28,10 +29,20 @@ export async function GET(_request: Request, context: { params: Promise<{ id: st
       );
     }
 
+    // Los debates anónimos son públicos por ID; los de un usuario, solo para su dueño.
+    if (debate.userId !== ANONYMOUS_USER_ID) {
+      const user = await getAuthUser();
+      if (!user || user.id !== debate.userId) {
+        return NextResponse.json(
+          { error: "Debate not found.", code: "DEBATE_NOT_FOUND" },
+          { status: 404 },
+        );
+      }
+    }
+
     return NextResponse.json(
       {
         id: debate.id,
-        userId: debate.userId,
         question: debate.question,
         audience: debate.audience,
         context: debate.context,

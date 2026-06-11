@@ -7,6 +7,7 @@ import { isAppError, DatabaseError, LlmProviderError } from "@/lib/utils/errors"
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
 import { assertQuestionInScope } from "@/lib/guardrails/questionScope";
+import { getAuthUser } from "@/lib/auth/getUser";
 
 // Importante: Vercel Hobby tiene un limite de 10s.
 // maxDuration intenta extenderlo (funciona mejor en planes Pro).
@@ -95,9 +96,10 @@ async function buildLocalFallbackDebate(input: DebateInput): Promise<DebateOutpu
   };
 }
 
-async function persistDebate(input: DebateInput, result: DebateOutput) {
+async function persistDebate(input: DebateInput, result: DebateOutput, userId?: string) {
   return saveDebate({
     question: input.question,
+    userId,
     audience: input.audience,
     context: input.context,
     objections: result.objections,
@@ -111,8 +113,8 @@ async function persistDebate(input: DebateInput, result: DebateOutput) {
 }
 
 export async function POST(req: Request) {
-  const clientKey = getClientKey(req);
-  const rateCheck = checkRateLimit(clientKey, RATE_LIMITS.debateStream);
+  const clientKey = getClientKey(req, "debateStream");
+  const rateCheck = await checkRateLimit(clientKey, RATE_LIMITS.debateStream);
 
   if (!rateCheck.allowed) {
     return NextResponse.json(
@@ -130,6 +132,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "La pregunta es obligatoria" }, { status: 400 });
     }
 
+    const user = await getAuthUser();
     const encoder = new TextEncoder();
     const stream = new ReadableStream({
       async start(controller) {
@@ -145,7 +148,7 @@ export async function POST(req: Request) {
             },
           });
 
-          const saved = await persistDebate(parsed, result);
+          const saved = await persistDebate(parsed, result, user?.id);
           if (!saved) {
             throw new DatabaseError("Debate was generated but could not be retrieved after saving.");
           }
@@ -158,17 +161,13 @@ export async function POST(req: Request) {
           });
 
           if (error instanceof LlmProviderError) {
+            // Respuesta degradada local: se envía al cliente pero no se persiste.
             const fallback = await buildLocalFallbackDebate(parsed);
-            const saved = await persistDebate(parsed, fallback);
-            if (!saved) {
-              send({ type: "error", data: { message: "Debate fallback generado pero no se pudo guardar." } });
-              return;
-            }
             send({
               type: "result",
               data: {
-                result: { ...fallback, recordId: saved.id },
-                recordId: saved.id,
+                result: fallback,
+                recordId: null,
                 degraded: true,
               },
             });

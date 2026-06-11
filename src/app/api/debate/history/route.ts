@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { listDebates } from "@/lib/db/debates";
+import { getAuthUser } from "@/lib/auth/getUser";
 import { isAppError } from "@/lib/utils/errors";
 import { logger } from "@/lib/utils/logger";
 import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
 
 export async function GET(request: Request) {
-  const clientKey = getClientKey(request);
-  const rateCheck = checkRateLimit(clientKey, RATE_LIMITS.history);
+  const clientKey = getClientKey(request, "history");
+  const rateCheck = await checkRateLimit(clientKey, RATE_LIMITS.history);
 
   if (!rateCheck.allowed) {
     return NextResponse.json(
@@ -16,7 +17,17 @@ export async function GET(request: Request) {
   }
 
   try {
-    const debates = await listDebates(30);
+    const user = await getAuthUser();
+
+    // Sin sesión no se expone historial: los debates de otros usuarios son privados.
+    if (!user) {
+      return NextResponse.json(
+        { items: [], requiresAuth: true },
+        { status: 200 },
+      );
+    }
+
+    const debates = await listDebates(30, user.id);
 
     return NextResponse.json(
       { items: debates },

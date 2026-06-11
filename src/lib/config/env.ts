@@ -12,8 +12,6 @@ const RawEnvSchema = z.object({
   OPENROUTER_SITE_URL: z.string().optional(),
   OPENROUTER_APP_NAME: z.string().optional(),
   GRAPHDB_ENDPOINT_URL: z.string().optional(),
-  NEXT_PUBLIC_KOFI_ID: z.string().optional(),
-  NEXT_PUBLIC_KOFI_ENABLED: z.string().optional(),
 });
 
 const ResolvedEnvSchema = z.object({
@@ -24,8 +22,6 @@ const ResolvedEnvSchema = z.object({
   OPENROUTER_SITE_URL: z.string().optional(),
   OPENROUTER_APP_NAME: z.string().optional(),
   GRAPHDB_ENDPOINT_URL: z.string().default("http://localhost:7200/repositories/santoTomas"),
-  NEXT_PUBLIC_KOFI_ID: z.string().optional(),
-  NEXT_PUBLIC_KOFI_ENABLED: z.boolean().default(true),
 });
 
 export type Env = z.infer<typeof ResolvedEnvSchema>;
@@ -47,8 +43,6 @@ export const getEnv = (): Env => {
     OPENROUTER_SITE_URL: raw.OPENROUTER_SITE_URL,
     OPENROUTER_APP_NAME: raw.OPENROUTER_APP_NAME,
     GRAPHDB_ENDPOINT_URL: raw.GRAPHDB_ENDPOINT_URL,
-    NEXT_PUBLIC_KOFI_ID: raw.NEXT_PUBLIC_KOFI_ID,
-    NEXT_PUBLIC_KOFI_ENABLED: raw.NEXT_PUBLIC_KOFI_ENABLED === "true" || raw.NEXT_PUBLIC_KOFI_ENABLED === "1",
   };
 
   const parsed = ResolvedEnvSchema.safeParse(resolved);

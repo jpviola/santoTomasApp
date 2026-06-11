@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db/prisma";
 import { DatabaseError } from "@/lib/utils/errors";
 
@@ -19,7 +20,8 @@ function isMissingTableError(error: unknown) {
   );
 }
 
-const DEFAULT_USER_ID = "legacy";
+/** userId asignado a debates creados sin sesión; se consideran públicos por ID. */
+export const ANONYMOUS_USER_ID = "legacy";
 
 type SaveDebateParams = {
   question: string;
@@ -37,29 +39,21 @@ type SaveDebateParams = {
 
 export async function saveDebate({ question, userId, audience, context, ...result }: SaveDebateParams) {
   try {
-    const id = `cuid_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
-    const finalUserId = userId ?? DEFAULT_USER_ID;
-    const finalAudience = audience ?? "graduate";
-    const finalContext = context ?? null;
-    const now = new Date().toISOString();
-
-    const objectionsJson = JSON.stringify(result.objections ?? []);
-    const repliesJson = JSON.stringify(result.replies ?? []);
-    const sourcesJson = JSON.stringify(result.sources ?? []);
-
-    await prisma.$executeRaw`
-      INSERT INTO "Debate" (
-        id, "userId", question, audience, context,
-        objections, "sedContra", respondeo, replies,
-        application, sources, "generatedAt", "createdAt", "updatedAt"
-      ) VALUES (
-        ${id}, ${finalUserId}, ${question}, ${finalAudience}, ${finalContext},
-        ${objectionsJson}::jsonb, ${result.sedContra}, ${result.respondeo}, ${repliesJson}::jsonb,
-        ${result.application}, ${sourcesJson}::jsonb, ${result.generatedAt}, ${now}::timestamp, ${now}::timestamp
-      )
-    `;
-
-    return await prisma.debate.findUnique({ where: { id } });
+    return await prisma.debate.create({
+      data: {
+        userId: userId ?? ANONYMOUS_USER_ID,
+        question,
+        audience: audience ?? "graduate",
+        context: context ?? null,
+        objections: (result.objections ?? []) as Prisma.InputJsonValue,
+        sedContra: result.sedContra,
+        respondeo: result.respondeo,
+        replies: (result.replies ?? []) as Prisma.InputJsonValue,
+        application: result.application,
+        sources: (result.sources ?? []) as Prisma.InputJsonValue,
+        generatedAt: result.generatedAt,
+      },
+    });
   } catch (error) {
     if (isMissingTableError(error)) {
       throw new DatabaseError(formatDbInitHint(), { cause: error });

@@ -72,7 +72,7 @@ Scholastic multi-agent debate system inspired by Thomas Aquinas. Generate struct
 | Database | PostgreSQL + Prisma |
 | Auth | Supabase (optional) |
 | Knowledge Graph | GraphDB (SPARQL, optional) |
-| i18n | next-intl (ES/EN) |
+| i18n | In-app dictionaries (UI: ES/EN, answers: ES/EN/LA) |
 | Validation | Zod |
 
 ## Getting Started
@@ -175,8 +175,8 @@ Test coverage includes:
 - Zod schema validation (DebateInput, DebateOutput, SourceSnippet)
 - Error class hierarchy
 - withRetry utility
-- Source ranking algorithm
 - Markdown export with frontmatter
+- Question scope guardrail
 
 ## Project Structure
 
@@ -228,8 +228,19 @@ The `vercel-build` script runs `prisma generate` before building.
 
 For production, use PostgreSQL. The schema includes:
 - `Debate` table with `userId` for multi-tenant support
-- `DebateTask` table for async job tracking
+- `SourceLocalization` table caching ES/LA source translations
 - JSON columns for `objections`, `replies`, and `sources`
+
+### Auth & privacy
+
+Supabase auth is optional. When configured (`NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY`):
+- Signed-in users get debates saved under their `userId`; the history sidebar shows only their own debates.
+- Anonymous debates are stored under the `legacy` user and are accessible only by direct ID.
+- Without a session, the history endpoint returns an empty list with `requiresAuth: true`.
+
+### Rate limiting
+
+Per-IP rate limits use Upstash Redis (REST) when `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are set; otherwise an in-memory, per-instance fallback is used.
 
 ---
 

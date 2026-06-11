@@ -4,9 +4,10 @@ import { useState } from "react";
 
 type ExportMarkdownButtonProps = {
   recordId?: string | null;
+  language?: "es" | "en";
 };
 
-export default function ExportMarkdownButton({ recordId }: ExportMarkdownButtonProps) {
+export default function ExportMarkdownButton({ recordId, language = "es" }: ExportMarkdownButtonProps) {
   const [isExporting, setIsExporting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -54,18 +55,22 @@ export default function ExportMarkdownButton({ recordId }: ExportMarkdownButtonP
 
   if (!recordId) return null;
 
+  const label = language === "es" ? "Exportar" : "Export";
+  const busyLabel = language === "es" ? "Exportando…" : "Exporting…";
+
   return (
     <div className="space-y-2">
       <button
         type="button"
         onClick={handleExport}
         disabled={isExporting}
-        className="rounded-full bg-gradient-to-r from-violet-500 to-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(124,58,237,0.25)] transition hover:from-violet-400 hover:to-blue-400 disabled:cursor-not-allowed disabled:opacity-60"
+        aria-label={language === "es" ? "Exportar como Markdown" : "Export as Markdown"}
+        className="rounded-md border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1.5 text-xs font-medium text-[var(--muted-strong)] transition hover:border-[var(--border-strong)] hover:text-[var(--foreground)] disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {isExporting ? "Exporting..." : "Export Markdown"}
+        {isExporting ? busyLabel : label}
       </button>
 
-      {error ? <p className="text-xs text-red-200/90">{error}</p> : null}
+      {error ? <p className="text-xs text-red-500">{error}</p> : null}
     </div>
   );
 }

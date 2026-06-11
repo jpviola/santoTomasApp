@@ -1,9 +1,9 @@
 import corpus from "@/data/corpus/summa-sample.json";
 import type { SourceSnippet } from "@/lib/schemas/debate";
-import type { Retriever } from "@/lib/retrieval/retriever";
 import { withRetry } from "@/lib/llm/withRetry";
 import { parseJsonWithSchema } from "@/lib/llm/parseJson";
 import { callModel } from "@/lib/llm/callModel";
+import { prisma } from "@/lib/db/prisma";
 import { z } from "zod";
 import { logger } from "@/lib/utils/logger";
 
@@ -147,6 +147,52 @@ function extractLatinExcerptFromCorpus(html: string, articleNumber: number) {
   return excerpt.trim();
 }
 
+async function loadPersistedLocalizations(
+  sourceIds: string[],
+  language: string,
+): Promise<Map<string, { title: string; text: string; url: string | null }>> {
+  try {
+    const rows = await prisma.sourceLocalization.findMany({
+      where: { sourceId: { in: sourceIds }, language },
+    });
+    return new Map(rows.map((row) => [row.sourceId, { title: row.title, text: row.text, url: row.url }]));
+  } catch (error) {
+    // DB opcional/no inicializada: seguimos sin cache persistente.
+    logger.debug("Could not load persisted source localizations", {
+      errorMessage: error instanceof Error ? error.message : String(error),
+    });
+    return new Map();
+  }
+}
+
+async function persistLocalizations(
+  localized: SourceSnippet[],
+  originals: Map<string, SourceSnippet>,
+  language: string,
+): Promise<void> {
+  const changed = localized.filter((s) => {
+    const original = originals.get(s.id);
+    return original && (original.text !== s.text || original.title !== s.title);
+  });
+  if (changed.length === 0) return;
+
+  try {
+    await Promise.all(
+      changed.map((s) =>
+        prisma.sourceLocalization.upsert({
+          where: { sourceId_language: { sourceId: s.id, language } },
+          create: { sourceId: s.id, language, title: s.title, text: s.text, url: s.url ?? null },
+          update: { title: s.title, text: s.text, url: s.url ?? null },
+        }),
+      ),
+    );
+  } catch (error) {
+    logger.debug("Could not persist source localizations", {
+      errorMessage: error instanceof Error ? error.message : String(error),
+    });
+  }
+}
+
 export async function localizeAquinasSources(
   sources: SourceSnippet[],
   language: "en" | "es" | "la",
@@ -155,8 +201,29 @@ export async function localizeAquinasSources(
     return sources;
   }
 
+  // 1. Cache persistente: traducciones ya obtenidas en ejecuciones anteriores.
+  const persisted = await loadPersistedLocalizations(sources.map((s) => s.id), language);
+  const pending = sources.filter((s) => !persisted.has(s.id));
+
+  const applyPersisted = (list: SourceSnippet[]) =>
+    list.map((s) => {
+      const hit = persisted.get(s.id);
+      return hit ? { ...s, title: hit.title, text: hit.text, url: hit.url ?? s.url } : s;
+    });
+
+  if (pending.length === 0) {
+    return applyPersisted(sources);
+  }
+
+  const originalsById = new Map(sources.map((s) => [s.id, s]));
+  const finish = async (localized: SourceSnippet[]) => {
+    await persistLocalizations(localized, originalsById, language);
+    return applyPersisted(localized);
+  };
+
+  // 2. Localización vía web (solo las fuentes sin traducción persistida).
   const localizedViaWeb = await Promise.all(
-    sources.map(async (s) => {
+    pending.map(async (s) => {
       const parsed = parseStCitation(s.citation);
       if (!parsed) return null;
 
@@ -187,10 +254,14 @@ export async function localizeAquinasSources(
 
   const haveWebLocalization = localizedViaWeb.some(Boolean);
   if (haveWebLocalization) {
-    return localizedViaWeb.map((item, index) => item ?? sources[index]);
+    const webById = new Map<string, SourceSnippet>(
+      localizedViaWeb.flatMap((s) => (s ? [[s.id, s] as const] : [])),
+    );
+    return finish(sources.map((s) => webById.get(s.id) ?? s));
   }
 
-  const userPromptParts = sources
+  // 3. Traducción vía LLM (solo las pendientes).
+  const userPromptParts = pending
     .map(
       (s, i) => `Item ${i + 1}:
 id: ${s.id}
@@ -230,9 +301,9 @@ ${userPromptParts}
         const parsed = parseJsonWithSchema(raw, TranslatedSourcesSchema);
         const byId = new Map(parsed.map((p) => [p.id, p]));
         return sources.map((s) => {
-          const t = byId.get(s.id);
-          if (!t) return s;
-          return { ...s, title: t.title, text: t.text };
+          const translatedItem = byId.get(s.id);
+          if (!translatedItem) return s;
+          return { ...s, title: translatedItem.title, text: translatedItem.text };
         });
       },
       {
@@ -243,24 +314,11 @@ ${userPromptParts}
       },
     );
 
-    return translated;
+    return finish(translated);
   } catch (error) {
     logger.warn("Failed to translate sources, falling back to originals", {
       errorMessage: error instanceof Error ? error.message : String(error),
     });
-    return sources;
+    return applyPersisted(sources);
   }
 }
-
-export const createAquinasRetriever = (): Retriever => {
-  return {
-    async retrieve(request) {
-      const query = (request.query ?? request.question).trim();
-      if (query.length === 0) {
-        return [];
-      }
-
-      return retrieveAquinasSources(query, request.limit ?? 3);
-    },
-  };
-};

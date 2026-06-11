@@ -7,11 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum DebateTaskStatus {
-  PENDING
-  PROCESSING
-  COMPLETED
-  FAILED
+// Traducciones/localizaciones de fuentes (ES/LA) para no re-scrapear ni re-traducir.
+model SourceLocalization {
+  id        String   @id @default(cuid())
+  sourceId  String
+  language  String
+  title     String
+  text      String
+  url       String?
+  createdAt DateTime @default(now())
+
+  @@unique([sourceId, language])
 }
 
 model Debate {
@@ -32,21 +38,4 @@ model Debate {
 
   @@index([userId, createdAt])
   @@index([createdAt])
-}
-
-model DebateTask {
-  id        String            @id @default(cuid())
-  userId    String
-  status    DebateTaskStatus
-  progress  Int               @default(0)
-  message   String?
-  error     String?
-  question  String
-  audience  String
-  context   String?
-  recordId  String?
-  createdAt DateTime          @default(now())
-  updatedAt DateTime          @updatedAt
-
-  @@index([userId, createdAt])
 }

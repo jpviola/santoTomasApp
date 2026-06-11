@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import type { DebateHistoryItem } from "@/types/history";
 
 type DebateSidebarProps = {
   items: DebateHistoryItem[];
   isLoading: boolean;
+  requiresAuth?: boolean;
   onSelect: (id: string) => Promise<void> | void;
   onRefresh?: () => Promise<void> | void;
   language: "es" | "en";
@@ -19,6 +21,7 @@ function formatDate(value: string) {
 export default function DebateSidebar({
   items,
   isLoading,
+  requiresAuth = false,
   onSelect,
   onRefresh,
   language,
@@ -31,6 +34,8 @@ export default function DebateSidebar({
           title: "Biblioteca",
           subtitle: "Disputas recientes",
           empty: "Sin debates todavia.",
+          authPrompt: "Iniciá sesión para guardar y ver tu historial de disputas.",
+          authCta: "Entrar",
           refresh: "Actualizar",
           close: "Cerrar",
         }
@@ -38,6 +43,8 @@ export default function DebateSidebar({
           title: "Library",
           subtitle: "Recent disputations",
           empty: "No debates yet.",
+          authPrompt: "Sign in to save and view your disputation history.",
+          authCta: "Sign in",
           refresh: "Refresh",
           close: "Close",
         };
@@ -105,7 +112,19 @@ export default function DebateSidebar({
             </div>
           )}
 
-          {!isLoading && items.length === 0 && (
+          {!isLoading && items.length === 0 && requiresAuth && (
+            <div className="px-3 py-6 text-center">
+              <p className="text-xs text-[var(--muted)]">{t.authPrompt}</p>
+              <Link
+                href="/login"
+                className="mt-3 inline-block rounded-lg border border-[var(--border)] bg-[var(--surface-muted)] px-3 py-1.5 text-xs font-semibold text-[var(--muted-strong)] transition hover:bg-[var(--surface-strong)] hover:text-[var(--foreground)]"
+              >
+                {t.authCta}
+              </Link>
+            </div>
+          )}
+
+          {!isLoading && items.length === 0 && !requiresAuth && (
             <p className="py-6 text-center text-xs text-[var(--muted)]">{t.empty}</p>
           )}
 

@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDebateById } from "@/lib/db/debates";
+import { ANONYMOUS_USER_ID, getDebateById } from "@/lib/db/debates";
+import { getAuthUser } from "@/lib/auth/getUser";
 import { buildDebateMarkdown } from "@/lib/export/markdown";
 import { logger } from "@/lib/utils/logger";
 import { ExportOverridesSchema } from "@/lib/schemas/export";
+import { checkRateLimit, getClientKey, RATE_LIMITS } from "@/lib/rate-limit";
 
 type RouteContext = {
   params: Promise<{
@@ -66,6 +68,20 @@ const exportFromDb = async (id: string, overrides?: unknown) => {
     } as const;
   }
 
+  // Misma regla que GET /api/debate/[id]: los debates de un usuario solo los exporta su dueño.
+  if (debate.userId !== ANONYMOUS_USER_ID) {
+    const user = await getAuthUser();
+    if (!user || user.id !== debate.userId) {
+      return {
+        status: 404,
+        json: {
+          error: "Debate not found.",
+          code: "DEBATE_NOT_FOUND",
+        },
+      } as const;
+    }
+  }
+
   const { filename, content } = buildDebateMarkdown(
     {
       id: debate.id,
@@ -94,6 +110,11 @@ const exportFromDb = async (id: string, overrides?: unknown) => {
 };
 
 export async function POST(request: NextRequest, context: RouteContext) {
+  const rateCheck = await checkRateLimit(getClientKey(request, "export"), RATE_LIMITS.export);
+  if (!rateCheck.allowed) {
+    return NextResponse.json({ error: "Too many requests", code: "RATE_LIMITED" }, { status: 429 });
+  }
+
   try {
     const { id } = await context.params;
     const body = await request.json().catch(() => ({}));
@@ -127,7 +148,12 @@ export async function POST(request: NextRequest, context: RouteContext) {
   }
 }
 
-export async function GET(_request: NextRequest, context: RouteContext) {
+export async function GET(request: NextRequest, context: RouteContext) {
+  const rateCheck = await checkRateLimit(getClientKey(request, "export"), RATE_LIMITS.export);
+  if (!rateCheck.allowed) {
+    return NextResponse.json({ error: "Too many requests", code: "RATE_LIMITED" }, { status: 429 });
+  }
+
   try {
     const { id } = await context.params;
 

@@ -1,59 +1,63 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 type AuthControlsProps = {
   language?: "es" | "en";
+  onAuthChange?: () => void;
 };
 
-export default function AuthControls({ language = "es" }: AuthControlsProps) {
+export default function AuthControls({ language = "es", onAuthChange }: AuthControlsProps) {
   const supabase = useMemo(() => createSupabaseBrowserClient(), []);
   const [email, setEmail] = useState<string | null>(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     if (!supabase) return;
-    let mounted = true;
+
     supabase.auth.getUser().then(({ data }) => {
-      if (!mounted) return;
       setEmail(data.user?.email ?? null);
+      setIsReady(true);
     });
 
     const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
       setEmail(session?.user?.email ?? null);
+      onAuthChange?.();
     });
 
-    return () => {
-      mounted = false;
-      subscription.subscription.unsubscribe();
-    };
-  }, [supabase]);
+    return () => subscription.subscription.unsubscribe();
+  }, [supabase, onAuthChange]);
 
-  if (!supabase) {
-    return null;
-  }
+  // Supabase sin configurar: la app funciona en modo anónimo, sin controles.
+  if (!supabase || !isReady) return null;
+
+  const t =
+    language === "es"
+      ? { signIn: "Entrar", signOut: "Salir", account: "Cuenta" }
+      : { signIn: "Sign in", signOut: "Sign out", account: "Account" };
 
   if (!email) {
     return (
       <Link
         href="/login"
-        className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur transition hover:bg-white/10"
+        className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-2.5 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
       >
-        {language === "es" ? "Entrar" : "Sign in"}
+        {t.signIn}
       </Link>
     );
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <div className="hidden max-w-[220px] truncate text-sm text-slate-200/80 md:block">{email}</div>
+    <div className="flex items-center gap-1.5" title={`${t.account}: ${email}`}>
+      <span className="hidden max-w-[140px] truncate text-[11px] text-[var(--muted)] md:inline">{email}</span>
       <button
         type="button"
-        onClick={() => supabase.auth.signOut()}
-        className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-white/10"
+        onClick={() => void supabase.auth.signOut()}
+        className="rounded-lg border border-[var(--border)] bg-[var(--surface)] px-2.5 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--muted-strong)] transition hover:bg-[var(--surface-muted)]"
       >
-        {language === "es" ? "Salir" : "Sign out"}
+        {t.signOut}
       </button>
     </div>
   );

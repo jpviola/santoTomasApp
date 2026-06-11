@@ -3,7 +3,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DebateOutput as DebateOutputType } from "@/types/debate";
 import type { DebateHistoryItem } from "@/types/history";
-import { type DebateTask } from "@/lib/schemas/task";
+import { readNdjsonStream } from "@/lib/stream/ndjson";
+
+export type ActiveDebateTask = {
+  id: string;
+  status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED";
+  progress: number;
+  message: string | null;
+  error: string | null;
+  recordId: string | null;
+};
 
 export type RunDebatePayload = {
   question: string;
@@ -35,14 +44,16 @@ export function useDebateManager(
 ) {
   const [result, setResult] = useState<DebateOutputType | null>(null);
   const [isRunningDebate, setIsRunningDebate] = useState(false);
+  const [isDegraded, setIsDegraded] = useState(false);
   const [runError, setRunError] = useState<string | null>(null);
   const [outputLanguage, setOutputLanguage] = useState<"es" | "en" | "la">("es");
 
   const [historyItems, setHistoryItems] = useState<DebateHistoryItem[]>([]);
+  const [historyRequiresAuth, setHistoryRequiresAuth] = useState(false);
   const [isHistoryLoading, setIsHistoryLoading] = useState(true);
 
   const [isLoadingSavedDebate, setIsLoadingSavedDebate] = useState(false);
-  const [activeTask, setActiveTask] = useState<DebateTask | null>(null);
+  const [activeTask, setActiveTask] = useState<ActiveDebateTask | null>(null);
   const mountedRef = useRef(true);
   useEffect(() => () => { mountedRef.current = false; }, []);
 
@@ -84,6 +95,7 @@ export function useDebateManager(
       if (!response.ok) throw new Error("Failed to fetch debate history.");
       if (!data || !Array.isArray((data as Record<string, unknown>).items)) throw new Error("Malformed response.");
       setHistoryItems((data as Record<string, unknown>).items as DebateHistoryItem[]);
+      setHistoryRequiresAuth(Boolean((data as Record<string, unknown>).requiresAuth));
     } catch {
       setHistoryItems([]);
     } finally {
@@ -162,6 +174,7 @@ export function useDebateManager(
       setRunError(null);
       setActiveTask(null);
       setResult(null);
+      setIsDegraded(false);
       const langToUse = lang ?? answerLanguage;
       setOutputLanguage(langToUse);
 
@@ -203,22 +216,11 @@ export function useDebateManager(
         }
 
         const reader = response.body?.getReader();
-        const decoder = new TextDecoder();
-        
+
         if (!reader) throw new Error("No se pudo inicializar el lector de flujo.");
 
-        let buffer = "";
-
-        const handleLine = async (line: string) => {
-          if (!line.trim()) return;
-
-          let chunk: { type?: string; data?: unknown };
-          try {
-            chunk = JSON.parse(line);
-          } catch (e) {
-            console.error("Error parseando chunk de stream", e);
-            return;
-          }
+        const handleChunk = async (value: unknown) => {
+          const chunk = value as { type?: string; data?: unknown };
 
           if (chunk.type === "progress") {
             const progressData = chunk.data as { progress?: number; stage?: string } | null;
@@ -231,7 +233,8 @@ export function useDebateManager(
               recordId: null,
             });
           } else if (chunk.type === "result") {
-            const taskData = chunk.data as { result?: DebateOutputType; recordId?: string | null };
+            const taskData = chunk.data as { result?: DebateOutputType; recordId?: string | null; degraded?: boolean };
+            setIsDegraded(Boolean(taskData.degraded));
             if (taskData.result) {
               setResult({ ...taskData.result, recordId: taskData.recordId ?? undefined });
             } else if (taskData.recordId) {
@@ -245,25 +248,11 @@ export function useDebateManager(
         };
 
         try {
-          while (mountedRef.current) {
-            const { done, value } = await reader.read();
-            if (done) break;
-            resetInactivityTimeout();
-
-            buffer += decoder.decode(value, { stream: true });
-
-            // Procesamos cada línea (cada evento del stream)
-            const lines = buffer.split("\n");
-            buffer = lines.pop() || ""; // Guardamos el resto incompleto
-
-            for (const line of lines) {
-              await handleLine(line);
-            }
-          }
-
-          if (buffer.trim()) {
-            await handleLine(buffer);
-          }
+          await readNdjsonStream(reader, {
+            onValue: handleChunk,
+            onRead: resetInactivityTimeout,
+            shouldContinue: () => mountedRef.current,
+          });
         } finally {
           if (inactivityTimeout) clearTimeout(inactivityTimeout);
         }
@@ -287,6 +276,7 @@ export function useDebateManager(
     setResult(null);
     setRunError(null);
     setActiveTask(null);
+    setIsDegraded(false);
   }, []);
 
   useEffect(() => {
@@ -297,9 +287,11 @@ export function useDebateManager(
     result,
     setResult,
     isRunningDebate,
+    isDegraded,
     runError,
     outputLanguage,
     historyItems,
+    historyRequiresAuth,
     isHistoryLoading,
     isLoadingSavedDebate,
     activeTask,

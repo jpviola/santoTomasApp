@@ -49,6 +49,7 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
           audience: parsedInput.audience,
           context: parsedInput.context,
           language: parsedInput.language,
+          ontologyTerms: relevantTerms,
         }),
       ]);
       return { relevantTerms, sourcesRaw, moderated };

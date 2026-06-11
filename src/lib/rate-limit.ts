@@ -1,6 +1,14 @@
+import { logger } from "@/lib/utils/logger";
+
 type RateLimitConfig = {
   windowMs: number;
   maxRequests: number;
+};
+
+type RateLimitResult = {
+  allowed: boolean;
+  remaining: number;
+  resetIn: number;
 };
 
 type RateLimitEntry = {
@@ -21,7 +29,7 @@ function cleanupStore() {
 
 setInterval(cleanupStore, 60 * 1000);
 
-export function checkRateLimit(key: string, config: RateLimitConfig): { allowed: boolean; remaining: number; resetIn: number } {
+function checkRateLimitInMemory(key: string, config: RateLimitConfig): RateLimitResult {
   const now = Date.now();
   const entry = store.get(key);
 
@@ -44,14 +52,76 @@ export function checkRateLimit(key: string, config: RateLimitConfig): { allowed:
   };
 }
 
-export function getClientKey(request: Request): string {
+type UpstashPipelineResponse = Array<{ result?: unknown; error?: string }>;
+
+async function checkRateLimitUpstash(
+  baseUrl: string,
+  token: string,
+  key: string,
+  config: RateLimitConfig,
+): Promise<RateLimitResult> {
+  const response = await fetch(`${baseUrl}/pipeline`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify([
+      ["INCR", key],
+      ["PEXPIRE", key, config.windowMs, "NX"],
+      ["PTTL", key],
+    ]),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Upstash request failed with status ${response.status}`);
+  }
+
+  const results = (await response.json()) as UpstashPipelineResponse;
+  const failed = results.find((r) => r.error);
+  if (failed) {
+    throw new Error(`Upstash pipeline error: ${failed.error}`);
+  }
+
+  const count = Number(results[0]?.result ?? 0);
+  const ttl = Number(results[2]?.result ?? config.windowMs);
+  const resetIn = ttl > 0 ? ttl : config.windowMs;
+
+  return {
+    allowed: count <= config.maxRequests,
+    remaining: Math.max(0, config.maxRequests - count),
+    resetIn,
+  };
+}
+
+/**
+ * Distributed rate limit via Upstash Redis (REST) when UPSTASH_REDIS_REST_URL
+ * and UPSTASH_REDIS_REST_TOKEN are set; otherwise per-instance in-memory Map.
+ * On Upstash errors it falls back to the in-memory limiter instead of blocking traffic.
+ */
+export async function checkRateLimit(key: string, config: RateLimitConfig): Promise<RateLimitResult> {
+  const baseUrl = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+  if (baseUrl && token) {
+    try {
+      return await checkRateLimitUpstash(baseUrl.replace(/\/$/, ""), token, key, config);
+    } catch (error) {
+      logger.warn("Upstash rate limit failed, falling back to in-memory", {
+        errorMessage: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+
+  return checkRateLimitInMemory(key, config);
+}
+
+export type RateLimitScope = keyof typeof RATE_LIMITS;
+
+export function getClientKey(request: Request, scope: RateLimitScope): string {
   const forwarded = request.headers.get("x-forwarded-for");
   const ip = forwarded ? forwarded.split(",")[0].trim() : "unknown";
-  return `ratelimit:${ip}`;
+  return `ratelimit:${scope}:${ip}`;
 }
 
 export const RATE_LIMITS = {
-  debate: { windowMs: 60 * 1000, maxRequests: 5 },
   debateStream: { windowMs: 60 * 1000, maxRequests: 3 },
   history: { windowMs: 60 * 1000, maxRequests: 30 },
   export: { windowMs: 60 * 1000, maxRequests: 10 },

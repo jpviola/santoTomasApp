@@ -10,6 +10,7 @@ import DebateProgressBar from "@/components/DebateProgressBar";
 import LoadingState from "@/components/LoadingState";
 import ThemeToggle from "@/components/ThemeToggle";
 import BuyMeACoffeeButton from "@/components/BuyMeACoffeeButton";
+import AuthControls from "@/components/AuthControls";
 import content from "@/data/content.json";
 import { DebateOutput as DebateOutputType } from "@/types/debate";
 
@@ -21,12 +22,25 @@ interface ContentStructure {
 
 const typedContent = content as ContentStructure;
 const SUGGESTED_COUNT = 3;
+const CACHE_PREFIX = "st_cache_";
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
-function isFallbackDebate(result: DebateOutputType | null) {
-  if (!result) return false;
-  return /proveedor LLM externo no est[aá] accesible|external LLM provider is currently unreachable|provisore externo/i.test(
-    `${result.respondeo}\n${result.application}`,
-  );
+function purgeExpiredDebateCache() {
+  const keys: string[] = [];
+  for (let i = 0; i < window.localStorage.length; i += 1) {
+    const key = window.localStorage.key(i);
+    if (key?.startsWith(CACHE_PREFIX)) keys.push(key);
+  }
+  for (const key of keys) {
+    try {
+      const entry = JSON.parse(window.localStorage.getItem(key) ?? "") as { cachedAt?: number };
+      if (!entry.cachedAt || Date.now() - entry.cachedAt > CACHE_TTL_MS) {
+        window.localStorage.removeItem(key);
+      }
+    } catch {
+      window.localStorage.removeItem(key);
+    }
+  }
 }
 
 function rotateSuggested(items: string[], seed: number) {
@@ -43,6 +57,7 @@ export default function HomePageClient() {
 
   useEffect(() => {
     setSuggestedSeed(Math.floor(Math.random() * 1000));
+    purgeExpiredDebateCache();
     if (window.matchMedia("(min-width: 1024px)").matches) {
       setSidebarOpen(true);
     }
@@ -55,8 +70,10 @@ export default function HomePageClient() {
   const {
     result,
     isRunningDebate,
+    isDegraded,
     runError,
     historyItems,
+    historyRequiresAuth,
     isHistoryLoading,
     activeTask,
     fetchHistory,
@@ -67,8 +84,6 @@ export default function HomePageClient() {
     setOutputLanguage,
     setResult,
   } = useDebateManager(language, answerLanguage);
-
-  const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
   const getCachedDebate = useCallback((cacheKey: string): DebateOutputType | null => {
     const raw = window.localStorage.getItem(cacheKey);
@@ -85,7 +100,7 @@ export default function HomePageClient() {
       window.localStorage.removeItem(cacheKey);
       return null;
     }
-  }, [CACHE_TTL_MS]);
+  }, []);
 
   const setCachedDebate = useCallback((cacheKey: string, data: DebateOutputType) => {
     const entry = { data, cachedAt: Date.now() };
@@ -93,18 +108,19 @@ export default function HomePageClient() {
   }, []);
 
   useEffect(() => {
-    if (result && result.question && !isRunningDebate && !isFallbackDebate(result)) {
-      const cacheKey = `st_cache_${answerLanguage}_${result.question.toLowerCase().trim()}`;
+    // No cachear respuestas degradadas (fallback local sin LLM).
+    if (result && result.question && !isRunningDebate && !isDegraded) {
+      const cacheKey = `${CACHE_PREFIX}${answerLanguage}_${result.question.toLowerCase().trim()}`;
       if (!getCachedDebate(cacheKey)) {
         setCachedDebate(cacheKey, result);
       }
     }
-  }, [result, isRunningDebate, answerLanguage, getCachedDebate, setCachedDebate]);
+  }, [result, isRunningDebate, isDegraded, answerLanguage, getCachedDebate, setCachedDebate]);
 
   const runDebateWithCache = useCallback(
     async (params: { question: string; context?: string }, langOverride?: "es" | "en" | "la") => {
       const targetLang = langOverride || answerLanguage;
-      const cacheKey = `st_cache_${targetLang}_${params.question.toLowerCase().trim()}`;
+      const cacheKey = `${CACHE_PREFIX}${targetLang}_${params.question.toLowerCase().trim()}`;
       const cachedResult = getCachedDebate(cacheKey);
 
       if (cachedResult) {
@@ -162,6 +178,7 @@ export default function HomePageClient() {
           interfaceLanguage: "Cambiar idioma de la interfaz",
           interfaceLabel: "Interfaz",
           error: "Error",
+          degraded: "Respuesta local de respaldo: el proveedor LLM no estuvo disponible. Esta disputa no se guardó en tu historial.",
           emptyTitle: "Santo Tomás de Aquino",
           emptyCopy: "Formula una cuestión y recibe una disputa organizada con objeciones, sed contra, respondeo, réplicas y fuentes.",
           footer: "hecho con",
@@ -178,6 +195,7 @@ export default function HomePageClient() {
           interfaceLanguage: "Switch interface language",
           interfaceLabel: "Interface",
           error: "Error",
+          degraded: "Local fallback answer: the LLM provider was unavailable. This disputation was not saved to your history.",
           emptyTitle: "Thomas Aquinas",
           emptyCopy: "Ask a question and receive a structured disputation with objections, sed contra, respondeo, replies, and sources.",
           footer: "made with",
@@ -189,6 +207,7 @@ export default function HomePageClient() {
       <DebateSidebar
         items={historyItems}
         isLoading={isHistoryLoading}
+        requiresAuth={historyRequiresAuth}
         onSelect={fetchDebateById}
         onRefresh={fetchHistory}
         language={language}
@@ -270,6 +289,7 @@ export default function HomePageClient() {
                 {language === "es" ? "ES" : "EN"}
               </button>
             </div>
+            <AuthControls language={language} onAuthChange={fetchHistory} />
             <ThemeToggle className="h-8 w-8 shrink-0" />
           </div>
         </header>
@@ -303,6 +323,11 @@ export default function HomePageClient() {
 
             {result && (
               <div className="pb-5">
+                {isDegraded && (
+                  <div role="status" className="mx-auto mb-4 max-w-3xl rounded-[10px] border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-700 dark:text-amber-200">
+                    {t.degraded}
+                  </div>
+                )}
                 <DebateOutput result={result} language={language} contentLanguage={answerLanguage} />
                 <div className="mt-4 flex justify-center">
                   <button
