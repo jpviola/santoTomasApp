@@ -40,8 +40,10 @@
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
 }
 
+/* Solo aplica el tema del SO antes de que el ThemeProvider fije una clase
+   explícita (.light / .dark). Así el toggle manual siempre tiene prioridad. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light):not(.dark) {
     --background: #171615;
     --foreground: #ece6da;
     --surface: #211f1c;
