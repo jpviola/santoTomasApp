@@ -399,13 +399,13 @@ export default function HomePageClient() {
 
                 <Link
                   href="/learn"
-                  className="group flex items-center justify-between gap-3 rounded-[12px] border border-[var(--border)] bg-[var(--surface-muted)] p-3 transition hover:border-[var(--border-strong)] sm:p-4"
+                  className="group flex flex-col items-start justify-between gap-3 rounded-[12px] border border-[var(--border)] bg-[var(--surface-muted)] p-3 transition hover:border-[var(--border-strong)] sm:flex-row sm:items-center sm:p-4"
                 >
                   <div className="min-w-0">
                     <p className="font-serif text-[15px] font-semibold text-[var(--foreground)]">{t.learnTitle}</p>
                     <p className="mt-0.5 text-[13px] leading-5 text-[var(--muted-strong)]">{t.learnCopy}</p>
                   </div>
-                  <span className="shrink-0 rounded-lg bg-[var(--accent)] px-3 py-1.5 text-xs font-semibold text-white transition group-hover:opacity-90">
+                  <span className="shrink-0 rounded-lg bg-[var(--accent)] px-3 py-1.5 text-xs font-semibold text-[var(--surface)] transition group-hover:opacity-90">
                     {t.learnCta}
                   </span>
                 </Link>

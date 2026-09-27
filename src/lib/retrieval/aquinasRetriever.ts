@@ -228,7 +228,14 @@ export async function hydrateAquinasSources(
       return {
         source: {
           ...source,
-          title: article.title ?? (source.text ? source.title : formatStCitation(citation)),
+          // Corpus Thomisticum no trae títulos de artículo: en latín se usa la referencia.
+          title:
+            article.title ??
+            (language === "la"
+              ? `Summa Theologiae, ${formatStCitation(citation).replace(/^ST /, "")}`
+              : source.text
+                ? source.title
+                : formatStCitation(citation)),
           text: article.text,
           url: article.url,
           kind: "text",

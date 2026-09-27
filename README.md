@@ -44,10 +44,10 @@ Scholastic multi-agent debate system inspired by Thomas Aquinas. Generate struct
 
 ## Agent Flow
 
-1. **Moderator** - Restates the question, frames the debate, identifies ambiguities and ontology terms
-2. **OntologyEngine** - Queries GraphDB via SPARQL for relevant scholastic concepts
-3. **Retrieval** - Fetches Aquinas sources (local corpus + ontology-enriched + web localization)
-4. **ScholasticDebate** - Single-pass generation of objections, sed contra, respondeo, replies, and application
+1. **Moderator** - Restates the question, frames it, lists the distinctions the answer needs, and proposes search keywords and the Summa articles where Aquinas treats the question
+2. **Retrieval** - Combines the proposed loci, a bilingual search over the curated corpus (`src/data/corpus/aquinas-corpus.json`) and, optionally, GraphDB
+3. **Hydration** - Replaces each Summa source with Aquinas's real text in the answer language (EN: New Advent, ES: hjg.com.ar, LA: Corpus Thomisticum). Proposed citations that can't be fetched are dropped, so invented references never reach the reader; sources are labeled `text` or `summary`
+4. **ScholasticDebate** - Single-pass generation of objections, sed contra, respondeo, replies, and application, using the moderator's distinctions and the chosen level
 5. **Persist** - Saves the debate to PostgreSQL via Prisma
 6. **Stream** - Sends progress updates and final result via Server-Sent Events (NDJSON)
 
@@ -106,6 +106,7 @@ Required variables:
 | `OPENAI_BASE_URL` | API base URL | `https://openrouter.ai/api/v1` |
 | `OPENAI_FALLBACK_MODEL` | Fallback model | `openai/gpt-4o-mini-2024-07-18` |
 | `DATABASE_URL` | PostgreSQL connection string | - |
+| `DEBATE_MAX_TOKENS` | Token limit for the full article | `4000` |
 
 ### 3. Set up the database
 
@@ -121,6 +122,12 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Learning mode
+
+`/learn` is a learning path on Aquinas's philosophy and its context: 9 modules and 19 lessons (ES/EN) in `src/data/learning/`. Each lesson has key ideas, a glossary, a primary text fetched live from the corpus (`/api/learn/source/[id]`), a quiz with explanations, questions that open a disputation (`/?q=...`) and a Socratic AI tutor (`POST /api/learn/tutor`, streamed plain text). Progress and tutor conversations are stored in the browser.
+
+When adding a lesson, add it to both `es.ts` and `en.ts`: `src/lib/learning/curriculum.test.ts` checks that ids, quiz answers and primary texts match.
 
 ## GraphDB Setup (Optional)
 
