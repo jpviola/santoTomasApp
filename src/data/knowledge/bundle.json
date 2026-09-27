@@ -1,0 +1,5250 @@
+{
+  "okfVersion": "0.2",
+  "articles": [
+    {
+      "id": "dee-c4",
+      "title": "On being and essence, chapter 4",
+      "description": "Aquinas argues that we can understand what something is without knowing whether it exists, so in creatures existence (esse) is other than essence.",
+      "citation": "De ente et essentia, c.4",
+      "work": "de-ente-et-essentia",
+      "text": "Aquinas argues that we can understand what something is without knowing whether it exists, so in creatures existence (esse) is other than essence. There can be only one being whose essence is its very existence, and it is the first cause from which all others receive their being.",
+      "concepts": [
+        "ente",
+        "esse",
+        "esencia",
+        "dios"
+      ],
+      "keywords": [
+        "being",
+        "essence",
+        "existence",
+        "real distinction",
+        "esse",
+        "phoenix",
+        "ser",
+        "esencia",
+        "existencia",
+        "distincion real",
+        "ente"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "dr-i-c1",
+      "title": "On kingship, book I, chapter 1",
+      "description": "Man is by nature a social and political animal, living in a multitude, because he cannot provide sufficiently for his life alone and has language to communicate with others.",
+      "citation": "De regno, I, c.1",
+      "work": "de-regno",
+      "text": "Man is by nature a social and political animal, living in a multitude, because he cannot provide sufficiently for his life alone and has language to communicate with others. A multitude needs a governing principle directed to the common good; a government is just when it seeks the common good and unjust when it seeks the private good of the ruler.",
+      "concepts": [
+        "autoridad-politica",
+        "bien-comun"
+      ],
+      "keywords": [
+        "politics",
+        "social animal",
+        "government",
+        "common good",
+        "tyranny",
+        "monarchy",
+        "politica",
+        "animal social",
+        "gobierno",
+        "bien comun",
+        "tirania",
+        "monarquia"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "dv-q1-a1",
+      "title": "What is truth",
+      "description": "Aquinas derives the transcendentals (thing, one, something, good, true) from being.",
+      "citation": "De veritate, q.1, a.1",
+      "work": "de-veritate",
+      "text": "Aquinas derives the transcendentals (thing, one, something, good, true) from being. The true adds to being a relation of conformity to the intellect; hence truth is defined as the adequation of thing and intellect (adaequatio rei et intellectus), and knowledge is an effect of truth.",
+      "concepts": [
+        "verdad",
+        "trascendentales"
+      ],
+      "keywords": [
+        "truth",
+        "definition",
+        "transcendentals",
+        "adequation",
+        "being",
+        "verdad",
+        "definicion",
+        "trascendentales",
+        "adecuacion",
+        "ente"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "scg-i-c7",
+      "title": "That the truth of reason is not opposed to the truth of the Christian faith",
+      "description": "Aquinas holds that what reason naturally knows cannot be contrary to the truth of faith, since both come from God, the author of our nature and of revelation.",
+      "citation": "SCG I, c.7",
+      "work": "summa-contra-gentiles",
+      "text": "Aquinas holds that what reason naturally knows cannot be contrary to the truth of faith, since both come from God, the author of our nature and of revelation. Arguments brought against the faith therefore do not proceed from first principles known by nature and can be shown to be either false or not necessary.",
+      "concepts": [
+        "fe-y-razon"
+      ],
+      "keywords": [
+        "faith",
+        "reason",
+        "contradiction",
+        "truth",
+        "conflict",
+        "science",
+        "fe",
+        "razon",
+        "contradiccion",
+        "verdad",
+        "conflicto",
+        "ciencia"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "scg-iii-c37",
+      "title": "That the ultimate happiness of man consists in the contemplation of God",
+      "description": "Man's ultimate happiness does not consist in moral actions, which are ordered to something further, but in the contemplation of truth, and specifically in the contemplation of God, to which all human operations seem…",
+      "citation": "SCG III, c.37",
+      "work": "summa-contra-gentiles",
+      "text": "Man's ultimate happiness does not consist in moral actions, which are ordered to something further, but in the contemplation of truth, and specifically in the contemplation of God, to which all human operations seem to be directed as to their end.",
+      "concepts": [
+        "felicidad",
+        "vida-contemplativa"
+      ],
+      "keywords": [
+        "happiness",
+        "contemplation",
+        "truth",
+        "god",
+        "felicidad",
+        "contemplacion",
+        "verdad",
+        "dios"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q1-a1",
+      "title": "Whether it belongs to man to act for an end",
+      "description": "Properly human acts are those that proceed from deliberate will, and the object of the will is the end and the good.",
+      "citation": "ST I-II, q.1, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2001.htm#article1",
+      "text": "Properly human acts are those that proceed from deliberate will, and the object of the will is the end and the good. Therefore every properly human action is for the sake of an end.",
+      "concepts": [
+        "fin-ultimo",
+        "acto-humano"
+      ],
+      "keywords": [
+        "end",
+        "purpose",
+        "action",
+        "goal",
+        "meaning",
+        "fin",
+        "proposito",
+        "accion",
+        "meta",
+        "sentido"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q1-a4",
+      "title": "Whether there is a last end of human life",
+      "description": "There cannot be an infinite series of ends, since then nothing would be desired and no action would begin or terminate.",
+      "citation": "ST I-II, q.1, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2001.htm#article4",
+      "text": "There cannot be an infinite series of ends, since then nothing would be desired and no action would begin or terminate. There is therefore an ultimate end of human life, for the sake of which all else is desired.",
+      "concepts": [
+        "fin-ultimo",
+        "felicidad"
+      ],
+      "keywords": [
+        "last end",
+        "ultimate end",
+        "meaning of life",
+        "purpose",
+        "infinite",
+        "fin ultimo",
+        "sentido de la vida",
+        "proposito",
+        "infinito"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q109-a2",
+      "title": "Whether man can will and do good without grace",
+      "description": "In the state of fallen nature man can, by his natural powers, do some particular good, such as building houses or planting vineyards, but he cannot do the whole good connatural to him without the healing of grace,…",
+      "citation": "ST I-II, q.109, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2109.htm#article2",
+      "text": "In the state of fallen nature man can, by his natural powers, do some particular good, such as building houses or planting vineyards, but he cannot do the whole good connatural to him without the healing of grace, and he cannot do meritorious supernatural good without grace at all.",
+      "concepts": [
+        "gracia",
+        "pecado"
+      ],
+      "keywords": [
+        "grace",
+        "nature",
+        "good works",
+        "sin",
+        "fallen nature",
+        "gracia",
+        "naturaleza",
+        "buenas obras",
+        "pecado",
+        "naturaleza caida"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q18-a4",
+      "title": "Whether the goodness or malice of a human action depends on the end",
+      "description": "A human act has a fourfold goodness: generic, as an action;",
+      "citation": "ST I-II, q.18, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2018.htm#article4",
+      "text": "A human act has a fourfold goodness: generic, as an action; specific, from its object; from its circumstances; and from its end. An action is good simply only if it is good in all these respects; any single defect makes it evil, so a good end does not justify an evil object.",
+      "concepts": [
+        "acto-humano"
+      ],
+      "keywords": [
+        "morality",
+        "object",
+        "end",
+        "intention",
+        "circumstances",
+        "ends justify means",
+        "moralidad",
+        "objeto",
+        "fin",
+        "intencion",
+        "circunstancias",
+        "el fin justifica los medios"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q19-a5",
+      "title": "Whether the will is evil when it is at variance with erring reason",
+      "description": "Every conscience, whether right or erring, binds: whoever acts against the judgment of his reason, even if mistaken, has an evil will, because he wills what he apprehends as evil.",
+      "citation": "ST I-II, q.19, a.5",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2019.htm#article5",
+      "text": "Every conscience, whether right or erring, binds: whoever acts against the judgment of his reason, even if mistaken, has an evil will, because he wills what he apprehends as evil.",
+      "concepts": [
+        "conciencia",
+        "voluntad"
+      ],
+      "keywords": [
+        "conscience",
+        "erring",
+        "error",
+        "obey",
+        "binding",
+        "conciencia",
+        "erronea",
+        "error",
+        "obedecer",
+        "obliga"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q19-a6",
+      "title": "Whether the will is good when it abides by erring reason",
+      "description": "Following an erring conscience excuses from sin only if the error is involuntary and not culpable.",
+      "citation": "ST I-II, q.19, a.6",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2019.htm#article6",
+      "text": "Following an erring conscience excuses from sin only if the error is involuntary and not culpable. If the ignorance is voluntary, directly or through negligence, the act done in accordance with it is not excused.",
+      "concepts": [
+        "conciencia",
+        "voluntad"
+      ],
+      "keywords": [
+        "conscience",
+        "ignorance",
+        "excuse",
+        "negligence",
+        "guilt",
+        "conciencia",
+        "ignorancia",
+        "excusa",
+        "negligencia",
+        "culpa"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q2-a8",
+      "title": "Whether any created good constitutes man's happiness",
+      "description": "After showing that happiness consists neither in wealth, honor, fame, power, bodily goods nor pleasure, Aquinas concludes that no created good can constitute happiness.",
+      "citation": "ST I-II, q.2, a.8",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2002.htm#article8",
+      "text": "After showing that happiness consists neither in wealth, honor, fame, power, bodily goods nor pleasure, Aquinas concludes that no created good can constitute happiness. Happiness is the perfect good that fully satisfies desire, and the object of the will is universal good, found only in God.",
+      "concepts": [
+        "felicidad",
+        "bien",
+        "dios"
+      ],
+      "keywords": [
+        "happiness",
+        "wealth",
+        "pleasure",
+        "honor",
+        "power",
+        "fame",
+        "money",
+        "felicidad",
+        "riqueza",
+        "placer",
+        "honor",
+        "poder",
+        "fama",
+        "dinero"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q26-a4",
+      "title": "Whether love is properly divided into love of friendship and love of concupiscence",
+      "description": "To love is to will good to someone.",
+      "citation": "ST I-II, q.26, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2026.htm#article4",
+      "text": "To love is to will good to someone. Love tends to two things: the good one wills, and the person for whom one wills it. The love by which one loves someone for his own sake is love of friendship; the love by which one loves a good for another is love of concupiscence.",
+      "concepts": [
+        "amor"
+      ],
+      "keywords": [
+        "love",
+        "friendship",
+        "desire",
+        "concupiscence",
+        "amor",
+        "amistad",
+        "deseo",
+        "concupiscencia",
+        "amar"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q3-a8",
+      "title": "Whether man's happiness consists in the vision of the divine essence",
+      "description": "Final and perfect happiness can consist only in the vision of the divine essence.",
+      "citation": "ST I-II, q.3, a.8",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2003.htm#article8",
+      "text": "Final and perfect happiness can consist only in the vision of the divine essence. Man is not perfectly happy while something remains for him to desire and seek, and the intellect's natural desire to know the first cause is fulfilled only by knowing what God is.",
+      "concepts": [
+        "felicidad",
+        "dios",
+        "intelecto"
+      ],
+      "keywords": [
+        "happiness",
+        "vision",
+        "god",
+        "contemplation",
+        "beatitude",
+        "felicidad",
+        "vision",
+        "dios",
+        "contemplacion",
+        "beatitud"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q5-a3",
+      "title": "Whether one can be happy in this life",
+      "description": "A certain participation in happiness can be had in this life, but perfect and true happiness cannot, because this life is subject to unavoidable evils and the good desired cannot be possessed without end.",
+      "citation": "ST I-II, q.5, a.3",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2005.htm#article3",
+      "text": "A certain participation in happiness can be had in this life, but perfect and true happiness cannot, because this life is subject to unavoidable evils and the good desired cannot be possessed without end.",
+      "concepts": [
+        "felicidad"
+      ],
+      "keywords": [
+        "happiness",
+        "this life",
+        "imperfect",
+        "suffering",
+        "felicidad",
+        "esta vida",
+        "imperfecta",
+        "sufrimiento"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q5-a5",
+      "title": "Whether man can attain happiness by his natural powers",
+      "description": "Imperfect happiness can be acquired by natural powers, in the way virtue is acquired.",
+      "citation": "ST I-II, q.5, a.5",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2005.htm#article5",
+      "text": "Imperfect happiness can be acquired by natural powers, in the way virtue is acquired. Perfect happiness, the vision of God's essence, exceeds the nature of every creature and can be attained only by God's help.",
+      "concepts": [
+        "felicidad",
+        "gracia"
+      ],
+      "keywords": [
+        "happiness",
+        "natural",
+        "grace",
+        "supernatural",
+        "effort",
+        "felicidad",
+        "natural",
+        "gracia",
+        "sobrenatural",
+        "esfuerzo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q55-a4",
+      "title": "Whether virtue is suitably defined",
+      "description": "Aquinas defends the definition of virtue as a good quality of the mind by which we live righteously, of which no one can make bad use.",
+      "citation": "ST I-II, q.55, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2055.htm#article4",
+      "text": "Aquinas defends the definition of virtue as a good quality of the mind by which we live righteously, of which no one can make bad use. Virtue is an operative habit that perfects a power for good action.",
+      "concepts": [
+        "virtud",
+        "habito"
+      ],
+      "keywords": [
+        "virtue",
+        "definition",
+        "habit",
+        "character",
+        "virtud",
+        "definicion",
+        "habito",
+        "caracter"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q57-a4",
+      "title": "Whether prudence is a distinct virtue from art",
+      "description": "Art is right reason about things to be made (recta ratio factibilium);",
+      "citation": "ST I-II, q.57, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2057.htm#article4",
+      "text": "Art is right reason about things to be made (recta ratio factibilium); prudence is right reason about things to be done (recta ratio agibilium). Prudence requires a right appetite toward ends, so it is a moral as well as an intellectual virtue, whereas art does not require a good will.",
+      "concepts": [
+        "prudencia",
+        "virtud"
+      ],
+      "keywords": [
+        "prudence",
+        "art",
+        "technique",
+        "practical reason",
+        "wisdom",
+        "decision",
+        "prudencia",
+        "arte",
+        "tecnica",
+        "razon practica",
+        "sabiduria",
+        "decision"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q6-a1",
+      "title": "Whether there is anything voluntary in human acts",
+      "description": "The voluntary is what proceeds from an intrinsic principle together with knowledge of the end.",
+      "citation": "ST I-II, q.6, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2006.htm#article1",
+      "text": "The voluntary is what proceeds from an intrinsic principle together with knowledge of the end. Human acts are voluntary in the fullest sense because man knows the end of his action and moves himself toward it.",
+      "concepts": [
+        "acto-humano",
+        "voluntad"
+      ],
+      "keywords": [
+        "voluntary",
+        "human act",
+        "responsibility",
+        "knowledge",
+        "intention",
+        "voluntario",
+        "acto humano",
+        "responsabilidad",
+        "conocimiento",
+        "intencion"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q61-a2",
+      "title": "Whether there are four cardinal virtues",
+      "description": "There are four cardinal virtues: prudence perfects reason itself;",
+      "citation": "ST I-II, q.61, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2061.htm#article2",
+      "text": "There are four cardinal virtues: prudence perfects reason itself; justice rectifies operations toward others; temperance moderates the passions that draw us away from reason; fortitude strengthens us against passions that hold us back from following reason.",
+      "concepts": [
+        "virtud",
+        "virtudes-cardinales"
+      ],
+      "keywords": [
+        "cardinal virtues",
+        "prudence",
+        "justice",
+        "temperance",
+        "fortitude",
+        "courage",
+        "virtudes cardinales",
+        "prudencia",
+        "justicia",
+        "templanza",
+        "fortaleza",
+        "coraje"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q62-a1",
+      "title": "Whether there are any theological virtues",
+      "description": "Because man is ordered to a supernatural happiness exceeding his nature, God infuses additional principles: the theological virtues of faith, hope and charity, which have God as their object, are infused by God…",
+      "citation": "ST I-II, q.62, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2062.htm#article1",
+      "text": "Because man is ordered to a supernatural happiness exceeding his nature, God infuses additional principles: the theological virtues of faith, hope and charity, which have God as their object, are infused by God alone, and are made known only by revelation.",
+      "concepts": [
+        "virtud",
+        "virtudes-teologales",
+        "gracia"
+      ],
+      "keywords": [
+        "theological virtues",
+        "faith",
+        "hope",
+        "charity",
+        "infused",
+        "virtudes teologales",
+        "fe",
+        "esperanza",
+        "caridad",
+        "infusas"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q64-a1",
+      "title": "Whether moral virtues observe the mean",
+      "description": "Moral virtue consists in a mean between excess and defect, measured by right reason.",
+      "citation": "ST I-II, q.64, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2064.htm#article1",
+      "text": "Moral virtue consists in a mean between excess and defect, measured by right reason. The mean is not mediocrity but conformity with the rule of reason; with respect to its conformity to reason, virtue is an extreme.",
+      "concepts": [
+        "virtud",
+        "razon"
+      ],
+      "keywords": [
+        "mean",
+        "golden mean",
+        "excess",
+        "defect",
+        "moderation",
+        "aristotle",
+        "termino medio",
+        "exceso",
+        "defecto",
+        "moderacion",
+        "aristoteles"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q65-a1",
+      "title": "Whether the moral virtues are connected with one another",
+      "description": "Perfect moral virtues are connected, because none can exist without prudence, and prudence cannot exist without the moral virtues that rightly dispose us toward ends.",
+      "citation": "ST I-II, q.65, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2065.htm#article1",
+      "text": "Perfect moral virtues are connected, because none can exist without prudence, and prudence cannot exist without the moral virtues that rightly dispose us toward ends. Imperfect virtues, mere inclinations to good acts, can exist separately.",
+      "concepts": [
+        "virtud",
+        "prudencia"
+      ],
+      "keywords": [
+        "virtues",
+        "connection",
+        "unity",
+        "prudence",
+        "character",
+        "virtudes",
+        "conexion",
+        "unidad",
+        "prudencia",
+        "caracter"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q90-a1",
+      "title": "Whether law is something pertaining to reason",
+      "description": "Law is a rule and measure of acts by which one is induced to act or restrained from acting.",
+      "citation": "ST I-II, q.90, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2090.htm#article1",
+      "text": "Law is a rule and measure of acts by which one is induced to act or restrained from acting. Since the rule of human acts is reason, law pertains to reason; the will of the ruler has the force of law only insofar as it is regulated by reason.",
+      "concepts": [
+        "ley",
+        "razon"
+      ],
+      "keywords": [
+        "law",
+        "reason",
+        "will",
+        "rule",
+        "voluntarism",
+        "ley",
+        "razon",
+        "voluntad",
+        "regla",
+        "voluntarismo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q90-a4",
+      "title": "Whether promulgation is essential to a law",
+      "description": "Gathering the preceding articles, Aquinas defines law as an ordinance of reason for the common good, made by him who has care of the community, and promulgated (quaedam rationis ordinatio ad bonum commune, ab eo qui…",
+      "citation": "ST I-II, q.90, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2090.htm#article4",
+      "text": "Gathering the preceding articles, Aquinas defines law as an ordinance of reason for the common good, made by him who has care of the community, and promulgated (quaedam rationis ordinatio ad bonum commune, ab eo qui curam communitatis habet, promulgata).",
+      "concepts": [
+        "ley",
+        "bien-comun"
+      ],
+      "keywords": [
+        "law",
+        "definition",
+        "common good",
+        "promulgation",
+        "authority",
+        "ley",
+        "definicion",
+        "bien comun",
+        "promulgacion",
+        "autoridad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q91-a1",
+      "title": "Whether there is an eternal law",
+      "description": "The whole universe is governed by divine reason.",
+      "citation": "ST I-II, q.91, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2091.htm#article1",
+      "text": "The whole universe is governed by divine reason. The very idea of the government of things in God, the ruler of the universe, has the nature of a law, and since it is not conceived in time it is called the eternal law.",
+      "concepts": [
+        "ley",
+        "ley-eterna",
+        "providencia"
+      ],
+      "keywords": [
+        "eternal law",
+        "divine reason",
+        "government",
+        "order",
+        "universe",
+        "ley eterna",
+        "razon divina",
+        "gobierno",
+        "orden",
+        "universo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q91-a2",
+      "title": "Whether there is in us a natural law",
+      "description": "The rational creature is subject to divine providence in a more excellent way, being itself provident for itself and others.",
+      "citation": "ST I-II, q.91, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2091.htm#article2",
+      "text": "The rational creature is subject to divine providence in a more excellent way, being itself provident for itself and others. It shares in the eternal reason, which gives it a natural inclination to its proper act and end, and this participation of the eternal law in the rational creature is called the natural law.",
+      "concepts": [
+        "ley-natural",
+        "ley-eterna"
+      ],
+      "keywords": [
+        "natural law",
+        "participation",
+        "eternal law",
+        "reason",
+        "morality",
+        "ley natural",
+        "participacion",
+        "ley eterna",
+        "razon",
+        "moralidad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q94-a2",
+      "title": "Whether the natural law contains several precepts, or only one",
+      "description": "The first principle of practical reason is that good is to be done and pursued and evil avoided (bonum est faciendum et prosequendum, et malum vitandum).",
+      "citation": "ST I-II, q.94, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2094.htm#article2",
+      "text": "The first principle of practical reason is that good is to be done and pursued and evil avoided (bonum est faciendum et prosequendum, et malum vitandum). The precepts of natural law follow the order of natural inclinations: to preserve one's being, to the union of male and female and the education of offspring, and, proper to reason, to know the truth about God and to live in society.",
+      "concepts": [
+        "ley-natural",
+        "bien",
+        "sinderesis"
+      ],
+      "keywords": [
+        "natural law",
+        "precepts",
+        "first principle",
+        "good",
+        "inclinations",
+        "ethics",
+        "ley natural",
+        "preceptos",
+        "primer principio",
+        "bien",
+        "inclinaciones",
+        "etica"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q94-a4",
+      "title": "Whether the natural law is the same in all men",
+      "description": "The common principles of natural law are the same for all, both as to rectitude and as to knowledge.",
+      "citation": "ST I-II, q.94, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2094.htm#article4",
+      "text": "The common principles of natural law are the same for all, both as to rectitude and as to knowledge. The more particular conclusions are the same for most, but may fail in some cases, and their knowledge can be distorted by passion, bad custom or evil disposition.",
+      "concepts": [
+        "ley-natural"
+      ],
+      "keywords": [
+        "natural law",
+        "universal",
+        "relativism",
+        "culture",
+        "same for all",
+        "ley natural",
+        "universal",
+        "relativismo",
+        "cultura",
+        "igual para todos"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q95-a2",
+      "title": "Whether every human law is derived from the natural law",
+      "description": "Every human law has the nature of law insofar as it is derived from the natural law, either as a conclusion from premises (such as 'do not kill') or as a determination of something general (such as the particular…",
+      "citation": "ST I-II, q.95, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2095.htm#article2",
+      "text": "Every human law has the nature of law insofar as it is derived from the natural law, either as a conclusion from premises (such as 'do not kill') or as a determination of something general (such as the particular penalty for a crime). A law that deviates from natural law is no longer a law but a perversion of law.",
+      "concepts": [
+        "ley-humana",
+        "ley-natural"
+      ],
+      "keywords": [
+        "human law",
+        "positive law",
+        "derivation",
+        "determination",
+        "legislation",
+        "ley humana",
+        "derecho positivo",
+        "derivacion",
+        "determinacion",
+        "legislacion"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q96-a2",
+      "title": "Whether it belongs to human law to repress all vices",
+      "description": "Human law is framed for the multitude, most of whom are not perfect in virtue.",
+      "citation": "ST I-II, q.96, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2096.htm#article2",
+      "text": "Human law is framed for the multitude, most of whom are not perfect in virtue. It therefore does not forbid all vices, but only the more grievous ones from which most can abstain, especially those harmful to others and without whose prohibition society could not be maintained.",
+      "concepts": [
+        "ley-humana",
+        "bien-comun"
+      ],
+      "keywords": [
+        "law",
+        "vice",
+        "morality",
+        "legislation",
+        "tolerance",
+        "prohibition",
+        "ley",
+        "vicio",
+        "moralidad",
+        "legislacion",
+        "tolerancia",
+        "prohibicion"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-ii-q96-a4",
+      "title": "Whether human law binds a man in conscience",
+      "description": "Just laws bind in conscience.",
+      "citation": "ST I-II, q.96, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/2096.htm#article4",
+      "text": "Just laws bind in conscience. Laws are unjust when contrary to the human good (by their end, author or form) or contrary to the divine good. Laws of the first kind are acts of violence rather than laws and do not bind in conscience, except perhaps to avoid scandal or disturbance; laws of the second kind must never be obeyed.",
+      "concepts": [
+        "ley-humana",
+        "conciencia",
+        "justicia"
+      ],
+      "keywords": [
+        "unjust law",
+        "civil disobedience",
+        "obedience",
+        "conscience",
+        "tyranny",
+        "ley injusta",
+        "desobediencia civil",
+        "obediencia",
+        "conciencia",
+        "tirania"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q1-a1",
+      "title": "Whether, besides philosophy, any further doctrine is required",
+      "description": "Aquinas argues that a revealed doctrine is necessary because man is directed to God as to an end that surpasses the grasp of reason.",
+      "citation": "ST I, q.1, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1001.htm#article1",
+      "text": "Aquinas argues that a revealed doctrine is necessary because man is directed to God as to an end that surpasses the grasp of reason. Even those truths about God that reason can reach would otherwise be known only by a few, after a long time, and with an admixture of many errors.",
+      "concepts": [
+        "fe-y-razon",
+        "teologia",
+        "preambulos-de-la-fe"
+      ],
+      "keywords": [
+        "revelation",
+        "philosophy",
+        "theology",
+        "reason",
+        "faith",
+        "necessity",
+        "revelacion",
+        "filosofia",
+        "teologia",
+        "razon",
+        "fe",
+        "necesidad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q1-a8",
+      "title": "Whether sacred doctrine is a matter of argument",
+      "description": "Sacred doctrine argues from the articles of faith as its principles and can answer objections against them.",
+      "citation": "ST I, q.1, a.8",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1001.htm#article8",
+      "text": "Sacred doctrine argues from the articles of faith as its principles and can answer objections against them. Because grace does not destroy nature but perfects it (gratia non tollit naturam, sed perficit), natural reason is placed at the service of faith, and the philosophers may be cited where they reached the truth by reason.",
+      "concepts": [
+        "fe-y-razon",
+        "gracia"
+      ],
+      "keywords": [
+        "argument",
+        "grace",
+        "nature",
+        "perfects",
+        "reason",
+        "faith",
+        "authority",
+        "argumento",
+        "gracia",
+        "naturaleza",
+        "perfecciona",
+        "razon",
+        "fe",
+        "autoridad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q12-a1",
+      "title": "Whether any created intellect can see the essence of God",
+      "description": "The created intellect can see God's essence, for otherwise the natural desire to know the cause of what we see would be in vain and our ultimate happiness would be impossible.",
+      "citation": "ST I, q.12, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1012.htm#article1",
+      "text": "The created intellect can see God's essence, for otherwise the natural desire to know the cause of what we see would be in vain and our ultimate happiness would be impossible. This vision exceeds nature and is given by the light of glory.",
+      "concepts": [
+        "dios",
+        "felicidad",
+        "intelecto"
+      ],
+      "keywords": [
+        "vision",
+        "god",
+        "essence",
+        "beatific",
+        "natural desire",
+        "heaven",
+        "vision",
+        "dios",
+        "esencia",
+        "beatifica",
+        "deseo natural",
+        "cielo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q12-a12",
+      "title": "Whether God can be known in this life by natural reason",
+      "description": "Our natural knowledge begins from the senses, so reason can know of God only what can be known from sensible effects: that he exists, that he is the first cause of all things, and that he differs from all things he…",
+      "citation": "ST I, q.12, a.12",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1012.htm#article12",
+      "text": "Our natural knowledge begins from the senses, so reason can know of God only what can be known from sensible effects: that he exists, that he is the first cause of all things, and that he differs from all things he causes. It cannot know his essence.",
+      "concepts": [
+        "dios",
+        "conocimiento",
+        "simplicidad-divina"
+      ],
+      "keywords": [
+        "know",
+        "god",
+        "natural reason",
+        "knowledge",
+        "limits",
+        "essence",
+        "conocer",
+        "dios",
+        "razon natural",
+        "conocimiento",
+        "limites",
+        "esencia"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q13-a5",
+      "title": "Whether what is said of God and of creatures is univocally predicated of them",
+      "description": "Names such as 'good' or 'wise' are said of God and creatures neither univocally nor purely equivocally, but analogically, according to proportion: the perfection exists in God primarily and in creatures by participation.",
+      "citation": "ST I, q.13, a.5",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1013.htm#article5",
+      "text": "Names such as 'good' or 'wise' are said of God and creatures neither univocally nor purely equivocally, but analogically, according to proportion: the perfection exists in God primarily and in creatures by participation. This avoids both anthropomorphism and agnosticism.",
+      "concepts": [
+        "ente",
+        "analogia",
+        "dios"
+      ],
+      "keywords": [
+        "analogy",
+        "univocal",
+        "equivocal",
+        "language",
+        "names",
+        "god",
+        "predication",
+        "analogia",
+        "univoco",
+        "equivoco",
+        "lenguaje",
+        "nombres",
+        "dios",
+        "predicacion"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q14-a1",
+      "title": "Whether there is knowledge in God",
+      "description": "Knowing beings differ from non-knowing beings in that they can possess the form of another thing as well as their own.",
+      "citation": "ST I, q.14, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1014.htm#article1",
+      "text": "Knowing beings differ from non-knowing beings in that they can possess the form of another thing as well as their own. Immateriality is thus the reason why something is cognitive, and the degree of knowledge follows the degree of immateriality; God, supremely immaterial, is supremely knowing.",
+      "concepts": [
+        "conocimiento",
+        "dios"
+      ],
+      "keywords": [
+        "knowledge",
+        "immateriality",
+        "cognition",
+        "god",
+        "knowing",
+        "artificial intelligence",
+        "conocimiento",
+        "inmaterialidad",
+        "cognicion",
+        "dios",
+        "conocer",
+        "inteligencia artificial"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q16-a1",
+      "title": "Whether truth resides only in the intellect",
+      "description": "Truth is found primarily in the intellect and secondarily in things, insofar as they are related to an intellect.",
+      "citation": "ST I, q.16, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1016.htm#article1",
+      "text": "Truth is found primarily in the intellect and secondarily in things, insofar as they are related to an intellect. Truth is the conformity (adaequatio) of intellect and thing; natural things are true in relation to the divine intellect that measures them.",
+      "concepts": [
+        "verdad",
+        "intelecto"
+      ],
+      "keywords": [
+        "truth",
+        "intellect",
+        "correspondence",
+        "conformity",
+        "relativism",
+        "verdad",
+        "intelecto",
+        "correspondencia",
+        "conformidad",
+        "relativismo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q19-a8",
+      "title": "Whether the will of God imposes necessity on the things willed",
+      "description": "Because the divine will is supremely efficacious, not only do the things God wills come about, but they come about in the way he wills: some necessarily and some contingently.",
+      "citation": "ST I, q.19, a.8",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1019.htm#article8",
+      "text": "Because the divine will is supremely efficacious, not only do the things God wills come about, but they come about in the way he wills: some necessarily and some contingently. God therefore prepared contingent causes for some effects, so divine will does not abolish contingency or human freedom.",
+      "concepts": [
+        "dios",
+        "voluntad",
+        "providencia"
+      ],
+      "keywords": [
+        "will of god",
+        "necessity",
+        "contingency",
+        "freedom",
+        "determinism",
+        "voluntad de dios",
+        "necesidad",
+        "contingencia",
+        "libertad",
+        "determinismo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q2-a1",
+      "title": "Whether the existence of God is self-evident",
+      "description": "A proposition can be self-evident in itself but not to us.",
+      "citation": "ST I, q.2, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1002.htm#article1",
+      "text": "A proposition can be self-evident in itself but not to us. 'God exists' is self-evident in itself, because in God essence and existence are the same, but it is not self-evident to us, since we do not know God's essence; it must be demonstrated from effects better known to us. Aquinas thereby rejects the argument later called ontological.",
+      "concepts": [
+        "dios",
+        "esse",
+        "cinco-vias"
+      ],
+      "keywords": [
+        "god",
+        "existence",
+        "self-evident",
+        "ontological",
+        "anselm",
+        "dios",
+        "existencia",
+        "evidente",
+        "ontologico",
+        "anselmo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q2-a2",
+      "title": "Whether it can be demonstrated that God exists",
+      "description": "There are two kinds of demonstration: from the cause (propter quid) and from the effect (quia).",
+      "citation": "ST I, q.2, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1002.htm#article2",
+      "text": "There are two kinds of demonstration: from the cause (propter quid) and from the effect (quia). From effects known to us we can demonstrate that God exists, although not what he is. The existence of God is therefore a preamble to the articles of faith, not an article of faith itself.",
+      "concepts": [
+        "dios",
+        "fe-y-razon",
+        "preambulos-de-la-fe",
+        "cinco-vias"
+      ],
+      "keywords": [
+        "god",
+        "existence",
+        "demonstration",
+        "proof",
+        "effects",
+        "preambles",
+        "dios",
+        "existencia",
+        "demostracion",
+        "prueba",
+        "efectos",
+        "preambulos"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q2-a3",
+      "title": "Whether God exists (the five ways)",
+      "description": "The five ways proceed from motion, efficient causality, contingency, gradation of perfection, and the governance of things.",
+      "citation": "ST I, q.2, a.3",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1002.htm#article3",
+      "text": "The five ways proceed from motion, efficient causality, contingency, gradation of perfection, and the governance of things. Each argues that an essentially ordered series cannot proceed to infinity and must depend on a first: an unmoved mover, a first efficient cause, a necessary being, a maximum in being and goodness, and an intelligence directing natural things to their end. To the objection from evil he replies, with Augustine, that God would not permit evil unless he could bring good out of it.",
+      "concepts": [
+        "dios",
+        "causa",
+        "acto-y-potencia",
+        "cinco-vias"
+      ],
+      "keywords": [
+        "god",
+        "exists",
+        "five ways",
+        "motion",
+        "cause",
+        "contingency",
+        "necessary",
+        "design",
+        "evil",
+        "dios",
+        "existe",
+        "cinco vias",
+        "movimiento",
+        "causa",
+        "contingencia",
+        "necesario",
+        "diseno",
+        "mal"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q20-a2",
+      "title": "Whether God loves all things",
+      "description": "God loves all existing things, since to love is to will good to someone and God's will is the cause of all goodness in things.",
+      "citation": "ST I, q.20, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1020.htm#article2",
+      "text": "God loves all existing things, since to love is to will good to someone and God's will is the cause of all goodness in things. Unlike our love, which is moved by the goodness of its object, God's love infuses and creates goodness in things.",
+      "concepts": [
+        "dios",
+        "amor"
+      ],
+      "keywords": [
+        "god",
+        "love",
+        "creation",
+        "goodness",
+        "dios",
+        "amor",
+        "ama",
+        "creacion",
+        "bondad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q22-a2",
+      "title": "Whether everything is subject to the providence of God",
+      "description": "All things, even individual and contingent events, are subject to divine providence, because God's causality extends to everything that has being.",
+      "citation": "ST I, q.22, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1022.htm#article2",
+      "text": "All things, even individual and contingent events, are subject to divine providence, because God's causality extends to everything that has being. Providence does not remove secondary causes or chance at their own level, and God permits some particular defects for the good of the whole.",
+      "concepts": [
+        "providencia",
+        "dios",
+        "mal"
+      ],
+      "keywords": [
+        "providence",
+        "chance",
+        "fate",
+        "evil",
+        "government",
+        "providencia",
+        "azar",
+        "destino",
+        "mal",
+        "gobierno"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q25-a3",
+      "title": "Whether God is omnipotent",
+      "description": "God can do all things that are possible absolutely, that is, whatever does not imply a contradiction.",
+      "citation": "ST I, q.25, a.3",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1025.htm#article3",
+      "text": "God can do all things that are possible absolutely, that is, whatever does not imply a contradiction. What implies a contradiction is not a thing that God cannot do, but nothing at all; so it is better to say that such things cannot be done than that God cannot do them.",
+      "concepts": [
+        "dios",
+        "omnipotencia"
+      ],
+      "keywords": [
+        "omnipotence",
+        "power",
+        "contradiction",
+        "possible",
+        "stone",
+        "omnipotencia",
+        "poder",
+        "contradiccion",
+        "posible",
+        "piedra"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q29-a1",
+      "title": "The definition of person",
+      "description": "Aquinas accepts Boethius's definition of person as an individual substance of a rational nature.",
+      "citation": "ST I, q.29, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1029.htm#article1",
+      "text": "Aquinas accepts Boethius's definition of person as an individual substance of a rational nature. The rational being has dominion over its own actions and acts of itself, so it deserves a special name: person.",
+      "concepts": [
+        "persona",
+        "alma"
+      ],
+      "keywords": [
+        "person",
+        "definition",
+        "boethius",
+        "rational",
+        "individual",
+        "dignity",
+        "persona",
+        "definicion",
+        "boecio",
+        "racional",
+        "individuo",
+        "dignidad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q3-a4",
+      "title": "Whether essence and existence are the same in God",
+      "description": "In God essence and existence (esse) are identical: God does not have being, he is his own act of being.",
+      "citation": "ST I, q.3, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1003.htm#article4",
+      "text": "In God essence and existence (esse) are identical: God does not have being, he is his own act of being. In every creature existence is received from another, so essence and esse differ; God alone is ipsum esse subsistens, subsistent being itself.",
+      "concepts": [
+        "dios",
+        "esse",
+        "esencia"
+      ],
+      "keywords": [
+        "essence",
+        "existence",
+        "being",
+        "esse",
+        "god",
+        "simplicity",
+        "esencia",
+        "existencia",
+        "ser",
+        "dios",
+        "simplicidad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q3-a7",
+      "title": "Whether God is altogether simple",
+      "description": "God is absolutely simple: he is not composed of parts, of matter and form, of essence and existence, of genus and difference, or of substance and accidents.",
+      "citation": "ST I, q.3, a.7",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1003.htm#article7",
+      "text": "God is absolutely simple: he is not composed of parts, of matter and form, of essence and existence, of genus and difference, or of substance and accidents. Every composite is posterior to its components and depends on them, whereas God is the first being.",
+      "concepts": [
+        "dios",
+        "simplicidad-divina"
+      ],
+      "keywords": [
+        "god",
+        "simple",
+        "simplicity",
+        "composition",
+        "parts",
+        "attributes",
+        "dios",
+        "simple",
+        "simplicidad",
+        "composicion",
+        "partes",
+        "atributos"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q44-a1",
+      "title": "Whether it is necessary that every being be created by God",
+      "description": "Whatever is found in something by participation must be caused by that to which it belongs essentially.",
+      "citation": "ST I, q.44, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1044.htm#article1",
+      "text": "Whatever is found in something by participation must be caused by that to which it belongs essentially. God alone is subsistent being itself, so every other being participates in being and is caused by God.",
+      "concepts": [
+        "creacion",
+        "participacion",
+        "esse"
+      ],
+      "keywords": [
+        "creation",
+        "participation",
+        "being",
+        "cause",
+        "created",
+        "creacion",
+        "participacion",
+        "ser",
+        "causa",
+        "creado"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q46-a2",
+      "title": "Whether it is an article of faith that the world began",
+      "description": "That the world had a beginning in time is held by faith alone and cannot be demonstrated, just as its eternity cannot be demonstrated.",
+      "citation": "ST I, q.46, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1046.htm#article2",
+      "text": "That the world had a beginning in time is held by faith alone and cannot be demonstrated, just as its eternity cannot be demonstrated. Aquinas warns that trying to prove it with weak arguments exposes the faith to ridicule by unbelievers.",
+      "concepts": [
+        "creacion",
+        "fe-y-razon"
+      ],
+      "keywords": [
+        "world",
+        "beginning",
+        "eternity",
+        "creation",
+        "time",
+        "universe",
+        "big bang",
+        "mundo",
+        "comienzo",
+        "eternidad",
+        "creacion",
+        "tiempo",
+        "universo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q48-a1",
+      "title": "Whether evil is a nature",
+      "description": "Evil is not a being, form or nature, but the absence of a good that ought to be present: a privation.",
+      "citation": "ST I, q.48, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1048.htm#article1",
+      "text": "Evil is not a being, form or nature, but the absence of a good that ought to be present: a privation. Since every being as such is good, evil can exist only in a good subject, as blindness exists in an eye.",
+      "concepts": [
+        "mal",
+        "bien"
+      ],
+      "keywords": [
+        "evil",
+        "privation",
+        "suffering",
+        "good",
+        "absence",
+        "problem of evil",
+        "mal",
+        "privacion",
+        "sufrimiento",
+        "bien",
+        "ausencia",
+        "problema del mal"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q5-a1",
+      "title": "Whether goodness differs really from being",
+      "description": "Goodness and being are the same in reality and differ only in idea.",
+      "citation": "ST I, q.5, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1005.htm#article1",
+      "text": "Goodness and being are the same in reality and differ only in idea. Something is good insofar as it is desirable, and desirable insofar as it is perfect, and perfect insofar as it is in act; hence every being, as being, is good.",
+      "concepts": [
+        "ente",
+        "bien",
+        "trascendentales",
+        "esse"
+      ],
+      "keywords": [
+        "good",
+        "goodness",
+        "being",
+        "transcendentals",
+        "desirable",
+        "perfection",
+        "bien",
+        "bondad",
+        "ser",
+        "trascendentales",
+        "deseable",
+        "perfeccion"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q75-a1",
+      "title": "Whether the soul is a body",
+      "description": "The soul is the first principle of life in living things.",
+      "citation": "ST I, q.75, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1075.htm#article1",
+      "text": "The soul is the first principle of life in living things. It is not a body, since no body is alive merely as body; it is the act of a body, as heat is the principle of heating.",
+      "concepts": [
+        "alma",
+        "hilemorfismo"
+      ],
+      "keywords": [
+        "soul",
+        "body",
+        "life",
+        "materialism",
+        "principle",
+        "alma",
+        "cuerpo",
+        "vida",
+        "materialismo",
+        "principio"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q75-a2",
+      "title": "Whether the human soul is something subsistent",
+      "description": "The intellectual principle has an operation of its own in which the body does not share, namely understanding, which can know the natures of all bodies.",
+      "citation": "ST I, q.75, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1075.htm#article2",
+      "text": "The intellectual principle has an operation of its own in which the body does not share, namely understanding, which can know the natures of all bodies. What has an operation of its own has being of its own, so the human soul is something incorporeal and subsistent.",
+      "concepts": [
+        "alma",
+        "intelecto"
+      ],
+      "keywords": [
+        "soul",
+        "subsistent",
+        "immaterial",
+        "intellect",
+        "understanding",
+        "mind",
+        "brain",
+        "alma",
+        "subsistente",
+        "inmaterial",
+        "intelecto",
+        "entender",
+        "mente",
+        "cerebro"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q75-a4",
+      "title": "Whether the soul is man",
+      "description": "Man is not his soul alone but a composite of soul and body, because sensing, which belongs to man, is not an operation of the soul alone.",
+      "citation": "ST I, q.75, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1075.htm#article4",
+      "text": "Man is not his soul alone but a composite of soul and body, because sensing, which belongs to man, is not an operation of the soul alone. Against Plato, the human being is not a soul using a body.",
+      "concepts": [
+        "alma",
+        "hilemorfismo",
+        "persona"
+      ],
+      "keywords": [
+        "soul",
+        "man",
+        "human",
+        "body",
+        "plato",
+        "composite",
+        "alma",
+        "hombre",
+        "humano",
+        "cuerpo",
+        "platon",
+        "compuesto"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q75-a6",
+      "title": "Whether the human soul is incorruptible",
+      "description": "The human soul is incorruptible.",
+      "citation": "ST I, q.75, a.6",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1075.htm#article6",
+      "text": "The human soul is incorruptible. What has being of itself can be corrupted only by itself, and a subsistent form cannot be separated from itself. A sign of this is the natural desire to exist always, which cannot be in vain.",
+      "concepts": [
+        "alma",
+        "inmortalidad"
+      ],
+      "keywords": [
+        "soul",
+        "immortal",
+        "immortality",
+        "incorruptible",
+        "death",
+        "afterlife",
+        "alma",
+        "inmortal",
+        "inmortalidad",
+        "incorruptible",
+        "muerte",
+        "mas alla"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q76-a1",
+      "title": "Whether the intellectual principle is united to the body as its form",
+      "description": "The intellectual principle, which we call mind or intellect, is united to the body as its substantial form.",
+      "citation": "ST I, q.76, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1076.htm#article1",
+      "text": "The intellectual principle, which we call mind or intellect, is united to the body as its substantial form. It is this very man who understands; so the principle by which he understands must be his form, although because of its nobility the power of understanding surpasses the body.",
+      "concepts": [
+        "intelecto",
+        "hilemorfismo",
+        "alma"
+      ],
+      "keywords": [
+        "soul",
+        "form",
+        "body",
+        "hylomorphism",
+        "unity",
+        "mind",
+        "alma",
+        "forma",
+        "cuerpo",
+        "hilemorfismo",
+        "unidad",
+        "mente"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q76-a2",
+      "title": "Whether the intellectual principle is multiplied according to the number of bodies",
+      "description": "Against the Averroist thesis of one intellect for all men, Aquinas argues that each human being has his own intellect: it is impossible for one intellect to belong to many men, since then this man would not…",
+      "citation": "ST I, q.76, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1076.htm#article2",
+      "text": "Against the Averroist thesis of one intellect for all men, Aquinas argues that each human being has his own intellect: it is impossible for one intellect to belong to many men, since then this man would not understand, and understanding would not be his act.",
+      "concepts": [
+        "intelecto",
+        "averroismo",
+        "alma"
+      ],
+      "keywords": [
+        "intellect",
+        "averroes",
+        "averroism",
+        "unity of intellect",
+        "individual",
+        "intelecto",
+        "averroes",
+        "averroismo",
+        "unidad del intelecto",
+        "individuo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q79-a1",
+      "title": "Whether the intellect is a power of the soul",
+      "description": "The intellect is a power of the soul and not the very essence of the soul.",
+      "citation": "ST I, q.79, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1079.htm#article1",
+      "text": "The intellect is a power of the soul and not the very essence of the soul. Only in God is understanding identical with his being; in creatures the power of understanding is distinct from their essence.",
+      "concepts": [
+        "intelecto",
+        "alma"
+      ],
+      "keywords": [
+        "intellect",
+        "power",
+        "soul",
+        "faculty",
+        "intelecto",
+        "potencia",
+        "alma",
+        "facultad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q79-a12",
+      "title": "Whether synderesis is a special power of the soul distinct from the others",
+      "description": "Synderesis is not a power but a natural habit by which we grasp the first principles of practical reason, as the habit of first principles grasps those of speculative reason.",
+      "citation": "ST I, q.79, a.12",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1079.htm#article12",
+      "text": "Synderesis is not a power but a natural habit by which we grasp the first principles of practical reason, as the habit of first principles grasps those of speculative reason. It inclines us to good and murmurs against evil.",
+      "concepts": [
+        "conciencia",
+        "ley-natural",
+        "sinderesis"
+      ],
+      "keywords": [
+        "synderesis",
+        "conscience",
+        "first principles",
+        "moral",
+        "sindéresis",
+        "sinderesis",
+        "conciencia",
+        "primeros principios",
+        "moral"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q79-a13",
+      "title": "Whether conscience is a power",
+      "description": "Conscience is not a power but an act: the application of knowledge to a particular action, by which we judge that something should be done or not done, or has been done well or badly.",
+      "citation": "ST I, q.79, a.13",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1079.htm#article13",
+      "text": "Conscience is not a power but an act: the application of knowledge to a particular action, by which we judge that something should be done or not done, or has been done well or badly.",
+      "concepts": [
+        "conciencia"
+      ],
+      "keywords": [
+        "conscience",
+        "judgment",
+        "act",
+        "moral",
+        "guilt",
+        "conciencia",
+        "juicio",
+        "acto",
+        "moral",
+        "culpa"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q79-a3",
+      "title": "Whether there is an agent intellect",
+      "description": "Because the natures of material things are only potentially intelligible, there must be a power in the soul that makes them actually intelligible by abstracting them from material conditions: the agent intellect.",
+      "citation": "ST I, q.79, a.3",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1079.htm#article3",
+      "text": "Because the natures of material things are only potentially intelligible, there must be a power in the soul that makes them actually intelligible by abstracting them from material conditions: the agent intellect.",
+      "concepts": [
+        "intelecto",
+        "abstraccion"
+      ],
+      "keywords": [
+        "agent intellect",
+        "abstraction",
+        "intelligible",
+        "concepts",
+        "intelecto agente",
+        "abstraccion",
+        "inteligible",
+        "conceptos"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q82-a1",
+      "title": "Whether the will desires something of necessity",
+      "description": "The will necessarily adheres to the last end, happiness, as the intellect necessarily adheres to first principles.",
+      "citation": "ST I, q.82, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1082.htm#article1",
+      "text": "The will necessarily adheres to the last end, happiness, as the intellect necessarily adheres to first principles. This natural necessity is not contrary to the will; only necessity of coercion is.",
+      "concepts": [
+        "voluntad",
+        "felicidad"
+      ],
+      "keywords": [
+        "will",
+        "necessity",
+        "happiness",
+        "desire",
+        "freedom",
+        "voluntad",
+        "necesidad",
+        "felicidad",
+        "deseo",
+        "libertad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q83-a1",
+      "title": "Whether man has free will",
+      "description": "Man has free will because he acts from judgment that is not natural instinct but a comparison made by reason.",
+      "citation": "ST I, q.83, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1083.htm#article1",
+      "text": "Man has free will because he acts from judgment that is not natural instinct but a comparison made by reason. Since reason can consider contingent particulars in different ways, it is not determined to one course, and man is free. Otherwise counsels, exhortations, commands, rewards and punishments would be in vain.",
+      "concepts": [
+        "libre-albedrio",
+        "voluntad",
+        "razon"
+      ],
+      "keywords": [
+        "free will",
+        "freedom",
+        "choice",
+        "determinism",
+        "reason",
+        "libre albedrio",
+        "libertad",
+        "eleccion",
+        "determinismo",
+        "razon"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q84-a6",
+      "title": "Whether intellectual knowledge is derived from sensible things",
+      "description": "Intellectual knowledge takes its beginning from the senses.",
+      "citation": "ST I, q.84, a.6",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1084.htm#article6",
+      "text": "Intellectual knowledge takes its beginning from the senses. Against Plato and against pure empiricism, the sensible image is not the whole and perfect cause of intellectual knowledge but, so to speak, its material cause, made actually intelligible by the agent intellect.",
+      "concepts": [
+        "conocimiento",
+        "intelecto"
+      ],
+      "keywords": [
+        "knowledge",
+        "senses",
+        "empiricism",
+        "experience",
+        "plato",
+        "ideas",
+        "conocimiento",
+        "sentidos",
+        "empirismo",
+        "experiencia",
+        "platon",
+        "ideas"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q84-a7",
+      "title": "Whether the intellect can understand without turning to phantasms",
+      "description": "In the present life the intellect cannot actually understand anything without turning to sense images (conversio ad phantasmata).",
+      "citation": "ST I, q.84, a.7",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1084.htm#article7",
+      "text": "In the present life the intellect cannot actually understand anything without turning to sense images (conversio ad phantasmata). This is shown by the fact that injury to the bodily organs of imagination and memory impedes understanding, and by our experience of forming images when we try to understand.",
+      "concepts": [
+        "conocimiento",
+        "intelecto",
+        "abstraccion"
+      ],
+      "keywords": [
+        "phantasm",
+        "imagination",
+        "images",
+        "brain",
+        "understanding",
+        "fantasma",
+        "imaginacion",
+        "imagenes",
+        "cerebro",
+        "entender"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q85-a2",
+      "title": "Whether the intelligible species abstracted from phantasms are related to our intellect as that which is understood",
+      "description": "The intelligible species is not what is understood but that by which the intellect understands (id quo, not id quod).",
+      "citation": "ST I, q.85, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1085.htm#article2",
+      "text": "The intelligible species is not what is understood but that by which the intellect understands (id quo, not id quod). What we primarily understand is the thing itself; otherwise all knowledge would be only of our own ideas and contradictory opinions would both be true.",
+      "concepts": [
+        "conocimiento",
+        "intelecto",
+        "verdad",
+        "abstraccion"
+      ],
+      "keywords": [
+        "species",
+        "concept",
+        "realism",
+        "idealism",
+        "representation",
+        "knowledge",
+        "especie",
+        "concepto",
+        "realismo",
+        "idealismo",
+        "representacion",
+        "conocimiento"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q93-a4",
+      "title": "Whether the image of God is found in every man",
+      "description": "Man is in the image of God chiefly by his intellectual nature, capable of knowing and loving God.",
+      "citation": "ST I, q.93, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1093.htm#article4",
+      "text": "Man is in the image of God chiefly by his intellectual nature, capable of knowing and loving God. The image exists in three degrees: in the natural aptitude common to all human beings, in the conformity of grace, and in the likeness of glory.",
+      "concepts": [
+        "imagen-de-dios",
+        "persona"
+      ],
+      "keywords": [
+        "image of god",
+        "dignity",
+        "human",
+        "person",
+        "imagen de dios",
+        "dignidad",
+        "humano",
+        "persona"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-i-q96-a4",
+      "title": "Whether in the state of innocence man would have been master over man",
+      "description": "Political authority is natural and not merely a consequence of sin.",
+      "citation": "ST I, q.96, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/1096.htm#article4",
+      "text": "Political authority is natural and not merely a consequence of sin. Even in the state of innocence one would have governed others as free persons, directing them to their own good or the common good, because man is a social animal and social life requires someone to direct it to the common good.",
+      "concepts": [
+        "autoridad-politica",
+        "bien-comun"
+      ],
+      "keywords": [
+        "authority",
+        "government",
+        "politics",
+        "state",
+        "power",
+        "social animal",
+        "autoridad",
+        "gobierno",
+        "politica",
+        "estado",
+        "poder",
+        "animal social"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q10-a8",
+      "title": "Whether unbelievers ought to be compelled to the faith",
+      "description": "Unbelievers who have never received the faith, such as pagans and Jews, must in no way be compelled to believe, because belief is an act of the will.",
+      "citation": "ST II-II, q.10, a.8",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3010.htm#article8",
+      "text": "Unbelievers who have never received the faith, such as pagans and Jews, must in no way be compelled to believe, because belief is an act of the will. Aquinas nevertheless holds, in line with his time, that heretics and apostates who once accepted the faith may be compelled to fulfill what they promised.",
+      "concepts": [
+        "fe",
+        "libre-albedrio"
+      ],
+      "keywords": [
+        "religious freedom",
+        "coercion",
+        "tolerance",
+        "heresy",
+        "conversion",
+        "libertad religiosa",
+        "coaccion",
+        "tolerancia",
+        "herejia",
+        "conversion"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q110-a3",
+      "title": "Whether every lie is a sin",
+      "description": "Every lie is a sin, because words are naturally signs of what is in the mind, and it is unnatural and undue to signify by words what is not in one's mind.",
+      "citation": "ST II-II, q.110, a.3",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3110.htm#article3",
+      "text": "Every lie is a sin, because words are naturally signs of what is in the mind, and it is unnatural and undue to signify by words what is not in one's mind. Lies differ in gravity (developed in the next article), but no lie is lawful, not even one told to help another.",
+      "concepts": [
+        "verdad",
+        "acto-humano"
+      ],
+      "keywords": [
+        "lie",
+        "lying",
+        "truth",
+        "honesty",
+        "deception",
+        "mentira",
+        "mentir",
+        "verdad",
+        "honestidad",
+        "engano"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q188-a6",
+      "title": "Whether a religious order devoted to the contemplative life is more excellent than one given to the active life",
+      "description": "The contemplative life is simply better than the active life, but the work of teaching and preaching that flows from the fullness of contemplation is better than contemplation alone: as it is better to illuminate…",
+      "citation": "ST II-II, q.188, a.6",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3188.htm#article6",
+      "text": "The contemplative life is simply better than the active life, but the work of teaching and preaching that flows from the fullness of contemplation is better than contemplation alone: as it is better to illuminate than merely to shine, it is better to contemplate and give to others the fruits of contemplation (contemplari et contemplata aliis tradere).",
+      "concepts": [
+        "vida-contemplativa"
+      ],
+      "keywords": [
+        "contemplation",
+        "active life",
+        "teaching",
+        "preaching",
+        "dominicans",
+        "contemplacion",
+        "vida activa",
+        "ensenanza",
+        "predicacion",
+        "dominicos"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q2-a4",
+      "title": "Whether it is necessary to believe those things which can be proved by natural reason",
+      "description": "It is fitting that truths about God which reason can demonstrate are also proposed for belief: so that knowledge of God is reached more quickly, by more people, and with greater certainty, since human reason is weak…",
+      "citation": "ST II-II, q.2, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3002.htm#article4",
+      "text": "It is fitting that truths about God which reason can demonstrate are also proposed for belief: so that knowledge of God is reached more quickly, by more people, and with greater certainty, since human reason is weak and prone to error in divine matters.",
+      "concepts": [
+        "fe-y-razon",
+        "fe",
+        "preambulos-de-la-fe"
+      ],
+      "keywords": [
+        "believe",
+        "faith",
+        "reason",
+        "proof",
+        "demonstration",
+        "certainty",
+        "creer",
+        "fe",
+        "razon",
+        "prueba",
+        "demostracion",
+        "certeza"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q23-a1",
+      "title": "Whether charity is friendship",
+      "description": "Charity is the friendship of man for God, founded on God's communication of his happiness to us.",
+      "citation": "ST II-II, q.23, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3023.htm#article1",
+      "text": "Charity is the friendship of man for God, founded on God's communication of his happiness to us. Friendship requires mutual benevolence based on some communication, and such communication exists between God and man.",
+      "concepts": [
+        "caridad",
+        "amor",
+        "virtudes-teologales"
+      ],
+      "keywords": [
+        "charity",
+        "friendship",
+        "love",
+        "god",
+        "caridad",
+        "amistad",
+        "amor",
+        "dios"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q23-a8",
+      "title": "Whether charity is the form of the virtues",
+      "description": "Charity is the form of all the virtues because it directs the acts of all other virtues to the last end, God.",
+      "citation": "ST II-II, q.23, a.8",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3023.htm#article8",
+      "text": "Charity is the form of all the virtues because it directs the acts of all other virtues to the last end, God. It is not their exemplar or essential form but their efficient and final principle.",
+      "concepts": [
+        "caridad",
+        "virtud"
+      ],
+      "keywords": [
+        "charity",
+        "form",
+        "virtues",
+        "love",
+        "caridad",
+        "forma",
+        "virtudes",
+        "amor"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q4-a1",
+      "title": "Whether this is a fitting definition of faith: faith is the substance of things hoped for, the evidence of things that appear not",
+      "description": "Aquinas defends Hebrews 11:1 and restates it: faith is a habit of the mind whereby eternal life is begun in us, making the intellect assent to what is non-apparent.",
+      "citation": "ST II-II, q.4, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3004.htm#article1",
+      "text": "Aquinas defends Hebrews 11:1 and restates it: faith is a habit of the mind whereby eternal life is begun in us, making the intellect assent to what is non-apparent. Faith is an act of the intellect moved by the will.",
+      "concepts": [
+        "fe",
+        "intelecto",
+        "voluntad"
+      ],
+      "keywords": [
+        "faith",
+        "definition",
+        "belief",
+        "assent",
+        "hope",
+        "intellect",
+        "will",
+        "fe",
+        "definicion",
+        "creencia",
+        "asentimiento",
+        "esperanza",
+        "intelecto",
+        "voluntad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q40-a1",
+      "title": "Whether it is always sinful to wage war",
+      "description": "For a war to be just three things are required: the authority of the sovereign, not of a private individual;",
+      "citation": "ST II-II, q.40, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3040.htm#article1",
+      "text": "For a war to be just three things are required: the authority of the sovereign, not of a private individual; a just cause, namely that those attacked deserve it on account of some fault; and a right intention, to promote good or avoid evil.",
+      "concepts": [
+        "guerra-justa",
+        "justicia"
+      ],
+      "keywords": [
+        "war",
+        "just war",
+        "peace",
+        "violence",
+        "authority",
+        "guerra",
+        "guerra justa",
+        "paz",
+        "violencia",
+        "autoridad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q47-a2",
+      "title": "Whether prudence is in the practical reason alone or also in the speculative reason",
+      "description": "Prudence belongs to the practical reason alone, since it is right reason applied to action;",
+      "citation": "ST II-II, q.47, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3047.htm#article2",
+      "text": "Prudence belongs to the practical reason alone, since it is right reason applied to action; its proper act is to command, applying the knowledge of what is to be done. Speculative wisdom considers truth for its own sake, whereas prudence considers truth as ordered to action.",
+      "concepts": [
+        "prudencia",
+        "razon"
+      ],
+      "keywords": [
+        "prudence",
+        "practical reason",
+        "judgment",
+        "particular",
+        "prudencia",
+        "razon practica",
+        "juicio",
+        "particular"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q57-a1",
+      "title": "Whether right is the object of justice",
+      "description": "The object of justice is the right (ius), that is, the just thing itself: a work adjusted to another according to a certain equality.",
+      "citation": "ST II-II, q.57, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3057.htm#article1",
+      "text": "The object of justice is the right (ius), that is, the just thing itself: a work adjusted to another according to a certain equality. Law is not right itself but a certain rule or expression of right.",
+      "concepts": [
+        "derecho",
+        "justicia",
+        "ley"
+      ],
+      "keywords": [
+        "right",
+        "rights",
+        "justice",
+        "law",
+        "equality",
+        "derecho",
+        "derechos",
+        "justicia",
+        "ley",
+        "igualdad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q58-a1",
+      "title": "Whether justice is fittingly defined as the perpetual and constant will to render to each one his right",
+      "description": "Aquinas accepts the jurists' definition of justice as the perpetual and constant will to render to each his right (perpetua et constans voluntas ius suum unicuique tribuendi), and restates it: justice is a habit…",
+      "citation": "ST II-II, q.58, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3058.htm#article1",
+      "text": "Aquinas accepts the jurists' definition of justice as the perpetual and constant will to render to each his right (perpetua et constans voluntas ius suum unicuique tribuendi), and restates it: justice is a habit whereby a man renders to each his due by a constant and perpetual will.",
+      "concepts": [
+        "justicia",
+        "derecho"
+      ],
+      "keywords": [
+        "justice",
+        "definition",
+        "due",
+        "rights",
+        "will",
+        "justicia",
+        "definicion",
+        "debido",
+        "derechos",
+        "voluntad"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q61-a1",
+      "title": "Whether two species of justice are suitably assigned, namely commutative and distributive",
+      "description": "Particular justice has two species: commutative justice, which directs exchanges between individuals according to arithmetic equality, and distributive justice, which distributes common goods to individuals…",
+      "citation": "ST II-II, q.61, a.1",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3061.htm#article1",
+      "text": "Particular justice has two species: commutative justice, which directs exchanges between individuals according to arithmetic equality, and distributive justice, which distributes common goods to individuals proportionately according to their status.",
+      "concepts": [
+        "justicia",
+        "bien-comun"
+      ],
+      "keywords": [
+        "commutative",
+        "distributive",
+        "justice",
+        "exchange",
+        "distribution",
+        "social justice",
+        "conmutativa",
+        "distributiva",
+        "justicia",
+        "intercambio",
+        "distribucion",
+        "justicia social"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q64-a5",
+      "title": "Whether it is lawful to kill oneself",
+      "description": "Aquinas holds that suicide is contrary to the natural inclination to preserve oneself and to the charity one owes oneself, that it injures the community of which one is a part, and that life is a gift of God, who…",
+      "citation": "ST II-II, q.64, a.5",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3064.htm#article5",
+      "text": "Aquinas holds that suicide is contrary to the natural inclination to preserve oneself and to the charity one owes oneself, that it injures the community of which one is a part, and that life is a gift of God, who alone has power over life and death.",
+      "concepts": [
+        "ley-natural"
+      ],
+      "keywords": [
+        "suicide",
+        "life",
+        "death",
+        "euthanasia",
+        "suicidio",
+        "vida",
+        "muerte",
+        "eutanasia"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q64-a7",
+      "title": "Whether it is lawful to kill a man in self-defense",
+      "description": "One act can have two effects, only one of which is intended.",
+      "citation": "ST II-II, q.64, a.7",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3064.htm#article7",
+      "text": "One act can have two effects, only one of which is intended. Moral acts take their species from what is intended, so defending one's life is lawful even if the attacker dies, provided the means are proportionate. This article is the classical source of the principle of double effect.",
+      "concepts": [
+        "doble-efecto",
+        "acto-humano"
+      ],
+      "keywords": [
+        "self-defense",
+        "double effect",
+        "killing",
+        "intention",
+        "proportion",
+        "legitima defensa",
+        "doble efecto",
+        "matar",
+        "intencion",
+        "proporcion"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q66-a2",
+      "title": "Whether it is lawful for a man to possess a thing as his own",
+      "description": "It is lawful and necessary for human life that man possess property as his own, as regards the power to procure and dispense things, because people care more for what is theirs, affairs are better ordered, and peace…",
+      "citation": "ST II-II, q.66, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3066.htm#article2",
+      "text": "It is lawful and necessary for human life that man possess property as his own, as regards the power to procure and dispense things, because people care more for what is theirs, affairs are better ordered, and peace is better kept. But as regards use, man ought to possess external things as common, readily sharing them with others in need.",
+      "concepts": [
+        "propiedad",
+        "bien-comun",
+        "justicia"
+      ],
+      "keywords": [
+        "property",
+        "private property",
+        "common use",
+        "wealth",
+        "capitalism",
+        "socialism",
+        "propiedad",
+        "propiedad privada",
+        "uso comun",
+        "riqueza",
+        "capitalismo",
+        "socialismo"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-ii-ii-q66-a7",
+      "title": "Whether it is lawful to steal through stress of need",
+      "description": "In cases of urgent and evident necessity, where there is no other remedy, a person may lawfully take what he needs from another's property, openly or secretly;",
+      "citation": "ST II-II, q.66, a.7",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/3066.htm#article7",
+      "text": "In cases of urgent and evident necessity, where there is no other remedy, a person may lawfully take what he needs from another's property, openly or secretly; properly speaking this is not theft, because in such need all things are common.",
+      "concepts": [
+        "propiedad",
+        "justicia"
+      ],
+      "keywords": [
+        "theft",
+        "steal",
+        "need",
+        "poverty",
+        "necessity",
+        "hunger",
+        "robo",
+        "robar",
+        "necesidad",
+        "pobreza",
+        "hambre"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-iii-q1-a2",
+      "title": "Whether it was necessary for the restoration of the human race that the Word of God should become incarnate",
+      "description": "The Incarnation was not absolutely necessary, since God could have restored humanity in other ways, but it was the most fitting means: it strengthens faith, raises hope, kindles charity, gives an example of virtue,…",
+      "citation": "ST III, q.1, a.2",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/4001.htm#article2",
+      "text": "The Incarnation was not absolutely necessary, since God could have restored humanity in other ways, but it was the most fitting means: it strengthens faith, raises hope, kindles charity, gives an example of virtue, and makes us partakers of the divinity.",
+      "concepts": [
+        "encarnacion"
+      ],
+      "keywords": [
+        "incarnation",
+        "christ",
+        "salvation",
+        "redemption",
+        "encarnacion",
+        "cristo",
+        "salvacion",
+        "redencion"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "st-iii-q75-a4",
+      "title": "Whether bread can be converted into the body of Christ",
+      "description": "In the Eucharist the whole substance of the bread is converted into the whole substance of Christ's body by divine power, while the accidents of bread remain.",
+      "citation": "ST III, q.75, a.4",
+      "work": "summa-theologiae",
+      "url": "https://www.newadvent.org/summa/4075.htm#article4",
+      "text": "In the Eucharist the whole substance of the bread is converted into the whole substance of Christ's body by divine power, while the accidents of bread remain. This conversion is not formal or natural but entirely supernatural, and is fittingly called transubstantiation.",
+      "concepts": [
+        "eucaristia",
+        "sustancia-y-accidente"
+      ],
+      "keywords": [
+        "eucharist",
+        "transubstantiation",
+        "substance",
+        "accidents",
+        "sacrament",
+        "eucaristia",
+        "transubstanciacion",
+        "sustancia",
+        "accidentes",
+        "sacramento"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "abstraccion",
+      "title": "Abstracción",
+      "description": "Operación del intelecto agente que capta lo universal en las imágenes sensibles.",
+      "descriptionEn": "The agent intellect's operation of grasping the universal in sensory images.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "abstracción",
+          "intelecto agente",
+          "fantasma",
+          "especie inteligible"
+        ],
+        "en": [
+          "abstraction",
+          "agent intellect",
+          "phantasm",
+          "intelligible species"
+        ],
+        "la": [
+          "abstractio",
+          "intellectus agens",
+          "phantasma",
+          "species intelligibilis"
+        ]
+      },
+      "definition": "El intelecto agente ilumina las imágenes (phantasmata) elaboradas por los sentidos internos y abstrae de ellas la naturaleza universal; el intelecto posible la recibe como especie inteligible. La especie no es lo que conocemos sino aquello por lo que conocemos: lo conocido es la cosa. En esta vida no entendemos sin volver a las imágenes.",
+      "broader": [
+        "conocimiento"
+      ],
+      "narrower": [],
+      "related": [
+        "conocimiento",
+        "intelecto"
+      ],
+      "articles": [
+        "st-i-q79-a3",
+        "st-i-q84-a7",
+        "st-i-q85-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "acto-humano",
+      "title": "Acto humano y moralidad",
+      "description": "Acto que procede de voluntad deliberada; es bueno si lo es por su objeto, fin y circunstancias.",
+      "descriptionEn": "An act from deliberate will; good only if good in object, end and circumstances.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "acto humano",
+          "moralidad",
+          "voluntario",
+          "intención",
+          "el fin justifica los medios",
+          "objeto moral"
+        ],
+        "en": [
+          "human act",
+          "morality",
+          "voluntary",
+          "intention",
+          "ends justify the means",
+          "moral object"
+        ],
+        "la": [
+          "actus humanus",
+          "moralitas"
+        ]
+      },
+      "definition": "Solo los actos que proceden de la voluntad deliberada son propiamente humanos. Su bondad depende del objeto, de las circunstancias y del fin: el acto es bueno si lo es en todo, y malo por cualquier defecto. Por eso un buen fin no justifica un objeto malo. El acto voluntario supone conocimiento del fin y un principio interno.",
+      "broader": [],
+      "narrower": [
+        "doble-efecto"
+      ],
+      "related": [
+        "conciencia",
+        "doble-efecto",
+        "fin-ultimo",
+        "libre-albedrio"
+      ],
+      "articles": [
+        "st-i-ii-q1-a1",
+        "st-i-ii-q18-a4",
+        "st-i-ii-q6-a1",
+        "st-ii-ii-q110-a3",
+        "st-ii-ii-q64-a7"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "acto-y-potencia",
+      "title": "Acto y potencia",
+      "description": "La distinción aristotélica que explica el cambio: la potencia es capacidad real, el acto su realización.",
+      "descriptionEn": "The Aristotelian distinction that explains change: potency is real capacity, act its realization.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "acto",
+          "potencia",
+          "acto y potencia"
+        ],
+        "en": [
+          "act and potency",
+          "actuality",
+          "potentiality"
+        ],
+        "la": [
+          "actus",
+          "potentia"
+        ]
+      },
+      "definition": "La potencia es una capacidad real de ser o de recibir una perfección; el acto es su realización. El cambio es el paso de la potencia al acto, y siempre requiere algo que ya esté en acto: nada se reduce a sí mismo de la potencia al acto. Este principio sostiene la primera de las cinco vías. Tomás lo extiende más allá de Aristóteles: la esencia misma está en potencia respecto del acto de ser.",
+      "broader": [],
+      "narrower": [
+        "hilemorfismo"
+      ],
+      "related": [
+        "causa",
+        "cinco-vias",
+        "esse",
+        "hilemorfismo"
+      ],
+      "articles": [
+        "st-i-q2-a3"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "alma",
+      "title": "Alma",
+      "description": "Primer principio de la vida; en el hombre, forma sustancial del cuerpo y subsistente.",
+      "descriptionEn": "First principle of life; in man, the substantial form of the body, and subsistent.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "alma",
+          "alma humana",
+          "mente",
+          "cuerpo",
+          "alma y cuerpo"
+        ],
+        "en": [
+          "soul",
+          "human soul",
+          "mind",
+          "body",
+          "soul and body",
+          "mind-body"
+        ],
+        "la": [
+          "anima"
+        ]
+      },
+      "definition": "El alma es el primer principio de la vida en los vivientes: plantas y animales también la tienen. En el hombre es forma sustancial del cuerpo (materia y forma): no hay un espíritu que maneja un cuerpo, sino una unidad. Por su operación intelectual, que no se realiza por un órgano, el alma humana es subsistente e incorruptible (inmortalidad del alma). Pero el hombre no es su alma: es el compuesto.",
+      "broader": [],
+      "narrower": [
+        "inmortalidad",
+        "intelecto",
+        "voluntad"
+      ],
+      "related": [
+        "hilemorfismo",
+        "inmortalidad",
+        "intelecto",
+        "persona"
+      ],
+      "articles": [
+        "st-i-q29-a1",
+        "st-i-q75-a1",
+        "st-i-q75-a2",
+        "st-i-q75-a4",
+        "st-i-q75-a6",
+        "st-i-q76-a1",
+        "st-i-q76-a2",
+        "st-i-q79-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "amor",
+      "title": "Amor",
+      "description": "Querer el bien para alguien; el primer movimiento de la voluntad.",
+      "descriptionEn": "Willing the good for someone; the first movement of the will.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "amor",
+          "amar",
+          "amistad"
+        ],
+        "en": [
+          "love",
+          "loving",
+          "friendship"
+        ],
+        "la": [
+          "amor",
+          "amicitia"
+        ]
+      },
+      "definition": "Amar es querer el bien para alguien. Tomás distingue el amor de amistad, por el que se quiere a alguien por sí mismo, del amor de concupiscencia, por el que se quiere un bien para otro. El amor de Dios, a diferencia del nuestro, no es movido por la bondad de las cosas sino que la crea. La caridad es amistad con Dios.",
+      "broader": [
+        "voluntad"
+      ],
+      "narrower": [],
+      "related": [
+        "bien",
+        "caridad",
+        "voluntad"
+      ],
+      "articles": [
+        "st-i-ii-q26-a4",
+        "st-i-q20-a2",
+        "st-ii-ii-q23-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "analogia",
+      "title": "Analogía",
+      "description": "Modo de predicar un término de varias cosas según una proporción: ni unívoco ni equívoco.",
+      "descriptionEn": "Predicating a term of several things according to a proportion: neither univocal nor equivocal.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "analogía",
+          "análogo",
+          "unívoco",
+          "equívoco",
+          "nombres divinos"
+        ],
+        "en": [
+          "analogy",
+          "analogical",
+          "univocal",
+          "equivocal",
+          "divine names"
+        ],
+        "la": [
+          "analogia"
+        ]
+      },
+      "definition": "Un término unívoco significa lo mismo en todos sus usos; uno equívoco, cosas sin relación. Los nombres de perfecciones (bueno, sabio, viviente) se dicen de Dios y de las criaturas por analogía, según una proporción: la perfección está en Dios primero y eminentemente, y en las criaturas por participación. También el ente se dice analógicamente. Cayetano sistematizó después la teoría.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "dios",
+        "ente",
+        "participacion",
+        "simplicidad-divina",
+        "trascendentales"
+      ],
+      "articles": [
+        "st-i-q13-a5"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "autoridad-politica",
+      "title": "Autoridad política",
+      "description": "El hombre es animal social y político; la autoridad es natural, no solo fruto del pecado.",
+      "descriptionEn": "Man is a social and political animal; authority is natural, not merely the fruit of sin.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "autoridad",
+          "política",
+          "gobierno",
+          "tiranía",
+          "animal social",
+          "animal político",
+          "régimen mixto",
+          "democracia",
+          "monarquía"
+        ],
+        "en": [
+          "authority",
+          "politics",
+          "government",
+          "tyranny",
+          "social animal",
+          "political animal",
+          "mixed regime",
+          "democracy",
+          "monarchy"
+        ],
+        "la": [
+          "regimen",
+          "auctoritas",
+          "animal sociale et politicum"
+        ]
+      },
+      "definition": "Nadie se basta solo para vivir bien, y toda multitud necesita un principio que la dirija al bien común. Contra una corriente agustiniana, Tomás sostiene que la autoridad política es natural: habría existido incluso sin pecado. Elogia el régimen mixto (monarquía, aristocracia y democracia) y, frente al tirano, remite a la autoridad pública, no a la acción privada.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "bien-comun",
+        "guerra-justa",
+        "ley-humana"
+      ],
+      "articles": [
+        "dr-i-c1",
+        "st-i-q96-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "averroismo",
+      "title": "Unidad del intelecto (averroísmo)",
+      "description": "La tesis de un único intelecto posible para toda la humanidad, que Tomás refutó.",
+      "descriptionEn": "The thesis of a single possible intellect for all humanity, which Aquinas refuted.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "averroísmo",
+          "averroísta",
+          "unidad del intelecto"
+        ],
+        "en": [
+          "averroism",
+          "averroist",
+          "unity of the intellect"
+        ],
+        "la": [
+          "unitas intellectus"
+        ]
+      },
+      "definition": "Siguiendo a Averroes, maestros de Artes como Siger de Brabante sostenían que hay un solo intelecto posible para todos los hombres. Tomás lo refutó (De unitate intellectus, 1270, y ST I, q.76, a.2): si el intelecto fuera uno, no podría decirse que este hombre entiende. La polémica estaba ligada a la inmortalidad personal y a la relación entre fe y razón.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "fe-y-razon",
+        "intelecto"
+      ],
+      "articles": [
+        "st-i-q76-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "bien",
+      "title": "Bien",
+      "description": "El ente en cuanto deseable; todo ente, en cuanto es, es bueno.",
+      "descriptionEn": "Being as desirable; every being, insofar as it is, is good.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "bien",
+          "bondad",
+          "lo bueno"
+        ],
+        "en": [
+          "good",
+          "goodness"
+        ],
+        "la": [
+          "bonum"
+        ]
+      },
+      "definition": "Bien y ente son lo mismo en la realidad y difieren solo en la noción: algo es bueno en cuanto es deseable, y deseable en cuanto es perfecto, es decir, en acto. Por eso el mal no es una naturaleza sino una privación. El bien es el objeto de la voluntad, y el bien perfecto es la felicidad.",
+      "broader": [
+        "trascendentales"
+      ],
+      "narrower": [],
+      "related": [
+        "amor",
+        "felicidad",
+        "ley-natural",
+        "mal",
+        "voluntad"
+      ],
+      "articles": [
+        "st-i-ii-q2-a8",
+        "st-i-ii-q94-a2",
+        "st-i-q48-a1",
+        "st-i-q5-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "bien-comun",
+      "title": "Bien común",
+      "description": "El bien de la comunidad en cuanto tal, del que participan todos sus miembros.",
+      "descriptionEn": "The good of the community as such, in which all its members share.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "bien común",
+          "sociedad",
+          "comunidad"
+        ],
+        "en": [
+          "common good",
+          "society",
+          "community"
+        ],
+        "la": [
+          "bonum commune"
+        ]
+      },
+      "definition": "El bien común es el fin de la ley y el criterio del buen gobierno: un régimen es justo cuando busca el bien común y tiránico cuando busca el bien privado del gobernante. La justicia legal ordena los actos de todas las virtudes al bien común.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "autoridad-politica",
+        "justicia",
+        "ley",
+        "ley-humana",
+        "propiedad"
+      ],
+      "articles": [
+        "dr-i-c1",
+        "st-i-ii-q90-a4",
+        "st-i-ii-q96-a2",
+        "st-i-q96-a4",
+        "st-ii-ii-q61-a1",
+        "st-ii-ii-q66-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "caridad",
+      "title": "Caridad",
+      "description": "Amistad del hombre con Dios; forma de todas las virtudes.",
+      "descriptionEn": "Man's friendship with God; the form of all the virtues.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "caridad"
+        ],
+        "en": [
+          "charity"
+        ],
+        "la": [
+          "caritas"
+        ]
+      },
+      "definition": "La caridad es la amistad del hombre con Dios, fundada en que Dios nos comunica su felicidad. Es la forma de todas las virtudes, porque ordena sus actos al fin último. Es la más alta de las virtudes teologales.",
+      "broader": [
+        "virtudes-teologales"
+      ],
+      "narrower": [],
+      "related": [
+        "amor",
+        "felicidad",
+        "virtudes-teologales"
+      ],
+      "articles": [
+        "st-ii-ii-q23-a1",
+        "st-ii-ii-q23-a8"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "causa",
+      "title": "Las cuatro causas",
+      "description": "Material, formal, eficiente y final: los cuatro modos de responder «¿por qué?».",
+      "descriptionEn": "Material, formal, efficient and final: the four ways of answering \"why?\".",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "causa",
+          "causalidad",
+          "cuatro causas",
+          "causa eficiente",
+          "causa final",
+          "finalidad"
+        ],
+        "en": [
+          "cause",
+          "causality",
+          "four causes",
+          "efficient cause",
+          "final cause",
+          "teleology"
+        ],
+        "la": [
+          "causa",
+          "causa finalis"
+        ]
+      },
+      "definition": "Siguiendo a Aristóteles, Tomás distingue causa material (de qué), formal (qué es), eficiente (qué lo produce) y final (para qué). Insiste en la causa final: todo agente obra por un fin, incluso en la naturaleza sin conocimiento. La causalidad eficiente y la final sostienen la segunda y la quinta de las cinco vías, y la ética comienza por el fin último.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "acto-y-potencia",
+        "cinco-vias",
+        "fin-ultimo"
+      ],
+      "articles": [
+        "st-i-q2-a3"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "cinco-vias",
+      "title": "Las cinco vías",
+      "description": "Cinco argumentos (movimiento, causa eficiente, contingencia, grados, gobierno) que van de los efectos a Dios.",
+      "descriptionEn": "Five arguments (motion, efficient cause, contingency, degrees, governance) from effects to God.",
+      "area": "dios",
+      "labels": {
+        "es": [
+          "cinco vías",
+          "quinque viae",
+          "primer motor",
+          "motor inmóvil",
+          "causa primera",
+          "ser necesario"
+        ],
+        "en": [
+          "five ways",
+          "first mover",
+          "unmoved mover",
+          "first cause",
+          "necessary being"
+        ],
+        "la": [
+          "quinque viae",
+          "primum movens"
+        ]
+      },
+      "definition": "En ST I, q.2, a.3 Tomás propone cinco vías: desde el movimiento, la causalidad eficiente, la contingencia, los grados de perfección y el gobierno de las cosas. La serie que no puede ir al infinito es de dependencia actual (per se), no una sucesión temporal: las vías no presuponen que el mundo haya tenido comienzo. Aplican acto y potencia y las causas.",
+      "broader": [
+        "dios"
+      ],
+      "narrower": [],
+      "related": [
+        "acto-y-potencia",
+        "causa",
+        "dios",
+        "preambulos-de-la-fe"
+      ],
+      "articles": [
+        "st-i-q2-a1",
+        "st-i-q2-a2",
+        "st-i-q2-a3"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "conciencia",
+      "title": "Conciencia",
+      "description": "Acto de aplicar el conocimiento moral a un caso concreto; obliga aun cuando yerra.",
+      "descriptionEn": "The act of applying moral knowledge to a particular case; it binds even when mistaken.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "conciencia",
+          "conciencia moral",
+          "conciencia errónea",
+          "objeción de conciencia"
+        ],
+        "en": [
+          "conscience",
+          "erring conscience",
+          "conscientious objection"
+        ],
+        "la": [
+          "conscientia"
+        ]
+      },
+      "definition": "La conciencia no es una potencia sino un acto: la aplicación del conocimiento a una acción concreta. Toda conciencia obliga, incluso la errónea: quien obra contra su juicio quiere lo que aprehende como malo. Pero seguir una conciencia errónea solo excusa si el error no es culpable. Se apoya en los principios que capta la sindéresis.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "acto-humano",
+        "pecado",
+        "prudencia",
+        "razon",
+        "sinderesis"
+      ],
+      "articles": [
+        "st-i-ii-q19-a5",
+        "st-i-ii-q19-a6",
+        "st-i-ii-q96-a4",
+        "st-i-q79-a12",
+        "st-i-q79-a13"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "conocimiento",
+      "title": "Conocimiento",
+      "description": "Todo conocimiento intelectual comienza por los sentidos; conocemos las cosas, no nuestras ideas.",
+      "descriptionEn": "All intellectual knowledge begins with the senses; we know things, not our ideas.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "conocimiento",
+          "conocer",
+          "epistemología",
+          "sentidos",
+          "realismo",
+          "empirismo"
+        ],
+        "en": [
+          "knowledge",
+          "knowing",
+          "epistemology",
+          "senses",
+          "realism",
+          "empiricism"
+        ],
+        "la": [
+          "cognitio"
+        ]
+      },
+      "definition": "Tomás es realista: el conocimiento intelectual comienza por los sentidos, y el intelecto eleva sus datos mediante la abstracción. Conocer es poseer la forma de otra cosa de modo inmaterial; por eso la inmaterialidad es la raíz del conocimiento. Lo conocido son las cosas mismas, y la verdad está en el juicio.",
+      "broader": [],
+      "narrower": [
+        "abstraccion"
+      ],
+      "related": [
+        "abstraccion",
+        "intelecto",
+        "verdad"
+      ],
+      "articles": [
+        "st-i-q12-a12",
+        "st-i-q14-a1",
+        "st-i-q84-a6",
+        "st-i-q84-a7",
+        "st-i-q85-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "creacion",
+      "title": "Creación",
+      "description": "La donación del ser a todo lo que es; no es un cambio ni presupone un material.",
+      "descriptionEn": "The giving of being to all that is; not a change, and presupposing no material.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "creación",
+          "crear",
+          "creado",
+          "comienzo del mundo",
+          "eternidad del mundo",
+          "universo"
+        ],
+        "en": [
+          "creation",
+          "created",
+          "beginning of the world",
+          "eternity of the world",
+          "universe"
+        ],
+        "la": [
+          "creatio",
+          "ex nihilo"
+        ]
+      },
+      "definition": "Crear no es fabricar con un material previo, sino dar el ser: todo lo que es por participación es causado por el que es ser por esencia. Tomás distingue la creación del comienzo temporal del mundo: que el mundo tuvo comienzo se cree por fe y no puede demostrarse, ni tampoco su eternidad.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "dios",
+        "esse",
+        "participacion"
+      ],
+      "articles": [
+        "st-i-q44-a1",
+        "st-i-q46-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "derecho",
+      "title": "Derecho (ius)",
+      "description": "El objeto de la justicia: lo justo, lo debido a otro.",
+      "descriptionEn": "The object of justice: the just thing, what is owed to another.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "derecho",
+          "derechos",
+          "lo justo",
+          "derechos humanos"
+        ],
+        "en": [
+          "right",
+          "rights",
+          "the just",
+          "human rights"
+        ],
+        "la": [
+          "ius"
+        ]
+      },
+      "definition": "El derecho (ius) es el objeto de la justicia: lo justo mismo, una obra ajustada a otro según cierta igualdad. La ley no es el derecho, sino cierta regla o expresión del derecho. La tradición tomista posterior (Vitoria, Suárez) desarrolló desde aquí el derecho de gentes.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "justicia",
+        "ley"
+      ],
+      "articles": [
+        "st-ii-ii-q57-a1",
+        "st-ii-ii-q58-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "dios",
+      "title": "Dios",
+      "description": "El ser mismo subsistente, causa primera de todo; conocido por la razón desde sus efectos.",
+      "descriptionEn": "Subsistent being itself, first cause of all; known by reason from his effects.",
+      "area": "dios",
+      "labels": {
+        "es": [
+          "dios",
+          "dios existe",
+          "existencia de dios"
+        ],
+        "en": [
+          "god",
+          "existence of god"
+        ],
+        "la": [
+          "deus"
+        ]
+      },
+      "definition": "Para Tomás la existencia de Dios no es evidente para nosotros pero puede demostrarse desde los efectos (cinco vías). De Dios sabemos más lo que no es que lo que es: es simple, perfecto, infinito, eterno. Es el ipsum esse subsistens, en quien esencia y ser se identifican, y de Él hablamos por analogía.",
+      "broader": [],
+      "narrower": [
+        "cinco-vias",
+        "omnipotencia",
+        "providencia",
+        "simplicidad-divina"
+      ],
+      "related": [
+        "analogia",
+        "cinco-vias",
+        "creacion",
+        "esse",
+        "felicidad",
+        "imagen-de-dios",
+        "providencia",
+        "simplicidad-divina"
+      ],
+      "articles": [
+        "dee-c4",
+        "st-i-ii-q2-a8",
+        "st-i-ii-q3-a8",
+        "st-i-q12-a1",
+        "st-i-q12-a12",
+        "st-i-q13-a5",
+        "st-i-q14-a1",
+        "st-i-q19-a8",
+        "st-i-q2-a1",
+        "st-i-q2-a2",
+        "st-i-q2-a3",
+        "st-i-q20-a2",
+        "st-i-q22-a2",
+        "st-i-q25-a3",
+        "st-i-q3-a4",
+        "st-i-q3-a7"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "doble-efecto",
+      "title": "Doble efecto",
+      "description": "Un acto puede tener dos efectos, uno solo intentado; fuente clásica del principio del doble efecto.",
+      "descriptionEn": "An act can have two effects, only one intended; the classic source of the double-effect principle.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "doble efecto",
+          "legítima defensa",
+          "efecto no intencionado"
+        ],
+        "en": [
+          "double effect",
+          "self-defense",
+          "unintended effect"
+        ],
+        "la": [
+          "duplex effectus"
+        ]
+      },
+      "definition": "En ST II-II, q.64, a.7, sobre la legítima defensa, Tomás observa que un acto puede tener dos efectos de los cuales solo uno es intentado, y que los actos morales se especifican por lo intentado. Defender la propia vida es lícito aunque muera el agresor, si los medios son proporcionados. De aquí se desarrolló el principio del doble efecto.",
+      "broader": [
+        "acto-humano"
+      ],
+      "narrower": [],
+      "related": [
+        "acto-humano",
+        "guerra-justa",
+        "justicia"
+      ],
+      "articles": [
+        "st-ii-ii-q64-a7"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "encarnacion",
+      "title": "Encarnación",
+      "description": "La unión del Verbo con la naturaleza humana; no absolutamente necesaria, pero la más conveniente.",
+      "descriptionEn": "The union of the Word with human nature; not absolutely necessary, but most fitting.",
+      "area": "fe-y-teologia",
+      "labels": {
+        "es": [
+          "encarnación",
+          "cristo",
+          "jesucristo",
+          "redención",
+          "salvación"
+        ],
+        "en": [
+          "incarnation",
+          "christ",
+          "redemption",
+          "salvation"
+        ],
+        "la": [
+          "incarnatio",
+          "christus"
+        ]
+      },
+      "definition": "La Tercera parte de la Suma trata de Cristo. Tomás sostiene que la Encarnación no era absolutamente necesaria para restaurar al género humano, pero sí la vía más conveniente: fortalece la fe, levanta la esperanza, enciende la caridad, da ejemplo de virtud y nos hace partícipes de la divinidad.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "eucaristia",
+        "gracia",
+        "teologia"
+      ],
+      "articles": [
+        "st-iii-q1-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "ente",
+      "title": "Ente",
+      "description": "Lo que es: la primera noción que capta el intelecto y el objeto de la metafísica.",
+      "descriptionEn": "That which is: the first notion grasped by the intellect and the subject of metaphysics.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "ente",
+          "lo que es"
+        ],
+        "en": [
+          "being as such"
+        ],
+        "la": [
+          "ens"
+        ]
+      },
+      "definition": "El ente (ens) es «lo que es»: aquello que tiene ser según una esencia. Para Tomás es lo primero que concibe el intelecto, y en ello se resuelven todas las demás nociones. No es un género, porque se dice de todo; por eso se predica de modo análogo (analogía) y va siempre acompañado de los trascendentales.",
+      "broader": [],
+      "narrower": [
+        "trascendentales"
+      ],
+      "related": [
+        "analogia",
+        "esencia",
+        "esse",
+        "sustancia-y-accidente",
+        "trascendentales"
+      ],
+      "articles": [
+        "dee-c4",
+        "st-i-q13-a5",
+        "st-i-q5-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "esencia",
+      "title": "Esencia",
+      "description": "Lo que una cosa es, expresado en su definición.",
+      "descriptionEn": "What a thing is, as expressed in its definition.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "esencia",
+          "quididad",
+          "naturaleza"
+        ],
+        "en": [
+          "essence",
+          "quiddity",
+          "nature"
+        ],
+        "la": [
+          "essentia",
+          "quidditas"
+        ]
+      },
+      "definition": "La esencia (o quididad) es aquello por lo que una cosa es lo que es, y se expresa en la definición. En las sustancias corpóreas incluye materia y forma. Respecto del acto de ser la esencia está como la potencia respecto del acto: lo recibe y lo determina a una medida.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "ente",
+        "esse",
+        "hilemorfismo"
+      ],
+      "articles": [
+        "dee-c4",
+        "st-i-q3-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "esse",
+      "title": "Acto de ser (esse)",
+      "description": "El acto por el que una esencia es real; la noción metafísica más original de Tomás.",
+      "descriptionEn": "The act by which an essence is real; Aquinas's most original metaphysical notion.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "acto de ser",
+          "existencia",
+          "existir"
+        ],
+        "en": [
+          "act of being",
+          "existence",
+          "esse"
+        ],
+        "la": [
+          "esse",
+          "actus essendi"
+        ]
+      },
+      "definition": "El esse no es una propiedad más de las cosas, sino su acto más íntimo: la actualidad de todos los actos y la perfección de todas las perfecciones. En las criaturas se distingue de la esencia, que lo recibe y lo limita; solo en Dios esencia y ser son idénticos (ipsum esse subsistens). De ahí la participación y la noción de creación como donación del ser. Los intérpretes discuten todavía el alcance exacto de la distinción real entre esencia y ser.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "acto-y-potencia",
+        "creacion",
+        "dios",
+        "ente",
+        "esencia",
+        "participacion",
+        "simplicidad-divina"
+      ],
+      "articles": [
+        "dee-c4",
+        "st-i-q2-a1",
+        "st-i-q3-a4",
+        "st-i-q44-a1",
+        "st-i-q5-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "eucaristia",
+      "title": "Eucaristía",
+      "description": "Sacramento en el que la sustancia del pan se convierte en el cuerpo de Cristo (transubstanciación).",
+      "descriptionEn": "Sacrament in which the substance of bread is converted into Christ's body (transubstantiation).",
+      "area": "fe-y-teologia",
+      "labels": {
+        "es": [
+          "eucaristía",
+          "transubstanciación",
+          "sacramento",
+          "sacramentos"
+        ],
+        "en": [
+          "eucharist",
+          "transubstantiation",
+          "sacrament",
+          "sacraments"
+        ],
+        "la": [
+          "eucharistia",
+          "transsubstantiatio"
+        ]
+      },
+      "definition": "Tomás explica la presencia de Cristo en la Eucaristía con la distinción de sustancia y accidentes: toda la sustancia del pan se convierte en la del cuerpo de Cristo por poder divino, mientras permanecen los accidentes. Es también el autor del oficio litúrgico de Corpus Christi.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "encarnacion",
+        "sustancia-y-accidente"
+      ],
+      "articles": [
+        "st-iii-q75-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "fe",
+      "title": "Fe",
+      "description": "Virtud teologal: asentimiento del intelecto, movido por la voluntad, a lo revelado por Dios.",
+      "descriptionEn": "Theological virtue: the intellect's assent, moved by the will, to what God has revealed.",
+      "area": "fe-y-teologia",
+      "labels": {
+        "es": [
+          "fe",
+          "creer",
+          "creencia",
+          "libertad religiosa"
+        ],
+        "en": [
+          "faith",
+          "belief",
+          "believe",
+          "religious freedom"
+        ],
+        "la": [
+          "fides",
+          "credere"
+        ]
+      },
+      "definition": "La fe es un hábito por el que la vida eterna comienza en nosotros y el intelecto asiente a lo que no ve, movido por la voluntad. Es una de las virtudes teologales. Por ser un acto voluntario, Tomás sostiene que no debe obligarse a creer a quienes nunca recibieron la fe (aunque, como hombre de su época, aceptó la coacción sobre los herejes).",
+      "broader": [
+        "virtudes-teologales"
+      ],
+      "narrower": [],
+      "related": [
+        "fe-y-razon",
+        "preambulos-de-la-fe",
+        "teologia",
+        "virtudes-teologales"
+      ],
+      "articles": [
+        "st-ii-ii-q10-a8",
+        "st-ii-ii-q2-a4",
+        "st-ii-ii-q4-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "fe-y-razon",
+      "title": "Fe y razón",
+      "description": "Dos órdenes de conocimiento que no pueden contradecirse, porque ambos proceden de Dios.",
+      "descriptionEn": "Two orders of knowledge that cannot contradict each other, since both come from God.",
+      "area": "fe-y-teologia",
+      "labels": {
+        "es": [
+          "fe y razón",
+          "razón y fe",
+          "ciencia y fe",
+          "doble verdad"
+        ],
+        "en": [
+          "faith and reason",
+          "science and faith",
+          "double truth"
+        ],
+        "la": [
+          "fides et ratio"
+        ]
+      },
+      "definition": "La razón natural y la fe son dos caminos hacia una única verdad. Algunas verdades sobre Dios son demostrables (preámbulos de la fe); otras la exceden. Como la verdad no contradice a la verdad, un argumento contra la fe no es una demostración o parte de un principio falso. La gracia no destruye la naturaleza, sino que la perfecciona.",
+      "broader": [],
+      "narrower": [
+        "preambulos-de-la-fe"
+      ],
+      "related": [
+        "averroismo",
+        "fe",
+        "gracia",
+        "preambulos-de-la-fe",
+        "teologia"
+      ],
+      "articles": [
+        "scg-i-c7",
+        "st-i-q1-a1",
+        "st-i-q1-a8",
+        "st-i-q2-a2",
+        "st-i-q46-a2",
+        "st-ii-ii-q2-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "felicidad",
+      "title": "Felicidad",
+      "description": "La posesión del fin último; perfecta solo en la visión de Dios, imperfecta en esta vida.",
+      "descriptionEn": "Possession of the last end; perfect only in the vision of God, imperfect in this life.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "felicidad",
+          "feliz",
+          "bienaventuranza",
+          "beatitud",
+          "visión beatífica",
+          "dinero",
+          "placer"
+        ],
+        "en": [
+          "happiness",
+          "happy",
+          "beatitude",
+          "beatific vision",
+          "money",
+          "pleasure"
+        ],
+        "la": [
+          "beatitudo",
+          "visio beatifica"
+        ]
+      },
+      "definition": "Ni la riqueza, ni los honores, ni la fama, ni el poder, ni el placer constituyen la felicidad: el objeto de la voluntad es el bien universal, y solo Dios lo es. La felicidad perfecta consiste en la visión de la esencia divina y excede las fuerzas naturales (gracia). En esta vida hay una felicidad imperfecta, por la virtud, la contemplación y los amigos.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "bien",
+        "caridad",
+        "dios",
+        "fin-ultimo",
+        "gracia",
+        "vida-contemplativa",
+        "virtud"
+      ],
+      "articles": [
+        "scg-iii-c37",
+        "st-i-ii-q1-a4",
+        "st-i-ii-q2-a8",
+        "st-i-ii-q3-a8",
+        "st-i-ii-q5-a3",
+        "st-i-ii-q5-a5",
+        "st-i-q12-a1",
+        "st-i-q82-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "fin-ultimo",
+      "title": "Fin último",
+      "description": "Aquello por lo que se quiere todo lo demás; toda acción humana obra por un fin.",
+      "descriptionEn": "That for the sake of which everything else is willed; every human act is for an end.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "fin último",
+          "fin",
+          "sentido de la vida",
+          "propósito"
+        ],
+        "en": [
+          "last end",
+          "ultimate end",
+          "meaning of life",
+          "purpose"
+        ],
+        "la": [
+          "finis ultimus"
+        ]
+      },
+      "definition": "Toda acción propiamente humana se hace por un fin, y no puede haber una serie infinita de fines: hay un fin último de la vida humana. Todos lo llaman felicidad, aunque discrepan en qué consiste. La ética de Tomás empieza aquí, como la de Aristóteles, desde la las cuatro causas final.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "acto-humano",
+        "causa",
+        "felicidad"
+      ],
+      "articles": [
+        "st-i-ii-q1-a1",
+        "st-i-ii-q1-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "gracia",
+      "title": "Gracia",
+      "description": "El don de Dios que sana y eleva la naturaleza; no la destruye, sino que la perfecciona.",
+      "descriptionEn": "God's gift that heals and elevates nature; it does not destroy it but perfects it.",
+      "area": "fe-y-teologia",
+      "labels": {
+        "es": [
+          "gracia",
+          "naturaleza y gracia",
+          "sobrenatural",
+          "naturaleza caída"
+        ],
+        "en": [
+          "grace",
+          "nature and grace",
+          "supernatural",
+          "fallen nature"
+        ],
+        "la": [
+          "gratia",
+          "gratia non tollit naturam"
+        ]
+      },
+      "definition": "La gracia no destruye la naturaleza, sino que la perfecciona. En la naturaleza caída el hombre puede hacer algunos bienes particulares, pero necesita la gracia para sanar y, sobre todo, para alcanzar la felicidad perfecta, que excede sus fuerzas. Con ella se infunden las virtudes teologales.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "encarnacion",
+        "fe-y-razon",
+        "felicidad",
+        "pecado",
+        "virtudes-teologales"
+      ],
+      "articles": [
+        "st-i-ii-q109-a2",
+        "st-i-ii-q5-a5",
+        "st-i-ii-q62-a1",
+        "st-i-q1-a8"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "guerra-justa",
+      "title": "Guerra justa",
+      "description": "Tres condiciones: autoridad legítima, causa justa e intención recta.",
+      "descriptionEn": "Three conditions: legitimate authority, just cause and right intention.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "guerra",
+          "guerra justa",
+          "paz",
+          "violencia"
+        ],
+        "en": [
+          "war",
+          "just war",
+          "peace",
+          "violence"
+        ],
+        "la": [
+          "bellum iustum",
+          "bellum"
+        ]
+      },
+      "definition": "Para que una guerra sea justa se requieren tres cosas: la autoridad del soberano, no de un particular; una causa justa; y una intención recta, que busque promover el bien o evitar el mal. Es la formulación clásica de la teoría de la guerra justa, desarrollada luego por la Escuela de Salamanca.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "autoridad-politica",
+        "doble-efecto",
+        "justicia"
+      ],
+      "articles": [
+        "st-ii-ii-q40-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "habito",
+      "title": "Hábito",
+      "description": "Disposición estable que inclina a obrar de cierto modo; una segunda naturaleza.",
+      "descriptionEn": "A stable disposition inclining one to act in a certain way; a second nature.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "hábito",
+          "disposición",
+          "carácter",
+          "costumbre"
+        ],
+        "en": [
+          "habit",
+          "disposition",
+          "character"
+        ],
+        "la": [
+          "habitus"
+        ]
+      },
+      "definition": "El hábito (habitus) es una cualidad estable que dispone a una potencia a obrar bien o mal, con facilidad y gusto. No es una rutina mecánica sino una segunda naturaleza adquirida o infundida. Los hábitos buenos son las virtudes; los malos, los vicios.",
+      "broader": [],
+      "narrower": [
+        "virtud"
+      ],
+      "related": [
+        "virtud"
+      ],
+      "articles": [
+        "st-i-ii-q55-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "hilemorfismo",
+      "title": "Materia y forma",
+      "description": "Todo cuerpo se compone de materia (principio potencial) y forma (principio actual).",
+      "descriptionEn": "Every body is composed of matter (potential principle) and form (actual principle).",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "materia y forma",
+          "hilemorfismo",
+          "materia prima",
+          "forma sustancial"
+        ],
+        "en": [
+          "matter and form",
+          "hylomorphism",
+          "prime matter",
+          "substantial form"
+        ],
+        "la": [
+          "materia",
+          "forma",
+          "forma substantialis"
+        ]
+      },
+      "definition": "El hilemorfismo aplica acto y potencia a los cuerpos: la materia es el principio potencial y la forma sustancial el principio actual que hace que algo sea lo que es. En el ser humano, la forma sustancial es el alma intelectual, y Tomás sostiene que es única en cada hombre.",
+      "broader": [
+        "acto-y-potencia"
+      ],
+      "narrower": [],
+      "related": [
+        "acto-y-potencia",
+        "alma",
+        "esencia",
+        "sustancia-y-accidente"
+      ],
+      "articles": [
+        "st-i-q75-a1",
+        "st-i-q75-a4",
+        "st-i-q76-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "imagen-de-dios",
+      "title": "Imagen de Dios",
+      "description": "El hombre es imagen de Dios sobre todo por su naturaleza intelectual.",
+      "descriptionEn": "Man is in God's image chiefly through his intellectual nature.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "imagen de dios",
+          "imagen y semejanza"
+        ],
+        "en": [
+          "image of god",
+          "image and likeness"
+        ],
+        "la": [
+          "imago dei"
+        ]
+      },
+      "definition": "El hombre es imagen de Dios principalmente por su naturaleza intelectual, capaz de conocer y amar a Dios. Tomás distingue tres grados: la aptitud natural, común a todo ser humano; la conformidad por la gracia; y la semejanza de la gloria. Es un fundamento de la dignidad de la persona.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "dios",
+        "intelecto",
+        "persona"
+      ],
+      "articles": [
+        "st-i-q93-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "inmortalidad",
+      "title": "Inmortalidad del alma",
+      "description": "El alma humana, por ser subsistente, no se corrompe con el cuerpo.",
+      "descriptionEn": "The human soul, being subsistent, is not corrupted with the body.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "inmortalidad",
+          "inmortal",
+          "incorruptible",
+          "muerte",
+          "más allá",
+          "resurrección"
+        ],
+        "en": [
+          "immortality",
+          "immortal",
+          "incorruptible",
+          "death",
+          "afterlife",
+          "resurrection"
+        ],
+        "la": [
+          "immortalitas",
+          "incorruptibilitas"
+        ]
+      },
+      "definition": "Lo que tiene ser por sí solo podría corromperse por sí mismo, y una forma subsistente no puede separarse de sí. Por eso el alma humana es incorruptible; un signo es el deseo natural de existir siempre. El alma separada existe en un estado incompleto, lo que para Tomás hace conveniente la resurrección.",
+      "broader": [
+        "alma"
+      ],
+      "narrower": [],
+      "related": [
+        "alma",
+        "intelecto"
+      ],
+      "articles": [
+        "st-i-q75-a6"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "intelecto",
+      "title": "Intelecto",
+      "description": "Potencia inmaterial del alma que capta lo universal y juzga sobre la verdad.",
+      "descriptionEn": "The immaterial power of the soul that grasps the universal and judges about truth.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "intelecto",
+          "inteligencia",
+          "entender",
+          "entendimiento",
+          "inteligencia artificial"
+        ],
+        "en": [
+          "intellect",
+          "intelligence",
+          "understanding",
+          "artificial intelligence"
+        ],
+        "la": [
+          "intellectus",
+          "intelligere"
+        ]
+      },
+      "definition": "El intelecto es una potencia del alma que conoce la naturaleza universal de las cosas; por eso no es un órgano corporal, aunque en esta vida necesita de las imágenes sensibles. Tomás distingue el intelecto agente, que abstrae (abstracción), y el intelecto posible, que recibe; y sostiene contra el averroísmo que cada hombre tiene el suyo. Sus principios iluminan, por extensión, el debate sobre la inteligencia artificial.",
+      "broader": [
+        "alma"
+      ],
+      "narrower": [
+        "razon"
+      ],
+      "related": [
+        "abstraccion",
+        "alma",
+        "averroismo",
+        "conocimiento",
+        "imagen-de-dios",
+        "inmortalidad",
+        "persona",
+        "razon",
+        "verdad",
+        "voluntad"
+      ],
+      "articles": [
+        "st-i-ii-q3-a8",
+        "st-i-q12-a1",
+        "st-i-q16-a1",
+        "st-i-q75-a2",
+        "st-i-q76-a1",
+        "st-i-q76-a2",
+        "st-i-q79-a1",
+        "st-i-q79-a3",
+        "st-i-q84-a6",
+        "st-i-q84-a7",
+        "st-i-q85-a2",
+        "st-ii-ii-q4-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "justicia",
+      "title": "Justicia",
+      "description": "Voluntad constante y perpetua de dar a cada uno su derecho.",
+      "descriptionEn": "The constant and perpetual will to render to each his right.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "justicia",
+          "justo",
+          "justicia conmutativa",
+          "justicia distributiva",
+          "justicia social"
+        ],
+        "en": [
+          "justice",
+          "just",
+          "commutative justice",
+          "distributive justice",
+          "social justice"
+        ],
+        "la": [
+          "iustitia"
+        ]
+      },
+      "definition": "La justicia es la voluntad constante y perpetua de dar a cada uno su derecho (ius). Tomás distingue la justicia conmutativa, que rige los intercambios según igualdad aritmética, y la distributiva, que reparte los bienes comunes proporcionalmente; la justicia legal ordena los actos al bien común.",
+      "broader": [
+        "virtudes-cardinales"
+      ],
+      "narrower": [],
+      "related": [
+        "bien-comun",
+        "derecho",
+        "doble-efecto",
+        "guerra-justa",
+        "propiedad",
+        "virtudes-cardinales"
+      ],
+      "articles": [
+        "st-i-ii-q96-a4",
+        "st-ii-ii-q40-a1",
+        "st-ii-ii-q57-a1",
+        "st-ii-ii-q58-a1",
+        "st-ii-ii-q61-a1",
+        "st-ii-ii-q66-a2",
+        "st-ii-ii-q66-a7"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "ley",
+      "title": "Ley",
+      "description": "Ordenación de la razón al bien común, promulgada por quien tiene a su cargo la comunidad.",
+      "descriptionEn": "An ordinance of reason for the common good, promulgated by one who has care of the community.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "ley",
+          "leyes",
+          "legislación"
+        ],
+        "en": [
+          "law",
+          "laws",
+          "legislation"
+        ],
+        "la": [
+          "lex"
+        ]
+      },
+      "definition": "La ley es una ordenación de la razón al bien común, promulgada por quien tiene a su cargo la comunidad. Es obra de la razón y no de la pura voluntad. Hay cuatro clases: eterna, natural, humana y divina (revelada).",
+      "broader": [],
+      "narrower": [
+        "ley-eterna",
+        "ley-humana",
+        "ley-natural"
+      ],
+      "related": [
+        "bien-comun",
+        "derecho",
+        "razon"
+      ],
+      "articles": [
+        "st-i-ii-q90-a1",
+        "st-i-ii-q90-a4",
+        "st-i-ii-q91-a1",
+        "st-ii-ii-q57-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "ley-eterna",
+      "title": "Ley eterna",
+      "description": "El plan de la sabiduría divina que gobierna todo el universo.",
+      "descriptionEn": "The plan of divine wisdom governing the whole universe.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "ley eterna",
+          "razón divina"
+        ],
+        "en": [
+          "eternal law",
+          "divine reason"
+        ],
+        "la": [
+          "lex aeterna"
+        ]
+      },
+      "definition": "Todo el universo está gobernado por la razón divina; esa razón de gobierno, que no se concibe en el tiempo, es la ley eterna. Es la fuente de toda otra ley: la ley natural es su participación en la criatura racional. Se relaciona con la providencia.",
+      "broader": [
+        "ley"
+      ],
+      "narrower": [],
+      "related": [
+        "ley-natural",
+        "providencia"
+      ],
+      "articles": [
+        "st-i-ii-q91-a1",
+        "st-i-ii-q91-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "ley-humana",
+      "title": "Ley humana",
+      "description": "Deriva de la ley natural por conclusión o determinación; una ley injusta no es propiamente ley.",
+      "descriptionEn": "Derived from natural law by conclusion or determination; an unjust law is not properly law.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "ley humana",
+          "derecho positivo",
+          "ley injusta",
+          "desobediencia civil",
+          "obediencia"
+        ],
+        "en": [
+          "human law",
+          "positive law",
+          "unjust law",
+          "civil disobedience",
+          "obedience"
+        ],
+        "la": [
+          "lex humana",
+          "lex iniusta"
+        ]
+      },
+      "definition": "La ley humana deriva de la ley natural como conclusión (de «no dañar», «no matar») o como determinación de algo general (la pena de un delito). No reprime todos los vicios, sino los más graves. Una ley injusta es más violencia que ley: no obliga en conciencia, salvo para evitar escándalo; y la que va contra el bien divino no debe obedecerse nunca.",
+      "broader": [
+        "ley"
+      ],
+      "narrower": [],
+      "related": [
+        "autoridad-politica",
+        "bien-comun",
+        "ley-natural"
+      ],
+      "articles": [
+        "st-i-ii-q95-a2",
+        "st-i-ii-q96-a2",
+        "st-i-ii-q96-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "ley-natural",
+      "title": "Ley natural",
+      "description": "Participación de la ley eterna en la criatura racional; su primer precepto es hacer el bien y evitar el mal.",
+      "descriptionEn": "The eternal law participated in the rational creature; its first precept is to do good and avoid evil.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "ley natural",
+          "derecho natural",
+          "inclinaciones naturales",
+          "moral natural"
+        ],
+        "en": [
+          "natural law",
+          "natural right",
+          "natural inclinations"
+        ],
+        "la": [
+          "lex naturalis",
+          "ius naturale"
+        ]
+      },
+      "definition": "La ley natural es la participación de la ley eterna en la criatura racional, que se gobierna a sí misma con la luz de la razón. Su primer precepto es que hay que hacer y buscar el bien y evitar el mal; los demás siguen el orden de las inclinaciones naturales. Los principios comunes son iguales para todos; las conclusiones particulares pueden oscurecerse. De ella deriva la ley humana.",
+      "broader": [
+        "ley"
+      ],
+      "narrower": [],
+      "related": [
+        "bien",
+        "ley-eterna",
+        "ley-humana",
+        "sinderesis"
+      ],
+      "articles": [
+        "st-i-ii-q91-a2",
+        "st-i-ii-q94-a2",
+        "st-i-ii-q94-a4",
+        "st-i-ii-q95-a2",
+        "st-i-q79-a12",
+        "st-ii-ii-q64-a5"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "libre-albedrio",
+      "title": "Libre albedrío",
+      "description": "Facultad de elegir entre bienes particulares; su raíz está en la razón.",
+      "descriptionEn": "The capacity to choose among particular goods; its root lies in reason.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "libre albedrío",
+          "libertad",
+          "libre",
+          "elección",
+          "determinismo",
+          "determinado"
+        ],
+        "en": [
+          "free will",
+          "freedom",
+          "free choice",
+          "choice",
+          "determinism"
+        ],
+        "la": [
+          "liberum arbitrium",
+          "electio"
+        ]
+      },
+      "definition": "El hombre es libre porque obra por un juicio de la razón, que puede considerar un bien particular bajo distintos aspectos. Si no lo fuera, serían vanos los consejos, mandatos, premios y castigos. La causalidad divina mueve a la voluntad según su naturaleza, libremente; cómo se concilian gracia y libertad se discutió en la controversia de auxiliis.",
+      "broader": [
+        "voluntad"
+      ],
+      "narrower": [],
+      "related": [
+        "acto-humano",
+        "providencia",
+        "razon",
+        "voluntad"
+      ],
+      "articles": [
+        "st-i-q83-a1",
+        "st-ii-ii-q10-a8"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "mal",
+      "title": "Mal",
+      "description": "La privación de un bien debido; no es una naturaleza ni una sustancia.",
+      "descriptionEn": "The privation of a due good; not a nature or a substance.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "mal",
+          "el mal",
+          "privación",
+          "problema del mal",
+          "sufrimiento"
+        ],
+        "en": [
+          "evil",
+          "privation",
+          "problem of evil",
+          "suffering"
+        ],
+        "la": [
+          "malum",
+          "privatio"
+        ]
+      },
+      "definition": "El mal no es un ente sino la ausencia de un bien que debería estar, como la ceguera en el ojo. Solo existe en un sujeto que, en sí mismo, es bueno. Ante el problema del mal, Tomás responde con Agustín que Dios no permitiría males si no pudiera sacar bienes de ellos, y que la providencia tolera ciertos defectos particulares por el bien del todo.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "bien",
+        "pecado",
+        "providencia"
+      ],
+      "articles": [
+        "st-i-q22-a2",
+        "st-i-q48-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "omnipotencia",
+      "title": "Omnipotencia",
+      "description": "Dios puede todo lo posible; lo contradictorio no es algo que no pueda hacer, sino nada.",
+      "descriptionEn": "God can do all that is possible; the contradictory is not something he cannot do, but nothing.",
+      "area": "dios",
+      "labels": {
+        "es": [
+          "omnipotencia",
+          "omnipotente",
+          "poder de dios",
+          "contradicción"
+        ],
+        "en": [
+          "omnipotence",
+          "omnipotent",
+          "power of god",
+          "contradiction"
+        ],
+        "la": [
+          "omnipotentia"
+        ]
+      },
+      "definition": "Dios puede hacer todo lo que es absolutamente posible, es decir, lo que no implica contradicción. Lo contradictorio no es una cosa que Dios no pueda hacer, sino nada; por eso es mejor decir que no puede ser hecho que decir que Dios no puede hacerlo.",
+      "broader": [
+        "dios"
+      ],
+      "narrower": [],
+      "related": [
+        "simplicidad-divina"
+      ],
+      "articles": [
+        "st-i-q25-a3"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "participacion",
+      "title": "Participación",
+      "description": "Tener de modo parcial y recibido lo que otro es plenamente.",
+      "descriptionEn": "Having partially, as received, what another is fully.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "participación",
+          "participar"
+        ],
+        "en": [
+          "participation"
+        ],
+        "la": [
+          "participatio"
+        ]
+      },
+      "definition": "Participar es tener en parte, recibido de otro, lo que otro es por esencia. Las criaturas participan del ser de Dios, que es el ser mismo; por eso todo ente es causado por Él (creación) y las perfecciones se dicen de Dios y de las criaturas por analogía. También la ley natural es participación de la ley eterna.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "analogia",
+        "creacion",
+        "esse"
+      ],
+      "articles": [
+        "st-i-q44-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "pecado",
+      "title": "Pecado",
+      "description": "Acto humano desordenado, contrario a la razón y a la ley eterna.",
+      "descriptionEn": "A disordered human act, contrary to reason and the eternal law.",
+      "area": "fe-y-teologia",
+      "labels": {
+        "es": [
+          "pecado",
+          "culpa",
+          "pecado original"
+        ],
+        "en": [
+          "sin",
+          "guilt",
+          "original sin"
+        ],
+        "la": [
+          "peccatum"
+        ]
+      },
+      "definition": "El pecado es un acto humano malo: un desorden de la voluntad contra la recta razón y la ley eterna. Es un caso del mal como privación, y sus efectos sobre la naturaleza explican la necesidad de la gracia que sana.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "conciencia",
+        "gracia",
+        "mal"
+      ],
+      "articles": [
+        "st-i-ii-q109-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "persona",
+      "title": "Persona",
+      "description": "Sustancia individual de naturaleza racional (Boecio); dueña de sus actos.",
+      "descriptionEn": "An individual substance of a rational nature (Boethius); master of its own acts.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "persona",
+          "dignidad",
+          "dignidad humana"
+        ],
+        "en": [
+          "person",
+          "dignity",
+          "human dignity"
+        ],
+        "la": [
+          "persona"
+        ]
+      },
+      "definition": "Tomás adopta la definición de Boecio: persona es una sustancia individual de naturaleza racional. Lo propio de la persona es el dominio de sus actos, que obra por sí misma. En el hombre, la persona es la unidad de alma y cuerpo, no el alma sola; y su dignidad se funda en ser imagen de Dios por su naturaleza intelectual.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "alma",
+        "imagen-de-dios",
+        "intelecto"
+      ],
+      "articles": [
+        "st-i-q29-a1",
+        "st-i-q75-a4",
+        "st-i-q93-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "preambulos-de-la-fe",
+      "title": "Preámbulos de la fe",
+      "description": "Verdades demostrables por la razón que la fe presupone, como la existencia de Dios.",
+      "descriptionEn": "Truths demonstrable by reason that faith presupposes, such as God's existence.",
+      "area": "fe-y-teologia",
+      "labels": {
+        "es": [
+          "preámbulos de la fe"
+        ],
+        "en": [
+          "preambles of faith"
+        ],
+        "la": [
+          "praeambula fidei"
+        ]
+      },
+      "definition": "Son verdades sobre Dios accesibles a la razón, como que existe o que es uno, que la fe presupone. Dios las revela igualmente para que todos las conozcan pronto, con certeza y sin error, ya que de hecho pocos llegarían a ellas por la filosofía. Las cinco vías demuestran el principal.",
+      "broader": [
+        "fe-y-razon"
+      ],
+      "narrower": [],
+      "related": [
+        "cinco-vias",
+        "fe",
+        "fe-y-razon"
+      ],
+      "articles": [
+        "st-i-q1-a1",
+        "st-i-q2-a2",
+        "st-ii-ii-q2-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "propiedad",
+      "title": "Propiedad",
+      "description": "Privada en cuanto a procurar y administrar, común en cuanto al uso.",
+      "descriptionEn": "Private as regards procuring and managing, common as regards use.",
+      "area": "ley-y-politica",
+      "labels": {
+        "es": [
+          "propiedad",
+          "propiedad privada",
+          "uso común",
+          "robo",
+          "robar",
+          "pobreza",
+          "riqueza"
+        ],
+        "en": [
+          "property",
+          "private property",
+          "common use",
+          "theft",
+          "poverty",
+          "wealth"
+        ],
+        "la": [
+          "proprietas",
+          "possessio"
+        ]
+      },
+      "definition": "La propiedad privada es lícita y necesaria en cuanto a procurar y administrar los bienes: se cuida mejor lo propio, hay más orden y más paz. Pero en cuanto al uso los bienes deben tenerse como comunes, dispuestos a compartirlos. En necesidad urgente y evidente, tomar lo ajeno para sobrevivir no es propiamente robo.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "bien-comun",
+        "justicia"
+      ],
+      "articles": [
+        "st-ii-ii-q66-a2",
+        "st-ii-ii-q66-a7"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "providencia",
+      "title": "Providencia",
+      "description": "El plan de Dios que ordena todas las cosas a su fin, sin suprimir las causas segundas ni la libertad.",
+      "descriptionEn": "God's plan ordering all things to their end, without suppressing secondary causes or freedom.",
+      "area": "dios",
+      "labels": {
+        "es": [
+          "providencia",
+          "destino",
+          "azar",
+          "gobierno divino"
+        ],
+        "en": [
+          "providence",
+          "fate",
+          "chance",
+          "divine governance"
+        ],
+        "la": [
+          "providentia",
+          "gubernatio"
+        ]
+      },
+      "definition": "Todo, incluso lo contingente y singular, está sometido a la providencia divina, porque la causalidad de Dios se extiende a todo lo que tiene ser. Pero la providencia actúa a través de las causas segundas y no suprime la contingencia ni el libre albedrío: Dios quiere que unas cosas sucedan necesariamente y otras contingentemente. Su razón en Dios es la ley eterna.",
+      "broader": [
+        "dios"
+      ],
+      "narrower": [],
+      "related": [
+        "dios",
+        "ley-eterna",
+        "libre-albedrio",
+        "mal"
+      ],
+      "articles": [
+        "st-i-ii-q91-a1",
+        "st-i-q19-a8",
+        "st-i-q22-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "prudencia",
+      "title": "Prudencia",
+      "description": "Recta razón en el obrar: aplica los principios morales al caso concreto.",
+      "descriptionEn": "Right reason in acting: applies moral principles to the concrete case.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "prudencia",
+          "prudente",
+          "razón práctica",
+          "arte",
+          "técnica",
+          "sabiduría práctica"
+        ],
+        "en": [
+          "prudence",
+          "prudent",
+          "practical wisdom",
+          "art",
+          "technique"
+        ],
+        "la": [
+          "prudentia",
+          "recta ratio agibilium"
+        ]
+      },
+      "definition": "La prudencia es la recta razón en el obrar (recta ratio agibilium), distinta del arte, que es la recta razón en el hacer cosas. Aplica los principios universales a lo singular, y por eso requiere tanto conocer los principios como la situación. Ninguna virtud moral perfecta existe sin ella, y ella a su vez necesita de las virtudes morales.",
+      "broader": [
+        "virtudes-cardinales"
+      ],
+      "narrower": [],
+      "related": [
+        "conciencia",
+        "razon",
+        "virtud",
+        "virtudes-cardinales"
+      ],
+      "articles": [
+        "st-i-ii-q57-a4",
+        "st-i-ii-q65-a1",
+        "st-ii-ii-q47-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "razon",
+      "title": "Razón",
+      "description": "El intelecto en cuanto discurre de lo conocido a lo desconocido; especulativa y práctica.",
+      "descriptionEn": "The intellect as it moves from the known to the unknown; speculative and practical.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "razón",
+          "racional",
+          "razonar",
+          "razón práctica"
+        ],
+        "en": [
+          "reason",
+          "rational",
+          "reasoning",
+          "practical reason"
+        ],
+        "la": [
+          "ratio",
+          "ratio practica"
+        ]
+      },
+      "definition": "La razón es el mismo intelecto en cuanto procede discursivamente. La razón práctica se ordena a la acción y tiene sus propios primeros principios, captados por la sindéresis. La razón es regla de los actos humanos: por eso la ley pertenece a la razón, y la raíz de la libertad está en ella.",
+      "broader": [
+        "intelecto"
+      ],
+      "narrower": [],
+      "related": [
+        "conciencia",
+        "intelecto",
+        "ley",
+        "libre-albedrio",
+        "prudencia"
+      ],
+      "articles": [
+        "st-i-ii-q64-a1",
+        "st-i-ii-q90-a1",
+        "st-i-q83-a1",
+        "st-ii-ii-q47-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "simplicidad-divina",
+      "title": "Simplicidad divina",
+      "description": "Dios no tiene composición alguna: ni materia y forma, ni esencia y ser, ni sustancia y accidentes.",
+      "descriptionEn": "God has no composition: neither matter and form, nor essence and being, nor substance and accidents.",
+      "area": "dios",
+      "labels": {
+        "es": [
+          "simplicidad",
+          "simplicidad divina",
+          "atributos divinos",
+          "vía negativa"
+        ],
+        "en": [
+          "divine simplicity",
+          "divine attributes",
+          "negative way"
+        ],
+        "la": [
+          "simplicitas",
+          "via negationis"
+        ]
+      },
+      "definition": "Por la vía negativa, Tomás niega de Dios toda composición: no es cuerpo, ni compuesto de materia y forma, de esencia y ser, o de sustancia y accidentes. De la simplicidad se siguen la perfección, la infinitud, la inmutabilidad, la eternidad y la unidad.",
+      "broader": [
+        "dios"
+      ],
+      "narrower": [],
+      "related": [
+        "analogia",
+        "dios",
+        "esse",
+        "omnipotencia"
+      ],
+      "articles": [
+        "st-i-q12-a12",
+        "st-i-q3-a7"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "sinderesis",
+      "title": "Sindéresis",
+      "description": "Hábito natural por el que conocemos los primeros principios de la razón práctica.",
+      "descriptionEn": "The natural habit by which we grasp the first principles of practical reason.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "sindéresis",
+          "primeros principios prácticos"
+        ],
+        "en": [
+          "synderesis",
+          "first practical principles"
+        ],
+        "la": [
+          "synderesis"
+        ]
+      },
+      "definition": "La sindéresis es un hábito natural, no una potencia, por el que captamos los primeros principios del obrar, empezando por «hay que hacer el bien y evitar el mal». Inclina al bien y protesta contra el mal. Es la base subjetiva de la ley natural y de la conciencia.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "conciencia",
+        "ley-natural"
+      ],
+      "articles": [
+        "st-i-ii-q94-a2",
+        "st-i-q79-a12"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "sustancia-y-accidente",
+      "title": "Sustancia y accidente",
+      "description": "La sustancia existe en sí; los accidentes (cantidad, cualidad, relación…) existen en otro.",
+      "descriptionEn": "Substance exists in itself; accidents (quantity, quality, relation…) exist in another.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "sustancia",
+          "accidente",
+          "accidentes"
+        ],
+        "en": [
+          "substance",
+          "accident",
+          "accidents"
+        ],
+        "la": [
+          "substantia",
+          "accidens"
+        ]
+      },
+      "definition": "La sustancia es lo que existe en sí y no en otro; los accidentes, como la cantidad, la cualidad o la relación, existen en una sustancia. La distinción es central en la metafísica del ente y en la teología de la Eucaristía, donde Tomás habla de una conversión de sustancia que deja los accidentes.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "ente",
+        "eucaristia",
+        "hilemorfismo"
+      ],
+      "articles": [
+        "st-iii-q75-a4"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "teologia",
+      "title": "Teología (sacra doctrina)",
+      "description": "La enseñanza fundada en la revelación, que argumenta desde los artículos de fe como principios.",
+      "descriptionEn": "Teaching founded on revelation, arguing from the articles of faith as its principles.",
+      "area": "fe-y-teologia",
+      "labels": {
+        "es": [
+          "teología",
+          "sacra doctrina",
+          "doctrina sagrada",
+          "revelación"
+        ],
+        "en": [
+          "theology",
+          "sacred doctrine",
+          "revelation"
+        ],
+        "la": [
+          "sacra doctrina",
+          "theologia"
+        ]
+      },
+      "definition": "La sacra doctrina es necesaria porque el hombre está ordenado a un fin que excede la razón. Es ciencia en sentido subalternado: argumenta desde principios recibidos por la fe, responde a las objeciones y usa la filosofía donde esta alcanzó la verdad (fe y razón).",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "encarnacion",
+        "fe",
+        "fe-y-razon"
+      ],
+      "articles": [
+        "st-i-q1-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "trascendentales",
+      "title": "Trascendentales",
+      "description": "Nociones que acompañan a todo ente: cosa, uno, algo, verdadero y bueno.",
+      "descriptionEn": "Notions convertible with being: thing, one, something, true and good.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "trascendentales",
+          "trascendental"
+        ],
+        "en": [
+          "transcendentals",
+          "transcendental"
+        ],
+        "la": [
+          "transcendentalia",
+          "unum",
+          "aliquid"
+        ]
+      },
+      "definition": "En De veritate q.1 a.1 Tomás deriva del ente las nociones que lo acompañan siempre: cosa, uno, algo, verdadero y bueno. Son convertibles con el ente, aunque cada una añade un aspecto: lo verdadero es el ente en relación con el intelecto; lo bueno, en relación con el apetito.",
+      "broader": [
+        "ente"
+      ],
+      "narrower": [
+        "bien",
+        "verdad"
+      ],
+      "related": [
+        "analogia",
+        "ente"
+      ],
+      "articles": [
+        "dv-q1-a1",
+        "st-i-q5-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "verdad",
+      "title": "Verdad",
+      "description": "La adecuación del intelecto y la cosa; está propiamente en el intelecto que juzga.",
+      "descriptionEn": "The adequation of intellect and thing; properly found in the judging intellect.",
+      "area": "metafisica",
+      "labels": {
+        "es": [
+          "verdad",
+          "adecuación",
+          "mentira",
+          "relativismo"
+        ],
+        "en": [
+          "truth",
+          "adequation",
+          "lie",
+          "relativism"
+        ],
+        "la": [
+          "veritas",
+          "adaequatio rei et intellectus"
+        ]
+      },
+      "definition": "La verdad es la adecuación del intelecto y la cosa (adaequatio rei et intellectus). Se encuentra primariamente en el intelecto, sobre todo en el juicio, y secundariamente en las cosas en cuanto se ordenan a un intelecto, en último término al divino. De ahí que Tomás considere pecado toda mentira: las palabras son signos naturales de lo que hay en la mente.",
+      "broader": [
+        "trascendentales"
+      ],
+      "narrower": [],
+      "related": [
+        "conocimiento",
+        "intelecto",
+        "vida-contemplativa"
+      ],
+      "articles": [
+        "dv-q1-a1",
+        "st-i-q16-a1",
+        "st-i-q85-a2",
+        "st-ii-ii-q110-a3"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "vida-contemplativa",
+      "title": "Vida contemplativa y activa",
+      "description": "La vida contemplativa es mejor, pero es aún mejor contemplar y comunicar lo contemplado.",
+      "descriptionEn": "The contemplative life is better, but better still is to contemplate and share what is contemplated.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "vida contemplativa",
+          "contemplación",
+          "vida activa",
+          "enseñanza",
+          "predicación"
+        ],
+        "en": [
+          "contemplative life",
+          "contemplation",
+          "active life",
+          "teaching",
+          "preaching"
+        ],
+        "la": [
+          "vita contemplativa",
+          "contemplatio",
+          "contemplata aliis tradere"
+        ]
+      },
+      "definition": "La vida contemplativa es de suyo mejor que la activa, porque la felicidad consiste sobre todo en contemplar la verdad. Pero enseñar y predicar desde la plenitud de la contemplación es mejor que solo contemplar: como es mejor iluminar que solo brillar. Es el ideal dominico: contemplari et contemplata aliis tradere.",
+      "broader": [],
+      "narrower": [],
+      "related": [
+        "felicidad",
+        "verdad"
+      ],
+      "articles": [
+        "scg-iii-c37",
+        "st-ii-ii-q188-a6"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "virtud",
+      "title": "Virtud",
+      "description": "Hábito operativo bueno; la virtud moral es un término medio fijado por la razón.",
+      "descriptionEn": "A good operative habit; moral virtue is a mean set by reason.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "virtud",
+          "virtudes",
+          "vicio",
+          "término medio"
+        ],
+        "en": [
+          "virtue",
+          "virtues",
+          "vice",
+          "golden mean",
+          "mean"
+        ],
+        "la": [
+          "virtus"
+        ]
+      },
+      "definition": "La virtud es un hábito operativo bueno: una buena cualidad de la mente por la que se vive rectamente. Hay virtudes intelectuales y morales; estas consisten en un término medio entre exceso y defecto, fijado por la recta razón, que no es mediocridad. Las virtudes perfectas están conectadas por la prudencia.",
+      "broader": [
+        "habito"
+      ],
+      "narrower": [
+        "virtudes-cardinales",
+        "virtudes-teologales"
+      ],
+      "related": [
+        "felicidad",
+        "habito",
+        "prudencia",
+        "virtudes-cardinales"
+      ],
+      "articles": [
+        "st-i-ii-q55-a4",
+        "st-i-ii-q57-a4",
+        "st-i-ii-q61-a2",
+        "st-i-ii-q62-a1",
+        "st-i-ii-q64-a1",
+        "st-i-ii-q65-a1",
+        "st-ii-ii-q23-a8"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "virtudes-cardinales",
+      "title": "Virtudes cardinales",
+      "description": "Prudencia, justicia, fortaleza y templanza: los «goznes» de la vida moral.",
+      "descriptionEn": "Prudence, justice, fortitude and temperance: the \"hinges\" of moral life.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "virtudes cardinales",
+          "templanza",
+          "fortaleza",
+          "valentía"
+        ],
+        "en": [
+          "cardinal virtues",
+          "temperance",
+          "fortitude",
+          "courage"
+        ],
+        "la": [
+          "virtutes cardinales",
+          "temperantia",
+          "fortitudo"
+        ]
+      },
+      "definition": "Son cuatro porque ordenan según la razón cada ámbito del obrar: la prudencia perfecciona la razón misma; la justicia, las operaciones hacia otros; la fortaleza nos afirma ante lo que nos haría retroceder; la templanza modera lo que nos arrastra.",
+      "broader": [
+        "virtud"
+      ],
+      "narrower": [
+        "justicia",
+        "prudencia"
+      ],
+      "related": [
+        "justicia",
+        "prudencia",
+        "virtud"
+      ],
+      "articles": [
+        "st-i-ii-q61-a2"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "virtudes-teologales",
+      "title": "Virtudes teologales",
+      "description": "Fe, esperanza y caridad: tienen a Dios por objeto y son infundidas por Él.",
+      "descriptionEn": "Faith, hope and charity: they have God as their object and are infused by him.",
+      "area": "etica",
+      "labels": {
+        "es": [
+          "virtudes teologales",
+          "esperanza",
+          "virtudes infusas"
+        ],
+        "en": [
+          "theological virtues",
+          "hope",
+          "infused virtues"
+        ],
+        "la": [
+          "virtutes theologicae",
+          "spes"
+        ]
+      },
+      "definition": "Como el hombre está ordenado a una felicidad sobrenatural, Dios infunde principios que la hacen posible: fe, esperanza y caridad. Tienen a Dios por objeto, solo Él las infunde (gracia) y solo se conocen por revelación.",
+      "broader": [
+        "virtud"
+      ],
+      "narrower": [
+        "caridad",
+        "fe"
+      ],
+      "related": [
+        "caridad",
+        "fe",
+        "gracia"
+      ],
+      "articles": [
+        "st-i-ii-q62-a1",
+        "st-ii-ii-q23-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    },
+    {
+      "id": "voluntad",
+      "title": "Voluntad",
+      "description": "Apetito racional: tendencia al bien tal como lo presenta el intelecto.",
+      "descriptionEn": "Rational appetite: the tendency toward the good as presented by the intellect.",
+      "area": "antropologia",
+      "labels": {
+        "es": [
+          "voluntad",
+          "querer",
+          "apetito racional",
+          "voluntario"
+        ],
+        "en": [
+          "the will",
+          "rational appetite",
+          "voluntary"
+        ],
+        "la": [
+          "voluntas",
+          "appetitus rationalis"
+        ]
+      },
+      "definition": "La voluntad quiere necesariamente la felicidad, el bien en general, pero ningún bien particular la determina: de ahí el libre albedrío. Intelecto y voluntad se mueven mutuamente: el intelecto presenta el objeto y la voluntad mueve a las potencias a obrar. Su primer acto es el amor.",
+      "broader": [
+        "alma"
+      ],
+      "narrower": [
+        "amor",
+        "libre-albedrio"
+      ],
+      "related": [
+        "amor",
+        "bien",
+        "intelecto",
+        "libre-albedrio"
+      ],
+      "articles": [
+        "st-i-ii-q19-a5",
+        "st-i-ii-q19-a6",
+        "st-i-ii-q6-a1",
+        "st-i-q19-a8",
+        "st-i-q82-a1",
+        "st-i-q83-a1",
+        "st-ii-ii-q4-a1"
+      ],
+      "status": "draft",
+      "trust": "unverified"
+    }
+  ],
+  "areas": [
+    {
+      "id": "antropologia",
+      "title": "La persona humana",
+      "titleEn": "The human person",
+      "description": "Alma y cuerpo, intelecto, voluntad, libertad y conciencia."
+    },
+    {
+      "id": "dios",
+      "title": "Dios",
+      "titleEn": "God",
+      "description": "Lo que la razón puede demostrar y decir sobre Dios: existencia, atributos, providencia."
+    },
+    {
+      "id": "etica",
+      "title": "Ética",
+      "titleEn": "Ethics",
+      "description": "El fin último, la felicidad, los actos humanos y las virtudes."
+    },
+    {
+      "id": "fe-y-teologia",
+      "title": "Fe y teología",
+      "titleEn": "Faith and theology",
+      "description": "La relación entre razón y revelación, la gracia y los misterios de la fe."
+    },
+    {
+      "id": "ley-y-politica",
+      "title": "Ley y política",
+      "titleEn": "Law and politics",
+      "description": "La ley, la justicia, el bien común y la autoridad."
+    },
+    {
+      "id": "metafisica",
+      "title": "Metafísica",
+      "titleEn": "Metaphysics",
+      "description": "El ser y sus principios: acto y potencia, esencia y ser, causas, trascendentales."
+    }
+  ],
+  "authors": [
+    {
+      "id": "agustin",
+      "title": "Agustín de Hipona",
+      "description": "La autoridad teológica más citada por Tomás.",
+      "dates": "354–430",
+      "concepts": [
+        "mal",
+        "ley-humana",
+        "gracia"
+      ]
+    },
+    {
+      "id": "alberto-magno",
+      "title": "Alberto Magno",
+      "description": "Dominico, maestro de Tomás en París y Colonia.",
+      "dates": "c. 1200–1280",
+      "concepts": [
+        "fe-y-razon"
+      ]
+    },
+    {
+      "id": "aristoteles",
+      "title": "Aristóteles",
+      "description": "«El Filósofo»: fuente de la lógica, la física, la metafísica y la ética que Tomás asume y transforma.",
+      "dates": "384–322 a.C.",
+      "concepts": [
+        "acto-y-potencia",
+        "hilemorfismo",
+        "causa",
+        "virtud",
+        "felicidad"
+      ]
+    },
+    {
+      "id": "averroes",
+      "title": "Averroes (Ibn Rushd)",
+      "description": "«El Comentador» de Aristóteles.",
+      "dates": "1126–1198",
+      "concepts": [
+        "averroismo",
+        "intelecto"
+      ]
+    },
+    {
+      "id": "avicena",
+      "title": "Avicena (Ibn Sina)",
+      "description": "Filósofo persa; su metafísica influyó en la distinción entre esencia y existencia.",
+      "dates": "980–1037",
+      "concepts": [
+        "esencia",
+        "esse",
+        "intelecto"
+      ]
+    },
+    {
+      "id": "boecio",
+      "title": "Boecio",
+      "description": "Transmisor de la lógica aristotélica y autor de definiciones que Tomás adopta.",
+      "dates": "c. 480–524",
+      "concepts": [
+        "persona",
+        "dios"
+      ]
+    },
+    {
+      "id": "buenaventura",
+      "title": "Buenaventura",
+      "description": "Franciscano, contemporáneo y colega de Tomás en París.",
+      "dates": "1221–1274",
+      "concepts": [
+        "creacion",
+        "fe-y-razon"
+      ]
+    },
+    {
+      "id": "maimonides",
+      "title": "Maimónides",
+      "description": "Filósofo judío, autor de la *Guía de perplejos*; Tomás lo cita como «Rabí Moisés».",
+      "dates": "1138–1204",
+      "concepts": [
+        "analogia",
+        "creacion",
+        "fe-y-razon"
+      ]
+    },
+    {
+      "id": "pedro-lombardo",
+      "title": "Pedro Lombardo",
+      "description": "Autor de las *Sentencias*, el manual de teología de la universidad medieval.",
+      "dates": "c. 1100–1160",
+      "concepts": [
+        "teologia"
+      ]
+    },
+    {
+      "id": "pseudo-dionisio",
+      "title": "Pseudo-Dionisio Areopagita",
+      "description": "Autor neoplatónico cristiano de los *Nombres divinos*.",
+      "dates": "c. siglo V–VI",
+      "concepts": [
+        "analogia",
+        "simplicidad-divina",
+        "acto-humano"
+      ]
+    },
+    {
+      "id": "siger-de-brabante",
+      "title": "Siger de Brabante",
+      "description": "Maestro de Artes en París, figura del averroísmo latino.",
+      "dates": "c. 1240–c. 1284",
+      "concepts": [
+        "averroismo"
+      ]
+    }
+  ],
+  "works": [
+    {
+      "id": "de-ente-et-essentia",
+      "title": "De ente et essentia",
+      "description": "Sobre el ente y la esencia (c. 1252–1256): breve tratado juvenil de metafísica.",
+      "url": "https://www.corpusthomisticum.org/iopera.html"
+    },
+    {
+      "id": "de-regno",
+      "title": "De regno",
+      "description": "Sobre el reino (c. 1267), dedicado al rey de Chipre; inconcluso.",
+      "url": "https://www.corpusthomisticum.org/iopera.html"
+    },
+    {
+      "id": "de-veritate",
+      "title": "Quaestiones disputatae de veritate",
+      "description": "Cuestiones disputadas sobre la verdad (1256–1259), de su primera regencia en París.",
+      "url": "https://www.corpusthomisticum.org/iopera.html"
+    },
+    {
+      "id": "summa-contra-gentiles",
+      "title": "Summa contra Gentiles",
+      "description": "Suma contra los gentiles (c. 1259–1265): la fe expuesta frente a quienes no la comparten.",
+      "url": "https://www.corpusthomisticum.org/iopera.html"
+    },
+    {
+      "id": "summa-theologiae",
+      "title": "Summa Theologiae",
+      "description": "Suma de teología (c. 1265–1273): la síntesis teológica de Tomás, escrita para principiantes e inconclusa.",
+      "url": "https://www.newadvent.org/summa/"
+    }
+  ]
+}

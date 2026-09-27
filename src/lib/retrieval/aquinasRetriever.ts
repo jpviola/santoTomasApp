@@ -1,110 +1,44 @@
-import corpusData from "@/data/corpus/aquinas-corpus.json";
 import type { SourceSnippet } from "@/lib/schemas/debate";
 import { withRetry } from "@/lib/llm/withRetry";
 import { parseJsonWithSchema } from "@/lib/llm/parseJson";
 import { callModel } from "@/lib/llm/callModel";
 import { prisma } from "@/lib/db/prisma";
 import { fetchSummaArticle, formatStCitation, parseStCitation, type SummaLanguage } from "@/lib/retrieval/summaText";
+import { getArticle } from "@/lib/knowledge/bundle";
+import { lexicalRanking } from "@/lib/knowledge/search";
+import type { KnowledgeArticle } from "@/lib/knowledge/types";
 import { z } from "zod";
 import { logger } from "@/lib/utils/logger";
 
-export type CorpusEntry = SourceSnippet & { topics: string[]; keywords: string[] };
+export { tokenize } from "@/lib/knowledge/lexical";
 
-const corpus = corpusData as CorpusEntry[];
-
-const STOPWORDS = new Set([
-  // es
-  "que", "qué", "los", "las", "del", "con", "por", "para", "una", "uno", "unos", "unas", "como", "cómo", "cual", "cuál",
-  "segun", "según", "sobre", "entre", "desde", "hasta", "este", "esta", "esto", "estos", "estas", "ese", "esa", "eso",
-  "son", "fue", "ser", "puede", "pueden", "hay", "más", "mas", "muy", "sus", "nos", "les", "donde", "cuando", "tomas",
-  "tomás", "santo", "aquino", "dice", "decir", "entiende", "piensa", "diferencia",
-  // en
-  "the", "and", "for", "with", "what", "which", "that", "this", "these", "those", "does", "did", "can", "could", "would",
-  "should", "are", "was", "were", "has", "have", "how", "why", "about", "into", "from", "than", "then", "there", "their",
-  "according", "thomas", "aquinas", "saint", "say", "says", "think", "understand", "difference", "between",
-]);
-
-const stripAccents = (text: string) => text.normalize("NFD").replace(/[̀-ͯ]/g, "");
-
-const stem = (token: string) => {
-  if (token.length > 5 && token.endsWith("es")) return token.slice(0, -2);
-  if (token.length > 3 && token.endsWith("s")) return token.slice(0, -1);
-  return token;
-};
-
-export function tokenize(text: string): string[] {
-  return stripAccents(text.toLowerCase())
-    .replace(/[^\p{L}\p{N}\s]/gu, " ")
-    .split(/\s+/)
-    .filter((token) => token.length >= 3 && !STOPWORDS.has(token))
-    .map(stem);
+/** Textos de Tomás del bundle OKF (knowledge/articulos). */
+export function getCorpusEntry(id: string): KnowledgeArticle | undefined {
+  return getArticle(id);
 }
 
-const tokensMatch = (a: string, b: string) =>
-  a === b || (Math.min(a.length, b.length) >= 5 && (a.startsWith(b) || b.startsWith(a)));
-
-type IndexedEntry = {
-  entry: CorpusEntry;
-  keywordTokens: string[];
-  titleTokens: string[];
-  textTokens: string[];
-  phrases: string[];
-};
-
-const index: IndexedEntry[] = corpus.map((entry) => ({
-  entry,
-  keywordTokens: [...new Set(entry.keywords.flatMap(tokenize))],
-  titleTokens: [...new Set(tokenize(entry.title))],
-  textTokens: [...new Set(tokenize(entry.text))],
-  phrases: entry.keywords.filter((k) => k.includes(" ")).map((k) => stripAccents(k.toLowerCase())),
-}));
-
-const corpusById = new Map(corpus.map((entry) => [entry.id, entry]));
-
-export function getCorpusEntry(id: string): CorpusEntry | undefined {
-  return corpusById.get(id);
-}
-
-function scoreEntry(queryTokens: string[], normalizedQuery: string, indexed: IndexedEntry): number {
-  let score = 0;
-  for (const token of queryTokens) {
-    if (indexed.keywordTokens.some((k) => tokensMatch(token, k))) score += 3;
-    else if (indexed.titleTokens.some((t) => tokensMatch(token, t))) score += 2;
-    else if (indexed.textTokens.some((t) => tokensMatch(token, t))) score += 1;
-  }
-  for (const phrase of indexed.phrases) {
-    if (normalizedQuery.includes(phrase)) score += 3;
-  }
-  return score;
-}
-
-export function toSnippet(entry: CorpusEntry): SourceSnippet {
+export function toSnippet(article: KnowledgeArticle): SourceSnippet {
   return {
-    id: entry.id,
-    title: entry.title,
-    citation: entry.citation,
-    text: entry.text,
-    url: entry.url,
+    id: article.id,
+    title: article.title,
+    citation: article.citation,
+    text: article.text,
+    url: article.url,
     kind: "summary",
   };
 }
 
 /**
- * Búsqueda léxica bilingüe sobre el corpus curado. Solo devuelve entradas con al
- * menos una coincidencia de palabra clave (score >= minScore): es preferible no
- * dar fuentes a dar fuentes que no tienen que ver con la pregunta.
+ * Búsqueda léxica sincrónica sobre el bundle (usada en la respuesta de respaldo sin LLM).
+ * La búsqueda completa, con conceptos, grafo y embeddings, está en src/lib/knowledge/search.ts.
  */
 export function retrieveAquinasSources(query: string, topK = 4, minScore = 3): SourceSnippet[] {
-  const queryTokens = [...new Set(tokenize(query))];
-  if (queryTokens.length === 0) return [];
-  const normalizedQuery = stripAccents(query.toLowerCase());
-
-  return index
-    .map((indexed) => ({ entry: indexed.entry, score: scoreEntry(queryTokens, normalizedQuery, indexed) }))
-    .filter((ranked) => ranked.score >= minScore)
-    .sort((a, b) => b.score - a.score)
+  return lexicalRanking(query, undefined, minScore)
     .slice(0, topK)
-    .map((ranked) => toSnippet(ranked.entry));
+    .flatMap(([id]) => {
+      const article = getArticle(id);
+      return article ? [toSnippet(article)] : [];
+    });
 }
 
 const TranslatedSourceSchema = z

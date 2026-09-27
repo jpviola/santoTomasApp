@@ -11,7 +11,11 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "knowledge:build": "tsx scripts/knowledge/build.ts",
+    "knowledge:check": "tsx scripts/knowledge/build.ts --check",
+    "knowledge:embed": "tsx scripts/knowledge/embed.ts",
+    "knowledge:graphdb": "tsx scripts/knowledge/uploadGraphDb.ts"
   },
   "dependencies": {
     "@prisma/client": "6.19.3",
@@ -35,7 +39,9 @@
     "jsdom": "^29.1.1",
     "prisma": "6.19.3",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.6",
+    "yaml": "^2.9.1"
   }
 }

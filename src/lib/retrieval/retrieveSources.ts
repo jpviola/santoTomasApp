@@ -1,6 +1,8 @@
 import type { OntologyTerm } from "@/lib/agents/OntologyEngine";
 import type { SourceSnippet } from "@/lib/schemas/debate";
-import { getCorpusEntry, hydrateAquinasSources, retrieveAquinasSources, toSnippet } from "@/lib/retrieval/aquinasRetriever";
+import { getCorpusEntry, hydrateAquinasSources, toSnippet } from "@/lib/retrieval/aquinasRetriever";
+import { describeConcept } from "@/lib/knowledge/bundle";
+import { searchKnowledge } from "@/lib/knowledge/search";
 import { retrieveOntologySources } from "@/lib/retrieval/ontologyRetriever";
 import { buildArticleUrl, formatStCitation, parseStCitation, stSourceId, type SummaLanguage } from "@/lib/retrieval/summaText";
 
@@ -49,6 +51,12 @@ export function lociToSources(candidateLoci: string[]): SourceSnippet[] {
   return sources;
 }
 
+export type RetrievedKnowledge = {
+  sources: SourceSnippet[];
+  /** Conceptos de la ontología relevantes, ya formateados para el prompt («Título: definición»). */
+  concepts: string[];
+};
+
 export async function retrieveSourcesForDebate({
   question,
   language,
@@ -56,14 +64,15 @@ export async function retrieveSourcesForDebate({
   candidateLoci = [],
   ontologyTerms = [],
   maxSources = 6,
-}: RetrieveSourcesParams): Promise<SourceSnippet[]> {
+}: RetrieveSourcesParams): Promise<RetrievedKnowledge> {
   const fromModel = lociToSources(candidateLoci);
-  const fromCorpus = retrieveAquinasSources([question, ...keywords].join(" "), 4);
+  const found = await searchKnowledge([question, ...keywords].join(" "), { limit: 4 });
+  const fromBundle = found.articles.map((hit) => toSnippet(hit.article));
   const fromOntology = await retrieveOntologySources(ontologyTerms);
 
   const merged: SourceSnippet[] = [];
   const seen = new Set<string>();
-  for (const source of [...fromModel, ...fromCorpus, ...fromOntology]) {
+  for (const source of [...fromModel, ...fromBundle, ...fromOntology]) {
     if (seen.has(source.id)) continue;
     seen.add(source.id);
     merged.push(source);
@@ -71,5 +80,8 @@ export async function retrieveSourcesForDebate({
 
   // Se hidrata con margen: algunas citas del modelo pueden no verificarse.
   const hydrated = await hydrateAquinasSources(merged.slice(0, maxSources + 2), language);
-  return hydrated.slice(0, maxSources);
+  return {
+    sources: hydrated.slice(0, maxSources),
+    concepts: found.concepts.map((match) => describeConcept(match.concept, language)),
+  };
 }

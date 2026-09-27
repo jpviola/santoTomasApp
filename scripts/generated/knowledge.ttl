@@ -1,0 +1,1296 @@
+# Generado por scripts/knowledge/build.ts desde knowledge/ (bundle OKF). No editar a mano.
+@prefix st: <https://stotomas.ai/ontology/> .
+@prefix schema: <http://schema.org/> .
+
+<https://stotomas.ai/ontology/abstraccion> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "abstractio" ;
+    <https://stotomas.ai/ontology/nameEs> "Abstracción" ;
+    <http://schema.org/description> "The agent intellect's operation of grasping the universal in sensory images." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Operación del intelecto agente que capta lo universal en las imágenes sensibles." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/acto-humano> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "actus humanus" ;
+    <https://stotomas.ai/ontology/nameEs> "Acto humano y moralidad" ;
+    <http://schema.org/description> "An act from deliberate will; good only if good in object, end and circumstances." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Acto que procede de voluntad deliberada; es bueno si lo es por su objeto, fin y circunstancias." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/doble-efecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/doble-efecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fin-ultimo> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/libre-albedrio> .
+
+<https://stotomas.ai/ontology/acto-y-potencia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "actus" ;
+    <https://stotomas.ai/ontology/nameEs> "Acto y potencia" ;
+    <http://schema.org/description> "The Aristotelian distinction that explains change: potency is real capacity, act its realization." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La distinción aristotélica que explica el cambio: la potencia es capacidad real, el acto su realización." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/hilemorfismo> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/causa> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/cinco-vias> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/hilemorfismo> .
+
+<https://stotomas.ai/ontology/alma> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "anima" ;
+    <https://stotomas.ai/ontology/nameEs> "Alma" ;
+    <http://schema.org/description> "First principle of life; in man, the substantial form of the body, and subsistent." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Primer principio de la vida; en el hombre, forma sustancial del cuerpo y subsistente." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/inmortalidad> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/voluntad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/hilemorfismo> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/inmortalidad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/persona> .
+
+<https://stotomas.ai/ontology/amor> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "amor" ;
+    <https://stotomas.ai/ontology/nameEs> "Amor" ;
+    <http://schema.org/description> "Willing the good for someone; the first movement of the will." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Querer el bien para alguien; el primer movimiento de la voluntad." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/voluntad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/caridad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/voluntad> .
+
+<https://stotomas.ai/ontology/analogia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "analogia" ;
+    <https://stotomas.ai/ontology/nameEs> "Analogía" ;
+    <http://schema.org/description> "Predicating a term of several things according to a proportion: neither univocal nor equivocal." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Modo de predicar un término de varias cosas según una proporción: ni unívoco ni equívoco." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ente> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/participacion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/simplicidad-divina> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/trascendentales> .
+
+<https://stotomas.ai/ontology/autoridad-politica> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "regimen" ;
+    <https://stotomas.ai/ontology/nameEs> "Autoridad política" ;
+    <http://schema.org/description> "Man is a social and political animal; authority is natural, not merely the fruit of sin." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El hombre es animal social y político; la autoridad es natural, no solo fruto del pecado." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien-comun> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/guerra-justa> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-humana> .
+
+<https://stotomas.ai/ontology/averroismo> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "unitas intellectus" ;
+    <https://stotomas.ai/ontology/nameEs> "Unidad del intelecto (averroísmo)" ;
+    <http://schema.org/description> "The thesis of a single possible intellect for all humanity, which Aquinas refuted." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La tesis de un único intelecto posible para toda la humanidad, que Tomás refutó." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe-y-razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/bien> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "bonum" ;
+    <https://stotomas.ai/ontology/nameEs> "Bien" ;
+    <http://schema.org/description> "Being as desirable; every being, insofar as it is, is good." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El ente en cuanto deseable; todo ente, en cuanto es, es bueno." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/trascendentales> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/amor> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-natural> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/mal> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/voluntad> .
+
+<https://stotomas.ai/ontology/bien-comun> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "bonum commune" ;
+    <https://stotomas.ai/ontology/nameEs> "Bien común" ;
+    <http://schema.org/description> "The good of the community as such, in which all its members share." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El bien de la comunidad en cuanto tal, del que participan todos sus miembros." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/autoridad-politica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/justicia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-humana> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/propiedad> .
+
+<https://stotomas.ai/ontology/caridad> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "caritas" ;
+    <https://stotomas.ai/ontology/nameEs> "Caridad" ;
+    <http://schema.org/description> "Man's friendship with God; the form of all the virtues." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Amistad del hombre con Dios; forma de todas las virtudes." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/virtudes-teologales> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/amor> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtudes-teologales> .
+
+<https://stotomas.ai/ontology/causa> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "causa" ;
+    <https://stotomas.ai/ontology/nameEs> "Las cuatro causas" ;
+    <http://schema.org/description> "Material, formal, efficient and final: the four ways of answering \"why?\"." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Material, formal, eficiente y final: los cuatro modos de responder «¿por qué?»." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/acto-y-potencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/cinco-vias> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fin-ultimo> .
+
+<https://stotomas.ai/ontology/cinco-vias> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "quinque viae" ;
+    <https://stotomas.ai/ontology/nameEs> "Las cinco vías" ;
+    <http://schema.org/description> "Five arguments (motion, efficient cause, contingency, degrees, governance) from effects to God." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Cinco argumentos (movimiento, causa eficiente, contingencia, grados, gobierno) que van de los efectos a Dios." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/acto-y-potencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/causa> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/preambulos-de-la-fe> .
+
+<https://stotomas.ai/ontology/conciencia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "conscientia" ;
+    <https://stotomas.ai/ontology/nameEs> "Conciencia" ;
+    <http://schema.org/description> "The act of applying moral knowledge to a particular case; it binds even when mistaken." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Acto de aplicar el conocimiento moral a un caso concreto; obliga aun cuando yerra." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/acto-humano> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/pecado> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/prudencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/sinderesis> .
+
+<https://stotomas.ai/ontology/conocimiento> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "cognitio" ;
+    <https://stotomas.ai/ontology/nameEs> "Conocimiento" ;
+    <http://schema.org/description> "All intellectual knowledge begins with the senses; we know things, not our ideas." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Todo conocimiento intelectual comienza por los sentidos; conocemos las cosas, no nuestras ideas." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/abstraccion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/abstraccion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/verdad> .
+
+<https://stotomas.ai/ontology/creacion> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "creatio" ;
+    <https://stotomas.ai/ontology/nameEs> "Creación" ;
+    <http://schema.org/description> "The giving of being to all that is; not a change, and presupposing no material." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La donación del ser a todo lo que es; no es un cambio ni presupone un material." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/participacion> .
+
+<https://stotomas.ai/ontology/derecho> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "ius" ;
+    <https://stotomas.ai/ontology/nameEs> "Derecho (ius)" ;
+    <http://schema.org/description> "The object of justice: the just thing, what is owed to another." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El objeto de la justicia: lo justo, lo debido a otro." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/justicia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley> .
+
+<https://stotomas.ai/ontology/dios> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "deus" ;
+    <https://stotomas.ai/ontology/nameEs> "Dios" ;
+    <http://schema.org/description> "Subsistent being itself, first cause of all; known by reason from his effects." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El ser mismo subsistente, causa primera de todo; conocido por la razón desde sus efectos." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/cinco-vias> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/omnipotencia> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/providencia> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/simplicidad-divina> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/analogia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/cinco-vias> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/creacion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/imagen-de-dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/providencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/simplicidad-divina> .
+
+<https://stotomas.ai/ontology/doble-efecto> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "duplex effectus" ;
+    <https://stotomas.ai/ontology/nameEs> "Doble efecto" ;
+    <http://schema.org/description> "An act can have two effects, only one intended; the classic source of the double-effect principle." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Un acto puede tener dos efectos, uno solo intentado; fuente clásica del principio del doble efecto." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/acto-humano> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/acto-humano> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/guerra-justa> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/justicia> .
+
+<https://stotomas.ai/ontology/encarnacion> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "incarnatio" ;
+    <https://stotomas.ai/ontology/nameEs> "Encarnación" ;
+    <http://schema.org/description> "The union of the Word with human nature; not absolutely necessary, but most fitting." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La unión del Verbo con la naturaleza humana; no absolutamente necesaria, pero la más conveniente." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/eucaristia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/gracia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/teologia> .
+
+<https://stotomas.ai/ontology/ente> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "ens" ;
+    <https://stotomas.ai/ontology/nameEs> "Ente" ;
+    <http://schema.org/description> "That which is: the first notion grasped by the intellect and the subject of metaphysics." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Lo que es: la primera noción que capta el intelecto y el objeto de la metafísica." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/trascendentales> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/analogia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/sustancia-y-accidente> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/trascendentales> .
+
+<https://stotomas.ai/ontology/esencia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "essentia" ;
+    <https://stotomas.ai/ontology/nameEs> "Esencia" ;
+    <http://schema.org/description> "What a thing is, as expressed in its definition." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Lo que una cosa es, expresado en su definición." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ente> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/hilemorfismo> .
+
+<https://stotomas.ai/ontology/esse> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "esse" ;
+    <https://stotomas.ai/ontology/nameEs> "Acto de ser (esse)" ;
+    <http://schema.org/description> "The act by which an essence is real; Aquinas's most original metaphysical notion." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El acto por el que una esencia es real; la noción metafísica más original de Tomás." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/acto-y-potencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/creacion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ente> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/participacion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/simplicidad-divina> .
+
+<https://stotomas.ai/ontology/eucaristia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "eucharistia" ;
+    <https://stotomas.ai/ontology/nameEs> "Eucaristía" ;
+    <http://schema.org/description> "Sacrament in which the substance of bread is converted into Christ's body (transubstantiation)." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Sacramento en el que la sustancia del pan se convierte en el cuerpo de Cristo (transubstanciación)." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/encarnacion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/sustancia-y-accidente> .
+
+<https://stotomas.ai/ontology/fe> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "fides" ;
+    <https://stotomas.ai/ontology/nameEs> "Fe" ;
+    <http://schema.org/description> "Theological virtue: the intellect's assent, moved by the will, to what God has revealed." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Virtud teologal: asentimiento del intelecto, movido por la voluntad, a lo revelado por Dios." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/virtudes-teologales> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe-y-razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/preambulos-de-la-fe> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/teologia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtudes-teologales> .
+
+<https://stotomas.ai/ontology/fe-y-razon> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "fides et ratio" ;
+    <https://stotomas.ai/ontology/nameEs> "Fe y razón" ;
+    <http://schema.org/description> "Two orders of knowledge that cannot contradict each other, since both come from God." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Dos órdenes de conocimiento que no pueden contradecirse, porque ambos proceden de Dios." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/preambulos-de-la-fe> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/averroismo> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/gracia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/preambulos-de-la-fe> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/teologia> .
+
+<https://stotomas.ai/ontology/felicidad> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "beatitudo" ;
+    <https://stotomas.ai/ontology/nameEs> "Felicidad" ;
+    <http://schema.org/description> "Possession of the last end; perfect only in the vision of God, imperfect in this life." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La posesión del fin último; perfecta solo en la visión de Dios, imperfecta en esta vida." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/caridad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fin-ultimo> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/gracia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/vida-contemplativa> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtud> .
+
+<https://stotomas.ai/ontology/fin-ultimo> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "finis ultimus" ;
+    <https://stotomas.ai/ontology/nameEs> "Fin último" ;
+    <http://schema.org/description> "That for the sake of which everything else is willed; every human act is for an end." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Aquello por lo que se quiere todo lo demás; toda acción humana obra por un fin." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/acto-humano> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/causa> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/felicidad> .
+
+<https://stotomas.ai/ontology/gracia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "gratia" ;
+    <https://stotomas.ai/ontology/nameEs> "Gracia" ;
+    <http://schema.org/description> "God's gift that heals and elevates nature; it does not destroy it but perfects it." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El don de Dios que sana y eleva la naturaleza; no la destruye, sino que la perfecciona." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/encarnacion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe-y-razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/pecado> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtudes-teologales> .
+
+<https://stotomas.ai/ontology/guerra-justa> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "bellum iustum" ;
+    <https://stotomas.ai/ontology/nameEs> "Guerra justa" ;
+    <http://schema.org/description> "Three conditions: legitimate authority, just cause and right intention." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Tres condiciones: autoridad legítima, causa justa e intención recta." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/autoridad-politica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/doble-efecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/justicia> .
+
+<https://stotomas.ai/ontology/habito> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "habitus" ;
+    <https://stotomas.ai/ontology/nameEs> "Hábito" ;
+    <http://schema.org/description> "A stable disposition inclining one to act in a certain way; a second nature." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Disposición estable que inclina a obrar de cierto modo; una segunda naturaleza." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtud> .
+
+<https://stotomas.ai/ontology/hilemorfismo> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "materia" ;
+    <https://stotomas.ai/ontology/nameEs> "Materia y forma" ;
+    <http://schema.org/description> "Every body is composed of matter (potential principle) and form (actual principle)." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Todo cuerpo se compone de materia (principio potencial) y forma (principio actual)." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/acto-y-potencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/acto-y-potencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/sustancia-y-accidente> .
+
+<https://stotomas.ai/ontology/imagen-de-dios> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "imago dei" ;
+    <https://stotomas.ai/ontology/nameEs> "Imagen de Dios" ;
+    <http://schema.org/description> "Man is in God's image chiefly through his intellectual nature." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El hombre es imagen de Dios sobre todo por su naturaleza intelectual." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/persona> .
+
+<https://stotomas.ai/ontology/inmortalidad> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "immortalitas" ;
+    <https://stotomas.ai/ontology/nameEs> "Inmortalidad del alma" ;
+    <http://schema.org/description> "The human soul, being subsistent, is not corrupted with the body." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El alma humana, por ser subsistente, no se corrompe con el cuerpo." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/intelecto> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "intellectus" ;
+    <https://stotomas.ai/ontology/nameEs> "Intelecto" ;
+    <http://schema.org/description> "The immaterial power of the soul that grasps the universal and judges about truth." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Potencia inmaterial del alma que capta lo universal y juzga sobre la verdad." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/abstraccion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/averroismo> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/imagen-de-dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/inmortalidad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/persona> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/verdad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/voluntad> .
+
+<https://stotomas.ai/ontology/justicia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "iustitia" ;
+    <https://stotomas.ai/ontology/nameEs> "Justicia" ;
+    <http://schema.org/description> "The constant and perpetual will to render to each his right." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Voluntad constante y perpetua de dar a cada uno su derecho." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/virtudes-cardinales> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien-comun> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/derecho> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/doble-efecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/guerra-justa> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/propiedad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtudes-cardinales> .
+
+<https://stotomas.ai/ontology/ley> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "lex" ;
+    <https://stotomas.ai/ontology/nameEs> "Ley" ;
+    <http://schema.org/description> "An ordinance of reason for the common good, promulgated by one who has care of the community." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Ordenación de la razón al bien común, promulgada por quien tiene a su cargo la comunidad." ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/ley-eterna> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/ley-humana> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/ley-natural> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien-comun> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/derecho> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/razon> .
+
+<https://stotomas.ai/ontology/ley-eterna> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "lex aeterna" ;
+    <https://stotomas.ai/ontology/nameEs> "Ley eterna" ;
+    <http://schema.org/description> "The plan of divine wisdom governing the whole universe." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El plan de la sabiduría divina que gobierna todo el universo." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/ley> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-natural> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/providencia> .
+
+<https://stotomas.ai/ontology/ley-humana> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "lex humana" ;
+    <https://stotomas.ai/ontology/nameEs> "Ley humana" ;
+    <http://schema.org/description> "Derived from natural law by conclusion or determination; an unjust law is not properly law." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Deriva de la ley natural por conclusión o determinación; una ley injusta no es propiamente ley." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/ley> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/autoridad-politica> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien-comun> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-natural> .
+
+<https://stotomas.ai/ontology/ley-natural> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "lex naturalis" ;
+    <https://stotomas.ai/ontology/nameEs> "Ley natural" ;
+    <http://schema.org/description> "The eternal law participated in the rational creature; its first precept is to do good and avoid evil." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Participación de la ley eterna en la criatura racional; su primer precepto es hacer el bien y evitar el mal." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/ley> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-eterna> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-humana> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/sinderesis> .
+
+<https://stotomas.ai/ontology/libre-albedrio> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "liberum arbitrium" ;
+    <https://stotomas.ai/ontology/nameEs> "Libre albedrío" ;
+    <http://schema.org/description> "The capacity to choose among particular goods; its root lies in reason." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Facultad de elegir entre bienes particulares; su raíz está en la razón." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/voluntad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/acto-humano> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/providencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/voluntad> .
+
+<https://stotomas.ai/ontology/mal> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "malum" ;
+    <https://stotomas.ai/ontology/nameEs> "Mal" ;
+    <http://schema.org/description> "The privation of a due good; not a nature or a substance." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La privación de un bien debido; no es una naturaleza ni una sustancia." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/pecado> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/providencia> .
+
+<https://stotomas.ai/ontology/omnipotencia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "omnipotentia" ;
+    <https://stotomas.ai/ontology/nameEs> "Omnipotencia" ;
+    <http://schema.org/description> "God can do all that is possible; the contradictory is not something he cannot do, but nothing." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Dios puede todo lo posible; lo contradictorio no es algo que no pueda hacer, sino nada." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/simplicidad-divina> .
+
+<https://stotomas.ai/ontology/participacion> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "participatio" ;
+    <https://stotomas.ai/ontology/nameEs> "Participación" ;
+    <http://schema.org/description> "Having partially, as received, what another is fully." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Tener de modo parcial y recibido lo que otro es plenamente." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/analogia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/creacion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esse> .
+
+<https://stotomas.ai/ontology/pecado> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "peccatum" ;
+    <https://stotomas.ai/ontology/nameEs> "Pecado" ;
+    <http://schema.org/description> "A disordered human act, contrary to reason and the eternal law." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Acto humano desordenado, contrario a la razón y a la ley eterna." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/gracia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/mal> .
+
+<https://stotomas.ai/ontology/persona> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "persona" ;
+    <https://stotomas.ai/ontology/nameEs> "Persona" ;
+    <http://schema.org/description> "An individual substance of a rational nature (Boethius); master of its own acts." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Sustancia individual de naturaleza racional (Boecio); dueña de sus actos." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/imagen-de-dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/preambulos-de-la-fe> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "praeambula fidei" ;
+    <https://stotomas.ai/ontology/nameEs> "Preámbulos de la fe" ;
+    <http://schema.org/description> "Truths demonstrable by reason that faith presupposes, such as God's existence." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Verdades demostrables por la razón que la fe presupone, como la existencia de Dios." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/fe-y-razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/cinco-vias> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe-y-razon> .
+
+<https://stotomas.ai/ontology/propiedad> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "proprietas" ;
+    <https://stotomas.ai/ontology/nameEs> "Propiedad" ;
+    <http://schema.org/description> "Private as regards procuring and managing, common as regards use." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Privada en cuanto a procurar y administrar, común en cuanto al uso." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien-comun> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/justicia> .
+
+<https://stotomas.ai/ontology/providencia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "providentia" ;
+    <https://stotomas.ai/ontology/nameEs> "Providencia" ;
+    <http://schema.org/description> "God's plan ordering all things to their end, without suppressing secondary causes or freedom." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El plan de Dios que ordena todas las cosas a su fin, sin suprimir las causas segundas ni la libertad." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-eterna> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/libre-albedrio> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/mal> .
+
+<https://stotomas.ai/ontology/prudencia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "prudentia" ;
+    <https://stotomas.ai/ontology/nameEs> "Prudencia" ;
+    <http://schema.org/description> "Right reason in acting: applies moral principles to the concrete case." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Recta razón en el obrar: aplica los principios morales al caso concreto." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/virtudes-cardinales> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/razon> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtudes-cardinales> .
+
+<https://stotomas.ai/ontology/razon> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "ratio" ;
+    <https://stotomas.ai/ontology/nameEs> "Razón" ;
+    <http://schema.org/description> "The intellect as it moves from the known to the unknown; speculative and practical." ;
+    <https://stotomas.ai/ontology/descriptionEs> "El intelecto en cuanto discurre de lo conocido a lo desconocido; especulativa y práctica." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/libre-albedrio> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/prudencia> .
+
+<https://stotomas.ai/ontology/simplicidad-divina> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "simplicitas" ;
+    <https://stotomas.ai/ontology/nameEs> "Simplicidad divina" ;
+    <http://schema.org/description> "God has no composition: neither matter and form, nor essence and being, nor substance and accidents." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Dios no tiene composición alguna: ni materia y forma, ni esencia y ser, ni sustancia y accidentes." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/analogia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/omnipotencia> .
+
+<https://stotomas.ai/ontology/sinderesis> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "synderesis" ;
+    <https://stotomas.ai/ontology/nameEs> "Sindéresis" ;
+    <http://schema.org/description> "The natural habit by which we grasp the first principles of practical reason." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Hábito natural por el que conocemos los primeros principios de la razón práctica." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ley-natural> .
+
+<https://stotomas.ai/ontology/sustancia-y-accidente> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "substantia" ;
+    <https://stotomas.ai/ontology/nameEs> "Sustancia y accidente" ;
+    <http://schema.org/description> "Substance exists in itself; accidents (quantity, quality, relation…) exist in another." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La sustancia existe en sí; los accidentes (cantidad, cualidad, relación…) existen en otro." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ente> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/eucaristia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/hilemorfismo> .
+
+<https://stotomas.ai/ontology/teologia> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "sacra doctrina" ;
+    <https://stotomas.ai/ontology/nameEs> "Teología (sacra doctrina)" ;
+    <http://schema.org/description> "Teaching founded on revelation, arguing from the articles of faith as its principles." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La enseñanza fundada en la revelación, que argumenta desde los artículos de fe como principios." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/encarnacion> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe-y-razon> .
+
+<https://stotomas.ai/ontology/trascendentales> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "transcendentalia" ;
+    <https://stotomas.ai/ontology/nameEs> "Trascendentales" ;
+    <http://schema.org/description> "Notions convertible with being: thing, one, something, true and good." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Nociones que acompañan a todo ente: cosa, uno, algo, verdadero y bueno." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/ente> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/verdad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/analogia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/ente> .
+
+<https://stotomas.ai/ontology/verdad> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "veritas" ;
+    <https://stotomas.ai/ontology/nameEs> "Verdad" ;
+    <http://schema.org/description> "The adequation of intellect and thing; properly found in the judging intellect." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La adecuación del intelecto y la cosa; está propiamente en el intelecto que juzga." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/trascendentales> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/vida-contemplativa> .
+
+<https://stotomas.ai/ontology/vida-contemplativa> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "vita contemplativa" ;
+    <https://stotomas.ai/ontology/nameEs> "Vida contemplativa y activa" ;
+    <http://schema.org/description> "The contemplative life is better, but better still is to contemplate and share what is contemplated." ;
+    <https://stotomas.ai/ontology/descriptionEs> "La vida contemplativa es mejor, pero es aún mejor contemplar y comunicar lo contemplado." ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/verdad> .
+
+<https://stotomas.ai/ontology/virtud> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "virtus" ;
+    <https://stotomas.ai/ontology/nameEs> "Virtud" ;
+    <http://schema.org/description> "A good operative habit; moral virtue is a mean set by reason." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Hábito operativo bueno; la virtud moral es un término medio fijado por la razón." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/habito> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/virtudes-cardinales> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/virtudes-teologales> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/habito> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/prudencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtudes-cardinales> .
+
+<https://stotomas.ai/ontology/virtudes-cardinales> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "virtutes cardinales" ;
+    <https://stotomas.ai/ontology/nameEs> "Virtudes cardinales" ;
+    <http://schema.org/description> "Prudence, justice, fortitude and temperance: the \"hinges\" of moral life." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Prudencia, justicia, fortaleza y templanza: los «goznes» de la vida moral." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/justicia> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/prudencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/justicia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/prudencia> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/virtud> .
+
+<https://stotomas.ai/ontology/virtudes-teologales> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "virtutes theologicae" ;
+    <https://stotomas.ai/ontology/nameEs> "Virtudes teologales" ;
+    <http://schema.org/description> "Faith, hope and charity: they have God as their object and are infused by him." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Fe, esperanza y caridad: tienen a Dios por objeto y son infundidas por Él." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/caridad> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/fe> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/caridad> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/fe> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/gracia> .
+
+<https://stotomas.ai/ontology/voluntad> a <http://schema.org/DefinedTerm> ;
+    <http://schema.org/name> "voluntas" ;
+    <https://stotomas.ai/ontology/nameEs> "Voluntad" ;
+    <http://schema.org/description> "Rational appetite: the tendency toward the good as presented by the intellect." ;
+    <https://stotomas.ai/ontology/descriptionEs> "Apetito racional: tendencia al bien tal como lo presenta el intelecto." ;
+    <https://stotomas.ai/ontology/narrowerThan> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/amor> ;
+    <https://stotomas.ai/ontology/broaderThan> <https://stotomas.ai/ontology/libre-albedrio> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/amor> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/relatedTo> <https://stotomas.ai/ontology/libre-albedrio> .
+
+<https://stotomas.ai/ontology/dee-c4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "On being and essence, chapter 4" ;
+    <https://stotomas.ai/ontology/citation> "De ente et essentia, c.4" ;
+    <https://stotomas.ai/ontology/text> "Aquinas argues that we can understand what something is without knowing whether it exists, so in creatures existence (esse) is other than essence. There can be only one being whose essence is its very existence, and it is the first cause from which all others receive their being." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ente> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/esencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> .
+
+<https://stotomas.ai/ontology/dr-i-c1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "On kingship, book I, chapter 1" ;
+    <https://stotomas.ai/ontology/citation> "De regno, I, c.1" ;
+    <https://stotomas.ai/ontology/text> "Man is by nature a social and political animal, living in a multitude, because he cannot provide sufficiently for his life alone and has language to communicate with others. A multitude needs a governing principle directed to the common good; a government is just when it seeks the common good and unjust when it seeks the private good of the ruler." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/autoridad-politica> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien-comun> .
+
+<https://stotomas.ai/ontology/dv-q1-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "What is truth" ;
+    <https://stotomas.ai/ontology/citation> "De veritate, q.1, a.1" ;
+    <https://stotomas.ai/ontology/text> "Aquinas derives the transcendentals (thing, one, something, good, true) from being. The true adds to being a relation of conformity to the intellect; hence truth is defined as the adequation of thing and intellect (adaequatio rei et intellectus), and knowledge is an effect of truth." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/verdad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/trascendentales> .
+
+<https://stotomas.ai/ontology/scg-i-c7> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "That the truth of reason is not opposed to the truth of the Christian faith" ;
+    <https://stotomas.ai/ontology/citation> "SCG I, c.7" ;
+    <https://stotomas.ai/ontology/text> "Aquinas holds that what reason naturally knows cannot be contrary to the truth of faith, since both come from God, the author of our nature and of revelation. Arguments brought against the faith therefore do not proceed from first principles known by nature and can be shown to be either false or not necessary." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe-y-razon> .
+
+<https://stotomas.ai/ontology/scg-iii-c37> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "That the ultimate happiness of man consists in the contemplation of God" ;
+    <https://stotomas.ai/ontology/citation> "SCG III, c.37" ;
+    <https://stotomas.ai/ontology/text> "Man's ultimate happiness does not consist in moral actions, which are ordered to something further, but in the contemplation of truth, and specifically in the contemplation of God, to which all human operations seem to be directed as to their end." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/vida-contemplativa> .
+
+<https://stotomas.ai/ontology/st-i-ii-q1-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it belongs to man to act for an end" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.1, a.1" ;
+    <https://stotomas.ai/ontology/text> "Properly human acts are those that proceed from deliberate will, and the object of the will is the end and the good. Therefore every properly human action is for the sake of an end." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fin-ultimo> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/acto-humano> .
+
+<https://stotomas.ai/ontology/st-i-ii-q1-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether there is a last end of human life" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.1, a.4" ;
+    <https://stotomas.ai/ontology/text> "There cannot be an infinite series of ends, since then nothing would be desired and no action would begin or terminate. There is therefore an ultimate end of human life, for the sake of which all else is desired." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fin-ultimo> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/felicidad> .
+
+<https://stotomas.ai/ontology/st-i-ii-q109-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether man can will and do good without grace" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.109, a.2" ;
+    <https://stotomas.ai/ontology/text> "In the state of fallen nature man can, by his natural powers, do some particular good, such as building houses or planting vineyards, but he cannot do the whole good connatural to him without the healing of grace, and he cannot do meritorious supernatural good without grace at all." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/gracia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/pecado> .
+
+<https://stotomas.ai/ontology/st-i-ii-q18-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the goodness or malice of a human action depends on the end" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.18, a.4" ;
+    <https://stotomas.ai/ontology/text> "A human act has a fourfold goodness: generic, as an action; specific, from its object; from its circumstances; and from its end. An action is good simply only if it is good in all these respects; any single defect makes it evil, so a good end does not justify an evil object." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/acto-humano> .
+
+<https://stotomas.ai/ontology/st-i-ii-q19-a5> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the will is evil when it is at variance with erring reason" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.19, a.5" ;
+    <https://stotomas.ai/ontology/text> "Every conscience, whether right or erring, binds: whoever acts against the judgment of his reason, even if mistaken, has an evil will, because he wills what he apprehends as evil." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/voluntad> .
+
+<https://stotomas.ai/ontology/st-i-ii-q19-a6> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the will is good when it abides by erring reason" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.19, a.6" ;
+    <https://stotomas.ai/ontology/text> "Following an erring conscience excuses from sin only if the error is involuntary and not culpable. If the ignorance is voluntary, directly or through negligence, the act done in accordance with it is not excused." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/voluntad> .
+
+<https://stotomas.ai/ontology/st-i-ii-q2-a8> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether any created good constitutes man's happiness" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.2, a.8" ;
+    <https://stotomas.ai/ontology/text> "After showing that happiness consists neither in wealth, honor, fame, power, bodily goods nor pleasure, Aquinas concludes that no created good can constitute happiness. Happiness is the perfect good that fully satisfies desire, and the object of the will is universal good, found only in God." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> .
+
+<https://stotomas.ai/ontology/st-i-ii-q26-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether love is properly divided into love of friendship and love of concupiscence" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.26, a.4" ;
+    <https://stotomas.ai/ontology/text> "To love is to will good to someone. Love tends to two things: the good one wills, and the person for whom one wills it. The love by which one loves someone for his own sake is love of friendship; the love by which one loves a good for another is love of concupiscence." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/amor> .
+
+<https://stotomas.ai/ontology/st-i-ii-q3-a8> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether man's happiness consists in the vision of the divine essence" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.3, a.8" ;
+    <https://stotomas.ai/ontology/text> "Final and perfect happiness can consist only in the vision of the divine essence. Man is not perfectly happy while something remains for him to desire and seek, and the intellect's natural desire to know the first cause is fulfilled only by knowing what God is." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/st-i-ii-q5-a3> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether one can be happy in this life" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.5, a.3" ;
+    <https://stotomas.ai/ontology/text> "A certain participation in happiness can be had in this life, but perfect and true happiness cannot, because this life is subject to unavoidable evils and the good desired cannot be possessed without end." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/felicidad> .
+
+<https://stotomas.ai/ontology/st-i-ii-q5-a5> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether man can attain happiness by his natural powers" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.5, a.5" ;
+    <https://stotomas.ai/ontology/text> "Imperfect happiness can be acquired by natural powers, in the way virtue is acquired. Perfect happiness, the vision of God's essence, exceeds the nature of every creature and can be attained only by God's help." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/gracia> .
+
+<https://stotomas.ai/ontology/st-i-ii-q55-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether virtue is suitably defined" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.55, a.4" ;
+    <https://stotomas.ai/ontology/text> "Aquinas defends the definition of virtue as a good quality of the mind by which we live righteously, of which no one can make bad use. Virtue is an operative habit that perfects a power for good action." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/habito> .
+
+<https://stotomas.ai/ontology/st-i-ii-q57-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether prudence is a distinct virtue from art" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.57, a.4" ;
+    <https://stotomas.ai/ontology/text> "Art is right reason about things to be made (recta ratio factibilium); prudence is right reason about things to be done (recta ratio agibilium). Prudence requires a right appetite toward ends, so it is a moral as well as an intellectual virtue, whereas art does not require a good will." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/prudencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtud> .
+
+<https://stotomas.ai/ontology/st-i-ii-q6-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether there is anything voluntary in human acts" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.6, a.1" ;
+    <https://stotomas.ai/ontology/text> "The voluntary is what proceeds from an intrinsic principle together with knowledge of the end. Human acts are voluntary in the fullest sense because man knows the end of his action and moves himself toward it." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/acto-humano> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/voluntad> .
+
+<https://stotomas.ai/ontology/st-i-ii-q61-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether there are four cardinal virtues" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.61, a.2" ;
+    <https://stotomas.ai/ontology/text> "There are four cardinal virtues: prudence perfects reason itself; justice rectifies operations toward others; temperance moderates the passions that draw us away from reason; fortitude strengthens us against passions that hold us back from following reason." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtudes-cardinales> .
+
+<https://stotomas.ai/ontology/st-i-ii-q62-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether there are any theological virtues" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.62, a.1" ;
+    <https://stotomas.ai/ontology/text> "Because man is ordered to a supernatural happiness exceeding his nature, God infuses additional principles: the theological virtues of faith, hope and charity, which have God as their object, are infused by God alone, and are made known only by revelation." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtudes-teologales> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/gracia> .
+
+<https://stotomas.ai/ontology/st-i-ii-q64-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether moral virtues observe the mean" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.64, a.1" ;
+    <https://stotomas.ai/ontology/text> "Moral virtue consists in a mean between excess and defect, measured by right reason. The mean is not mediocrity but conformity with the rule of reason; with respect to its conformity to reason, virtue is an extreme." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/razon> .
+
+<https://stotomas.ai/ontology/st-i-ii-q65-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the moral virtues are connected with one another" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.65, a.1" ;
+    <https://stotomas.ai/ontology/text> "Perfect moral virtues are connected, because none can exist without prudence, and prudence cannot exist without the moral virtues that rightly dispose us toward ends. Imperfect virtues, mere inclinations to good acts, can exist separately." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtud> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/prudencia> .
+
+<https://stotomas.ai/ontology/st-i-ii-q90-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether law is something pertaining to reason" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.90, a.1" ;
+    <https://stotomas.ai/ontology/text> "Law is a rule and measure of acts by which one is induced to act or restrained from acting. Since the rule of human acts is reason, law pertains to reason; the will of the ruler has the force of law only insofar as it is regulated by reason." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/razon> .
+
+<https://stotomas.ai/ontology/st-i-ii-q90-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether promulgation is essential to a law" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.90, a.4" ;
+    <https://stotomas.ai/ontology/text> "Gathering the preceding articles, Aquinas defines law as an ordinance of reason for the common good, made by him who has care of the community, and promulgated (quaedam rationis ordinatio ad bonum commune, ab eo qui curam communitatis habet, promulgata)." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien-comun> .
+
+<https://stotomas.ai/ontology/st-i-ii-q91-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether there is an eternal law" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.91, a.1" ;
+    <https://stotomas.ai/ontology/text> "The whole universe is governed by divine reason. The very idea of the government of things in God, the ruler of the universe, has the nature of a law, and since it is not conceived in time it is called the eternal law." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-eterna> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/providencia> .
+
+<https://stotomas.ai/ontology/st-i-ii-q91-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether there is in us a natural law" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.91, a.2" ;
+    <https://stotomas.ai/ontology/text> "The rational creature is subject to divine providence in a more excellent way, being itself provident for itself and others. It shares in the eternal reason, which gives it a natural inclination to its proper act and end, and this participation of the eternal law in the rational creature is called the natural law." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-natural> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-eterna> .
+
+<https://stotomas.ai/ontology/st-i-ii-q94-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the natural law contains several precepts, or only one" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.94, a.2" ;
+    <https://stotomas.ai/ontology/text> "The first principle of practical reason is that good is to be done and pursued and evil avoided (bonum est faciendum et prosequendum, et malum vitandum). The precepts of natural law follow the order of natural inclinations: to preserve one's being, to the union of male and female and the education of offspring, and, proper to reason, to know the truth about God and to live in society." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-natural> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/sinderesis> .
+
+<https://stotomas.ai/ontology/st-i-ii-q94-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the natural law is the same in all men" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.94, a.4" ;
+    <https://stotomas.ai/ontology/text> "The common principles of natural law are the same for all, both as to rectitude and as to knowledge. The more particular conclusions are the same for most, but may fail in some cases, and their knowledge can be distorted by passion, bad custom or evil disposition." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-natural> .
+
+<https://stotomas.ai/ontology/st-i-ii-q95-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether every human law is derived from the natural law" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.95, a.2" ;
+    <https://stotomas.ai/ontology/text> "Every human law has the nature of law insofar as it is derived from the natural law, either as a conclusion from premises (such as 'do not kill') or as a determination of something general (such as the particular penalty for a crime). A law that deviates from natural law is no longer a law but a perversion of law." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-humana> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-natural> .
+
+<https://stotomas.ai/ontology/st-i-ii-q96-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it belongs to human law to repress all vices" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.96, a.2" ;
+    <https://stotomas.ai/ontology/text> "Human law is framed for the multitude, most of whom are not perfect in virtue. It therefore does not forbid all vices, but only the more grievous ones from which most can abstain, especially those harmful to others and without whose prohibition society could not be maintained." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-humana> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien-comun> .
+
+<https://stotomas.ai/ontology/st-i-ii-q96-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether human law binds a man in conscience" ;
+    <https://stotomas.ai/ontology/citation> "ST I-II, q.96, a.4" ;
+    <https://stotomas.ai/ontology/text> "Just laws bind in conscience. Laws are unjust when contrary to the human good (by their end, author or form) or contrary to the divine good. Laws of the first kind are acts of violence rather than laws and do not bind in conscience, except perhaps to avoid scandal or disturbance; laws of the second kind must never be obeyed." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-humana> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/justicia> .
+
+<https://stotomas.ai/ontology/st-i-q1-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether, besides philosophy, any further doctrine is required" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.1, a.1" ;
+    <https://stotomas.ai/ontology/text> "Aquinas argues that a revealed doctrine is necessary because man is directed to God as to an end that surpasses the grasp of reason. Even those truths about God that reason can reach would otherwise be known only by a few, after a long time, and with an admixture of many errors." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe-y-razon> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/teologia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/preambulos-de-la-fe> .
+
+<https://stotomas.ai/ontology/st-i-q1-a8> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether sacred doctrine is a matter of argument" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.1, a.8" ;
+    <https://stotomas.ai/ontology/text> "Sacred doctrine argues from the articles of faith as its principles and can answer objections against them. Because grace does not destroy nature but perfects it (gratia non tollit naturam, sed perficit), natural reason is placed at the service of faith, and the philosophers may be cited where they reached the truth by reason." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe-y-razon> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/gracia> .
+
+<https://stotomas.ai/ontology/st-i-q12-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether any created intellect can see the essence of God" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.12, a.1" ;
+    <https://stotomas.ai/ontology/text> "The created intellect can see God's essence, for otherwise the natural desire to know the cause of what we see would be in vain and our ultimate happiness would be impossible. This vision exceeds nature and is given by the light of glory." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/felicidad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/st-i-q12-a12> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether God can be known in this life by natural reason" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.12, a.12" ;
+    <https://stotomas.ai/ontology/text> "Our natural knowledge begins from the senses, so reason can know of God only what can be known from sensible effects: that he exists, that he is the first cause of all things, and that he differs from all things he causes. It cannot know his essence." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/simplicidad-divina> .
+
+<https://stotomas.ai/ontology/st-i-q13-a5> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether what is said of God and of creatures is univocally predicated of them" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.13, a.5" ;
+    <https://stotomas.ai/ontology/text> "Names such as 'good' or 'wise' are said of God and creatures neither univocally nor purely equivocally, but analogically, according to proportion: the perfection exists in God primarily and in creatures by participation. This avoids both anthropomorphism and agnosticism." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ente> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/analogia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> .
+
+<https://stotomas.ai/ontology/st-i-q14-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether there is knowledge in God" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.14, a.1" ;
+    <https://stotomas.ai/ontology/text> "Knowing beings differ from non-knowing beings in that they can possess the form of another thing as well as their own. Immateriality is thus the reason why something is cognitive, and the degree of knowledge follows the degree of immateriality; God, supremely immaterial, is supremely knowing." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> .
+
+<https://stotomas.ai/ontology/st-i-q16-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether truth resides only in the intellect" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.16, a.1" ;
+    <https://stotomas.ai/ontology/text> "Truth is found primarily in the intellect and secondarily in things, insofar as they are related to an intellect. Truth is the conformity (adaequatio) of intellect and thing; natural things are true in relation to the divine intellect that measures them." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/verdad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/st-i-q19-a8> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the will of God imposes necessity on the things willed" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.19, a.8" ;
+    <https://stotomas.ai/ontology/text> "Because the divine will is supremely efficacious, not only do the things God wills come about, but they come about in the way he wills: some necessarily and some contingently. God therefore prepared contingent causes for some effects, so divine will does not abolish contingency or human freedom." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/voluntad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/providencia> .
+
+<https://stotomas.ai/ontology/st-i-q2-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the existence of God is self-evident" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.2, a.1" ;
+    <https://stotomas.ai/ontology/text> "A proposition can be self-evident in itself but not to us. 'God exists' is self-evident in itself, because in God essence and existence are the same, but it is not self-evident to us, since we do not know God's essence; it must be demonstrated from effects better known to us. Aquinas thereby rejects the argument later called ontological." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/cinco-vias> .
+
+<https://stotomas.ai/ontology/st-i-q2-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it can be demonstrated that God exists" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.2, a.2" ;
+    <https://stotomas.ai/ontology/text> "There are two kinds of demonstration: from the cause (propter quid) and from the effect (quia). From effects known to us we can demonstrate that God exists, although not what he is. The existence of God is therefore a preamble to the articles of faith, not an article of faith itself." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe-y-razon> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/preambulos-de-la-fe> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/cinco-vias> .
+
+<https://stotomas.ai/ontology/st-i-q2-a3> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether God exists (the five ways)" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.2, a.3" ;
+    <https://stotomas.ai/ontology/text> "The five ways proceed from motion, efficient causality, contingency, gradation of perfection, and the governance of things. Each argues that an essentially ordered series cannot proceed to infinity and must depend on a first: an unmoved mover, a first efficient cause, a necessary being, a maximum in being and goodness, and an intelligence directing natural things to their end. To the objection from evil he replies, with Augustine, that God would not permit evil unless he could bring good out of it." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/causa> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/acto-y-potencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/cinco-vias> .
+
+<https://stotomas.ai/ontology/st-i-q20-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether God loves all things" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.20, a.2" ;
+    <https://stotomas.ai/ontology/text> "God loves all existing things, since to love is to will good to someone and God's will is the cause of all goodness in things. Unlike our love, which is moved by the goodness of its object, God's love infuses and creates goodness in things." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/amor> .
+
+<https://stotomas.ai/ontology/st-i-q22-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether everything is subject to the providence of God" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.22, a.2" ;
+    <https://stotomas.ai/ontology/text> "All things, even individual and contingent events, are subject to divine providence, because God's causality extends to everything that has being. Providence does not remove secondary causes or chance at their own level, and God permits some particular defects for the good of the whole." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/providencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/mal> .
+
+<https://stotomas.ai/ontology/st-i-q25-a3> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether God is omnipotent" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.25, a.3" ;
+    <https://stotomas.ai/ontology/text> "God can do all things that are possible absolutely, that is, whatever does not imply a contradiction. What implies a contradiction is not a thing that God cannot do, but nothing at all; so it is better to say that such things cannot be done than that God cannot do them." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/omnipotencia> .
+
+<https://stotomas.ai/ontology/st-i-q29-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "The definition of person" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.29, a.1" ;
+    <https://stotomas.ai/ontology/text> "Aquinas accepts Boethius's definition of person as an individual substance of a rational nature. The rational being has dominion over its own actions and acts of itself, so it deserves a special name: person." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/persona> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/alma> .
+
+<https://stotomas.ai/ontology/st-i-q3-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether essence and existence are the same in God" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.3, a.4" ;
+    <https://stotomas.ai/ontology/text> "In God essence and existence (esse) are identical: God does not have being, he is his own act of being. In every creature existence is received from another, so essence and esse differ; God alone is ipsum esse subsistens, subsistent being itself." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/esse> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/esencia> .
+
+<https://stotomas.ai/ontology/st-i-q3-a7> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether God is altogether simple" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.3, a.7" ;
+    <https://stotomas.ai/ontology/text> "God is absolutely simple: he is not composed of parts, of matter and form, of essence and existence, of genus and difference, or of substance and accidents. Every composite is posterior to its components and depends on them, whereas God is the first being." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/simplicidad-divina> .
+
+<https://stotomas.ai/ontology/st-i-q44-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it is necessary that every being be created by God" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.44, a.1" ;
+    <https://stotomas.ai/ontology/text> "Whatever is found in something by participation must be caused by that to which it belongs essentially. God alone is subsistent being itself, so every other being participates in being and is caused by God." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/creacion> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/participacion> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/esse> .
+
+<https://stotomas.ai/ontology/st-i-q46-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it is an article of faith that the world began" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.46, a.2" ;
+    <https://stotomas.ai/ontology/text> "That the world had a beginning in time is held by faith alone and cannot be demonstrated, just as its eternity cannot be demonstrated. Aquinas warns that trying to prove it with weak arguments exposes the faith to ridicule by unbelievers." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/creacion> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe-y-razon> .
+
+<https://stotomas.ai/ontology/st-i-q48-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether evil is a nature" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.48, a.1" ;
+    <https://stotomas.ai/ontology/text> "Evil is not a being, form or nature, but the absence of a good that ought to be present: a privation. Since every being as such is good, evil can exist only in a good subject, as blindness exists in an eye." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/mal> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien> .
+
+<https://stotomas.ai/ontology/st-i-q5-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether goodness differs really from being" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.5, a.1" ;
+    <https://stotomas.ai/ontology/text> "Goodness and being are the same in reality and differ only in idea. Something is good insofar as it is desirable, and desirable insofar as it is perfect, and perfect insofar as it is in act; hence every being, as being, is good." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ente> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/trascendentales> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/esse> .
+
+<https://stotomas.ai/ontology/st-i-q75-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the soul is a body" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.75, a.1" ;
+    <https://stotomas.ai/ontology/text> "The soul is the first principle of life in living things. It is not a body, since no body is alive merely as body; it is the act of a body, as heat is the principle of heating." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/hilemorfismo> .
+
+<https://stotomas.ai/ontology/st-i-q75-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the human soul is something subsistent" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.75, a.2" ;
+    <https://stotomas.ai/ontology/text> "The intellectual principle has an operation of its own in which the body does not share, namely understanding, which can know the natures of all bodies. What has an operation of its own has being of its own, so the human soul is something incorporeal and subsistent." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/st-i-q75-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the soul is man" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.75, a.4" ;
+    <https://stotomas.ai/ontology/text> "Man is not his soul alone but a composite of soul and body, because sensing, which belongs to man, is not an operation of the soul alone. Against Plato, the human being is not a soul using a body." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/hilemorfismo> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/persona> .
+
+<https://stotomas.ai/ontology/st-i-q75-a6> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the human soul is incorruptible" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.75, a.6" ;
+    <https://stotomas.ai/ontology/text> "The human soul is incorruptible. What has being of itself can be corrupted only by itself, and a subsistent form cannot be separated from itself. A sign of this is the natural desire to exist always, which cannot be in vain." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/alma> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/inmortalidad> .
+
+<https://stotomas.ai/ontology/st-i-q76-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the intellectual principle is united to the body as its form" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.76, a.1" ;
+    <https://stotomas.ai/ontology/text> "The intellectual principle, which we call mind or intellect, is united to the body as its substantial form. It is this very man who understands; so the principle by which he understands must be his form, although because of its nobility the power of understanding surpasses the body." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/hilemorfismo> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/alma> .
+
+<https://stotomas.ai/ontology/st-i-q76-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the intellectual principle is multiplied according to the number of bodies" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.76, a.2" ;
+    <https://stotomas.ai/ontology/text> "Against the Averroist thesis of one intellect for all men, Aquinas argues that each human being has his own intellect: it is impossible for one intellect to belong to many men, since then this man would not understand, and understanding would not be his act." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/averroismo> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/alma> .
+
+<https://stotomas.ai/ontology/st-i-q79-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the intellect is a power of the soul" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.79, a.1" ;
+    <https://stotomas.ai/ontology/text> "The intellect is a power of the soul and not the very essence of the soul. Only in God is understanding identical with his being; in creatures the power of understanding is distinct from their essence." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/alma> .
+
+<https://stotomas.ai/ontology/st-i-q79-a12> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether synderesis is a special power of the soul distinct from the others" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.79, a.12" ;
+    <https://stotomas.ai/ontology/text> "Synderesis is not a power but a natural habit by which we grasp the first principles of practical reason, as the habit of first principles grasps those of speculative reason. It inclines us to good and murmurs against evil." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conciencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-natural> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/sinderesis> .
+
+<https://stotomas.ai/ontology/st-i-q79-a13> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether conscience is a power" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.79, a.13" ;
+    <https://stotomas.ai/ontology/text> "Conscience is not a power but an act: the application of knowledge to a particular action, by which we judge that something should be done or not done, or has been done well or badly." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conciencia> .
+
+<https://stotomas.ai/ontology/st-i-q79-a3> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether there is an agent intellect" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.79, a.3" ;
+    <https://stotomas.ai/ontology/text> "Because the natures of material things are only potentially intelligible, there must be a power in the soul that makes them actually intelligible by abstracting them from material conditions: the agent intellect." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/abstraccion> .
+
+<https://stotomas.ai/ontology/st-i-q82-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the will desires something of necessity" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.82, a.1" ;
+    <https://stotomas.ai/ontology/text> "The will necessarily adheres to the last end, happiness, as the intellect necessarily adheres to first principles. This natural necessity is not contrary to the will; only necessity of coercion is." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/voluntad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/felicidad> .
+
+<https://stotomas.ai/ontology/st-i-q83-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether man has free will" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.83, a.1" ;
+    <https://stotomas.ai/ontology/text> "Man has free will because he acts from judgment that is not natural instinct but a comparison made by reason. Since reason can consider contingent particulars in different ways, it is not determined to one course, and man is free. Otherwise counsels, exhortations, commands, rewards and punishments would be in vain." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/libre-albedrio> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/voluntad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/razon> .
+
+<https://stotomas.ai/ontology/st-i-q84-a6> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether intellectual knowledge is derived from sensible things" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.84, a.6" ;
+    <https://stotomas.ai/ontology/text> "Intellectual knowledge takes its beginning from the senses. Against Plato and against pure empiricism, the sensible image is not the whole and perfect cause of intellectual knowledge but, so to speak, its material cause, made actually intelligible by the agent intellect." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> .
+
+<https://stotomas.ai/ontology/st-i-q84-a7> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the intellect can understand without turning to phantasms" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.84, a.7" ;
+    <https://stotomas.ai/ontology/text> "In the present life the intellect cannot actually understand anything without turning to sense images (conversio ad phantasmata). This is shown by the fact that injury to the bodily organs of imagination and memory impedes understanding, and by our experience of forming images when we try to understand." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/abstraccion> .
+
+<https://stotomas.ai/ontology/st-i-q85-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the intelligible species abstracted from phantasms are related to our intellect as that which is understood" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.85, a.2" ;
+    <https://stotomas.ai/ontology/text> "The intelligible species is not what is understood but that by which the intellect understands (id quo, not id quod). What we primarily understand is the thing itself; otherwise all knowledge would be only of our own ideas and contradictory opinions would both be true." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/conocimiento> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/verdad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/abstraccion> .
+
+<https://stotomas.ai/ontology/st-i-q93-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether the image of God is found in every man" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.93, a.4" ;
+    <https://stotomas.ai/ontology/text> "Man is in the image of God chiefly by his intellectual nature, capable of knowing and loving God. The image exists in three degrees: in the natural aptitude common to all human beings, in the conformity of grace, and in the likeness of glory." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/imagen-de-dios> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/persona> .
+
+<https://stotomas.ai/ontology/st-i-q96-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether in the state of innocence man would have been master over man" ;
+    <https://stotomas.ai/ontology/citation> "ST I, q.96, a.4" ;
+    <https://stotomas.ai/ontology/text> "Political authority is natural and not merely a consequence of sin. Even in the state of innocence one would have governed others as free persons, directing them to their own good or the common good, because man is a social animal and social life requires someone to direct it to the common good." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/autoridad-politica> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien-comun> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q10-a8> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether unbelievers ought to be compelled to the faith" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.10, a.8" ;
+    <https://stotomas.ai/ontology/text> "Unbelievers who have never received the faith, such as pagans and Jews, must in no way be compelled to believe, because belief is an act of the will. Aquinas nevertheless holds, in line with his time, that heretics and apostates who once accepted the faith may be compelled to fulfill what they promised." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/libre-albedrio> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q110-a3> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether every lie is a sin" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.110, a.3" ;
+    <https://stotomas.ai/ontology/text> "Every lie is a sin, because words are naturally signs of what is in the mind, and it is unnatural and undue to signify by words what is not in one's mind. Lies differ in gravity (developed in the next article), but no lie is lawful, not even one told to help another." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/verdad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/acto-humano> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q188-a6> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether a religious order devoted to the contemplative life is more excellent than one given to the active life" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.188, a.6" ;
+    <https://stotomas.ai/ontology/text> "The contemplative life is simply better than the active life, but the work of teaching and preaching that flows from the fullness of contemplation is better than contemplation alone: as it is better to illuminate than merely to shine, it is better to contemplate and give to others the fruits of contemplation (contemplari et contemplata aliis tradere)." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/vida-contemplativa> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q2-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it is necessary to believe those things which can be proved by natural reason" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.2, a.4" ;
+    <https://stotomas.ai/ontology/text> "It is fitting that truths about God which reason can demonstrate are also proposed for belief: so that knowledge of God is reached more quickly, by more people, and with greater certainty, since human reason is weak and prone to error in divine matters." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe-y-razon> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/preambulos-de-la-fe> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q23-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether charity is friendship" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.23, a.1" ;
+    <https://stotomas.ai/ontology/text> "Charity is the friendship of man for God, founded on God's communication of his happiness to us. Friendship requires mutual benevolence based on some communication, and such communication exists between God and man." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/caridad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/amor> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtudes-teologales> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q23-a8> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether charity is the form of the virtues" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.23, a.8" ;
+    <https://stotomas.ai/ontology/text> "Charity is the form of all the virtues because it directs the acts of all other virtues to the last end, God. It is not their exemplar or essential form but their efficient and final principle." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/caridad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/virtud> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q4-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether this is a fitting definition of faith: faith is the substance of things hoped for, the evidence of things that appear not" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.4, a.1" ;
+    <https://stotomas.ai/ontology/text> "Aquinas defends Hebrews 11:1 and restates it: faith is a habit of the mind whereby eternal life is begun in us, making the intellect assent to what is non-apparent. Faith is an act of the intellect moved by the will." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/fe> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/intelecto> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/voluntad> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q40-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it is always sinful to wage war" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.40, a.1" ;
+    <https://stotomas.ai/ontology/text> "For a war to be just three things are required: the authority of the sovereign, not of a private individual; a just cause, namely that those attacked deserve it on account of some fault; and a right intention, to promote good or avoid evil." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/guerra-justa> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/justicia> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q47-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether prudence is in the practical reason alone or also in the speculative reason" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.47, a.2" ;
+    <https://stotomas.ai/ontology/text> "Prudence belongs to the practical reason alone, since it is right reason applied to action; its proper act is to command, applying the knowledge of what is to be done. Speculative wisdom considers truth for its own sake, whereas prudence considers truth as ordered to action." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/prudencia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/razon> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q57-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether right is the object of justice" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.57, a.1" ;
+    <https://stotomas.ai/ontology/text> "The object of justice is the right (ius), that is, the just thing itself: a work adjusted to another according to a certain equality. Law is not right itself but a certain rule or expression of right." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/derecho> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/justicia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q58-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether justice is fittingly defined as the perpetual and constant will to render to each one his right" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.58, a.1" ;
+    <https://stotomas.ai/ontology/text> "Aquinas accepts the jurists' definition of justice as the perpetual and constant will to render to each his right (perpetua et constans voluntas ius suum unicuique tribuendi), and restates it: justice is a habit whereby a man renders to each his due by a constant and perpetual will." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/justicia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/derecho> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q61-a1> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether two species of justice are suitably assigned, namely commutative and distributive" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.61, a.1" ;
+    <https://stotomas.ai/ontology/text> "Particular justice has two species: commutative justice, which directs exchanges between individuals according to arithmetic equality, and distributive justice, which distributes common goods to individuals proportionately according to their status." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/justicia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien-comun> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q64-a5> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it is lawful to kill oneself" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.64, a.5" ;
+    <https://stotomas.ai/ontology/text> "Aquinas holds that suicide is contrary to the natural inclination to preserve oneself and to the charity one owes oneself, that it injures the community of which one is a part, and that life is a gift of God, who alone has power over life and death." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/ley-natural> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q64-a7> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it is lawful to kill a man in self-defense" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.64, a.7" ;
+    <https://stotomas.ai/ontology/text> "One act can have two effects, only one of which is intended. Moral acts take their species from what is intended, so defending one's life is lawful even if the attacker dies, provided the means are proportionate. This article is the classical source of the principle of double effect." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/doble-efecto> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/acto-humano> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q66-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it is lawful for a man to possess a thing as his own" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.66, a.2" ;
+    <https://stotomas.ai/ontology/text> "It is lawful and necessary for human life that man possess property as his own, as regards the power to procure and dispense things, because people care more for what is theirs, affairs are better ordered, and peace is better kept. But as regards use, man ought to possess external things as common, readily sharing them with others in need." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/propiedad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/bien-comun> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/justicia> .
+
+<https://stotomas.ai/ontology/st-ii-ii-q66-a7> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it is lawful to steal through stress of need" ;
+    <https://stotomas.ai/ontology/citation> "ST II-II, q.66, a.7" ;
+    <https://stotomas.ai/ontology/text> "In cases of urgent and evident necessity, where there is no other remedy, a person may lawfully take what he needs from another's property, openly or secretly; properly speaking this is not theft, because in such need all things are common." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/propiedad> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/justicia> .
+
+<https://stotomas.ai/ontology/st-iii-q1-a2> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether it was necessary for the restoration of the human race that the Word of God should become incarnate" ;
+    <https://stotomas.ai/ontology/citation> "ST III, q.1, a.2" ;
+    <https://stotomas.ai/ontology/text> "The Incarnation was not absolutely necessary, since God could have restored humanity in other ways, but it was the most fitting means: it strengthens faith, raises hope, kindles charity, gives an example of virtue, and makes us partakers of the divinity." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/encarnacion> .
+
+<https://stotomas.ai/ontology/st-iii-q75-a4> a <https://stotomas.ai/ontology/SummaArticle> ;
+    <http://schema.org/name> "Whether bread can be converted into the body of Christ" ;
+    <https://stotomas.ai/ontology/citation> "ST III, q.75, a.4" ;
+    <https://stotomas.ai/ontology/text> "In the Eucharist the whole substance of the bread is converted into the whole substance of Christ's body by divine power, while the accidents of bread remain. This conversion is not formal or natural but entirely supernatural, and is fittingly called transubstantiation." ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/eucaristia> ;
+    <https://stotomas.ai/ontology/hasTopic> <https://stotomas.ai/ontology/sustancia-y-accidente> .

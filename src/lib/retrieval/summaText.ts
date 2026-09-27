@@ -115,12 +115,12 @@ const NAMED_ENTITIES: Record<string, string> = {
 
 const ACCENTED = /^([aeiouAEIOUnNcCyY])(acute|grave|circ|uml|tilde|cedil)$/;
 const COMBINING: Record<string, string> = {
-  acute: "́",
-  grave: "̀",
-  circ: "̂",
-  uml: "̈",
-  tilde: "̃",
-  cedil: "̧",
+  acute: "\u0301",
+  grave: "\u0300",
+  circ: "\u0302",
+  uml: "\u0308",
+  tilde: "\u0303",
+  cedil: "\u0327",
 };
 
 export function decodeEntities(input: string): string {

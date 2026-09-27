@@ -45,7 +45,7 @@ Scholastic multi-agent debate system inspired by Thomas Aquinas. Generate struct
 ## Agent Flow
 
 1. **Moderator** - Restates the question, frames it, lists the distinctions the answer needs, and proposes search keywords and the Summa articles where Aquinas treats the question
-2. **Retrieval** - Combines the proposed loci, a bilingual search over the curated corpus (`src/data/corpus/aquinas-corpus.json`) and, optionally, GraphDB
+2. **Retrieval** - Combines the proposed loci with a hybrid search over the knowledge base (`knowledge/`, see below) and, optionally, GraphDB
 3. **Hydration** - Replaces each Summa source with Aquinas's real text in the answer language (EN: New Advent, ES: hjg.com.ar, LA: Corpus Thomisticum). Proposed citations that can't be fetched are dropped, so invented references never reach the reader; sources are labeled `text` or `summary`
 4. **ScholasticDebate** - Single-pass generation of objections, sed contra, respondeo, replies, and application, using the moderator's distinctions and the chosen level
 5. **Persist** - Saves the debate to PostgreSQL via Prisma
@@ -107,6 +107,8 @@ Required variables:
 | `OPENAI_FALLBACK_MODEL` | Fallback model | `openai/gpt-4o-mini-2024-07-18` |
 | `DATABASE_URL` | PostgreSQL connection string | - |
 | `DEBATE_MAX_TOKENS` | Token limit for the full article | `4000` |
+| `EMBEDDING_API_KEY` | Enables semantic search (OpenAI-compatible `/embeddings`) | - |
+| `EMBEDDING_BASE_URL` | Embeddings API base URL | `https://api.openai.com/v1` |
 
 ### 3. Set up the database
 
@@ -122,6 +124,29 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Knowledge base (OKF)
+
+`knowledge/` is the app's "brain": an [Open Knowledge Format v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format) bundle, plain markdown with YAML frontmatter, readable by people, agents and any markdown tool.
+
+```
+knowledge/
+  index.md, */index.md    generated listings (OKF §8); root declares okf_version
+  log.md                  change history (edit by hand)
+  conceptos/              the ontology — type: Concept, SKOS-style `broader` / `related`, labels in ES/EN/LA
+  articulos/              Aquinas's texts — type: Aquinas Text, `citation`, `tags` = concept ids
+  areas/ autores/ obras/  type: Area / Author / Work
+```
+
+**Editing:** change the frontmatter or the text above the `<!-- okf:generated:start -->` marker, then run `npm run knowledge:build`. The build validates the bundle (OKF conformance, unknown relations, `broader` cycles, citation/id mismatches), rewrites the generated sections (relations, texts per concept, backlinks), the `index.md` files, `src/data/knowledge/bundle.json` (what the app reads) and `scripts/generated/knowledge.ttl`. `npm run knowledge:check` fails if anything is out of date, and `npm test` checks it too.
+
+**Trust:** all current content is AI-generated and marked `status: draft` with no `verified` field. When someone reviews a document, add `verified: { by: human:<id>, at: <ISO date> }` (and `status: stable`); the build derives the trust tier (OKF §5.3).
+
+**Search** (`src/lib/knowledge/search.ts`) fuses with Reciprocal Rank Fusion: lexical matching (bilingual, accent- and plural-insensitive), concept labels found in the question, graph expansion to neighbouring concepts, and embeddings when available. The matched concepts' definitions are also passed to the disputation prompt.
+
+**Embeddings (optional):** `EMBEDDING_API_KEY=... npm run knowledge:embed` writes `src/data/knowledge/embeddings.json` (incremental, by content hash; default `text-embedding-3-small`, 512 dims). Without it, search runs on the lexical and graph signals only.
+
+**GraphDB (optional):** `GRAPHDB_ENDPOINT_URL=... npm run knowledge:graphdb` uploads the generated TTL.
 
 ## Learning mode
 
@@ -151,9 +176,11 @@ docker run -p 7200:7200 ontotext/graphdb:latest
 ### 3. Seed the ontology
 
 ```bash
-# Upload the TTL file via the GraphDB web UI:
-# Import → Upload RDF data → Select scripts/ontology-seed.ttl
+npm run knowledge:build      # regenerates scripts/generated/knowledge.ttl from knowledge/
+GRAPHDB_ENDPOINT_URL=http://localhost:7200/repositories/santoTomas npm run knowledge:graphdb
 ```
+
+`scripts/ontology-seed.ttl` is the older hand-written ontology, kept for reference.
 
 ### 4. Configure the endpoint
 
@@ -161,12 +188,6 @@ Add to `.env.local`:
 
 ```env
 GRAPHDB_ENDPOINT_URL=http://localhost:7200/repositories/santoTomas
-```
-
-### 5. Seed corpus data (optional)
-
-```bash
-npx tsx scripts/seedGraphDb.ts
 ```
 
 ## Testing

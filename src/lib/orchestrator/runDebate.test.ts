@@ -40,7 +40,10 @@ vi.mock("@/lib/agents/scholasticDebate", () => ({
 }));
 
 vi.mock("@/lib/retrieval/retrieveSources", () => ({
-  retrieveSourcesForDebate: vi.fn(async () => [sampleSource]),
+  retrieveSourcesForDebate: vi.fn(async () => ({
+    sources: [sampleSource],
+    concepts: ["Verdad: la adecuación del intelecto y la cosa."],
+  })),
 }));
 
 describe("runDebate", () => {
@@ -112,6 +115,7 @@ describe("runDebate", () => {
         framing: "Framing.",
         precisionNotes: ["Truth of being vs. truth of the intellect."],
         sources: [sampleSource],
+        ontologyTerms: expect.arrayContaining(["Verdad: la adecuación del intelecto y la cosa."]),
       }),
     );
   });

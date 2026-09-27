@@ -41,7 +41,7 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
     const retrievalStartedAt = Date.now();
 
     // El moderador va primero: sus palabras clave y los artículos que propone guían la búsqueda.
-    const { relevantTerms, moderated, sources } = await runWithSpan("debate.moderate_retrieve", async () => {
+    const { relevantTerms, moderated, sources, concepts } = await runWithSpan("debate.moderate_retrieve", async () => {
       const relevantTerms = await getOntologyEngine().findRelevantTerms(parsedInput.question);
       const moderated = await runModerator({
         question: parsedInput.question,
@@ -50,14 +50,14 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
         language: parsedInput.language,
         ontologyTerms: relevantTerms,
       });
-      const sources = await retrieveSourcesForDebate({
+      const { sources, concepts } = await retrieveSourcesForDebate({
         question: parsedInput.question,
         language: parsedInput.language,
         keywords: moderated.searchKeywords,
         candidateLoci: moderated.candidateLoci,
         ontologyTerms: relevantTerms,
       });
-      return { relevantTerms, moderated, sources };
+      return { relevantTerms, moderated, sources, concepts };
     });
     logStage("moderate_and_retrieve", retrievalStartedAt);
     logger.info("Sources retrieved", {
@@ -76,7 +76,7 @@ export async function runDebate(input: DebateInput, options?: RunDebateOptions):
         context: parsedInput.context,
         framing: moderated.framing,
         precisionNotes: moderated.precisionNotes,
-        ontologyTerms: relevantTerms.map((term) => term.name),
+        ontologyTerms: [...concepts, ...relevantTerms.map((term) => `${term.name}: ${term.description}`)],
         language: parsedInput.language,
       }),
     );

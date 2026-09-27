@@ -15,16 +15,16 @@ vi.mock("@/lib/llm/callModel", () => ({
   ),
 }));
 
-import corpus from "@/data/corpus/aquinas-corpus.json";
+import { knowledge } from "@/lib/knowledge/bundle";
 import { hydrateAquinasSources, retrieveAquinasSources, tokenize } from "@/lib/retrieval/aquinasRetriever";
 import { lociToSources } from "@/lib/retrieval/retrieveSources";
 import { parseStCitation } from "@/lib/retrieval/summaText";
 
 describe("corpus integrity", () => {
   it("has unique ids, and ids of Summa entries match their citation", () => {
-    const ids = corpus.map((entry) => entry.id);
+    const ids = knowledge.articles.map((entry) => entry.id);
     expect(new Set(ids).size).toBe(ids.length);
-    for (const entry of corpus) {
+    for (const entry of knowledge.articles) {
       const citation = parseStCitation(entry.citation);
       if (citation) {
         expect(entry.id).toBe(`st-${citation.part.toLowerCase()}-q${citation.question}-a${citation.article}`);

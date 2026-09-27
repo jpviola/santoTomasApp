@@ -117,7 +117,9 @@ export function buildDebateUserPrompt({
   if (context) sections.push(`Context provided by the reader:\n${context}`);
   if (framing) sections.push(`Moderator's framing:\n${framing}`);
   if (precisionNotes.length) sections.push(`Distinctions the answer must draw:\n${precisionNotes.map((n) => `- ${n}`).join("\n")}`);
-  if (ontologyTerms.length) sections.push(`Related scholastic concepts:\n${ontologyTerms.join(", ")}`);
+  if (ontologyTerms.length) {
+    sections.push(`Related concepts from the Thomistic knowledge base:\n${ontologyTerms.map((term) => `- ${term}`).join("\n")}`);
+  }
   sections.push(`Sources:\n${formatSourcesForPrompt(sources)}`);
   sections.push("Return JSON only.");
   return sections.join("\n\n");
