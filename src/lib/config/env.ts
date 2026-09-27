@@ -12,6 +12,7 @@ const RawEnvSchema = z.object({
   OPENROUTER_SITE_URL: z.string().optional(),
   OPENROUTER_APP_NAME: z.string().optional(),
   GRAPHDB_ENDPOINT_URL: z.string().optional(),
+  DEBATE_MAX_TOKENS: z.string().optional(),
 });
 
 const ResolvedEnvSchema = z.object({
@@ -22,6 +23,8 @@ const ResolvedEnvSchema = z.object({
   OPENROUTER_SITE_URL: z.string().optional(),
   OPENROUTER_APP_NAME: z.string().optional(),
   GRAPHDB_ENDPOINT_URL: z.string().default("http://localhost:7200/repositories/santoTomas"),
+  /** Tope de tokens de la generación del artículo completo (objeciones + respondeo + réplicas). */
+  DEBATE_MAX_TOKENS: z.coerce.number().int().min(1000).max(32000).default(4000),
 });
 
 export type Env = z.infer<typeof ResolvedEnvSchema>;
@@ -43,6 +46,7 @@ export const getEnv = (): Env => {
     OPENROUTER_SITE_URL: raw.OPENROUTER_SITE_URL,
     OPENROUTER_APP_NAME: raw.OPENROUTER_APP_NAME,
     GRAPHDB_ENDPOINT_URL: raw.GRAPHDB_ENDPOINT_URL,
+    DEBATE_MAX_TOKENS: raw.DEBATE_MAX_TOKENS,
   };
 
   const parsed = ResolvedEnvSchema.safeParse(resolved);

@@ -1,15 +1,19 @@
 "use client";
 
 import { type FormEvent, useEffect, useRef, useState } from "react";
-import { DebateInputSchema } from "@/lib/schemas/debate";
+import { DebateInputSchema, type Audience } from "@/lib/schemas/debate";
 
 type DebateFormProps = {
   onSubmit: (payload: { question: string; context?: string }) => Promise<void>;
   isLoading: boolean;
   language: "es" | "en";
+  audience: Audience;
+  onAudienceChange: (audience: Audience) => void;
 };
 
-export default function DebateForm({ onSubmit, isLoading, language }: DebateFormProps) {
+const AUDIENCES: Audience[] = ["undergraduate", "graduate", "seminary"];
+
+export default function DebateForm({ onSubmit, isLoading, language, audience, onAudienceChange }: DebateFormProps) {
   const [question, setQuestion] = useState("");
   const [context, setContext] = useState("");
   const [showContext, setShowContext] = useState(false);
@@ -36,6 +40,13 @@ export default function DebateForm({ onSubmit, isLoading, language }: DebateForm
           showContext: "+ Agregar contexto",
           hideContext: "- Ocultar contexto",
           errorShort: "La pregunta debe tener al menos 5 caracteres.",
+          level: "Nivel",
+          levels: { undergraduate: "Inicial", graduate: "Intermedio", seminary: "Avanzado" },
+          levelHints: {
+            undergraduate: "Define los términos técnicos y usa ejemplos",
+            graduate: "Vocabulario técnico y referencias a las fuentes",
+            seminary: "Precisión técnica completa y terminología latina",
+          },
         }
       : {
           placeholder: "Ask a philosophical or theological question...",
@@ -46,6 +57,13 @@ export default function DebateForm({ onSubmit, isLoading, language }: DebateForm
           showContext: "+ Add context",
           hideContext: "- Hide context",
           errorShort: "Question must be at least 5 characters.",
+          level: "Level",
+          levels: { undergraduate: "Beginner", graduate: "Intermediate", seminary: "Advanced" },
+          levelHints: {
+            undergraduate: "Defines technical terms and uses examples",
+            graduate: "Technical vocabulary and references to sources",
+            seminary: "Full technical precision and Latin terminology",
+          },
         };
 
   function validate(): string | null {
@@ -122,13 +140,36 @@ export default function DebateForm({ onSubmit, isLoading, language }: DebateForm
         )}
 
         {!showContext ? (
-          <button
-            type="button"
-            onClick={() => setShowContext(true)}
-            className="mt-1.5 px-1 text-xs font-medium text-[var(--muted)] transition hover:text-[var(--foreground)]"
-          >
-            {t.showContext}
-          </button>
+          <div className="mt-1.5 flex flex-wrap items-center justify-between gap-2 px-1">
+            <button
+              type="button"
+              onClick={() => setShowContext(true)}
+              className="text-xs font-medium text-[var(--muted)] transition hover:text-[var(--foreground)]"
+            >
+              {t.showContext}
+            </button>
+            <div className="flex items-center gap-1.5" role="group" aria-label={t.level}>
+              <span className="text-[11px] text-[var(--muted)]">{t.level}</span>
+              <div className="flex items-center gap-0.5 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] p-0.5">
+                {AUDIENCES.map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => onAudienceChange(option)}
+                    aria-pressed={audience === option}
+                    title={t.levelHints[option]}
+                    className={`rounded px-2 py-0.5 text-[11px] transition ${
+                      audience === option
+                        ? "bg-[var(--surface)] font-semibold text-[var(--foreground)] shadow-sm"
+                        : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                    }`}
+                  >
+                    {t.levels[option]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="mt-2 border-t border-[var(--border)] pt-2">
             <label className="mb-1 block px-1 text-xs font-medium text-[var(--muted)]">

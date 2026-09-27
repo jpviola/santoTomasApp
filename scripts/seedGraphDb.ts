@@ -381,7 +381,7 @@ async function main() {
   }
 
   try {
-    const corpusPath = join(__dirname, '../src/data/corpus/summa-sample.json');
+    const corpusPath = join(__dirname, '../src/data/corpus/aquinas-corpus.json');
     const corpusRaw = readFileSync(corpusPath, 'utf-8');
     const articles: SummaArticle[] = JSON.parse(corpusRaw);
 

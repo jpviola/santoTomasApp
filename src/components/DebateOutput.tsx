@@ -45,6 +45,20 @@ function CopyButton({ text, label }: { text: string; label: string }) {
   );
 }
 
+/** Respeta los párrafos (separados por líneas en blanco) que devuelve el modelo. */
+function Paragraphs({ text }: { text: string }) {
+  const paragraphs = text.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+  return (
+    <>
+      {paragraphs.map((paragraph, index) => (
+        <p key={index} className={index > 0 ? "mt-4" : undefined}>
+          {paragraph}
+        </p>
+      ))}
+    </>
+  );
+}
+
 function ScholasticSection({ id, eyebrow, title, children }: ScholasticSectionProps) {
   return (
     <section 
@@ -207,7 +221,7 @@ export default function DebateOutput({ result, language, contentLanguage }: Deba
               <ol className="space-y-4 pl-5">
                 {result.objections.map((objection, index) => (
                   <li key={index} className="pl-2">
-                    {objection}
+                    <Paragraphs text={objection} />
                   </li>
                 ))}
               </ol>
@@ -215,26 +229,26 @@ export default function DebateOutput({ result, language, contentLanguage }: Deba
 
             <ScholasticSection id="sed-contra" eyebrow="Sed contra" title={t.sedContra}>
               <blockquote className="border-l-2 border-[var(--accent)] pl-5 italic text-[var(--foreground)]">
-                {result.sedContra}
+                <Paragraphs text={result.sedContra} />
               </blockquote>
             </ScholasticSection>
 
             <ScholasticSection id="respondeo" eyebrow="Respondeo dicendum" title={t.respondeo}>
-              <p>{result.respondeo}</p>
+              <Paragraphs text={result.respondeo} />
             </ScholasticSection>
 
             <ScholasticSection id="replies" eyebrow="Ad primum" title={t.replies}>
               <ol className="space-y-4 pl-5">
                 {result.replies.map((reply, index) => (
                   <li key={index} className="pl-2">
-                    {reply}
+                    <Paragraphs text={reply} />
                   </li>
                 ))}
               </ol>
             </ScholasticSection>
 
             <ScholasticSection id="application" eyebrow="Applicatio" title={t.application}>
-              <p>{result.application}</p>
+              <Paragraphs text={result.application} />
             </ScholasticSection>
 
             <section id="sources" className="scroll-mt-24 border-t border-[var(--border)] pt-8">

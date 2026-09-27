@@ -89,8 +89,24 @@ export class OntologyEngine {
     const cached = this.relevantTermsCache.get(cacheKey);
     if (cached) return cached;
 
-    const safeQuery = escapeSparqlLiteral(query);
-    const safePrefix = escapeSparqlLiteral(query.trim().slice(0, 50));
+    if (!this.sparqlClient) return [];
+
+    // Se compara palabra por palabra: la pregunta completa casi nunca está contenida en un nombre de concepto.
+    const words = [...new Set(
+      query
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}\s]/gu, " ")
+        .split(/\s+/)
+        .filter((word) => word.length >= 4),
+    )].slice(0, 8);
+    if (words.length === 0) return [];
+
+    const wordFilters = words
+      .map((word) => {
+        const safe = escapeSparqlLiteral(word);
+        return `CONTAINS(LCASE(?name), "${safe}") || CONTAINS(LCASE(COALESCE(?nameEs, "")), "${safe}") || CONTAINS(LCASE(COALESCE(?descriptionEs, "")), "${safe}") || CONTAINS(LCASE(?description), "${safe}")`;
+      })
+      .join(" ||\n          ");
 
     const sparqlQuery = `
       PREFIX schema: <http://schema.org/>
@@ -103,11 +119,7 @@ export class OntologyEngine {
         OPTIONAL { ?termId st:nameEs ?nameEs . }
         OPTIONAL { ?termId st:descriptionEs ?descriptionEs . }
         FILTER (
-          CONTAINS(LCASE(?name), LCASE("${safeQuery}")) || 
-          CONTAINS(LCASE(?description), LCASE("${safeQuery}")) ||
-          CONTAINS(LCASE(COALESCE(?nameEs, "")), LCASE("${safeQuery}")) ||
-          CONTAINS(LCASE(COALESCE(?descriptionEs, "")), LCASE("${safeQuery}")) ||
-          STRSTARTS(LCASE(?name), LCASE("${safePrefix}"))
+          ${wordFilters}
         )
         OPTIONAL { ?termId st:broaderThan ?broader . }
         OPTIONAL { ?termId st:narrowerThan ?narrower . }

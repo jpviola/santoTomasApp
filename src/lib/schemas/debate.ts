@@ -18,6 +18,8 @@ export const SourceSnippetSchema = z
     citation: z.string(),
     text: z.string(),
     url: z.string().url().optional(),
+    /** "text": texto real de Tomás; "summary": resumen del corpus curado. */
+    kind: z.enum(["text", "summary"]).optional(),
   })
   .strip();
 
@@ -27,6 +29,10 @@ export const ModeratorOutputSchema = z
     framing: z.string(),
     precisionNotes: z.array(z.string()).default([]),
     ontologyTopics: z.array(z.string()).default([]),
+    /** Palabras clave en inglés y español para la búsqueda en el corpus. */
+    searchKeywords: z.array(z.string()).default([]),
+    /** Artículos de la Summa donde Tomás trata la cuestión, p. ej. "ST I-II, q.94, a.2". */
+    candidateLoci: z.array(z.string()).default([]),
   })
   .strip();
 

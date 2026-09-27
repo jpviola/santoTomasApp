@@ -1,11 +1,13 @@
 import { callModel } from "@/lib/llm/callModel";
 import { parseJsonWithSchema } from "@/lib/llm/parseJson";
-import { sharedThomisticRules } from "@/lib/prompts/sharedRules";
+import { buildDebateSystemPrompt, buildDebateUserPrompt } from "@/lib/prompts/debatePrompt";
+import { getEnv } from "@/lib/config/env";
 import {
   ObjectionsOutputSchema,
   RepliesOutputSchema,
   RespondeoOutputSchema,
   SedContraOutputSchema,
+  type Audience,
   type SourceSnippet,
 } from "@/lib/schemas/debate";
 import { JsonExtractionError, JsonParseError, ModelResponseValidationError } from "@/lib/utils/errors";
@@ -31,8 +33,10 @@ export type ScholasticDebateOutput = z.infer<typeof ScholasticDebateOutputSchema
 
 type RunScholasticDebateParams = {
   question: string;
-  audience: "undergraduate" | "graduate" | "seminary";
+  audience: Audience;
   context?: string;
+  framing?: string;
+  precisionNotes?: string[];
   sources: SourceSnippet[];
   ontologyTerms: string[];
   language?: "en" | "es" | "la";
@@ -42,78 +46,32 @@ export async function runScholasticDebate({
   question,
   audience,
   context,
+  framing,
+  precisionNotes,
   sources,
   ontologyTerms,
   language = "en",
 }: RunScholasticDebateParams): Promise<ScholasticDebateOutput> {
-  const targetLabel = language === "es" ? "Spanish" : language === "la" ? "Latin" : "English";
-  const sourcesText = sources
-    .map(
-      (s, i) => `Source ${i + 1}
-Title: ${s.title}
-Citation: ${s.citation}
-Text: ${s.text}`,
-    )
-    .join("\n\n");
-
-  const ontologyText = ontologyTerms.length ? ontologyTerms.join(", ") : "None detected";
-
-  const systemPrompt = `
-${sharedThomisticRules}
-
-You are a single-pass Thomistic scholastic debate agent.
-
-Produce the complete answer in the structure of a Summa-style article:
-- 3 strong objections.
-- 1 brief sed contra.
-- 1 central respondeo with definitions and distinctions.
-- Exactly 1 reply per objection.
-- 1 short contemporary application.
-
-Use only the supplied sources for citations or textual support. Do not invent citations.
-Write every JSON string field in ${targetLabel}.
-Return valid JSON only.
-
-JSON shape:
-{
-  "objections": ["string", "string", "string"],
-  "sedContra": "string",
-  "respondeo": "string",
-  "replies": ["string", "string", "string"],
-  "application": "string"
-}
-`;
-
-  const userPrompt = `
-Target language:
-${targetLabel}
-
-Question:
-${question}
-
-Audience:
-${audience}
-
-Optional context:
-${context ?? "None provided"}
-
-Detected ontology terms:
-${ontologyText}
-
-Sources:
-${sourcesText || "No sources available"}
-
-Return JSON only.
-`;
+  const systemPrompt = buildDebateSystemPrompt(language);
+  const userPrompt = buildDebateUserPrompt({
+    question,
+    audience,
+    language,
+    context,
+    framing,
+    precisionNotes,
+    ontologyTerms,
+    sources,
+  });
 
   return withRetry(
     async () => {
       const raw = await callModel({
         systemPrompt,
         userPrompt,
-        temperature: 0.3,
+        temperature: 0.4,
         operationName: "scholastic-debate-agent-model-call",
-        maxTokens: 1600,
+        maxTokens: getEnv().DEBATE_MAX_TOKENS,
       });
 
       logger.debug("Scholastic debate raw response received", {

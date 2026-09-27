@@ -1,56 +1,110 @@
-import corpus from "@/data/corpus/summa-sample.json";
+import corpusData from "@/data/corpus/aquinas-corpus.json";
 import type { SourceSnippet } from "@/lib/schemas/debate";
 import { withRetry } from "@/lib/llm/withRetry";
 import { parseJsonWithSchema } from "@/lib/llm/parseJson";
 import { callModel } from "@/lib/llm/callModel";
 import { prisma } from "@/lib/db/prisma";
+import { fetchSummaArticle, formatStCitation, parseStCitation, type SummaLanguage } from "@/lib/retrieval/summaText";
 import { z } from "zod";
 import { logger } from "@/lib/utils/logger";
 
-type RankedSnippet = SourceSnippet & { score: number };
+export type CorpusEntry = SourceSnippet & { topics: string[]; keywords: string[] };
 
-type ParsedStCitation = {
-  part: "I" | "I-II" | "II-II" | "III";
-  question: number;
-  article: number;
+const corpus = corpusData as CorpusEntry[];
+
+const STOPWORDS = new Set([
+  // es
+  "que", "qué", "los", "las", "del", "con", "por", "para", "una", "uno", "unos", "unas", "como", "cómo", "cual", "cuál",
+  "segun", "según", "sobre", "entre", "desde", "hasta", "este", "esta", "esto", "estos", "estas", "ese", "esa", "eso",
+  "son", "fue", "ser", "puede", "pueden", "hay", "más", "mas", "muy", "sus", "nos", "les", "donde", "cuando", "tomas",
+  "tomás", "santo", "aquino", "dice", "decir", "entiende", "piensa", "diferencia",
+  // en
+  "the", "and", "for", "with", "what", "which", "that", "this", "these", "those", "does", "did", "can", "could", "would",
+  "should", "are", "was", "were", "has", "have", "how", "why", "about", "into", "from", "than", "then", "there", "their",
+  "according", "thomas", "aquinas", "saint", "say", "says", "think", "understand", "difference", "between",
+]);
+
+const stripAccents = (text: string) => text.normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+const stem = (token: string) => {
+  if (token.length > 5 && token.endsWith("es")) return token.slice(0, -2);
+  if (token.length > 3 && token.endsWith("s")) return token.slice(0, -1);
+  return token;
 };
 
-const normalize = (text: string): string[] => {
-  return text
-    .toLowerCase()
+export function tokenize(text: string): string[] {
+  return stripAccents(text.toLowerCase())
     .replace(/[^\p{L}\p{N}\s]/gu, " ")
     .split(/\s+/)
-    .filter(Boolean);
+    .filter((token) => token.length >= 3 && !STOPWORDS.has(token))
+    .map(stem);
+}
+
+const tokensMatch = (a: string, b: string) =>
+  a === b || (Math.min(a.length, b.length) >= 5 && (a.startsWith(b) || b.startsWith(a)));
+
+type IndexedEntry = {
+  entry: CorpusEntry;
+  keywordTokens: string[];
+  titleTokens: string[];
+  textTokens: string[];
+  phrases: string[];
 };
 
-const scoreText = (queryTokens: string[], text: string): number => {
-  const textTokens = new Set(normalize(text));
+const index: IndexedEntry[] = corpus.map((entry) => ({
+  entry,
+  keywordTokens: [...new Set(entry.keywords.flatMap(tokenize))],
+  titleTokens: [...new Set(tokenize(entry.title))],
+  textTokens: [...new Set(tokenize(entry.text))],
+  phrases: entry.keywords.filter((k) => k.includes(" ")).map((k) => stripAccents(k.toLowerCase())),
+}));
+
+const corpusById = new Map(corpus.map((entry) => [entry.id, entry]));
+
+export function getCorpusEntry(id: string): CorpusEntry | undefined {
+  return corpusById.get(id);
+}
+
+function scoreEntry(queryTokens: string[], normalizedQuery: string, indexed: IndexedEntry): number {
   let score = 0;
-
   for (const token of queryTokens) {
-    if (textTokens.has(token)) score += 1;
+    if (indexed.keywordTokens.some((k) => tokensMatch(token, k))) score += 3;
+    else if (indexed.titleTokens.some((t) => tokensMatch(token, t))) score += 2;
+    else if (indexed.textTokens.some((t) => tokensMatch(token, t))) score += 1;
   }
-
+  for (const phrase of indexed.phrases) {
+    if (normalizedQuery.includes(phrase)) score += 3;
+  }
   return score;
-};
+}
 
-export async function retrieveAquinasSources(question: string, topK = 3): Promise<SourceSnippet[]> {
-  const queryTokens = normalize(question);
+export function toSnippet(entry: CorpusEntry): SourceSnippet {
+  return {
+    id: entry.id,
+    title: entry.title,
+    citation: entry.citation,
+    text: entry.text,
+    url: entry.url,
+    kind: "summary",
+  };
+}
 
-  const ranked: RankedSnippet[] = (corpus as SourceSnippet[])
-    .map((item) => ({
-      ...item,
-      score: scoreText(queryTokens, item.title) * 2 + scoreText(queryTokens, item.text),
-    }))
-    .sort((a, b) => b.score - a.score);
+/**
+ * Búsqueda léxica bilingüe sobre el corpus curado. Solo devuelve entradas con al
+ * menos una coincidencia de palabra clave (score >= minScore): es preferible no
+ * dar fuentes a dar fuentes que no tienen que ver con la pregunta.
+ */
+export function retrieveAquinasSources(query: string, topK = 4, minScore = 3): SourceSnippet[] {
+  const queryTokens = [...new Set(tokenize(query))];
+  if (queryTokens.length === 0) return [];
+  const normalizedQuery = stripAccents(query.toLowerCase());
 
-  return ranked.slice(0, topK).map((item) => ({
-    id: item.id,
-    title: item.title,
-    citation: item.citation,
-    text: item.text,
-    url: item.url,
-  }));
+  return index
+    .map((indexed) => ({ entry: indexed.entry, score: scoreEntry(queryTokens, normalizedQuery, indexed) }))
+    .filter((ranked) => ranked.score >= minScore)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, topK)
+    .map((ranked) => toSnippet(ranked.entry));
 }
 
 const TranslatedSourceSchema = z
@@ -63,97 +117,20 @@ const TranslatedSourceSchema = z
 
 const TranslatedSourcesSchema = z.array(TranslatedSourceSchema);
 
-const globalForSourceCache = globalThis as unknown as { __st_sourceCache?: Map<string, string> };
-const sourceHtmlCache = globalForSourceCache.__st_sourceCache ?? new Map<string, string>();
-globalForSourceCache.__st_sourceCache = sourceHtmlCache;
+// Cambiar la versión invalida la caché persistida (las filas v1 eran traducciones
+// por LLM de resúmenes, no el texto real de la Summa).
+const LOCALIZATION_CACHE_VERSION = "v2";
+const cacheLanguage = (language: SummaLanguage) => `${language}@${LOCALIZATION_CACHE_VERSION}`;
 
-function stripHtml(input: string) {
-  return input
-    .replace(/<script[\s\S]*?<\/script>/gi, " ")
-    .replace(/<style[\s\S]*?<\/style>/gi, " ")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function parseStCitation(citation: string): ParsedStCitation | null {
-  const match = citation.match(/ST\s+(I-II|II-II|III|I)\s*,\s*q\.(\d+)\s*,\s*a\.(\d+)/i);
-  if (!match) return null;
-  const part = match[1].toUpperCase() as ParsedStCitation["part"];
-  const question = Number(match[2]);
-  const article = Number(match[3]);
-  if (!Number.isFinite(question) || !Number.isFinite(article)) return null;
-  return { part, question, article };
-}
-
-function pad3(value: number) {
-  return String(value).padStart(3, "0");
-}
-
-function buildSumatUrl(c: ParsedStCitation) {
-  const partLetter = c.part === "I" ? "a" : c.part === "I-II" ? "b" : c.part === "II-II" ? "c" : "d";
-  return `https://hjg.com.ar/sumat/${partLetter}/c${c.question}.html`;
-}
-
-function buildCorpusThomisticumUrl(c: ParsedStCitation) {
-  const digit = c.part === "I" ? "1" : c.part === "I-II" ? "2" : c.part === "II-II" ? "3" : "4";
-  return `https://www.corpusthomisticum.org/sth${digit}${pad3(c.question)}.html`;
-}
-
-async function fetchTextCached(url: string) {
-  const cached = sourceHtmlCache.get(url);
-  if (cached) return cached;
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 2500);
-  try {
-    const response = await fetch(url, { method: "GET", signal: controller.signal });
-    const text = await response.text();
-    sourceHtmlCache.set(url, text);
-    return text;
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
-function extractSpanishExcerptFromSumat(html: string, articleNumber: number) {
-  const plain = stripHtml(html);
-  const marker = `Artículo ${articleNumber}:`;
-  const start = plain.indexOf(marker);
-  if (start < 0) return null;
-  const next = plain.indexOf("Artículo ", start + marker.length);
-  const articleBlock = next > 0 ? plain.slice(start, next) : plain.slice(start);
-  const respondeoStart = articleBlock.indexOf("Respondo:");
-  const respondeoBlock = respondeoStart >= 0 ? articleBlock.slice(respondeoStart) : articleBlock;
-  const end = respondeoBlock.indexOf("A las objeciones:");
-  const excerpt = end > 0 ? respondeoBlock.slice(0, end) : respondeoBlock;
-  return excerpt.trim();
-}
-
-function extractLatinExcerptFromCorpus(html: string, articleNumber: number) {
-  const plain = stripHtml(html);
-  const marker = `Articulus ${articleNumber}`;
-  const start = plain.indexOf(marker);
-  if (start < 0) return null;
-  const next = plain.indexOf("Articulus ", start + marker.length);
-  const articleBlock = next > 0 ? plain.slice(start, next) : plain.slice(start);
-  const respondeoStart = articleBlock.toLowerCase().indexOf("respondeo dicendum");
-  const block = respondeoStart >= 0 ? articleBlock.slice(respondeoStart) : articleBlock;
-  const adStart = block.toLowerCase().indexOf("ad primum");
-  const excerpt = adStart > 0 ? block.slice(0, adStart) : block;
-  return excerpt.trim();
-}
+type PersistedLocalization = { title: string; text: string; url: string | null };
 
 async function loadPersistedLocalizations(
   sourceIds: string[],
-  language: string,
-): Promise<Map<string, { title: string; text: string; url: string | null }>> {
+  language: SummaLanguage,
+): Promise<Map<string, PersistedLocalization>> {
   try {
     const rows = await prisma.sourceLocalization.findMany({
-      where: { sourceId: { in: sourceIds }, language },
+      where: { sourceId: { in: sourceIds }, language: cacheLanguage(language) },
     });
     return new Map(rows.map((row) => [row.sourceId, { title: row.title, text: row.text, url: row.url }]));
   } catch (error) {
@@ -165,23 +142,14 @@ async function loadPersistedLocalizations(
   }
 }
 
-async function persistLocalizations(
-  localized: SourceSnippet[],
-  originals: Map<string, SourceSnippet>,
-  language: string,
-): Promise<void> {
-  const changed = localized.filter((s) => {
-    const original = originals.get(s.id);
-    return original && (original.text !== s.text || original.title !== s.title);
-  });
-  if (changed.length === 0) return;
-
+async function persistLocalizations(sources: SourceSnippet[], language: SummaLanguage): Promise<void> {
+  if (sources.length === 0) return;
   try {
     await Promise.all(
-      changed.map((s) =>
+      sources.map((s) =>
         prisma.sourceLocalization.upsert({
-          where: { sourceId_language: { sourceId: s.id, language } },
-          create: { sourceId: s.id, language, title: s.title, text: s.text, url: s.url ?? null },
+          where: { sourceId_language: { sourceId: s.id, language: cacheLanguage(language) } },
+          create: { sourceId: s.id, language: cacheLanguage(language), title: s.title, text: s.text, url: s.url ?? null },
           update: { title: s.title, text: s.text, url: s.url ?? null },
         }),
       ),
@@ -193,132 +161,109 @@ async function persistLocalizations(
   }
 }
 
-export async function localizeAquinasSources(
-  sources: SourceSnippet[],
-  language: "en" | "es" | "la",
-): Promise<SourceSnippet[]> {
-  if (language === "en" || sources.length === 0) {
-    return sources;
-  }
-
-  // 1. Cache persistente: traducciones ya obtenidas en ejecuciones anteriores.
-  const persisted = await loadPersistedLocalizations(sources.map((s) => s.id), language);
-  const pending = sources.filter((s) => !persisted.has(s.id));
-
-  const applyPersisted = (list: SourceSnippet[]) =>
-    list.map((s) => {
-      const hit = persisted.get(s.id);
-      return hit ? { ...s, title: hit.title, text: hit.text, url: hit.url ?? s.url } : s;
-    });
-
-  if (pending.length === 0) {
-    return applyPersisted(sources);
-  }
-
-  const originalsById = new Map(sources.map((s) => [s.id, s]));
-  const finish = async (localized: SourceSnippet[]) => {
-    await persistLocalizations(localized, originalsById, language);
-    return applyPersisted(localized);
-  };
-
-  // 2. Localización vía web (solo las fuentes sin traducción persistida).
-  const localizedViaWeb = await Promise.all(
-    pending.map(async (s) => {
-      const parsed = parseStCitation(s.citation);
-      if (!parsed) return null;
-
-      try {
-        if (language === "es") {
-          const url = buildSumatUrl(parsed);
-          const html = await fetchTextCached(url);
-          const excerpt = extractSpanishExcerptFromSumat(html, parsed.article);
-          if (!excerpt) return null;
-          return { ...s, url, text: excerpt };
-        }
-
-        const url = buildCorpusThomisticumUrl(parsed);
-        const html = await fetchTextCached(url);
-        const excerpt = extractLatinExcerptFromCorpus(html, parsed.article);
-        if (!excerpt) return null;
-        return { ...s, url, text: excerpt };
-      } catch (error) {
-        logger.warn("Failed to localize source via web", {
-          citation: s.citation,
-          language,
-          errorMessage: error instanceof Error ? error.message : String(error),
-        });
-        return null;
-      }
-    }),
-  );
-
-  const haveWebLocalization = localizedViaWeb.some(Boolean);
-  if (haveWebLocalization) {
-    const webById = new Map<string, SourceSnippet>(
-      localizedViaWeb.flatMap((s) => (s ? [[s.id, s] as const] : [])),
-    );
-    return finish(sources.map((s) => webById.get(s.id) ?? s));
-  }
-
-  // 3. Traducción vía LLM (solo las pendientes).
-  const userPromptParts = pending
-    .map(
-      (s, i) => `Item ${i + 1}:
-id: ${s.id}
-title: ${s.title}
-text: ${s.text}`,
-    )
-    .join("\n\n");
-
+async function translateSummaries(sources: SourceSnippet[], language: "es" | "la"): Promise<SourceSnippet[]> {
   const targetLabel = language === "es" ? "Spanish" : "Latin";
   const systemPrompt = `
-You are a precise translator. Return JSON only.
+You are a precise translator of scholarly texts. Return JSON only.
 Input is a list of items with id/title/text (English).
 Output must be a JSON array of objects: { "id": string, "title": string, "text": string }.
-Translate title and text into ${targetLabel} faithfully. Keep "id" untouched. Do NOT add, remove, or reorder items.
+Translate title and text into ${targetLabel} faithfully, keeping Latin technical terms. Keep "id" untouched. Do NOT add, remove, or reorder items.
 Do NOT include any commentary or extra fields. Valid JSON only.
 `;
-
   const userPrompt = `
 Items to translate to ${targetLabel}:
 
-${userPromptParts}
+${sources.map((s, i) => `Item ${i + 1}:\nid: ${s.id}\ntitle: ${s.title}\ntext: ${s.text}`).join("\n\n")}
 `;
 
-  try {
-    const translated = await withRetry(
-      async () => {
-        const raw = await callModel({
-          systemPrompt,
-          userPrompt,
-          temperature: 0.0,
-          operationName: "translate-aquinas-sources",
-          maxTokens: 800,
-        });
-
-        logger.debug("Translate sources raw response", { responsePreview: raw.slice(0, 400) });
-
-        const parsed = parseJsonWithSchema(raw, TranslatedSourcesSchema);
-        const byId = new Map(parsed.map((p) => [p.id, p]));
-        return sources.map((s) => {
-          const translatedItem = byId.get(s.id);
-          if (!translatedItem) return s;
-          return { ...s, title: translatedItem.title, text: translatedItem.text };
-        });
-      },
-      {
+  const translated = await withRetry(
+    async () => {
+      const raw = await callModel({
+        systemPrompt,
+        userPrompt,
+        temperature: 0,
         operationName: "translate-aquinas-sources",
-        maxAttempts: 2,
-        initialDelayMs: 300,
-        backoffMultiplier: 2,
-      },
-    );
+        maxTokens: 1500,
+      });
+      return parseJsonWithSchema(raw, TranslatedSourcesSchema);
+    },
+    { operationName: "translate-aquinas-sources", maxAttempts: 2, initialDelayMs: 300, backoffMultiplier: 2 },
+  );
 
-    return finish(translated);
-  } catch (error) {
-    logger.warn("Failed to translate sources, falling back to originals", {
-      errorMessage: error instanceof Error ? error.message : String(error),
-    });
-    return applyPersisted(sources);
+  const byId = new Map(translated.map((t) => [t.id, t]));
+  return sources.map((s) => {
+    const hit = byId.get(s.id);
+    return hit ? { ...s, title: hit.title, text: hit.text } : s;
+  });
+}
+
+/**
+ * Sustituye cada fuente por el texto real de Tomás en el idioma pedido cuando es un
+ * artículo de la Summa (New Advent / hjg.com.ar / Corpus Thomisticum). Las demás
+ * conservan su resumen, traducido por LLM si hace falta. Las fuentes sin texto
+ * (citas propuestas por el modelo que no se pudieron verificar) se descartan.
+ */
+export async function hydrateAquinasSources(
+  sources: SourceSnippet[],
+  language: SummaLanguage,
+): Promise<SourceSnippet[]> {
+  if (sources.length === 0) return sources;
+
+  const persisted = await loadPersistedLocalizations(sources.map((s) => s.id), language);
+
+  const resolved = await Promise.all(
+    sources.map(async (source): Promise<{ source: SourceSnippet; fetched: boolean }> => {
+      const citation = parseStCitation(source.citation);
+      const cached = persisted.get(source.id);
+      if (cached) {
+        return {
+          source: { ...source, title: cached.title, text: cached.text, url: cached.url ?? source.url, kind: citation ? "text" : "summary" },
+          fetched: false,
+        };
+      }
+      if (!citation) return { source, fetched: false };
+
+      const article = await fetchSummaArticle(citation, language);
+      if (!article) return { source, fetched: false };
+      return {
+        source: {
+          ...source,
+          title: article.title ?? (source.text ? source.title : formatStCitation(citation)),
+          text: article.text,
+          url: article.url,
+          kind: "text",
+        },
+        fetched: true,
+      };
+    }),
+  );
+
+  const withText = resolved.filter(({ source }) => source.text.trim().length > 0);
+  await persistLocalizations(
+    withText.filter((r) => r.fetched).map((r) => r.source),
+    language,
+  );
+
+  let result = withText.map((r) => r.source);
+
+  // Resúmenes del corpus que siguen en inglés: se traducen (y se cachean solo si no son de la Summa,
+  // para reintentar la descarga del texto real en la próxima ejecución).
+  const pendingTranslation = result.filter((s) => s.kind === "summary" && !persisted.has(s.id));
+  if (language !== "en" && pendingTranslation.length > 0) {
+    try {
+      const translated = await translateSummaries(pendingTranslation, language);
+      const byId = new Map(translated.map((s) => [s.id, s]));
+      result = result.map((s) => byId.get(s.id) ?? s);
+      await persistLocalizations(
+        translated.filter((s) => !parseStCitation(s.citation)),
+        language,
+      );
+    } catch (error) {
+      logger.warn("Failed to translate source summaries, keeping originals", {
+        errorMessage: error instanceof Error ? error.message : String(error),
+      });
+    }
   }
+
+  return result;
 }

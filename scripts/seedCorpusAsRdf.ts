@@ -52,7 +52,7 @@ async function main() {
 
   console.log(`Cargando corpus en: ${endpoint}`);
 
-  const corpusPath = join(__dirname, '../src/data/corpus/summa-sample.json');
+  const corpusPath = join(__dirname, '../src/data/corpus/aquinas-corpus.json');
   const corpusRaw = readFileSync(corpusPath, 'utf-8');
   const articles: CorpusArticle[] = JSON.parse(corpusRaw);
 
