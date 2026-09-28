@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { matchConceptLabels, searchKnowledge } from "@/lib/knowledge/search";
-import type { EmbeddingIndex, KnowledgeArticle, KnowledgeBundle, KnowledgeConcept } from "@/lib/knowledge/types";
+import type { KnowledgeArticle, KnowledgeBundle, KnowledgeConcept } from "@/lib/knowledge/types";
 
-const NO_EMBEDDINGS: EmbeddingIndex = { model: null, dimensions: 0, items: {} };
+const NO_SEMANTIC = { semantic: async () => null };
 
 describe("matchConceptLabels", () => {
   it("prefers the longest label (bien común, not bien)", () => {
@@ -19,14 +19,14 @@ describe("matchConceptLabels", () => {
 
 describe("searchKnowledge on the real bundle", () => {
   it("finds texts through the concept graph", async () => {
-    const result = await searchKnowledge("¿Qué es la sindéresis?", { embeddings: NO_EMBEDDINGS });
+    const result = await searchKnowledge("¿Qué es la sindéresis?", NO_SEMANTIC);
     expect(result.concepts[0]?.concept.id).toBe("sinderesis");
     expect(result.articles.map((h) => h.article.id)).toContain("st-i-q79-a12");
     expect(result.semantic).toBe(false);
   });
 
   it("returns nothing for an off-topic query", async () => {
-    const result = await searchKnowledge("receta de pizza napolitana", { embeddings: NO_EMBEDDINGS });
+    const result = await searchKnowledge("receta de pizza napolitana", NO_SEMANTIC);
     expect(result.articles).toEqual([]);
   });
 });
@@ -52,35 +52,31 @@ const bundle: KnowledgeBundle = {
 
 describe("searchKnowledge signals", () => {
   it("ranks direct concept texts above graph neighbours", async () => {
-    const result = await searchKnowledge("conciencia", { bundle, embeddings: NO_EMBEDDINGS });
+    const result = await searchKnowledge("conciencia", { bundle, ...NO_SEMANTIC });
     expect(result.articles.map((h) => h.article.id)).toEqual(["a-conciencia", "a-sinderesis"]);
     expect(result.articles[1].signals).toEqual(["graph"]);
   });
 
-  it("adds semantic matches when an index and a query embedding are available", async () => {
-    const embeddings: EmbeddingIndex = {
-      model: "test-model",
-      dimensions: 2,
-      items: {
-        "article:a-otro": { hash: "h", vector: [1, 0] },
-        "article:a-conciencia": { hash: "h", vector: [0, 1] },
-        "concept:otro": { hash: "h", vector: [1, 0] },
-      },
-    };
+  it("adds semantic matches from the vector store and semantic concepts", async () => {
     const result = await searchKnowledge("una pregunta sin palabras clave", {
       bundle,
-      embeddings,
-      embed: async () => [1, 0],
+      semantic: async () => ({
+        articles: [
+          { key: "article:a-otro", similarity: 0.82 },
+          { key: "article:a-conciencia", similarity: 0.12 },
+        ],
+        concepts: [{ key: "concept:otro", similarity: 0.7 }],
+      }),
     });
     expect(result.semantic).toBe(true);
     expect(result.articles[0].article.id).toBe("a-otro");
     expect(result.articles[0].signals).toEqual(expect.arrayContaining(["semantic", "concept"]));
+    expect(result.articles.map((h) => h.article.id)).not.toContain("a-conciencia");
     expect(result.concepts[0]).toMatchObject({ via: "semantic" });
   });
 
-  it("degrades to lexical and graph search when the query cannot be embedded", async () => {
-    const embeddings: EmbeddingIndex = { model: "m", dimensions: 2, items: { "article:a-otro": { hash: "h", vector: [1, 0] } } };
-    const result = await searchKnowledge("conciencia", { bundle, embeddings, embed: async () => null });
+  it("degrades to lexical and graph search when semantic search is unavailable", async () => {
+    const result = await searchKnowledge("conciencia", { bundle, semantic: async () => null });
     expect(result.semantic).toBe(false);
     expect(result.articles[0].article.id).toBe("a-conciencia");
   });

@@ -10,13 +10,11 @@
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
-import { compileKnowledge, embeddingInputs, type SourceFile } from "../../src/lib/knowledge/compile";
-import type { EmbeddingIndex } from "../../src/lib/knowledge/types";
+import { compileKnowledge, type SourceFile } from "../../src/lib/knowledge/compile";
 
 const ROOT = join(__dirname, "..", "..");
 const BUNDLE_DIR = join(ROOT, "knowledge");
 const BUNDLE_JSON = join(ROOT, "src", "data", "knowledge", "bundle.json");
-const EMBEDDINGS_JSON = join(ROOT, "src", "data", "knowledge", "embeddings.json");
 const TTL = join(ROOT, "scripts", "generated", "knowledge.ttl");
 
 const checkOnly = process.argv.includes("--check");
@@ -49,19 +47,9 @@ const targets: { path: string; content: string }[] = [
   { path: BUNDLE_JSON, content: `${JSON.stringify(result.bundle, null, 2)}\n` },
   { path: TTL, content: result.ttl },
 ];
-if (!existsSync(EMBEDDINGS_JSON)) {
-  const empty: EmbeddingIndex = { model: null, dimensions: 0, items: {} };
-  targets.push({ path: EMBEDDINGS_JSON, content: `${JSON.stringify(empty)}\n` });
-}
-
 const stale = targets.filter((t) => read(t.path) !== t.content);
 
-// Embeddings desactualizados: no rompen el build (la búsqueda semántica los ignora), pero se avisa.
-const embeddings = JSON.parse(read(EMBEDDINGS_JSON) ?? '{"model":null,"items":{}}') as EmbeddingIndex;
-if (embeddings.model) {
-  const outdated = embeddingInputs(result.bundle).filter((i) => embeddings.items[i.key]?.hash !== i.hash);
-  if (outdated.length) console.warn(`aviso: ${outdated.length} embeddings desactualizados; corré npm run knowledge:embed`);
-}
+// Los embeddings viven en Postgres: `npm run knowledge:embed` re-embebe solo lo que cambió.
 
 const { articles, questions, concepts, areas, authors, works } = result.bundle;
 const summary = `${articles.length} textos, ${questions.length} cuestiones, ${concepts.length} conceptos, ${areas.length} áreas, ${authors.length} autores, ${works.length} obras`;

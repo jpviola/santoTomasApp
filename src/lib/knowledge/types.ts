@@ -63,10 +63,3 @@ export type KnowledgeBundle = {
   authors: KnowledgeAuthor[];
   works: KnowledgeWork[];
 };
-
-export type EmbeddingIndex = {
-  model: string | null;
-  dimensions: number;
-  /** Clave "article:<id>" o "concept:<id>". */
-  items: Record<string, { hash: string; vector: number[] }>;
-};

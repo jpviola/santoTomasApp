@@ -1,14 +1,15 @@
-import { embeddingIndex as defaultIndex, knowledge as defaultBundle } from "@/lib/knowledge/bundle";
+import { knowledge as defaultBundle } from "@/lib/knowledge/bundle";
 import { findPhrase, normalizeText, tokenize, tokensMatch } from "@/lib/knowledge/lexical";
-import type { EmbeddingIndex, KnowledgeArticle, KnowledgeBundle, KnowledgeConcept } from "@/lib/knowledge/types";
-import { cosine, embedQuery } from "@/lib/llm/embeddings";
+import type { KnowledgeArticle, KnowledgeBundle, KnowledgeConcept } from "@/lib/knowledge/types";
+import { nearestNeighbors, type Neighbor } from "@/lib/knowledge/vectorStore";
+import { embedQuery } from "@/lib/llm/embeddings";
 
 /**
  * Búsqueda híbrida sobre el bundle OKF:
  *   1. léxica  — palabras clave, títulos y resúmenes (bilingüe, sin tildes, con plurales);
  *   2. conceptos — etiquetas de la ontología (ES/EN/LA) encontradas en la pregunta;
  *   3. grafo   — textos de los conceptos encontrados y, con menos peso, de sus vecinos;
- *   4. semántica — similitud de embeddings (solo si hay índice y EMBEDDING_API_KEY).
+ *   4. semántica — vecinos por embeddings en Postgres/pgvector (si hay proveedor y KNOWLEDGE_DATABASE_URL).
  * Las listas se combinan con Reciprocal Rank Fusion (RRF).
  */
 
@@ -26,8 +27,21 @@ type SearchOptions = {
   minConceptSimilarity?: number;
   /** Inyectables para tests. */
   bundle?: KnowledgeBundle;
-  embeddings?: EmbeddingIndex;
-  embed?: (query: string, model: string, dimensions: number) => Promise<number[] | null>;
+  /** Búsqueda semántica: claves "article:<id>" / "concept:<id>" con su similitud. null = no disponible. */
+  semantic?: (query: string) => Promise<SemanticNeighbors | null>;
+};
+
+export type SemanticNeighbors = { articles: Neighbor[]; concepts: Neighbor[] };
+
+/** Embebe la consulta y busca vecinos en la base vectorial; null si falta configuración o algo falla. */
+export async function defaultSemanticSearch(query: string): Promise<SemanticNeighbors | null> {
+  const embedded = await embedQuery(query);
+  return embedded ? nearestNeighbors(embedded.vector, embedded.model) : null;
+}
+
+const envNumber = (name: string, fallback: number) => {
+  const value = Number(process.env[name]);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
 };
 
 const RRF_K = 60;
@@ -114,8 +128,7 @@ export function matchConceptLabels(query: string, bundle: KnowledgeBundle = defa
 
 export async function searchKnowledge(query: string, options: SearchOptions = {}): Promise<KnowledgeSearchResult> {
   const bundle = options.bundle ?? defaultBundle;
-  const index = options.embeddings ?? defaultIndex;
-  const embed = options.embed ?? embedQuery;
+  const semanticSearch = options.semantic ?? defaultSemanticSearch;
   const limit = options.limit ?? 4;
   const articleById = new Map(bundle.articles.filter((a) => a.status !== "deprecated").map((a) => [a.id, a]));
   const conceptById = new Map(bundle.concepts.map((c) => [c.id, c]));
@@ -131,30 +144,30 @@ export async function searchKnowledge(query: string, options: SearchOptions = {}
   // 2. Conceptos por etiqueta
   const labelConcepts = matchConceptLabels(query, bundle);
 
-  // 4. Semántica (antes del grafo: también puede aportar conceptos)
+  // 4. Semántica (antes del grafo: también puede aportar conceptos).
+  // Los umbrales dependen del modelo de embeddings; se ajustan con EMBEDDING_MIN_SIMILARITY / EMBEDDING_MIN_CONCEPT_SIMILARITY.
   let semantic = false;
   const semanticConcepts: KnowledgeConcept[] = [];
-  if (index.model && index.dimensions > 0 && Object.keys(index.items).length > 0) {
-    const vector = await embed(query, index.model, index.dimensions);
-    if (vector) {
-      semantic = true;
-      const scored = Object.entries(index.items).map(([key, item]) => [key, cosine(vector, item.vector)] as const);
-      const articleSims = scored
-        .filter(([key, sim]) => key.startsWith("article:") && sim >= (options.minArticleSimilarity ?? 0.3))
-        .sort((a, b) => b[1] - a[1])
-        .map(([key]) => key.slice("article:".length))
-        .filter((id) => articleById.has(id));
-      lists.semantic = articleSims;
-      articleSims.forEach((id) => eligible.add(id));
-      scored
-        .filter(([key, sim]) => key.startsWith("concept:") && sim >= (options.minConceptSimilarity ?? 0.35))
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3)
-        .forEach(([key]) => {
-          const concept = conceptById.get(key.slice("concept:".length));
-          if (concept) semanticConcepts.push(concept);
-        });
-    }
+  const neighbors = await semanticSearch(query);
+  if (neighbors) {
+    semantic = true;
+    const minArticle = options.minArticleSimilarity ?? envNumber("EMBEDDING_MIN_SIMILARITY", 0.35);
+    const minConcept = options.minConceptSimilarity ?? envNumber("EMBEDDING_MIN_CONCEPT_SIMILARITY", 0.4);
+    const articleSims = [...neighbors.articles]
+      .filter((n) => n.similarity >= minArticle)
+      .sort((a, b) => b.similarity - a.similarity)
+      .map((n) => n.key.replace(/^article:/, ""))
+      .filter((id) => articleById.has(id));
+    lists.semantic = articleSims;
+    articleSims.forEach((id) => eligible.add(id));
+    [...neighbors.concepts]
+      .filter((n) => n.similarity >= minConcept)
+      .sort((a, b) => b.similarity - a.similarity)
+      .slice(0, 3)
+      .forEach((n) => {
+        const concept = conceptById.get(n.key.replace(/^concept:/, ""));
+        if (concept) semanticConcepts.push(concept);
+      });
   }
 
   // 3. Grafo: textos de los conceptos encontrados y de sus vecinos

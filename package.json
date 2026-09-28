@@ -19,6 +19,7 @@
     "knowledge:import": "tsx scripts/knowledge/importSumma.ts"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "@prisma/client": "6.19.3",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.1",

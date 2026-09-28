@@ -2,65 +2,82 @@ import OpenAI from "openai";
 import { logger } from "@/lib/utils/logger";
 
 /**
- * Embeddings vía cualquier API compatible con OpenAI (`/embeddings`).
- * Se configura aparte del chat porque el proveedor de chat (p. ej. OpenRouter) puede no ofrecer embeddings:
- *   EMBEDDING_API_KEY   (obligatoria para activar la búsqueda semántica)
- *   EMBEDDING_BASE_URL  (por defecto https://api.openai.com/v1)
- *   EMBEDDING_MODEL / EMBEDDING_DIMENSIONS  (solo al generar el índice; en ejecución manda el modelo del índice)
+ * Embeddings vía una API compatible con OpenAI (`/embeddings`). Proveedores, en orden de preferencia:
+ *   1. EMBEDDING_API_KEY (+ EMBEDDING_BASE_URL, por defecto OpenAI) — modelo por defecto text-embedding-3-small
+ *   2. NEON_AI_GATEWAY_TOKEN + NEON_AI_GATEWAY_BASE_URL — modelo por defecto qwen3-embedding-0-6b (multilingüe)
+ * EMBEDDING_MODEL cambia el modelo. Siempre 1024 dimensiones: es el tamaño de la columna en Postgres.
  */
-export const DEFAULT_EMBEDDING_MODEL = "text-embedding-3-small";
-export const DEFAULT_EMBEDDING_DIMENSIONS = 512;
+export const EMBEDDING_DIMENSIONS = 1024;
 
-let client: OpenAI | null = null;
+export type EmbeddingConfig = { apiKey: string; baseURL: string; model: string; provider: "openai-compatible" | "neon-ai-gateway" };
 
-export function embeddingsConfigured(): boolean {
-  return Boolean(process.env.EMBEDDING_API_KEY);
+export function embeddingConfig(env: NodeJS.ProcessEnv = process.env): EmbeddingConfig | null {
+  if (env.EMBEDDING_API_KEY) {
+    return {
+      apiKey: env.EMBEDDING_API_KEY,
+      baseURL: env.EMBEDDING_BASE_URL || "https://api.openai.com/v1",
+      model: env.EMBEDDING_MODEL || "text-embedding-3-small",
+      provider: "openai-compatible",
+    };
+  }
+  if (env.NEON_AI_GATEWAY_TOKEN && env.NEON_AI_GATEWAY_BASE_URL) {
+    return {
+      apiKey: env.NEON_AI_GATEWAY_TOKEN,
+      baseURL: `${env.NEON_AI_GATEWAY_BASE_URL.replace(/\/+$/, "")}/v1`,
+      model: env.EMBEDDING_MODEL || "qwen3-embedding-0-6b",
+      provider: "neon-ai-gateway",
+    };
+  }
+  return null;
 }
 
-function getClient(): OpenAI {
+const clients = new Map<string, OpenAI>();
+
+function clientFor(config: EmbeddingConfig): OpenAI {
+  const key = `${config.baseURL}|${config.apiKey}`;
+  let client = clients.get(key);
   if (!client) {
-    client = new OpenAI({
-      apiKey: process.env.EMBEDDING_API_KEY,
-      baseURL: process.env.EMBEDDING_BASE_URL || "https://api.openai.com/v1",
-    });
+    client = new OpenAI({ apiKey: config.apiKey, baseURL: config.baseURL });
+    clients.set(key, client);
   }
   return client;
 }
 
-export async function embedTexts(texts: string[], model: string, dimensions: number): Promise<number[][]> {
-  const response = await getClient().embeddings.create({ model, input: texts, dimensions });
-  return response.data.sort((a, b) => a.index - b.index).map((d) => d.embedding);
-}
-
-export function cosine(a: number[], b: number[]): number {
-  let dot = 0;
-  let na = 0;
-  let nb = 0;
-  for (let i = 0; i < a.length; i += 1) {
-    dot += a[i] * b[i];
-    na += a[i] * a[i];
-    nb += b[i] * b[i];
+export async function embedTexts(texts: string[], config: EmbeddingConfig): Promise<number[][]> {
+  const response = await clientFor(config).embeddings.create({
+    model: config.model,
+    input: texts,
+    dimensions: EMBEDDING_DIMENSIONS,
+    // Neon avisa que sin esto algunas versiones del SDK devuelven vectores en cero.
+    encoding_format: "float",
+  });
+  const vectors = response.data.sort((a, b) => a.index - b.index).map((d) => d.embedding);
+  for (const vector of vectors) {
+    if (vector.length !== EMBEDDING_DIMENSIONS) {
+      throw new Error(`El modelo ${config.model} devolvió ${vector.length} dimensiones; se esperaban ${EMBEDDING_DIMENSIONS}.`);
+    }
   }
-  return na && nb ? dot / Math.sqrt(na * nb) : 0;
+  return vectors;
 }
 
 const queryCache = new Map<string, number[]>();
 const MAX_QUERY_CACHE = 200;
 
-/** Embedding de una consulta, con caché en memoria. Devuelve null si no hay configuración o falla. */
-export async function embedQuery(query: string, model: string, dimensions: number): Promise<number[] | null> {
-  if (!embeddingsConfigured()) return null;
-  const key = `${model}:${dimensions}:${query}`;
+/** Embedding de una consulta, con caché en memoria. Devuelve null si no hay proveedor o falla. */
+export async function embedQuery(query: string): Promise<{ vector: number[]; model: string } | null> {
+  const config = embeddingConfig();
+  if (!config) return null;
+  const key = `${config.model}:${query}`;
   const cached = queryCache.get(key);
-  if (cached) return cached;
+  if (cached) return { vector: cached, model: config.model };
   try {
-    const [vector] = await embedTexts([query], model, dimensions);
+    const [vector] = await embedTexts([query], config);
     if (queryCache.size >= MAX_QUERY_CACHE) {
       const oldest = queryCache.keys().next().value;
       if (oldest !== undefined) queryCache.delete(oldest);
     }
     queryCache.set(key, vector);
-    return vector;
+    return { vector, model: config.model };
   } catch (error) {
     logger.warn("Query embedding failed; semantic search disabled for this request", {
       errorMessage: error instanceof Error ? error.message : String(error),

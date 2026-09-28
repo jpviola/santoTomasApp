@@ -1,10 +1,8 @@
 import bundleData from "@/data/knowledge/bundle.json";
-import embeddingsData from "@/data/knowledge/embeddings.json";
-import type { EmbeddingIndex, KnowledgeArticle, KnowledgeBundle, KnowledgeConcept } from "@/lib/knowledge/types";
+import type { KnowledgeArticle, KnowledgeBundle, KnowledgeConcept } from "@/lib/knowledge/types";
 
 /** Bundle compilado desde knowledge/ por `npm run knowledge:build`. */
 export const knowledge = bundleData as KnowledgeBundle;
-export const embeddingIndex = embeddingsData as EmbeddingIndex;
 
 const articleById = new Map(knowledge.articles.map((a) => [a.id, a]));
 const conceptById = new Map(knowledge.concepts.map((c) => [c.id, c]));

@@ -1,54 +1,68 @@
 /**
- * Genera o actualiza src/data/knowledge/embeddings.json para la búsqueda semántica.
- * Incremental: solo re-embebe los documentos cuyo texto cambió (hash) o todos si cambia el modelo.
+ * Genera o actualiza los embeddings del bundle en Postgres + pgvector (tabla knowledge_embeddings).
+ * Incremental: solo embebe los documentos cuyo texto cambió (hash) o que no tienen vector para el modelo actual,
+ * y borra los vectores de documentos que ya no existen.
  *
- * Uso: EMBEDDING_API_KEY=... npm run knowledge:embed
- * Opcionales: EMBEDDING_BASE_URL (default https://api.openai.com/v1),
- *             EMBEDDING_MODEL (default text-embedding-3-small), EMBEDDING_DIMENSIONS (default 512).
+ * Requiere KNOWLEDGE_DATABASE_URL y un proveedor (ver src/lib/llm/embeddings.ts):
+ *   EMBEDDING_API_KEY [+ EMBEDDING_BASE_URL, EMBEDDING_MODEL]   o   NEON_AI_GATEWAY_TOKEN + NEON_AI_GATEWAY_BASE_URL
+ *
+ * Uso: npm run knowledge:embed                 (lee .env.local)
+ *      npm run knowledge:embed -- --dry-run    (cuenta lo pendiente y estima tokens, sin llamar a la API)
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { embeddingInputs } from "../../src/lib/knowledge/compile";
-import type { EmbeddingIndex, KnowledgeBundle } from "../../src/lib/knowledge/types";
-import { DEFAULT_EMBEDDING_DIMENSIONS, DEFAULT_EMBEDDING_MODEL, embedTexts, embeddingsConfigured } from "../../src/lib/llm/embeddings";
+import type { KnowledgeBundle } from "../../src/lib/knowledge/types";
+import { deleteVectorsExcept, ensureSchema, storedHashes, upsertVectors, vectorStoreConfigured, type VectorKind } from "../../src/lib/knowledge/vectorStore";
+import { embedTexts, embeddingConfig } from "../../src/lib/llm/embeddings";
 
 const ROOT = join(__dirname, "..", "..");
-const BUNDLE_JSON = join(ROOT, "src", "data", "knowledge", "bundle.json");
-const EMBEDDINGS_JSON = join(ROOT, "src", "data", "knowledge", "embeddings.json");
 const BATCH = 64;
+const dryRun = process.argv.includes("--dry-run");
+
+// Carga .env.local sin dependencias (solo claves que no estén ya en el entorno).
+const envFile = join(ROOT, ".env.local");
+if (existsSync(envFile)) {
+  for (const line of readFileSync(envFile, "utf8").split(/\r?\n/)) {
+    const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+    if (match && !process.env[match[1]]) process.env[match[1]] = match[2].replace(/^["']|["']$/g, "");
+  }
+}
 
 async function main() {
-  if (!embeddingsConfigured()) {
-    console.error("Definí EMBEDDING_API_KEY (y EMBEDDING_BASE_URL si no usás la API de OpenAI).");
+  const bundle = JSON.parse(readFileSync(join(ROOT, "src", "data", "knowledge", "bundle.json"), "utf8")) as KnowledgeBundle;
+  const inputs = embeddingInputs(bundle);
+  const config = embeddingConfig();
+  const model = config?.model ?? process.env.EMBEDDING_MODEL ?? "(sin proveedor)";
+
+  if (!vectorStoreConfigured()) {
+    console.error("Falta KNOWLEDGE_DATABASE_URL (en .env.local o en el entorno).");
     process.exit(1);
   }
-  const bundle = JSON.parse(readFileSync(BUNDLE_JSON, "utf8")) as KnowledgeBundle;
-  const current = JSON.parse(readFileSync(EMBEDDINGS_JSON, "utf8")) as EmbeddingIndex;
+  await ensureSchema();
+  const stored = await storedHashes(model);
+  const pending = inputs.filter((i) => stored.get(i.key) !== i.hash);
+  const estimatedTokens = Math.round(pending.reduce((sum, i) => sum + i.text.length, 0) / 4);
 
-  const model = process.env.EMBEDDING_MODEL || current.model || DEFAULT_EMBEDDING_MODEL;
-  const dimensions = Number(process.env.EMBEDDING_DIMENSIONS) || (current.model === model ? current.dimensions : 0) || DEFAULT_EMBEDDING_DIMENSIONS;
-  const sameSpace = current.model === model && current.dimensions === dimensions;
-
-  const inputs = embeddingInputs(bundle);
-  const pending = inputs.filter((i) => !sameSpace || current.items[i.key]?.hash !== i.hash);
-  const items: EmbeddingIndex["items"] = {};
-  for (const input of inputs) {
-    if (sameSpace && current.items[input.key]?.hash === input.hash) items[input.key] = current.items[input.key];
+  console.log(`${inputs.length} documentos; ${pending.length} pendientes para ${model} (~${estimatedTokens.toLocaleString("es")} tokens).`);
+  if (dryRun) return;
+  if (!config) {
+    console.error("Falta un proveedor de embeddings: EMBEDDING_API_KEY o NEON_AI_GATEWAY_TOKEN + NEON_AI_GATEWAY_BASE_URL.");
+    process.exit(1);
   }
 
-  console.log(`${pending.length} de ${inputs.length} documentos para embeber con ${model} (${dimensions} dims).`);
   for (let i = 0; i < pending.length; i += BATCH) {
     const batch = pending.slice(i, i + BATCH);
-    const vectors = await embedTexts(batch.map((b) => b.text), model, dimensions);
-    batch.forEach((b, j) => {
-      items[b.key] = { hash: b.hash, vector: vectors[j].map((x) => Math.round(x * 1e6) / 1e6) };
-    });
+    const vectors = await embedTexts(batch.map((b) => b.text), config);
+    await upsertVectors(
+      batch.map((b, j) => ({ key: b.key, kind: b.key.split(":")[0] as VectorKind, hash: b.hash, vector: vectors[j] })),
+      config.model,
+    );
     console.log(`  ${Math.min(i + BATCH, pending.length)}/${pending.length}`);
   }
 
-  const index: EmbeddingIndex = { model, dimensions, items };
-  writeFileSync(EMBEDDINGS_JSON, `${JSON.stringify(index)}\n`, "utf8");
-  console.log(`Índice escrito: ${Object.keys(items).length} vectores.`);
+  const removed = await deleteVectorsExcept(inputs.map((i) => i.key));
+  console.log(`Listo: ${pending.length} embebidos con ${config.model}${removed ? `, ${removed} vectores obsoletos borrados` : ""}.`);
 }
 
 main().catch((error) => {
