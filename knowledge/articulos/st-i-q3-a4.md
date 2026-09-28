@@ -27,5 +27,7 @@ In God essence and existence (esse) are identical: God does not have being, he i
 - [Acto de ser (esse)](/conceptos/esse.md)
 - [Esencia](/conceptos/esencia.md)
 
+Cuestión: [ST I, q.3 — The simplicity of God](/cuestiones/st-i-q3.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

@@ -31,6 +31,7 @@ type SearchOptions = {
 };
 
 const RRF_K = 60;
+const MAX_GRAPH_NEIGHBORS = 10;
 const WEIGHTS: Record<Signal, number> = { lexical: 1, semantic: 1, concept: 1, graph: 0.5 };
 
 type IndexedArticle = { article: KnowledgeArticle; keywordTokens: string[]; titleTokens: string[]; textTokens: string[]; phrases: string[] };
@@ -44,8 +45,9 @@ function lexicalIndex(bundle: KnowledgeBundle): IndexedArticle[] {
   const index = bundle.articles
     .filter((a) => a.status !== "deprecated")
     .map((article) => {
-      // Las etiquetas de los conceptos del texto cuentan como palabras clave.
-      const conceptLabels = article.concepts.flatMap((id) => {
+      // Las etiquetas de los conceptos centrales del texto cuentan como palabras clave
+      // (no las de conceptos que solo se mencionan en el título: meten ruido).
+      const conceptLabels = article.coreConcepts.flatMap((id) => {
         const c = conceptById.get(id);
         return c ? [...c.labels.es, ...c.labels.en, ...c.labels.la] : [];
       });
@@ -158,21 +160,35 @@ export async function searchKnowledge(query: string, options: SearchOptions = {}
   // 3. Grafo: textos de los conceptos encontrados y de sus vecinos
   const direct = [...new Map([...labelConcepts, ...semanticConcepts].map((c) => [c.id, c])).values()];
   const directIds = new Set(direct.map((c) => c.id));
+  // Orden dentro de un concepto: cuántos conceptos buscados lo tienen como central, después el orden por niveles
+  // que calcula el compilador (curados, títulos que nombran el concepto, su tratado…), después la posición léxica.
+  const lexicalRank = new Map(lexical.map(([id], rank) => [id, rank]));
   const countTags = (ids: Set<string>) => {
-    const counts = new Map<string, number>();
+    const counts = new Map<string, { core: number; best: number }>();
     for (const conceptId of ids) {
-      for (const articleId of conceptById.get(conceptId)?.articles ?? []) {
-        if (articleById.has(articleId)) counts.set(articleId, (counts.get(articleId) ?? 0) + 1);
-      }
+      (conceptById.get(conceptId)?.articles ?? []).forEach((articleId, position) => {
+        const article = articleById.get(articleId);
+        if (!article) return;
+        const entry = counts.get(articleId) ?? { core: 0, best: Number.MAX_SAFE_INTEGER };
+        if (article.coreConcepts.includes(conceptId)) entry.core += 1;
+        entry.best = Math.min(entry.best, position);
+        counts.set(articleId, entry);
+      });
     }
-    return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([id]) => id);
+    const lexicalPosition = (id: string) => lexicalRank.get(id) ?? Number.MAX_SAFE_INTEGER;
+    return [...counts.entries()]
+      .sort((a, b) => b[1].core - a[1].core || a[1].best - b[1].best || lexicalPosition(a[0]) - lexicalPosition(b[0]))
+      .map(([id]) => id);
   };
   lists.concept = countTags(directIds);
   lists.concept.forEach((id) => eligible.add(id));
   const neighborIds = new Set(
     direct.flatMap((c) => [...c.broader, ...c.narrower, ...c.related]).filter((id) => !directIds.has(id)),
   );
-  lists.graph = countTags(neighborIds).filter((id) => !lists.concept!.includes(id));
+  // Los vecinos solo aportan contexto curado, y con tope, para no inundar con fragmentos.
+  lists.graph = countTags(neighborIds)
+    .filter((id) => !lists.concept!.includes(id) && articleById.get(id)?.textKind === "summary")
+    .slice(0, MAX_GRAPH_NEIGHBORS);
   lists.graph.forEach((id) => eligible.add(id));
 
   // Fusión RRF

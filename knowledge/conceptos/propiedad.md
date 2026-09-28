@@ -26,4 +26,8 @@ La propiedad privada es lícita y necesaria en cuanto a procurar y administrar l
 
 - [ST II-II, q.66, a.2](/articulos/st-ii-ii-q66-a2.md) — Whether it is lawful for a man to possess a thing as his own
 - [ST II-II, q.66, a.7](/articulos/st-ii-ii-q66-a7.md) — Whether it is lawful to steal through stress of need
+
+# Cuestiones de la Summa
+
+- [ST II-II, q.66](/cuestiones/st-ii-ii-q66.md) — Theft and robbery
 <!-- okf:generated:end -->

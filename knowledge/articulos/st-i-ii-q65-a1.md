@@ -26,5 +26,7 @@ Perfect moral virtues are connected, because none can exist without prudence, an
 - [Virtud](/conceptos/virtud.md)
 - [Prudencia](/conceptos/prudencia.md)
 
+Cuestión: [ST I-II, q.65 — The connection of virtues](/cuestiones/st-i-ii-q65.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

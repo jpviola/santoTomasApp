@@ -26,6 +26,10 @@ Un término unívoco significa lo mismo en todos sus usos; uno equívoco, cosas 
 
 - [ST I, q.13, a.5](/articulos/st-i-q13-a5.md) — Whether what is said of God and of creatures is univocally predicated of them
 
+# Cuestiones de la Summa
+
+- [ST I, q.13](/cuestiones/st-i-q13.md) — The names of God
+
 # Autores
 
 - [Maimónides](/autores/maimonides.md)

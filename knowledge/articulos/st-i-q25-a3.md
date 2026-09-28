@@ -26,5 +26,7 @@ God can do all things that are possible absolutely, that is, whatever does not i
 - [Dios](/conceptos/dios.md)
 - [Omnipotencia](/conceptos/omnipotencia.md)
 
+Cuestión: [ST I, q.25 — The power of God](/cuestiones/st-i-q25.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

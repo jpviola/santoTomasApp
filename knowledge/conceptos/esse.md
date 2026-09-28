@@ -19,7 +19,7 @@ El *esse* no es una propiedad más de las cosas, sino su acto más íntimo: la a
 <!-- okf:generated:start -->
 # Relaciones
 
-- **Relacionado:** [Acto y potencia](/conceptos/acto-y-potencia.md), [Creación](/conceptos/creacion.md), [Dios](/conceptos/dios.md), [Ente](/conceptos/ente.md), [Esencia](/conceptos/esencia.md), [Participación](/conceptos/participacion.md), [Simplicidad divina](/conceptos/simplicidad-divina.md)
+- **Relacionado:** [Acto y potencia](/conceptos/acto-y-potencia.md), [Ángeles (sustancias separadas)](/conceptos/angeles.md), [Creación](/conceptos/creacion.md), [Dios](/conceptos/dios.md), [Ente](/conceptos/ente.md), [Esencia](/conceptos/esencia.md), [Participación](/conceptos/participacion.md), [Simplicidad divina](/conceptos/simplicidad-divina.md)
 - **Área:** [Metafísica](/areas/metafisica.md)
 
 # Dónde lo trata Tomás

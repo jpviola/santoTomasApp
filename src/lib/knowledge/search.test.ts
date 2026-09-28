@@ -34,14 +34,14 @@ describe("searchKnowledge on the real bundle", () => {
 // Bundle mínimo para aislar cada señal.
 const mkConcept = (id: string, labels: string[], rel: Partial<KnowledgeConcept> = {}): KnowledgeConcept => ({
   id, title: id, description: `${id} desc`, descriptionEn: "", area: "a", labels: { es: labels, en: [], la: [] },
-  definition: "", broader: [], narrower: [], related: [], articles: [], status: "stable", trust: "unverified", ...rel,
+  definition: "", broader: [], narrower: [], related: [], articles: [], questions: [], status: "stable", trust: "unverified", ...rel,
 });
 const mkArticle = (id: string, concepts: string[], text = "texto neutro"): KnowledgeArticle => ({
-  id, title: id, description: "", citation: id, work: "w", text, concepts, keywords: ["zzz"], status: "stable", trust: "unverified",
+  id, title: id, description: "", citation: id, work: "w", textKind: "summary", text, concepts, coreConcepts: concepts, keywords: ["zzz"], status: "stable", trust: "unverified",
 });
 const bundle: KnowledgeBundle = {
   okfVersion: "0.2",
-  areas: [], authors: [], works: [],
+  areas: [], authors: [], works: [], questions: [],
   concepts: [
     mkConcept("conciencia", ["conciencia"], { related: ["sinderesis"], articles: ["a-conciencia"] }),
     mkConcept("sinderesis", ["sinderesis"], { related: ["conciencia"], articles: ["a-sinderesis"] }),

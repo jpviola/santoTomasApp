@@ -26,5 +26,7 @@ Art is right reason about things to be made (recta ratio factibilium); prudence 
 - [Prudencia](/conceptos/prudencia.md)
 - [Virtud](/conceptos/virtud.md)
 
+Cuestión: [ST I-II, q.57 — The intellectual virtues](/cuestiones/st-i-ii-q57.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

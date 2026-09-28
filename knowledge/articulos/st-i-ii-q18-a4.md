@@ -25,5 +25,7 @@ A human act has a fourfold goodness: generic, as an action; specific, from its o
 
 - [Acto humano y moralidad](/conceptos/acto-humano.md)
 
+Cuestión: [ST I-II, q.18 — The good and evil of human acts, in general](/cuestiones/st-i-ii-q18.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

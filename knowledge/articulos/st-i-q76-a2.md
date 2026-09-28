@@ -27,5 +27,7 @@ Against the Averroist thesis of one intellect for all men, Aquinas argues that e
 - [Unidad del intelecto (averroísmo)](/conceptos/averroismo.md)
 - [Alma](/conceptos/alma.md)
 
+Cuestión: [ST I, q.76 — The union of body and soul](/cuestiones/st-i-q76.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

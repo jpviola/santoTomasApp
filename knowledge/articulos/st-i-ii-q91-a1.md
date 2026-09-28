@@ -27,5 +27,7 @@ The whole universe is governed by divine reason. The very idea of the government
 - [Ley eterna](/conceptos/ley-eterna.md)
 - [Providencia](/conceptos/providencia.md)
 
+Cuestión: [ST I-II, q.91 — The various kinds of law](/cuestiones/st-i-ii-q91.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

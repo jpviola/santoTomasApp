@@ -28,4 +28,13 @@ El intelecto agente ilumina las imágenes (*phantasmata*) elaboradas por los sen
 - [ST I, q.79, a.3](/articulos/st-i-q79-a3.md) — Whether there is an agent intellect
 - [ST I, q.84, a.7](/articulos/st-i-q84-a7.md) — Whether the intellect can understand without turning to phantasms
 - [ST I, q.85, a.2](/articulos/st-i-q85-a2.md) — Whether the intelligible species abstracted from phantasms are related to our intellect as that which is understood
+
+# Cuestiones de la Summa
+
+- [ST I, q.84](/cuestiones/st-i-q84.md) — How the soul while united to the body understands corporeal things beneath it
+- [ST I, q.85](/cuestiones/st-i-q85.md) — The mode and order of understanding
+- [ST I, q.86](/cuestiones/st-i-q86.md) — What our intellect knows in material things
+- [ST I, q.87](/cuestiones/st-i-q87.md) — How the intellectual soul knows itself and all within itself
+- [ST I, q.88](/cuestiones/st-i-q88.md) — How the human soul knows what is above itself
+- [ST I, q.89](/cuestiones/st-i-q89.md) — The knowledge of the separated soul
 <!-- okf:generated:end -->

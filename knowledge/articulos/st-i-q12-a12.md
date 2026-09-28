@@ -27,5 +27,7 @@ Our natural knowledge begins from the senses, so reason can know of God only wha
 - [Conocimiento](/conceptos/conocimiento.md)
 - [Simplicidad divina](/conceptos/simplicidad-divina.md)
 
+Cuestión: [ST I, q.12 — How God is known by us](/cuestiones/st-i-q12.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

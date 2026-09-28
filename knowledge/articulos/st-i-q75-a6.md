@@ -26,5 +26,7 @@ The human soul is incorruptible. What has being of itself can be corrupted only 
 - [Alma](/conceptos/alma.md)
 - [Inmortalidad del alma](/conceptos/inmortalidad.md)
 
+Cuestión: [ST I, q.75 — Man who is composed of a spiritual and a corporeal substance: and in the first place, concerning what belongs to the essence of the soul](/cuestiones/st-i-q75.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

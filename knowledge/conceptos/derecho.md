@@ -26,4 +26,8 @@ El derecho (*ius*) es el objeto de la [justicia](/conceptos/justicia.md): lo jus
 
 - [ST II-II, q.57, a.1](/articulos/st-ii-ii-q57-a1.md) — Whether right is the object of justice
 - [ST II-II, q.58, a.1](/articulos/st-ii-ii-q58-a1.md) — Whether justice is fittingly defined as the perpetual and constant will to render to each one his right
+
+# Cuestiones de la Summa
+
+- [ST II-II, q.57](/cuestiones/st-ii-ii-q57.md) — Right
 <!-- okf:generated:end -->

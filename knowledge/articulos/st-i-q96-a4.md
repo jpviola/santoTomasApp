@@ -26,5 +26,7 @@ Political authority is natural and not merely a consequence of sin. Even in the 
 - [Autoridad política](/conceptos/autoridad-politica.md)
 - [Bien común](/conceptos/bien-comun.md)
 
+Cuestión: [ST I, q.96 — The mastership belonging to man in the state of innocence](/cuestiones/st-i-q96.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

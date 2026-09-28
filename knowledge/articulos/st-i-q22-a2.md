@@ -27,5 +27,7 @@ All things, even individual and contingent events, are subject to divine provide
 - [Dios](/conceptos/dios.md)
 - [Mal](/conceptos/mal.md)
 
+Cuestión: [ST I, q.22 — The providence of God](/cuestiones/st-i-q22.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

@@ -9,9 +9,14 @@ export type KnowledgeArticle = {
   citation: string;
   work: string;
   url?: string;
-  /** Resumen en inglés del pasaje (no es cita textual). */
+  /** "summary": resumen curado (no es cita); "excerpt": fragmento textual del respondeo (trad. 1920). */
+  textKind: "summary" | "excerpt";
   text: string;
+  /** Cuestión de la Summa a la que pertenece (id en cuestiones/), si existe en el bundle. */
+  question?: string;
   concepts: string[];
+  /** Conceptos centrales: los del tratado (cuestión) o, en textos curados, todos. Los demás vienen de menciones en el título. */
+  coreConcepts: string[];
   keywords: string[];
   status: Lifecycle;
   trust: TrustTier;
@@ -30,8 +35,19 @@ export type KnowledgeConcept = {
   narrower: string[];
   related: string[];
   articles: string[];
+  questions: string[];
   status: Lifecycle;
   trust: TrustTier;
+};
+
+export type KnowledgeQuestion = {
+  id: string;
+  title: string;
+  citation: string;
+  treatise: string;
+  url?: string;
+  concepts: string[];
+  articles: string[];
 };
 
 export type KnowledgeArea = { id: string; title: string; titleEn: string; description: string };
@@ -41,6 +57,7 @@ export type KnowledgeWork = { id: string; title: string; description: string; ur
 export type KnowledgeBundle = {
   okfVersion: string;
   articles: KnowledgeArticle[];
+  questions: KnowledgeQuestion[];
   concepts: KnowledgeConcept[];
   areas: KnowledgeArea[];
   authors: KnowledgeAuthor[];

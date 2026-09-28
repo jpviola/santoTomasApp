@@ -26,4 +26,12 @@ Toda acción propiamente humana se hace por un fin, y no puede haber una serie i
 
 - [ST I-II, q.1, a.1](/articulos/st-i-ii-q1-a1.md) — Whether it belongs to man to act for an end
 - [ST I-II, q.1, a.4](/articulos/st-i-ii-q1-a4.md) — Whether there is a last end of human life
+
+# Cuestiones de la Summa
+
+- [ST I-II, q.1](/cuestiones/st-i-ii-q1.md) — Man's last end
+- [ST I-II, q.2](/cuestiones/st-i-ii-q2.md) — Things in which man's happiness consists
+- [ST I-II, q.3](/cuestiones/st-i-ii-q3.md) — What is happiness
+- [ST I-II, q.4](/cuestiones/st-i-ii-q4.md) — Things that are required for happiness
+- [ST I-II, q.5](/cuestiones/st-i-ii-q5.md) — The attainment of happiness
 <!-- okf:generated:end -->

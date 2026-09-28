@@ -25,5 +25,7 @@ To love is to will good to someone. Love tends to two things: the good one wills
 
 - [Amor](/conceptos/amor.md)
 
+Cuestión: [ST I-II, q.26 — The passions of the soul in particular: and first, of love](/cuestiones/st-i-ii-q26.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

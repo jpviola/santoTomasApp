@@ -26,5 +26,7 @@ Law is a rule and measure of acts by which one is induced to act or restrained f
 - [Ley](/conceptos/ley.md)
 - [Razón](/conceptos/razon.md)
 
+Cuestión: [ST I-II, q.90 — The essence of law](/cuestiones/st-i-ii-q90.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

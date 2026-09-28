@@ -26,5 +26,7 @@ God is absolutely simple: he is not composed of parts, of matter and form, of es
 - [Dios](/conceptos/dios.md)
 - [Simplicidad divina](/conceptos/simplicidad-divina.md)
 
+Cuestión: [ST I, q.3 — The simplicity of God](/cuestiones/st-i-q3.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

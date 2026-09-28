@@ -26,5 +26,7 @@ For a war to be just three things are required: the authority of the sovereign, 
 - [Guerra justa](/conceptos/guerra-justa.md)
 - [Justicia](/conceptos/justicia.md)
 
+Cuestión: [ST II-II, q.40 — War](/cuestiones/st-ii-ii-q40.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

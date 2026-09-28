@@ -27,5 +27,7 @@ After showing that happiness consists neither in wealth, honor, fame, power, bod
 - [Bien](/conceptos/bien.md)
 - [Dios](/conceptos/dios.md)
 
+Cuestión: [ST I-II, q.2 — Things in which man's happiness consists](/cuestiones/st-i-ii-q2.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

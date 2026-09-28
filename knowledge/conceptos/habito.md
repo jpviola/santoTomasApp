@@ -26,4 +26,13 @@ El hábito (*habitus*) es una cualidad estable que dispone a una potencia a obra
 # Dónde lo trata Tomás
 
 - [ST I-II, q.55, a.4](/articulos/st-i-ii-q55-a4.md) — Whether virtue is suitably defined
+
+# Cuestiones de la Summa
+
+- [ST I-II, q.49](/cuestiones/st-i-ii-q49.md) — Habits in general, as to their substance
+- [ST I-II, q.50](/cuestiones/st-i-ii-q50.md) — The subject of habits
+- [ST I-II, q.51](/cuestiones/st-i-ii-q51.md) — The cause of habits, as to their formation
+- [ST I-II, q.52](/cuestiones/st-i-ii-q52.md) — The increase of habits
+- [ST I-II, q.53](/cuestiones/st-i-ii-q53.md) — How habits are corrupted or diminished
+- [ST I-II, q.54](/cuestiones/st-i-ii-q54.md) — The distinction of habits
 <!-- okf:generated:end -->

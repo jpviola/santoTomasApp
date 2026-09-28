@@ -26,5 +26,7 @@ Every conscience, whether right or erring, binds: whoever acts against the judgm
 - [Conciencia](/conceptos/conciencia.md)
 - [Voluntad](/conceptos/voluntad.md)
 
+Cuestión: [ST I-II, q.19 — The goodness and malice of the interior act of the will](/cuestiones/st-i-ii-q19.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

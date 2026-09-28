@@ -29,7 +29,7 @@ describe("corpus integrity", () => {
       if (citation) {
         expect(entry.id).toBe(`st-${citation.part.toLowerCase()}-q${citation.question}-a${citation.article}`);
       }
-      expect(entry.keywords.length).toBeGreaterThan(0);
+      if (entry.textKind === "summary") expect(entry.keywords.length).toBeGreaterThan(0);
     }
   });
 });
@@ -66,8 +66,8 @@ describe("retrieveAquinasSources", () => {
 
 describe("lociToSources", () => {
   it("parses, deduplicates and prefers corpus entries", () => {
-    const sources = lociToSources(["ST I-II, q.94, a.2", "I-II q.94 a.2", "ST I, q.117, a.1", "not a citation"]);
-    expect(sources.map((s) => s.id)).toEqual(["st-i-ii-q94-a2", "st-i-q117-a1"]);
+    const sources = lociToSources(["ST I-II, q.94, a.2", "I-II q.94 a.2", "ST I, q.117, a.9", "not a citation"]);
+    expect(sources.map((s) => s.id)).toEqual(["st-i-ii-q94-a2", "st-i-q117-a9"]);
     expect(sources[0].text.length).toBeGreaterThan(0);
     expect(sources[1].text).toBe("");
   });

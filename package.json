@@ -15,7 +15,8 @@
     "knowledge:build": "tsx scripts/knowledge/build.ts",
     "knowledge:check": "tsx scripts/knowledge/build.ts --check",
     "knowledge:embed": "tsx scripts/knowledge/embed.ts",
-    "knowledge:graphdb": "tsx scripts/knowledge/uploadGraphDb.ts"
+    "knowledge:graphdb": "tsx scripts/knowledge/uploadGraphDb.ts",
+    "knowledge:import": "tsx scripts/knowledge/importSumma.ts"
   },
   "dependencies": {
     "@prisma/client": "6.19.3",

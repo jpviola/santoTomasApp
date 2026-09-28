@@ -26,5 +26,7 @@ Knowing beings differ from non-knowing beings in that they can possess the form 
 - [Conocimiento](/conceptos/conocimiento.md)
 - [Dios](/conceptos/dios.md)
 
+Cuestión: [ST I, q.14 — God's knowledge](/cuestiones/st-i-q14.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

@@ -25,5 +25,7 @@ Conscience is not a power but an act: the application of knowledge to a particul
 
 - [Conciencia](/conceptos/conciencia.md)
 
+Cuestión: [ST I, q.79 — The intellectual powers](/cuestiones/st-i-q79.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

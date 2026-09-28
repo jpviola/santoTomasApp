@@ -27,5 +27,7 @@ It is lawful and necessary for human life that man possess property as his own, 
 - [Bien común](/conceptos/bien-comun.md)
 - [Justicia](/conceptos/justicia.md)
 
+Cuestión: [ST II-II, q.66 — Theft and robbery](/cuestiones/st-ii-ii-q66.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

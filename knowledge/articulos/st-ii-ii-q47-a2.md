@@ -26,5 +26,7 @@ Prudence belongs to the practical reason alone, since it is right reason applied
 - [Prudencia](/conceptos/prudencia.md)
 - [Razón](/conceptos/razon.md)
 
+Cuestión: [ST II-II, q.47 — Prudence, considered in itself](/cuestiones/st-ii-ii-q47.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

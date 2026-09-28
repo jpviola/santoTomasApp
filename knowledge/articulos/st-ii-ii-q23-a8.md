@@ -26,5 +26,7 @@ Charity is the form of all the virtues because it directs the acts of all other 
 - [Caridad](/conceptos/caridad.md)
 - [Virtud](/conceptos/virtud.md)
 
+Cuestión: [ST II-II, q.23 — Charity, considered in itself](/cuestiones/st-ii-ii-q23.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

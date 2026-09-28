@@ -134,13 +134,17 @@ knowledge/
   index.md, */index.md    generated listings (OKF §8); root declares okf_version
   log.md                  change history (edit by hand)
   conceptos/              the ontology — type: Concept, SKOS-style `broader` / `related`, labels in ES/EN/LA
-  articulos/              Aquinas's texts — type: Aquinas Text, `citation`, `tags` = concept ids
+  cuestiones/             the Summa's 512 questions — type: Summa Question, with treatise and concepts
+  articulos/              Aquinas's texts — type: Aquinas Text, `citation`, `tags` = concept ids;
+                          `content: summary` (curated, AI-written) or `excerpt` (verbatim respondeo, 1920 translation)
   areas/ autores/ obras/  type: Area / Author / Work
 ```
 
 **Editing:** change the frontmatter or the text above the `<!-- okf:generated:start -->` marker, then run `npm run knowledge:build`. The build validates the bundle (OKF conformance, unknown relations, `broader` cycles, citation/id mismatches), rewrites the generated sections (relations, texts per concept, backlinks), the `index.md` files, `src/data/knowledge/bundle.json` (what the app reads) and `scripts/generated/knowledge.ttl`. `npm run knowledge:check` fails if anything is out of date, and `npm test` checks it too.
 
-**Trust:** all current content is AI-generated and marked `status: draft` with no `verified` field. When someone reviews a document, add `verified: { by: human:<id>, at: <ISO date> }` (and `status: stable`); the build derives the trust tier (OKF §5.3).
+**Importing the Summa:** `npm run knowledge:import` fetches every question of the Summa Theologiae from New Advent (the 1920 English Dominican translation, public domain), one request per second with a local cache in `.cache/`, and writes a question document plus one text per article with an excerpt of the respondeo. Concepts are assigned from the treatise map in `scripts/knowledge/summa-treatises.json` and from concept labels found in the titles. It never overwrites documents it did not generate (the curated summaries win). Options: `-- --parts I-II --limit 10 --delay 1000`. Then run `npm run knowledge:build`.
+
+**Trust:** the curated summaries and concepts are AI-generated and marked `status: draft` with no `verified` field. When someone reviews a document, add `verified: { by: human:<id>, at: <ISO date> }` (and `status: stable`); the build derives the trust tier (OKF §5.3).
 
 **Search** (`src/lib/knowledge/search.ts`) fuses with Reciprocal Rank Fusion: lexical matching (bilingual, accent- and plural-insensitive), concept labels found in the question, graph expansion to neighbouring concepts, and embeddings when available. The matched concepts' definitions are also passed to the disputation prompt.
 

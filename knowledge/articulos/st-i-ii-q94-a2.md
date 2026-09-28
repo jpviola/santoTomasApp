@@ -27,5 +27,7 @@ The first principle of practical reason is that good is to be done and pursued a
 - [Bien](/conceptos/bien.md)
 - [Sindéresis](/conceptos/sinderesis.md)
 
+Cuestión: [ST I-II, q.94 — The natural law](/cuestiones/st-i-ii-q94.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

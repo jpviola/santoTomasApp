@@ -26,5 +26,7 @@ The intellect is a power of the soul and not the very essence of the soul. Only 
 - [Intelecto](/conceptos/intelecto.md)
 - [Alma](/conceptos/alma.md)
 
+Cuestión: [ST I, q.79 — The intellectual powers](/cuestiones/st-i-q79.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

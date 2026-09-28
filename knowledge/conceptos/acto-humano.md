@@ -31,6 +31,25 @@ Solo los actos que proceden de la voluntad deliberada son propiamente humanos. S
 - [ST II-II, q.64, a.7](/articulos/st-ii-ii-q64-a7.md) — Whether it is lawful to kill a man in self-defense
 - [ST II-II, q.110, a.3](/articulos/st-ii-ii-q110-a3.md) — Whether every lie is a sin
 
+# Cuestiones de la Summa
+
+- [ST I-II, q.6](/cuestiones/st-i-ii-q6.md) — The voluntary and the involuntary
+- [ST I-II, q.7](/cuestiones/st-i-ii-q7.md) — The circumstances of human acts
+- [ST I-II, q.8](/cuestiones/st-i-ii-q8.md) — The will, in regard to what it wills
+- [ST I-II, q.9](/cuestiones/st-i-ii-q9.md) — That which moves the will
+- [ST I-II, q.10](/cuestiones/st-i-ii-q10.md) — The manner in which the will is moved
+- [ST I-II, q.11](/cuestiones/st-i-ii-q11.md) — Enjoyment which is an act of the will
+- [ST I-II, q.12](/cuestiones/st-i-ii-q12.md) — Intention
+- [ST I-II, q.13](/cuestiones/st-i-ii-q13.md) — Choice, which is an act of the will with regard to the means
+- [ST I-II, q.14](/cuestiones/st-i-ii-q14.md) — Counsel, which precedes choice
+- [ST I-II, q.15](/cuestiones/st-i-ii-q15.md) — Consent, which is an act of the will in regard to the means
+- [ST I-II, q.16](/cuestiones/st-i-ii-q16.md) — Use, which is an act of the will in regard to the means
+- [ST I-II, q.17](/cuestiones/st-i-ii-q17.md) — The acts commanded by the will
+- [ST I-II, q.18](/cuestiones/st-i-ii-q18.md) — The good and evil of human acts, in general
+- [ST I-II, q.19](/cuestiones/st-i-ii-q19.md) — The goodness and malice of the interior act of the will
+- [ST I-II, q.20](/cuestiones/st-i-ii-q20.md) — Goodness and malice in external human affairs
+- [ST I-II, q.21](/cuestiones/st-i-ii-q21.md) — The consequences of human actions by reason of their goodness and malice
+
 # Autores
 
 - [Pseudo-Dionisio Areopagita](/autores/pseudo-dionisio.md)

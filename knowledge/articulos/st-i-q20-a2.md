@@ -26,5 +26,7 @@ God loves all existing things, since to love is to will good to someone and God'
 - [Dios](/conceptos/dios.md)
 - [Amor](/conceptos/amor.md)
 
+Cuestión: [ST I, q.20 — God's love](/cuestiones/st-i-q20.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

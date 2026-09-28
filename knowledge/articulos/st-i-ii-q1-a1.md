@@ -26,5 +26,7 @@ Properly human acts are those that proceed from deliberate will, and the object 
 - [Fin último](/conceptos/fin-ultimo.md)
 - [Acto humano y moralidad](/conceptos/acto-humano.md)
 
+Cuestión: [ST I-II, q.1 — Man's last end](/cuestiones/st-i-ii-q1.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

@@ -26,5 +26,7 @@ Particular justice has two species: commutative justice, which directs exchanges
 - [Justicia](/conceptos/justicia.md)
 - [Bien común](/conceptos/bien-comun.md)
 
+Cuestión: [ST II-II, q.61 — The parts of Justice](/cuestiones/st-ii-ii-q61.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

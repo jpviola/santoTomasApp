@@ -40,8 +40,15 @@ describe("the knowledge/ bundle", () => {
     expect(committed).toBe(`${JSON.stringify(result.bundle, null, 2)}\n`);
   });
 
-  it("marks AI-generated content as unverified drafts", () => {
-    expect(result.bundle.articles.every((a) => a.trust === "unverified" && a.status === "draft")).toBe(true);
+  it("marks AI-written summaries as unverified drafts", () => {
+    const summaries = result.bundle.articles.filter((a) => a.textKind === "summary");
+    expect(summaries.length).toBeGreaterThanOrEqual(88);
+    expect(summaries.every((a) => a.trust === "unverified" && a.status === "draft")).toBe(true);
+  });
+
+  it("links every imported Summa text to its question", () => {
+    const excerpts = result.bundle.articles.filter((a) => a.textKind === "excerpt");
+    expect(excerpts.every((a) => a.question)).toBe(true);
   });
 });
 
@@ -110,6 +117,69 @@ describe("compileKnowledge", () => {
     const root = outputs.find((o) => o.path === "index.md")!;
     expect(splitFrontmatter(root.content).frontmatter).toEqual({ okf_version: "0.2" });
     expect(ttl).toContain("<https://stotomas.ai/ontology/ley> a <http://schema.org/DefinedTerm>");
+  });
+});
+
+describe("Summa questions", () => {
+  const question = {
+    path: "cuestiones/st-i-ii-q94.md",
+    content: `---
+type: Summa Question
+title: The natural law
+citation: "ST I-II, q.94"
+treatise: "La ley"
+tags: ["ley-natural"]
+---
+
+Cuestión.
+`,
+  };
+  const leyNatural = concept("ley-natural", ["broader: []", "related: []"].join("\n"));
+  const excerpt = (id: string, title: string, extra = "") => ({
+    path: `articulos/${id}.md`,
+    content: `---
+type: Aquinas Text
+title: ${title}
+citation: "ST I-II, q.94, a.${id.split("-a")[1]}"
+work: summa-theologiae
+content: excerpt
+tags: ["ley-natural"]${extra}
+---
+
+I answer that, a thing may be called a habit in two ways.
+`,
+  });
+
+  it("attaches texts to their question and lists them in the question and the concept", () => {
+    const { bundle, errors, outputs } = compileKnowledge([area, work, leyNatural, question, excerpt("st-i-ii-q94-a1", "Whether the natural law is a habit")]);
+    expect(errors).toEqual([]);
+    expect(bundle.articles[0]).toMatchObject({ textKind: "excerpt", question: "st-i-ii-q94", coreConcepts: ["ley-natural"] });
+    expect(bundle.questions[0].articles).toEqual(["st-i-ii-q94-a1"]);
+    expect(bundle.concepts[0].questions).toEqual(["st-i-ii-q94"]);
+    const conceptPage = outputs.find((o) => o.path === "conceptos/ley-natural.md")!.content;
+    expect(conceptPage).toContain("# Cuestiones de la Summa");
+    expect(conceptPage).not.toContain("# Dónde lo trata Tomás");
+  });
+
+  it("orders a concept's texts: those whose title names it come first", () => {
+    const withEnglishLabel = {
+      path: leyNatural.path,
+      content: leyNatural.content.replace('en: []', 'en: ["natural law"]'),
+    };
+    const { bundle } = compileKnowledge([
+      area, work, withEnglishLabel, question,
+      excerpt("st-i-ii-q94-a1", "Whether it is a habit"),
+      excerpt("st-i-ii-q94-a2", "Whether the natural law contains several precepts"),
+    ]);
+    expect(bundle.concepts[0].articles).toEqual(["st-i-ii-q94-a2", "st-i-ii-q94-a1"]);
+  });
+
+  it("rejects an unknown content kind and a question whose citation does not match", () => {
+    const wrong = { ...question, path: "cuestiones/st-i-ii-q95.md" };
+    const bad = excerpt("st-i-ii-q94-a3", "Whether x").content.replace("content: excerpt", "content: poem");
+    const { errors } = compileKnowledge([area, work, leyNatural, wrong, { path: "articulos/st-i-ii-q94-a3.md", content: bad }]);
+    expect(errors.some((e) => e.includes("cuestiones/st-i-ii-q95.md"))).toBe(true);
+    expect(errors.some((e) => e.includes("\"content\""))).toBe(true);
   });
 });
 

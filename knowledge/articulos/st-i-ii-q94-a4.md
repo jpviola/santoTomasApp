@@ -25,5 +25,7 @@ The common principles of natural law are the same for all, both as to rectitude 
 
 - [Ley natural](/conceptos/ley-natural.md)
 
+Cuestión: [ST I-II, q.94 — The natural law](/cuestiones/st-i-ii-q94.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

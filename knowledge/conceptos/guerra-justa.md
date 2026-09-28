@@ -25,4 +25,8 @@ Para que una guerra sea justa se requieren tres cosas: la autoridad del soberano
 # Dónde lo trata Tomás
 
 - [ST II-II, q.40, a.1](/articulos/st-ii-ii-q40-a1.md) — Whether it is always sinful to wage war
+
+# Cuestiones de la Summa
+
+- [ST II-II, q.40](/cuestiones/st-ii-ii-q40.md) — War
 <!-- okf:generated:end -->

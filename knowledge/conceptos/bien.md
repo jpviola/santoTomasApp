@@ -29,4 +29,9 @@ Bien y ente son lo mismo en la realidad y difieren solo en la noción: algo es b
 - [ST I, q.48, a.1](/articulos/st-i-q48-a1.md) — Whether evil is a nature
 - [ST I-II, q.2, a.8](/articulos/st-i-ii-q2-a8.md) — Whether any created good constitutes man's happiness
 - [ST I-II, q.94, a.2](/articulos/st-i-ii-q94-a2.md) — Whether the natural law contains several precepts, or only one
+
+# Cuestiones de la Summa
+
+- [ST I, q.5](/cuestiones/st-i-q5.md) — Goodness in general
+- [ST I, q.6](/cuestiones/st-i-q6.md) — The goodness of God
 <!-- okf:generated:end -->

@@ -26,5 +26,7 @@ Every human law has the nature of law insofar as it is derived from the natural 
 - [Ley humana](/conceptos/ley-humana.md)
 - [Ley natural](/conceptos/ley-natural.md)
 
+Cuestión: [ST I-II, q.95 — Human law](/cuestiones/st-i-ii-q95.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

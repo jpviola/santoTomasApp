@@ -26,5 +26,7 @@ The will necessarily adheres to the last end, happiness, as the intellect necess
 - [Voluntad](/conceptos/voluntad.md)
 - [Felicidad](/conceptos/felicidad.md)
 
+Cuestión: [ST I, q.82 — The will](/cuestiones/st-i-q82.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

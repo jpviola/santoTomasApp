@@ -25,5 +25,7 @@ Aquinas holds that suicide is contrary to the natural inclination to preserve on
 
 - [Ley natural](/conceptos/ley-natural.md)
 
+Cuestión: [ST II-II, q.64 — Murder](/cuestiones/st-ii-ii-q64.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

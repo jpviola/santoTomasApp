@@ -26,5 +26,7 @@ Imperfect happiness can be acquired by natural powers, in the way virtue is acqu
 - [Felicidad](/conceptos/felicidad.md)
 - [Gracia](/conceptos/gracia.md)
 
+Cuestión: [ST I-II, q.5 — The attainment of happiness](/cuestiones/st-i-ii-q5.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

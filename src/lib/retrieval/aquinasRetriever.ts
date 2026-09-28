@@ -24,7 +24,7 @@ export function toSnippet(article: KnowledgeArticle): SourceSnippet {
     citation: article.citation,
     text: article.text,
     url: article.url,
-    kind: "summary",
+    kind: article.textKind === "excerpt" ? "text" : "summary",
   };
 }
 

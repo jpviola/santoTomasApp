@@ -26,5 +26,7 @@ In the Eucharist the whole substance of the bread is converted into the whole su
 - [Eucaristía](/conceptos/eucaristia.md)
 - [Sustancia y accidente](/conceptos/sustancia-y-accidente.md)
 
+Cuestión: [ST III, q.75 — The change of bread and wine into the Body and Blood of Christ](/cuestiones/st-iii-q75.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

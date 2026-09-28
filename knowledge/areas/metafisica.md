@@ -14,6 +14,7 @@ El ser y sus principios: acto y potencia, esencia y ser, causas, trascendentales
 
 - [Acto y potencia](/conceptos/acto-y-potencia.md) - La distinción aristotélica que explica el cambio: la potencia es capacidad real, el acto su realización.
 - [Analogía](/conceptos/analogia.md) - Modo de predicar un término de varias cosas según una proporción: ni unívoco ni equívoco.
+- [Ángeles (sustancias separadas)](/conceptos/angeles.md) - Criaturas puramente intelectuales, sin materia, compuestas de esencia y ser.
 - [Bien](/conceptos/bien.md) - El ente en cuanto deseable; todo ente, en cuanto es, es bueno.
 - [Las cuatro causas](/conceptos/causa.md) - Material, formal, eficiente y final: los cuatro modos de responder «¿por qué?».
 - [Creación](/conceptos/creacion.md) - La donación del ser a todo lo que es; no es un cambio ni presupone un material.

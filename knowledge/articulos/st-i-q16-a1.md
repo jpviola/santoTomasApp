@@ -26,5 +26,7 @@ Truth is found primarily in the intellect and secondarily in things, insofar as 
 - [Verdad](/conceptos/verdad.md)
 - [Intelecto](/conceptos/intelecto.md)
 
+Cuestión: [ST I, q.16 — Truth](/cuestiones/st-i-q16.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

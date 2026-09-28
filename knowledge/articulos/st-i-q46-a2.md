@@ -26,5 +26,7 @@ That the world had a beginning in time is held by faith alone and cannot be demo
 - [Creación](/conceptos/creacion.md)
 - [Fe y razón](/conceptos/fe-y-razon.md)
 
+Cuestión: [ST I, q.46 — The beginning of the duration of creatures](/cuestiones/st-i-q46.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

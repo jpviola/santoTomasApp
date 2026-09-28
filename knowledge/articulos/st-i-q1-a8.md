@@ -26,5 +26,7 @@ Sacred doctrine argues from the articles of faith as its principles and can answ
 - [Fe y razón](/conceptos/fe-y-razon.md)
 - [Gracia](/conceptos/gracia.md)
 
+Cuestión: [ST I, q.1 — The nature and extent of sacred doctrine](/cuestiones/st-i-q1.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

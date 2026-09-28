@@ -27,5 +27,7 @@ Just laws bind in conscience. Laws are unjust when contrary to the human good (b
 - [Conciencia](/conceptos/conciencia.md)
 - [Justicia](/conceptos/justicia.md)
 
+Cuestión: [ST I-II, q.96 — The power of human law](/cuestiones/st-i-ii-q96.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

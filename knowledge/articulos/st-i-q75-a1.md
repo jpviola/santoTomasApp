@@ -26,5 +26,7 @@ The soul is the first principle of life in living things. It is not a body, sinc
 - [Alma](/conceptos/alma.md)
 - [Materia y forma](/conceptos/hilemorfismo.md)
 
+Cuestión: [ST I, q.75 — Man who is composed of a spiritual and a corporeal substance: and in the first place, concerning what belongs to the essence of the soul](/cuestiones/st-i-q75.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

@@ -29,4 +29,8 @@ La conciencia no es una potencia sino un acto: la aplicación del conocimiento a
 - [ST I-II, q.19, a.5](/articulos/st-i-ii-q19-a5.md) — Whether the will is evil when it is at variance with erring reason
 - [ST I-II, q.19, a.6](/articulos/st-i-ii-q19-a6.md) — Whether the will is good when it abides by erring reason
 - [ST I-II, q.96, a.4](/articulos/st-i-ii-q96-a4.md) — Whether human law binds a man in conscience
+
+# Cuestiones de la Summa
+
+- [ST I-II, q.19](/cuestiones/st-i-ii-q19.md) — The goodness and malice of the interior act of the will
 <!-- okf:generated:end -->

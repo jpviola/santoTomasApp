@@ -27,5 +27,7 @@ Synderesis is not a power but a natural habit by which we grasp the first princi
 - [Ley natural](/conceptos/ley-natural.md)
 - [Sindéresis](/conceptos/sinderesis.md)
 
+Cuestión: [ST I, q.79 — The intellectual powers](/cuestiones/st-i-q79.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

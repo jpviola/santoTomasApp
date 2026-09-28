@@ -29,6 +29,12 @@ La ley humana deriva de la [ley natural](/conceptos/ley-natural.md) como conclus
 - [ST I-II, q.96, a.2](/articulos/st-i-ii-q96-a2.md) — Whether it belongs to human law to repress all vices
 - [ST I-II, q.96, a.4](/articulos/st-i-ii-q96-a4.md) — Whether human law binds a man in conscience
 
+# Cuestiones de la Summa
+
+- [ST I-II, q.95](/cuestiones/st-i-ii-q95.md) — Human law
+- [ST I-II, q.96](/cuestiones/st-i-ii-q96.md) — The power of human law
+- [ST I-II, q.97](/cuestiones/st-i-ii-q97.md) — Change in laws
+
 # Autores
 
 - [Agustín de Hipona](/autores/agustin.md)

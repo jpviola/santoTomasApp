@@ -26,5 +26,7 @@ Moral virtue consists in a mean between excess and defect, measured by right rea
 - [Virtud](/conceptos/virtud.md)
 - [Razón](/conceptos/razon.md)
 
+Cuestión: [ST I-II, q.64 — The mean of virtue](/cuestiones/st-i-ii-q64.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

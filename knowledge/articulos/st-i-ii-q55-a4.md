@@ -26,5 +26,7 @@ Aquinas defends the definition of virtue as a good quality of the mind by which 
 - [Virtud](/conceptos/virtud.md)
 - [Hábito](/conceptos/habito.md)
 
+Cuestión: [ST I-II, q.55 — The virtues, as to their essence](/cuestiones/st-i-ii-q55.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

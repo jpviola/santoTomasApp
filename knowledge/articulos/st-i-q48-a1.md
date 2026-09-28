@@ -26,5 +26,7 @@ Evil is not a being, form or nature, but the absence of a good that ought to be 
 - [Mal](/conceptos/mal.md)
 - [Bien](/conceptos/bien.md)
 
+Cuestión: [ST I, q.48 — The distinction of things in particular](/cuestiones/st-i-q48.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

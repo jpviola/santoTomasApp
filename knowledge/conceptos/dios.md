@@ -20,7 +20,7 @@ Para Tomás la existencia de Dios no es evidente para nosotros pero puede demost
 # Relaciones
 
 - **Más específico:** [Las cinco vías](/conceptos/cinco-vias.md), [Omnipotencia](/conceptos/omnipotencia.md), [Providencia](/conceptos/providencia.md), [Simplicidad divina](/conceptos/simplicidad-divina.md)
-- **Relacionado:** [Analogía](/conceptos/analogia.md), [Las cinco vías](/conceptos/cinco-vias.md), [Creación](/conceptos/creacion.md), [Acto de ser (esse)](/conceptos/esse.md), [Felicidad](/conceptos/felicidad.md), [Imagen de Dios](/conceptos/imagen-de-dios.md), [Providencia](/conceptos/providencia.md), [Simplicidad divina](/conceptos/simplicidad-divina.md)
+- **Relacionado:** [Analogía](/conceptos/analogia.md), [Las cinco vías](/conceptos/cinco-vias.md), [Creación](/conceptos/creacion.md), [Acto de ser (esse)](/conceptos/esse.md), [Felicidad](/conceptos/felicidad.md), [Imagen de Dios](/conceptos/imagen-de-dios.md), [Providencia](/conceptos/providencia.md), [Simplicidad divina](/conceptos/simplicidad-divina.md), [Trinidad](/conceptos/trinidad.md)
 - **Área:** [Dios](/areas/dios.md)
 
 # Dónde lo trata Tomás
@@ -41,6 +41,34 @@ Para Tomás la existencia de Dios no es evidente para nosotros pero puede demost
 - [ST I-II, q.2, a.8](/articulos/st-i-ii-q2-a8.md) — Whether any created good constitutes man's happiness
 - [ST I-II, q.3, a.8](/articulos/st-i-ii-q3-a8.md) — Whether man's happiness consists in the vision of the divine essence
 - [De ente et essentia, c.4](/articulos/dee-c4.md) — On being and essence, chapter 4
+
+# Cuestiones de la Summa
+
+- [ST I, q.2](/cuestiones/st-i-q2.md) — The existence of God
+- [ST I, q.3](/cuestiones/st-i-q3.md) — The simplicity of God
+- [ST I, q.4](/cuestiones/st-i-q4.md) — The perfection of God
+- [ST I, q.5](/cuestiones/st-i-q5.md) — Goodness in general
+- [ST I, q.6](/cuestiones/st-i-q6.md) — The goodness of God
+- [ST I, q.7](/cuestiones/st-i-q7.md) — The infinity of God
+- [ST I, q.8](/cuestiones/st-i-q8.md) — The existence of God in things
+- [ST I, q.9](/cuestiones/st-i-q9.md) — The immutability of God
+- [ST I, q.10](/cuestiones/st-i-q10.md) — The eternity of God
+- [ST I, q.11](/cuestiones/st-i-q11.md) — The unity of God
+- [ST I, q.12](/cuestiones/st-i-q12.md) — How God is known by us
+- [ST I, q.13](/cuestiones/st-i-q13.md) — The names of God
+- [ST I, q.14](/cuestiones/st-i-q14.md) — God's knowledge
+- [ST I, q.15](/cuestiones/st-i-q15.md) — Ideas
+- [ST I, q.16](/cuestiones/st-i-q16.md) — Truth
+- [ST I, q.17](/cuestiones/st-i-q17.md) — Falsity
+- [ST I, q.18](/cuestiones/st-i-q18.md) — The life of God
+- [ST I, q.19](/cuestiones/st-i-q19.md) — The will of God
+- [ST I, q.20](/cuestiones/st-i-q20.md) — God's love
+- [ST I, q.21](/cuestiones/st-i-q21.md) — The justice and mercy of God
+- [ST I, q.22](/cuestiones/st-i-q22.md) — The providence of God
+- [ST I, q.23](/cuestiones/st-i-q23.md) — Predestination
+- [ST I, q.24](/cuestiones/st-i-q24.md) — The book of life
+- [ST I, q.25](/cuestiones/st-i-q25.md) — The power of God
+- [ST I, q.26](/cuestiones/st-i-q26.md) — The divine beatitude
 
 # Autores
 

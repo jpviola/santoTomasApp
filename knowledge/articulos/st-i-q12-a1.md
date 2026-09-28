@@ -27,5 +27,7 @@ The created intellect can see God's essence, for otherwise the natural desire to
 - [Felicidad](/conceptos/felicidad.md)
 - [Intelecto](/conceptos/intelecto.md)
 
+Cuestión: [ST I, q.12 — How God is known by us](/cuestiones/st-i-q12.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

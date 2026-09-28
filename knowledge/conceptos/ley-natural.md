@@ -20,7 +20,7 @@ La ley natural es la participación de la [ley eterna](/conceptos/ley-eterna.md)
 # Relaciones
 
 - **Más amplio:** [Ley](/conceptos/ley.md)
-- **Relacionado:** [Bien](/conceptos/bien.md), [Ley eterna](/conceptos/ley-eterna.md), [Ley humana](/conceptos/ley-humana.md), [Sindéresis](/conceptos/sinderesis.md)
+- **Relacionado:** [Bien](/conceptos/bien.md), [Ley divina](/conceptos/ley-divina.md), [Ley eterna](/conceptos/ley-eterna.md), [Ley humana](/conceptos/ley-humana.md), [Sindéresis](/conceptos/sinderesis.md)
 - **Área:** [Ley y política](/areas/ley-y-politica.md)
 
 # Dónde lo trata Tomás
@@ -31,4 +31,8 @@ La ley natural es la participación de la [ley eterna](/conceptos/ley-eterna.md)
 - [ST I-II, q.94, a.4](/articulos/st-i-ii-q94-a4.md) — Whether the natural law is the same in all men
 - [ST I-II, q.95, a.2](/articulos/st-i-ii-q95-a2.md) — Whether every human law is derived from the natural law
 - [ST II-II, q.64, a.5](/articulos/st-ii-ii-q64-a5.md) — Whether it is lawful to kill oneself
+
+# Cuestiones de la Summa
+
+- [ST I-II, q.94](/cuestiones/st-i-ii-q94.md) — The natural law
 <!-- okf:generated:end -->

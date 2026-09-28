@@ -27,5 +27,7 @@ The object of justice is the right (ius), that is, the just thing itself: a work
 - [Justicia](/conceptos/justicia.md)
 - [Ley](/conceptos/ley.md)
 
+Cuestión: [ST II-II, q.57 — Right](/cuestiones/st-ii-ii-q57.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

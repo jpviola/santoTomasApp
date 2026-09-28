@@ -25,5 +25,7 @@ A certain participation in happiness can be had in this life, but perfect and tr
 
 - [Felicidad](/conceptos/felicidad.md)
 
+Cuestión: [ST I-II, q.5 — The attainment of happiness](/cuestiones/st-i-ii-q5.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

@@ -26,5 +26,7 @@ Aquinas accepts Boethius's definition of person as an individual substance of a 
 - [Persona](/conceptos/persona.md)
 - [Alma](/conceptos/alma.md)
 
+Cuestión: [ST I, q.29 — The divine persons](/cuestiones/st-i-q29.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

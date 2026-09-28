@@ -26,5 +26,7 @@ Human law is framed for the multitude, most of whom are not perfect in virtue. I
 - [Ley humana](/conceptos/ley-humana.md)
 - [Bien común](/conceptos/bien-comun.md)
 
+Cuestión: [ST I-II, q.96 — The power of human law](/cuestiones/st-i-ii-q96.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

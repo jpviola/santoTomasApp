@@ -27,5 +27,7 @@ Man has free will because he acts from judgment that is not natural instinct but
 - [Voluntad](/conceptos/voluntad.md)
 - [Razón](/conceptos/razon.md)
 
+Cuestión: [ST I, q.83 — Free-will](/cuestiones/st-i-q83.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

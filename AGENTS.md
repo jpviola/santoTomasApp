@@ -16,5 +16,5 @@ Sistema de disputas escolásticas multi-agente (Next.js 15 App Router, React 19,
 ## Comandos
 
 - `npm run dev` / `npm run build` / `npm test` / `npm run lint`
-- `npm run knowledge:build` / `knowledge:check` / `knowledge:embed` (requiere `EMBEDDING_API_KEY`) / `knowledge:graphdb`
+- `npm run knowledge:build` / `knowledge:check` / `knowledge:import` (Summa desde New Advent, con caché en `.cache/`) / `knowledge:embed` (requiere `EMBEDDING_API_KEY`) / `knowledge:graphdb`
 - Tras cambiar `prisma/schema.prisma`: `npx prisma generate` (cliente) y `npx prisma db push` (DB).

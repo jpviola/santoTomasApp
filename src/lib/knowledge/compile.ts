@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { parse as parseYaml } from "yaml";
+import { findPhrase, normalizeText } from "@/lib/knowledge/lexical";
 import { parseStCitation, stSourceId } from "@/lib/retrieval/summaText";
 import type {
   KnowledgeArea,
@@ -7,6 +8,7 @@ import type {
   KnowledgeAuthor,
   KnowledgeBundle,
   KnowledgeConcept,
+  KnowledgeQuestion,
   KnowledgeWork,
   Lifecycle,
   TrustTier,
@@ -37,7 +39,16 @@ export type CompileResult = {
 type Frontmatter = Record<string, unknown>;
 type ParsedDoc = { path: string; dir: string; id: string; frontmatter: Frontmatter; body: string; authored: string };
 
-const DIRS = { concepts: "conceptos", articles: "articulos", areas: "areas", authors: "autores", works: "obras" } as const;
+const DIRS = { concepts: "conceptos", articles: "articulos", questions: "cuestiones", areas: "areas", authors: "autores", works: "obras" } as const;
+
+const PART_ORDER = ["I", "I-II", "II-II", "III"];
+const PART_NAMES: Record<string, string> = { I: "Prima pars (I)", "I-II": "Prima secundae (I-II)", "II-II": "Secunda secundae (II-II)", III: "Tertia pars (III)" };
+
+/** "ST I-II, q.94" o "ST I-II, q.94, a.2" -> parte y cuestión. */
+function parseStQuestion(citation: string): { part: string; question: number } | null {
+  const match = citation.match(/^ST (I-II|II-II|III|I), q\.(\d+)/);
+  return match ? { part: match[1], question: Number(match[2]) } : null;
+}
 
 export function splitFrontmatter(content: string): { frontmatter: Frontmatter | null; body: string } {
   const normalized = content.replace(/\r\n/g, "\n");
@@ -138,6 +149,8 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
   const areaDocs = byDir(DIRS.areas);
   const authorDocs = byDir(DIRS.authors);
   const workDocs = byDir(DIRS.works);
+  const questionDocs = byDir(DIRS.questions);
+  const questionIds = new Set(questionDocs.map((d) => d.id));
 
   const conceptIds = new Set(conceptDocs.map((d) => d.id));
   const areaIds = new Set(areaDocs.map((d) => d.id));
@@ -199,6 +212,11 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
     }
     const text = plainSummary(doc.authored);
     if (!text) errors.push(`${doc.path}: el cuerpo no tiene resumen`);
+    const content = str(doc.frontmatter.content);
+    if (content && content !== "summary" && content !== "excerpt") {
+      errors.push(`${doc.path}: "content" debe ser "summary" o "excerpt"`);
+    }
+    const questionId = st ? `st-${st.part.toLowerCase()}-q${st.question}` : "";
     for (const c of concepts) articlesByConcept.get(c)?.push(doc.id);
     return {
       id: doc.id,
@@ -207,8 +225,11 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
       citation,
       work,
       url: str(doc.frontmatter.resource) || undefined,
+      textKind: content === "excerpt" ? "excerpt" : "summary",
       text,
+      question: questionIds.has(questionId) ? questionId : undefined,
       concepts: concepts.filter((c) => conceptIds.has(c)),
+      coreConcepts: [],
       keywords: strList(doc.frontmatter.keywords),
       status: lifecycle(doc.frontmatter.status),
       trust: trustTier(doc.frontmatter.verified),
@@ -216,9 +237,69 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
   });
   const articleById = new Map(articles.map((a) => [a.id, a]));
 
+  // Orden canónico: Summa por parte, cuestión y artículo; después las demás obras por cita.
+  const citationKey = (id: string): [number, number, number, string] => {
+    const citation = articleById.get(id)?.citation ?? id;
+    const st = parseStCitation(citation);
+    return st ? [PART_ORDER.indexOf(st.part), st.question, st.article, ""] : [PART_ORDER.length, 0, 0, citation];
+  };
+  const byCitation = (a: string, b: string) => {
+    const [ka, kb] = [citationKey(a), citationKey(b)];
+    return ka[0] - kb[0] || ka[1] - kb[1] || ka[2] - kb[2] || ka[3].localeCompare(kb[3]);
+  };
+
+  // --- Cuestiones de la Summa
+  const questions: KnowledgeQuestion[] = questionDocs.map((doc) => {
+    const citation = str(doc.frontmatter.citation);
+    const parsed = parseStQuestion(citation);
+    if (!parsed || `st-${parsed.part.toLowerCase()}-q${parsed.question}` !== doc.id) {
+      errors.push(`${doc.path}: la cita "${citation}" no corresponde al id del archivo`);
+    }
+    const tags = strList(doc.frontmatter.tags);
+    checkRefs(doc, "tags", tags, conceptIds);
+    return {
+      id: doc.id,
+      title: str(doc.frontmatter.title),
+      citation,
+      treatise: str(doc.frontmatter.treatise),
+      url: str(doc.frontmatter.resource) || undefined,
+      concepts: tags.filter((c) => conceptIds.has(c)),
+      articles: articles.filter((a) => a.question === doc.id).map((a) => a.id),
+    };
+  });
+  const questionById = new Map(questions.map((q) => [q.id, q]));
+
+  // Conceptos centrales de cada texto y orden de los textos de cada concepto, por niveles de relevancia:
+  // 0 resumen curado · 1 del tratado y el título lo nombra · 2 del tratado y la cuestión lo nombra · 3 del tratado · 4 mención en el título.
+  const labelsOf = new Map(
+    conceptDocs.map((doc) => {
+      const labels = (doc.frontmatter.labels ?? {}) as Record<string, unknown>;
+      return [doc.id, [...strList(labels.en), ...strList(labels.la), ...strList(labels.es)]];
+    }),
+  );
+  const names = (text: string, conceptId: string) => {
+    const normalized = normalizeText(text);
+    return (labelsOf.get(conceptId) ?? []).some((label) => findPhrase(normalized, label) >= 0);
+  };
+  for (const a of articles) {
+    const question = a.question ? questionById.get(a.question) : undefined;
+    a.coreConcepts = a.textKind === "summary" || !question ? a.concepts : a.concepts.filter((c) => question.concepts.includes(c));
+  }
+  const tier = (articleId: string, conceptId: string) => {
+    const a = articleById.get(articleId)!;
+    if (a.textKind === "summary") return 0;
+    if (!a.coreConcepts.includes(conceptId)) return 4;
+    if (names(a.title, conceptId)) return 1;
+    const question = a.question ? questionById.get(a.question) : undefined;
+    return question && names(question.title, conceptId) ? 2 : 3;
+  };
+
   const concepts: KnowledgeConcept[] = conceptDocs.map((doc) => {
     const labels = (doc.frontmatter.labels ?? {}) as Record<string, unknown>;
-    const conceptArticles = articlesByConcept.get(doc.id) ?? [];
+    const conceptArticles = (articlesByConcept.get(doc.id) ?? [])
+      .map((id) => ({ id, tier: tier(id, doc.id) }))
+      .sort((x, y) => x.tier - y.tier || byCitation(x.id, y.id))
+      .map((x) => x.id);
     if (conceptArticles.length === 0) warnings.push(`${doc.path}: ningún texto de Tomás está etiquetado con este concepto`);
     return {
       id: doc.id,
@@ -232,6 +313,7 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
       narrower: (narrower.get(doc.id) ?? []).sort(),
       related: [...(relatedSet.get(doc.id) ?? [])].sort(),
       articles: conceptArticles,
+      questions: questions.filter((q) => q.concepts.includes(doc.id)).map((q) => q.id),
       status: lifecycle(doc.frontmatter.status),
       trust: trustTier(doc.frontmatter.verified),
     };
@@ -265,20 +347,26 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
   }
 
   // --- Secciones generadas (se reescriben siempre desde el frontmatter)
-  // Orden canónico: Summa por parte, cuestión y artículo; después las demás obras por cita.
-  const PART_ORDER = ["I", "I-II", "II-II", "III"];
-  const citationKey = (id: string): [number, number, number, string] => {
-    const citation = articleById.get(id)?.citation ?? id;
-    const st = parseStCitation(citation);
-    return st ? [PART_ORDER.indexOf(st.part), st.question, st.article, ""] : [PART_ORDER.length, 0, 0, citation];
-  };
-  const byCitation = (a: string, b: string) => {
-    const [ka, kb] = [citationKey(a), citationKey(b)];
-    return ka[0] - kb[0] || ka[1] - kb[1] || ka[2] - kb[2] || ka[3].localeCompare(kb[3]);
-  };
   const articleLine = (id: string) => {
     const a = articleById.get(id);
     return `- ${link(a?.citation ?? id, `${DIRS.articles}/${id}`)} — ${a?.title ?? ""}`;
+  };
+  const questionKey = (q: KnowledgeQuestion) => {
+    const parsed = parseStQuestion(q.citation);
+    return parsed ? PART_ORDER.indexOf(parsed.part) * 1000 + parsed.question : Number.MAX_SAFE_INTEGER;
+  };
+  const sortedQuestions = [...questions].sort((a, b) => questionKey(a) - questionKey(b));
+  const questionLine = (q: KnowledgeQuestion) => `- ${link(q.citation, `${DIRS.questions}/${q.id}`)} — ${q.title}`;
+  /** Agrupa líneas de la Summa por parte (### Prima pars…). */
+  const byPart = <T,>(items: T[], citationOf: (item: T) => string, line: (item: T) => string, level = "##") => {
+    const groups = new Map<string, string[]>();
+    for (const item of items) {
+      const part = parseStQuestion(citationOf(item))?.part ?? "otras";
+      groups.set(part, [...(groups.get(part) ?? []), line(item)]);
+    }
+    return [...groups.entries()]
+      .map(([part, lines]) => `${level} ${PART_NAMES[part] ?? "Otras obras"}\n\n${lines.join("\n")}`)
+      .join("\n\n");
   };
   const generatedFor = (doc: ParsedDoc): string => {
     if (doc.dir === DIRS.concepts) {
@@ -290,16 +378,30 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
         areaIds.has(c.area) ? `- **Área:** ${link(titleOf.get(`${DIRS.areas}/${c.area}`) ?? c.area, `${DIRS.areas}/${c.area}`)}` : "",
       ].filter(Boolean);
       const byAuthor = authors.filter((a) => a.concepts.includes(c.id));
+      // Los resúmenes curados se listan uno por uno; los fragmentos importados, a través de sus cuestiones.
+      const curated = c.articles.filter((id) => articleById.get(id)?.textKind === "summary").sort(byCitation);
+      const conceptQuestions = sortedQuestions.filter((q) => q.concepts.includes(c.id));
       return [
         rel.length ? `# Relaciones\n\n${rel.join("\n")}` : "",
-        c.articles.length ? `# Dónde lo trata Tomás\n\n${[...c.articles].sort(byCitation).map(articleLine).join("\n")}` : "",
+        curated.length ? `# Dónde lo trata Tomás\n\n${curated.map(articleLine).join("\n")}` : "",
+        conceptQuestions.length ? `# Cuestiones de la Summa\n\n${conceptQuestions.map(questionLine).join("\n")}` : "",
         byAuthor.length ? `# Autores\n\n${byAuthor.map((a) => `- ${link(a.title, `${DIRS.authors}/${a.id}`)}`).join("\n")}` : "",
       ].filter(Boolean).join("\n\n");
     }
     if (doc.dir === DIRS.articles) {
       const a = articleById.get(doc.id)!;
       const work = workIds.has(a.work) ? `\n\nObra: ${link(titleOf.get(`${DIRS.works}/${a.work}`) ?? a.work, `${DIRS.works}/${a.work}`)}.` : "";
-      return `# Conceptos\n\n${a.concepts.map((c) => `- ${conceptLink(c)}`).join("\n")}${work}`;
+      const question = a.question ? questionById.get(a.question) : undefined;
+      const questionRef = question ? `\n\nCuestión: ${link(`${question.citation} — ${question.title}`, `${DIRS.questions}/${question.id}`)}.` : "";
+      const conceptList = a.concepts.length ? `# Conceptos\n\n${a.concepts.map((c) => `- ${conceptLink(c)}`).join("\n")}` : "";
+      return `${conceptList}${questionRef}${work}`.trim();
+    }
+    if (doc.dir === DIRS.questions) {
+      const q = questionById.get(doc.id)!;
+      return [
+        q.articles.length ? `# Artículos\n\n${[...q.articles].sort(byCitation).map(articleLine).join("\n")}` : "",
+        q.concepts.length ? `# Conceptos\n\n${q.concepts.map((c) => `- ${conceptLink(c)}`).join("\n")}` : "",
+      ].filter(Boolean).join("\n\n");
     }
     if (doc.dir === DIRS.areas) {
       const inArea = concepts.filter((c) => c.area === doc.id);
@@ -310,6 +412,9 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
       return a.concepts.length ? `# Conceptos relacionados\n\n${a.concepts.map((c) => `- ${conceptLink(c)}`).join("\n")}` : "";
     }
     if (doc.dir === DIRS.works) {
+      if (doc.id === "summa-theologiae" && sortedQuestions.length) {
+        return `# Cuestiones\n\n${byPart(sortedQuestions, (q) => q.citation, questionLine)}`;
+      }
       const inWork = articles.filter((a) => a.work === doc.id).map((a) => a.id).sort(byCitation);
       return inWork.length ? `# Textos en el bundle\n\n${inWork.map(articleLine).join("\n")}` : "";
     }
@@ -324,23 +429,33 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
   }
 
   // --- index.md por directorio (OKF §8), con okf_version en la raíz (§12)
-  const sections: { dir: string; heading: string; description: string; items: { id: string; title: string; description: string }[] }[] = [
+  type IndexItem = { id: string; title: string; description: string; citation?: string };
+  const sections: { dir: string; heading: string; description: string; items: IndexItem[]; groupByPart?: boolean }[] = [
     { dir: DIRS.areas, heading: "Áreas", description: "Grandes regiones del pensamiento de Tomás", items: areas },
     { dir: DIRS.concepts, heading: "Conceptos", description: "La ontología: conceptos con sus relaciones (más amplio, más específico, relacionado)", items: concepts },
     {
+      dir: DIRS.questions,
+      heading: "Cuestiones de la Summa",
+      description: "Las cuestiones de la Summa Theologiae, con sus artículos y conceptos",
+      items: sortedQuestions.map((q) => ({ id: q.id, title: `${q.citation} — ${q.title}`, description: q.treatise, citation: q.citation })),
+      groupByPart: true,
+    },
+    {
       dir: DIRS.articles,
       heading: "Textos de Tomás",
-      description: "Pasajes de sus obras, con resumen y conceptos",
-      items: [...articles].sort((a, b) => byCitation(a.id, b.id)).map((a) => ({ id: a.id, title: `${a.citation} — ${a.title}`, description: a.description })),
+      description: "Artículos y pasajes de sus obras: resúmenes curados y fragmentos del respondeo",
+      items: [...articles].sort((a, b) => byCitation(a.id, b.id)).map((a) => ({ id: a.id, title: `${a.citation} — ${a.title}`, description: a.description, citation: a.citation })),
+      groupByPart: true,
     },
     { dir: DIRS.authors, heading: "Autores", description: "Fuentes e interlocutores de Tomás", items: authors },
     { dir: DIRS.works, heading: "Obras", description: "Las obras de Tomás citadas en el bundle", items: works },
-  ];
+  ].filter((section) => section.items.length > 0);
   for (const section of sections) {
-    outputs.push({
-      path: `${section.dir}/index.md`,
-      content: `# ${section.heading}\n\n${section.items.map((i) => `* [${i.title}](${i.id}.md) - ${i.description}`).join("\n")}\n`,
-    });
+    const entry = (i: IndexItem) => `* [${i.title}](${i.id}.md) - ${i.description}`;
+    const body = section.groupByPart
+      ? byPart(section.items, (i) => i.citation ?? "", entry)
+      : section.items.map(entry).join("\n");
+    outputs.push({ path: `${section.dir}/index.md`, content: `# ${section.heading}\n\n${body}\n` });
   }
   outputs.push({
     path: "index.md",
@@ -354,7 +469,7 @@ export function compileKnowledge(files: SourceFile[]): CompileResult {
     }
   }
 
-  const bundle: KnowledgeBundle = { okfVersion: OKF_VERSION, articles, concepts, areas, authors, works };
+  const bundle: KnowledgeBundle = { okfVersion: OKF_VERSION, articles, questions, concepts, areas, authors, works };
   return { errors, warnings, outputs, bundle, ttl: toTurtle(bundle) };
 }
 

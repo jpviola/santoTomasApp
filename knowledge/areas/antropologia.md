@@ -22,6 +22,7 @@ Alma y cuerpo, intelecto, voluntad, libertad y conciencia.
 - [Inmortalidad del alma](/conceptos/inmortalidad.md) - El alma humana, por ser subsistente, no se corrompe con el cuerpo.
 - [Intelecto](/conceptos/intelecto.md) - Potencia inmaterial del alma que capta lo universal y juzga sobre la verdad.
 - [Libre albedrío](/conceptos/libre-albedrio.md) - Facultad de elegir entre bienes particulares; su raíz está en la razón.
+- [Pasiones](/conceptos/pasiones.md) - Movimientos del apetito sensitivo, acompañados de un cambio corporal; buenos o malos según la razón.
 - [Persona](/conceptos/persona.md) - Sustancia individual de naturaleza racional (Boecio); dueña de sus actos.
 - [Razón](/conceptos/razon.md) - El intelecto en cuanto discurre de lo conocido a lo desconocido; especulativa y práctica.
 - [Sindéresis](/conceptos/sinderesis.md) - Hábito natural por el que conocemos los primeros principios de la razón práctica.

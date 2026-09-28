@@ -33,6 +33,15 @@ Ni la riqueza, ni los honores, ni la fama, ni el poder, ni el placer constituyen
 - [ST I-II, q.5, a.5](/articulos/st-i-ii-q5-a5.md) — Whether man can attain happiness by his natural powers
 - [SCG III, c.37](/articulos/scg-iii-c37.md) — That the ultimate happiness of man consists in the contemplation of God
 
+# Cuestiones de la Summa
+
+- [ST I, q.26](/cuestiones/st-i-q26.md) — The divine beatitude
+- [ST I-II, q.1](/cuestiones/st-i-ii-q1.md) — Man's last end
+- [ST I-II, q.2](/cuestiones/st-i-ii-q2.md) — Things in which man's happiness consists
+- [ST I-II, q.3](/cuestiones/st-i-ii-q3.md) — What is happiness
+- [ST I-II, q.4](/cuestiones/st-i-ii-q4.md) — Things that are required for happiness
+- [ST I-II, q.5](/cuestiones/st-i-ii-q5.md) — The attainment of happiness
+
 # Autores
 
 - [Aristóteles](/autores/aristoteles.md)

@@ -25,4 +25,8 @@ El hombre es imagen de Dios principalmente por su naturaleza intelectual, capaz 
 # Dónde lo trata Tomás
 
 - [ST I, q.93, a.4](/articulos/st-i-q93-a4.md) — Whether the image of God is found in every man
+
+# Cuestiones de la Summa
+
+- [ST I, q.93](/cuestiones/st-i-q93.md) — The end or term of the production of man
 <!-- okf:generated:end -->

@@ -27,5 +27,7 @@ Aquinas argues that a revealed doctrine is necessary because man is directed to 
 - [Teología (sacra doctrina)](/conceptos/teologia.md)
 - [Preámbulos de la fe](/conceptos/preambulos-de-la-fe.md)
 
+Cuestión: [ST I, q.1 — The nature and extent of sacred doctrine](/cuestiones/st-i-q1.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

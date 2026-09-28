@@ -27,5 +27,7 @@ Final and perfect happiness can consist only in the vision of the divine essence
 - [Dios](/conceptos/dios.md)
 - [Intelecto](/conceptos/intelecto.md)
 
+Cuestión: [ST I-II, q.3 — What is happiness](/cuestiones/st-i-ii-q3.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

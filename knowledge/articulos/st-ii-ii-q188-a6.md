@@ -25,5 +25,7 @@ The contemplative life is simply better than the active life, but the work of te
 
 - [Vida contemplativa y activa](/conceptos/vida-contemplativa.md)
 
+Cuestión: [ST II-II, q.188 — The different kinds of religious life](/cuestiones/st-ii-ii-q188.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

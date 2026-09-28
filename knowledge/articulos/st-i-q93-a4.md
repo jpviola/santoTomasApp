@@ -26,5 +26,7 @@ Man is in the image of God chiefly by his intellectual nature, capable of knowin
 - [Imagen de Dios](/conceptos/imagen-de-dios.md)
 - [Persona](/conceptos/persona.md)
 
+Cuestión: [ST I, q.93 — The end or term of the production of man](/cuestiones/st-i-q93.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

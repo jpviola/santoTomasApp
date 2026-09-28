@@ -21,7 +21,7 @@ La virtud es un [hábito](/conceptos/habito.md) operativo bueno: una buena cuali
 
 - **Más amplio:** [Hábito](/conceptos/habito.md)
 - **Más específico:** [Virtudes cardinales](/conceptos/virtudes-cardinales.md), [Virtudes teologales](/conceptos/virtudes-teologales.md)
-- **Relacionado:** [Felicidad](/conceptos/felicidad.md), [Hábito](/conceptos/habito.md), [Prudencia](/conceptos/prudencia.md), [Virtudes cardinales](/conceptos/virtudes-cardinales.md)
+- **Relacionado:** [Felicidad](/conceptos/felicidad.md), [Hábito](/conceptos/habito.md), [Pasiones](/conceptos/pasiones.md), [Prudencia](/conceptos/prudencia.md), [Virtudes cardinales](/conceptos/virtudes-cardinales.md)
 - **Área:** [Ética](/areas/etica.md)
 
 # Dónde lo trata Tomás
@@ -33,6 +33,25 @@ La virtud es un [hábito](/conceptos/habito.md) operativo bueno: una buena cuali
 - [ST I-II, q.64, a.1](/articulos/st-i-ii-q64-a1.md) — Whether moral virtues observe the mean
 - [ST I-II, q.65, a.1](/articulos/st-i-ii-q65-a1.md) — Whether the moral virtues are connected with one another
 - [ST II-II, q.23, a.8](/articulos/st-ii-ii-q23-a8.md) — Whether charity is the form of the virtues
+
+# Cuestiones de la Summa
+
+- [ST I-II, q.55](/cuestiones/st-i-ii-q55.md) — The virtues, as to their essence
+- [ST I-II, q.56](/cuestiones/st-i-ii-q56.md) — The subject of virtue
+- [ST I-II, q.57](/cuestiones/st-i-ii-q57.md) — The intellectual virtues
+- [ST I-II, q.58](/cuestiones/st-i-ii-q58.md) — The difference between moral and intellectual virtues
+- [ST I-II, q.59](/cuestiones/st-i-ii-q59.md) — Moral virtue in relation to the passions
+- [ST I-II, q.60](/cuestiones/st-i-ii-q60.md) — How the moral virtues differ from one another
+- [ST I-II, q.61](/cuestiones/st-i-ii-q61.md) — The cardinal virtues
+- [ST I-II, q.62](/cuestiones/st-i-ii-q62.md) — The theological virtues
+- [ST I-II, q.63](/cuestiones/st-i-ii-q63.md) — The cause of virtues
+- [ST I-II, q.64](/cuestiones/st-i-ii-q64.md) — The mean of virtue
+- [ST I-II, q.65](/cuestiones/st-i-ii-q65.md) — The connection of virtues
+- [ST I-II, q.66](/cuestiones/st-i-ii-q66.md) — Equality among the virtues
+- [ST I-II, q.67](/cuestiones/st-i-ii-q67.md) — The duration of virtues after this life
+- [ST I-II, q.68](/cuestiones/st-i-ii-q68.md) — The gifts
+- [ST I-II, q.69](/cuestiones/st-i-ii-q69.md) — The beatitudes
+- [ST I-II, q.70](/cuestiones/st-i-ii-q70.md) — The fruits of the Holy Ghost
 
 # Autores
 

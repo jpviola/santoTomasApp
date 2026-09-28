@@ -26,4 +26,10 @@ Nadie se basta solo para vivir bien, y toda multitud necesita un principio que l
 
 - [ST I, q.96, a.4](/articulos/st-i-q96-a4.md) — Whether in the state of innocence man would have been master over man
 - [De regno, I, c.1](/articulos/dr-i-c1.md) — On kingship, book I, chapter 1
+
+# Cuestiones de la Summa
+
+- [ST I, q.96](/cuestiones/st-i-q96.md) — The mastership belonging to man in the state of innocence
+- [ST II-II, q.104](/cuestiones/st-ii-ii-q104.md) — Obedience
+- [ST II-II, q.105](/cuestiones/st-ii-ii-q105.md) — Disobedience
 <!-- okf:generated:end -->

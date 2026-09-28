@@ -27,5 +27,7 @@ Man is not his soul alone but a composite of soul and body, because sensing, whi
 - [Materia y forma](/conceptos/hilemorfismo.md)
 - [Persona](/conceptos/persona.md)
 
+Cuestión: [ST I, q.75 — Man who is composed of a spiritual and a corporeal substance: and in the first place, concerning what belongs to the essence of the soul](/cuestiones/st-i-q75.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

@@ -26,5 +26,7 @@ Every lie is a sin, because words are naturally signs of what is in the mind, an
 - [Verdad](/conceptos/verdad.md)
 - [Acto humano y moralidad](/conceptos/acto-humano.md)
 
+Cuestión: [ST II-II, q.110 — The vices opposed to truth, and first of lying](/cuestiones/st-ii-ii-q110.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

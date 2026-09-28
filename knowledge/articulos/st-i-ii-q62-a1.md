@@ -27,5 +27,7 @@ Because man is ordered to a supernatural happiness exceeding his nature, God inf
 - [Virtudes teologales](/conceptos/virtudes-teologales.md)
 - [Gracia](/conceptos/gracia.md)
 
+Cuestión: [ST I-II, q.62 — The theological virtues](/cuestiones/st-i-ii-q62.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

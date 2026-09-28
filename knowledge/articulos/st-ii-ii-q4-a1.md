@@ -27,5 +27,7 @@ Aquinas defends Hebrews 11:1 and restates it: faith is a habit of the mind where
 - [Intelecto](/conceptos/intelecto.md)
 - [Voluntad](/conceptos/voluntad.md)
 
+Cuestión: [ST II-II, q.4 — The virtue itself of faith](/cuestiones/st-ii-ii-q4.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

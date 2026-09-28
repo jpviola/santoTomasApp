@@ -26,5 +26,7 @@ In the state of fallen nature man can, by his natural powers, do some particular
 - [Gracia](/conceptos/gracia.md)
 - [Pecado](/conceptos/pecado.md)
 
+Cuestión: [ST I-II, q.109 — The necessity of grace](/cuestiones/st-i-ii-q109.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

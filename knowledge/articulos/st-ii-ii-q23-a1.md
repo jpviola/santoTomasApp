@@ -27,5 +27,7 @@ Charity is the friendship of man for God, founded on God's communication of his 
 - [Amor](/conceptos/amor.md)
 - [Virtudes teologales](/conceptos/virtudes-teologales.md)
 
+Cuestión: [ST II-II, q.23 — Charity, considered in itself](/cuestiones/st-ii-ii-q23.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

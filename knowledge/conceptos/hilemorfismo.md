@@ -29,6 +29,11 @@ El hilemorfismo aplica [acto y potencia](/conceptos/acto-y-potencia.md) a los cu
 - [ST I, q.75, a.4](/articulos/st-i-q75-a4.md) — Whether the soul is man
 - [ST I, q.76, a.1](/articulos/st-i-q76-a1.md) — Whether the intellectual principle is united to the body as its form
 
+# Cuestiones de la Summa
+
+- [ST I, q.75](/cuestiones/st-i-q75.md) — Man who is composed of a spiritual and a corporeal substance: and in the first place, concerning what belongs to the essence of the soul
+- [ST I, q.76](/cuestiones/st-i-q76.md) — The union of body and soul
+
 # Autores
 
 - [Aristóteles](/autores/aristoteles.md)

@@ -27,5 +27,7 @@ Because the divine will is supremely efficacious, not only do the things God wil
 - [Voluntad](/conceptos/voluntad.md)
 - [Providencia](/conceptos/providencia.md)
 
+Cuestión: [ST I, q.19 — The will of God](/cuestiones/st-i-q19.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

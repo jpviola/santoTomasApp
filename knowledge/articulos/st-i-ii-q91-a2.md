@@ -26,5 +26,7 @@ The rational creature is subject to divine providence in a more excellent way, b
 - [Ley natural](/conceptos/ley-natural.md)
 - [Ley eterna](/conceptos/ley-eterna.md)
 
+Cuestión: [ST I-II, q.91 — The various kinds of law](/cuestiones/st-i-ii-q91.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

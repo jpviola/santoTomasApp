@@ -21,7 +21,7 @@ El intelecto es una potencia del [alma](/conceptos/alma.md) que conoce la natura
 
 - **Más amplio:** [Alma](/conceptos/alma.md)
 - **Más específico:** [Razón](/conceptos/razon.md)
-- **Relacionado:** [Abstracción](/conceptos/abstraccion.md), [Alma](/conceptos/alma.md), [Unidad del intelecto (averroísmo)](/conceptos/averroismo.md), [Conocimiento](/conceptos/conocimiento.md), [Imagen de Dios](/conceptos/imagen-de-dios.md), [Inmortalidad del alma](/conceptos/inmortalidad.md), [Persona](/conceptos/persona.md), [Razón](/conceptos/razon.md), [Verdad](/conceptos/verdad.md), [Voluntad](/conceptos/voluntad.md)
+- **Relacionado:** [Abstracción](/conceptos/abstraccion.md), [Alma](/conceptos/alma.md), [Ángeles (sustancias separadas)](/conceptos/angeles.md), [Unidad del intelecto (averroísmo)](/conceptos/averroismo.md), [Conocimiento](/conceptos/conocimiento.md), [Imagen de Dios](/conceptos/imagen-de-dios.md), [Inmortalidad del alma](/conceptos/inmortalidad.md), [Persona](/conceptos/persona.md), [Razón](/conceptos/razon.md), [Verdad](/conceptos/verdad.md), [Voluntad](/conceptos/voluntad.md)
 - **Área:** [La persona humana](/areas/antropologia.md)
 
 # Dónde lo trata Tomás
@@ -38,6 +38,15 @@ El intelecto es una potencia del [alma](/conceptos/alma.md) que conoce la natura
 - [ST I, q.85, a.2](/articulos/st-i-q85-a2.md) — Whether the intelligible species abstracted from phantasms are related to our intellect as that which is understood
 - [ST I-II, q.3, a.8](/articulos/st-i-ii-q3-a8.md) — Whether man's happiness consists in the vision of the divine essence
 - [ST II-II, q.4, a.1](/articulos/st-ii-ii-q4-a1.md) — Whether this is a fitting definition of faith: faith is the substance of things hoped for, the evidence of things that appear not
+
+# Cuestiones de la Summa
+
+- [ST I, q.14](/cuestiones/st-i-q14.md) — God's knowledge
+- [ST I, q.15](/cuestiones/st-i-q15.md) — Ideas
+- [ST I, q.16](/cuestiones/st-i-q16.md) — Truth
+- [ST I, q.17](/cuestiones/st-i-q17.md) — Falsity
+- [ST I, q.18](/cuestiones/st-i-q18.md) — The life of God
+- [ST I, q.79](/cuestiones/st-i-q79.md) — The intellectual powers
 
 # Autores
 

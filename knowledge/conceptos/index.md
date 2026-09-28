@@ -6,6 +6,7 @@
 * [Alma](alma.md) - Primer principio de la vida; en el hombre, forma sustancial del cuerpo y subsistente.
 * [Amor](amor.md) - Querer el bien para alguien; el primer movimiento de la voluntad.
 * [Analogía](analogia.md) - Modo de predicar un término de varias cosas según una proporción: ni unívoco ni equívoco.
+* [Ángeles (sustancias separadas)](angeles.md) - Criaturas puramente intelectuales, sin materia, compuestas de esencia y ser.
 * [Autoridad política](autoridad-politica.md) - El hombre es animal social y político; la autoridad es natural, no solo fruto del pecado.
 * [Unidad del intelecto (averroísmo)](averroismo.md) - La tesis de un único intelecto posible para toda la humanidad, que Tomás refutó.
 * [Bien](bien.md) - El ente en cuanto deseable; todo ente, en cuanto es, es bueno.
@@ -37,6 +38,7 @@
 * [Intelecto](intelecto.md) - Potencia inmaterial del alma que capta lo universal y juzga sobre la verdad.
 * [Justicia](justicia.md) - Voluntad constante y perpetua de dar a cada uno su derecho.
 * [Ley](ley.md) - Ordenación de la razón al bien común, promulgada por quien tiene a su cargo la comunidad.
+* [Ley divina](ley-divina.md) - La ley revelada (antigua y nueva), necesaria porque el hombre está ordenado a un fin sobrenatural.
 * [Ley eterna](ley-eterna.md) - El plan de la sabiduría divina que gobierna todo el universo.
 * [Ley humana](ley-humana.md) - Deriva de la ley natural por conclusión o determinación; una ley injusta no es propiamente ley.
 * [Ley natural](ley-natural.md) - Participación de la ley eterna en la criatura racional; su primer precepto es hacer el bien y evitar el mal.
@@ -44,6 +46,7 @@
 * [Mal](mal.md) - La privación de un bien debido; no es una naturaleza ni una sustancia.
 * [Omnipotencia](omnipotencia.md) - Dios puede todo lo posible; lo contradictorio no es algo que no pueda hacer, sino nada.
 * [Participación](participacion.md) - Tener de modo parcial y recibido lo que otro es plenamente.
+* [Pasiones](pasiones.md) - Movimientos del apetito sensitivo, acompañados de un cambio corporal; buenos o malos según la razón.
 * [Pecado](pecado.md) - Acto humano desordenado, contrario a la razón y a la ley eterna.
 * [Persona](persona.md) - Sustancia individual de naturaleza racional (Boecio); dueña de sus actos.
 * [Preámbulos de la fe](preambulos-de-la-fe.md) - Verdades demostrables por la razón que la fe presupone, como la existencia de Dios.
@@ -51,11 +54,13 @@
 * [Providencia](providencia.md) - El plan de Dios que ordena todas las cosas a su fin, sin suprimir las causas segundas ni la libertad.
 * [Prudencia](prudencia.md) - Recta razón en el obrar: aplica los principios morales al caso concreto.
 * [Razón](razon.md) - El intelecto en cuanto discurre de lo conocido a lo desconocido; especulativa y práctica.
+* [Sacramentos](sacramentos.md) - Signos de una realidad sagrada en cuanto santifica a los hombres; son siete y causan la gracia instrumentalmente.
 * [Simplicidad divina](simplicidad-divina.md) - Dios no tiene composición alguna: ni materia y forma, ni esencia y ser, ni sustancia y accidentes.
 * [Sindéresis](sinderesis.md) - Hábito natural por el que conocemos los primeros principios de la razón práctica.
 * [Sustancia y accidente](sustancia-y-accidente.md) - La sustancia existe en sí; los accidentes (cantidad, cualidad, relación…) existen en otro.
 * [Teología (sacra doctrina)](teologia.md) - La enseñanza fundada en la revelación, que argumenta desde los artículos de fe como principios.
 * [Trascendentales](trascendentales.md) - Nociones que acompañan a todo ente: cosa, uno, algo, verdadero y bueno.
+* [Trinidad](trinidad.md) - Un solo Dios en tres personas: misterio revelado que la razón no puede demostrar.
 * [Verdad](verdad.md) - La adecuación del intelecto y la cosa; está propiamente en el intelecto que juzga.
 * [Vida contemplativa y activa](vida-contemplativa.md) - La vida contemplativa es mejor, pero es aún mejor contemplar y comunicar lo contemplado.
 * [Virtud](virtud.md) - Hábito operativo bueno; la virtud moral es un término medio fijado por la razón.

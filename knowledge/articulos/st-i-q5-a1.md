@@ -28,5 +28,7 @@ Goodness and being are the same in reality and differ only in idea. Something is
 - [Trascendentales](/conceptos/trascendentales.md)
 - [Acto de ser (esse)](/conceptos/esse.md)
 
+Cuestión: [ST I, q.5 — Goodness in general](/cuestiones/st-i-q5.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

@@ -28,5 +28,7 @@ The intelligible species is not what is understood but that by which the intelle
 - [Verdad](/conceptos/verdad.md)
 - [Abstracción](/conceptos/abstraccion.md)
 
+Cuestión: [ST I, q.85 — The mode and order of understanding](/cuestiones/st-i-q85.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

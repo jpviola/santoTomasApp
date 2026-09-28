@@ -26,5 +26,7 @@ Because the natures of material things are only potentially intelligible, there 
 - [Intelecto](/conceptos/intelecto.md)
 - [Abstracción](/conceptos/abstraccion.md)
 
+Cuestión: [ST I, q.79 — The intellectual powers](/cuestiones/st-i-q79.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

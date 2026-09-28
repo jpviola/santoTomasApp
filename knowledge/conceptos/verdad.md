@@ -29,4 +29,14 @@ La verdad es la adecuación del intelecto y la cosa (*adaequatio rei et intellec
 - [ST I, q.85, a.2](/articulos/st-i-q85-a2.md) — Whether the intelligible species abstracted from phantasms are related to our intellect as that which is understood
 - [ST II-II, q.110, a.3](/articulos/st-ii-ii-q110-a3.md) — Whether every lie is a sin
 - [De veritate, q.1, a.1](/articulos/dv-q1-a1.md) — What is truth
+
+# Cuestiones de la Summa
+
+- [ST I, q.16](/cuestiones/st-i-q16.md) — Truth
+- [ST I, q.17](/cuestiones/st-i-q17.md) — Falsity
+- [ST II-II, q.109](/cuestiones/st-ii-ii-q109.md) — Truth
+- [ST II-II, q.110](/cuestiones/st-ii-ii-q110.md) — The vices opposed to truth, and first of lying
+- [ST II-II, q.111](/cuestiones/st-ii-ii-q111.md) — Dissimulation and hypocrisy
+- [ST II-II, q.112](/cuestiones/st-ii-ii-q112.md) — Boasting
+- [ST II-II, q.113](/cuestiones/st-ii-ii-q113.md) — Irony
 <!-- okf:generated:end -->

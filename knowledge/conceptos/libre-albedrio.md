@@ -27,4 +27,9 @@ El hombre es libre porque obra por un juicio de la [razón](/conceptos/razon.md)
 
 - [ST I, q.83, a.1](/articulos/st-i-q83-a1.md) — Whether man has free will
 - [ST II-II, q.10, a.8](/articulos/st-ii-ii-q10-a8.md) — Whether unbelievers ought to be compelled to the faith
+
+# Cuestiones de la Summa
+
+- [ST I, q.83](/cuestiones/st-i-q83.md) — Free-will
+- [ST I-II, q.13](/cuestiones/st-i-ii-q13.md) — Choice, which is an act of the will with regard to the means
 <!-- okf:generated:end -->

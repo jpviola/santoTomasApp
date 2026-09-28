@@ -27,5 +27,7 @@ It is fitting that truths about God which reason can demonstrate are also propos
 - [Fe](/conceptos/fe.md)
 - [Preámbulos de la fe](/conceptos/preambulos-de-la-fe.md)
 
+Cuestión: [ST II-II, q.2 — The act of faith](/cuestiones/st-ii-ii-q2.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

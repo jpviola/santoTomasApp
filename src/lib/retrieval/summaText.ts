@@ -144,6 +144,9 @@ export function htmlToPlainText(html: string): string {
       .replace(/<[^>]+>/g, " "),
   )
     .replace(/\s+/g, " ")
+    // Las etiquetas inline (<a>, <em>) dejan espacios antes de la puntuación: «necessity ,».
+    .replace(/\s+([.,;:?!)\]])/g, "$1")
+    .replace(/([(\[])\s+/g, "$1")
     .trim();
 }
 

@@ -26,5 +26,7 @@ In cases of urgent and evident necessity, where there is no other remedy, a pers
 - [Propiedad](/conceptos/propiedad.md)
 - [Justicia](/conceptos/justicia.md)
 
+Cuestión: [ST II-II, q.66 — Theft and robbery](/cuestiones/st-ii-ii-q66.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

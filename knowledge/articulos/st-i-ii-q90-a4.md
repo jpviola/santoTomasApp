@@ -26,5 +26,7 @@ Gathering the preceding articles, Aquinas defines law as an ordinance of reason 
 - [Ley](/conceptos/ley.md)
 - [Bien común](/conceptos/bien-comun.md)
 
+Cuestión: [ST I-II, q.90 — The essence of law](/cuestiones/st-i-ii-q90.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

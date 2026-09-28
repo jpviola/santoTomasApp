@@ -26,5 +26,7 @@ Aquinas accepts the jurists' definition of justice as the perpetual and constant
 - [Justicia](/conceptos/justicia.md)
 - [Derecho (ius)](/conceptos/derecho.md)
 
+Cuestión: [ST II-II, q.58 — Justice](/cuestiones/st-ii-ii-q58.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

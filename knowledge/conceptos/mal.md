@@ -27,6 +27,11 @@ El mal no es un ente sino la ausencia de un bien que debería estar, como la ceg
 - [ST I, q.22, a.2](/articulos/st-i-q22-a2.md) — Whether everything is subject to the providence of God
 - [ST I, q.48, a.1](/articulos/st-i-q48-a1.md) — Whether evil is a nature
 
+# Cuestiones de la Summa
+
+- [ST I, q.48](/cuestiones/st-i-q48.md) — The distinction of things in particular
+- [ST I, q.49](/cuestiones/st-i-q49.md) — The cause of evil
+
 # Autores
 
 - [Agustín de Hipona](/autores/agustin.md)

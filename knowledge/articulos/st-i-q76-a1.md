@@ -27,5 +27,7 @@ The intellectual principle, which we call mind or intellect, is united to the bo
 - [Materia y forma](/conceptos/hilemorfismo.md)
 - [Alma](/conceptos/alma.md)
 
+Cuestión: [ST I, q.76 — The union of body and soul](/cuestiones/st-i-q76.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

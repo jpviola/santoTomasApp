@@ -26,5 +26,7 @@ The intellectual principle has an operation of its own in which the body does no
 - [Alma](/conceptos/alma.md)
 - [Intelecto](/conceptos/intelecto.md)
 
+Cuestión: [ST I, q.75 — Man who is composed of a spiritual and a corporeal substance: and in the first place, concerning what belongs to the essence of the soul](/cuestiones/st-i-q75.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

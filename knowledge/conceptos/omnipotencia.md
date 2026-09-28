@@ -26,4 +26,8 @@ Dios puede hacer todo lo que es absolutamente posible, es decir, lo que no impli
 # Dónde lo trata Tomás
 
 - [ST I, q.25, a.3](/articulos/st-i-q25-a3.md) — Whether God is omnipotent
+
+# Cuestiones de la Summa
+
+- [ST I, q.25](/cuestiones/st-i-q25.md) — The power of God
 <!-- okf:generated:end -->

@@ -26,5 +26,7 @@ The voluntary is what proceeds from an intrinsic principle together with knowled
 - [Acto humano y moralidad](/conceptos/acto-humano.md)
 - [Voluntad](/conceptos/voluntad.md)
 
+Cuestión: [ST I-II, q.6 — The voluntary and the involuntary](/cuestiones/st-i-ii-q6.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

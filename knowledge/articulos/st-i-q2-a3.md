@@ -28,5 +28,7 @@ The five ways proceed from motion, efficient causality, contingency, gradation o
 - [Acto y potencia](/conceptos/acto-y-potencia.md)
 - [Las cinco vías](/conceptos/cinco-vias.md)
 
+Cuestión: [ST I, q.2 — The existence of God](/cuestiones/st-i-q2.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

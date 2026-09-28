@@ -26,5 +26,7 @@ There are four cardinal virtues: prudence perfects reason itself; justice rectif
 - [Virtud](/conceptos/virtud.md)
 - [Virtudes cardinales](/conceptos/virtudes-cardinales.md)
 
+Cuestión: [ST I-II, q.61 — The cardinal virtues](/cuestiones/st-i-ii-q61.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

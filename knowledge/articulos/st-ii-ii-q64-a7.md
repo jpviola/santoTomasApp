@@ -26,5 +26,7 @@ One act can have two effects, only one of which is intended. Moral acts take the
 - [Doble efecto](/conceptos/doble-efecto.md)
 - [Acto humano y moralidad](/conceptos/acto-humano.md)
 
+Cuestión: [ST II-II, q.64 — Murder](/cuestiones/st-ii-ii-q64.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

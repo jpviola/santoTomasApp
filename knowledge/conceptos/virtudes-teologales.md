@@ -28,4 +28,14 @@ Como el hombre está ordenado a una [felicidad](/conceptos/felicidad.md) sobrena
 
 - [ST I-II, q.62, a.1](/articulos/st-i-ii-q62-a1.md) — Whether there are any theological virtues
 - [ST II-II, q.23, a.1](/articulos/st-ii-ii-q23-a1.md) — Whether charity is friendship
+
+# Cuestiones de la Summa
+
+- [ST I-II, q.62](/cuestiones/st-i-ii-q62.md) — The theological virtues
+- [ST II-II, q.17](/cuestiones/st-ii-ii-q17.md) — Hope, considered in itself
+- [ST II-II, q.18](/cuestiones/st-ii-ii-q18.md) — The subject of hope
+- [ST II-II, q.19](/cuestiones/st-ii-ii-q19.md) — The gift of fear
+- [ST II-II, q.20](/cuestiones/st-ii-ii-q20.md) — Despair
+- [ST II-II, q.21](/cuestiones/st-ii-ii-q21.md) — Presumption
+- [ST II-II, q.22](/cuestiones/st-ii-ii-q22.md) — The precepts relating to hope and fear
 <!-- okf:generated:end -->

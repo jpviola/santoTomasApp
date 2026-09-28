@@ -28,4 +28,8 @@ Son verdades sobre Dios accesibles a la razón, como que existe o que es uno, qu
 - [ST I, q.1, a.1](/articulos/st-i-q1-a1.md) — Whether, besides philosophy, any further doctrine is required
 - [ST I, q.2, a.2](/articulos/st-i-q2-a2.md) — Whether it can be demonstrated that God exists
 - [ST II-II, q.2, a.4](/articulos/st-ii-ii-q2-a4.md) — Whether it is necessary to believe those things which can be proved by natural reason
+
+# Cuestiones de la Summa
+
+- [ST I, q.2](/cuestiones/st-i-q2.md) — The existence of God
 <!-- okf:generated:end -->

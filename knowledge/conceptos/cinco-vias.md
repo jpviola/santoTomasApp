@@ -28,4 +28,8 @@ En ST I, q.2, a.3 Tomás propone cinco vías: desde el movimiento, la causalidad
 - [ST I, q.2, a.1](/articulos/st-i-q2-a1.md) — Whether the existence of God is self-evident
 - [ST I, q.2, a.2](/articulos/st-i-q2-a2.md) — Whether it can be demonstrated that God exists
 - [ST I, q.2, a.3](/articulos/st-i-q2-a3.md) — Whether God exists (the five ways)
+
+# Cuestiones de la Summa
+
+- [ST I, q.2](/cuestiones/st-i-q2.md) — The existence of God
 <!-- okf:generated:end -->

@@ -26,5 +26,7 @@ Unbelievers who have never received the faith, such as pagans and Jews, must in 
 - [Fe](/conceptos/fe.md)
 - [Libre albedrío](/conceptos/libre-albedrio.md)
 
+Cuestión: [ST II-II, q.10 — Unbelief in general](/cuestiones/st-ii-ii-q10.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

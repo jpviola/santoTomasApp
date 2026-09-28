@@ -27,5 +27,7 @@ Names such as 'good' or 'wise' are said of God and creatures neither univocally 
 - [Analogía](/conceptos/analogia.md)
 - [Dios](/conceptos/dios.md)
 
+Cuestión: [ST I, q.13 — The names of God](/cuestiones/st-i-q13.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

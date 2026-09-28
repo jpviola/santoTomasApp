@@ -32,6 +32,12 @@ La razón natural y la [fe](/conceptos/fe.md) son dos caminos hacia una única v
 - [ST II-II, q.2, a.4](/articulos/st-ii-ii-q2-a4.md) — Whether it is necessary to believe those things which can be proved by natural reason
 - [SCG I, c.7](/articulos/scg-i-c7.md) — That the truth of reason is not opposed to the truth of the Christian faith
 
+# Cuestiones de la Summa
+
+- [ST I, q.1](/cuestiones/st-i-q1.md) — The nature and extent of sacred doctrine
+- [ST II-II, q.1](/cuestiones/st-ii-ii-q1.md) — Faith
+- [ST II-II, q.2](/cuestiones/st-ii-ii-q2.md) — The act of faith
+
 # Autores
 
 - [Alberto Magno](/autores/alberto-magno.md)

@@ -27,5 +27,7 @@ Whatever is found in something by participation must be caused by that to which 
 - [Participación](/conceptos/participacion.md)
 - [Acto de ser (esse)](/conceptos/esse.md)
 
+Cuestión: [ST I, q.44 — The procession of creatures from God, and of the first cause of all things](/cuestiones/st-i-q44.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

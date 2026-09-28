@@ -63,8 +63,8 @@ if (embeddings.model) {
   if (outdated.length) console.warn(`aviso: ${outdated.length} embeddings desactualizados; corré npm run knowledge:embed`);
 }
 
-const { articles, concepts, areas, authors, works } = result.bundle;
-const summary = `${articles.length} textos, ${concepts.length} conceptos, ${areas.length} áreas, ${authors.length} autores, ${works.length} obras`;
+const { articles, questions, concepts, areas, authors, works } = result.bundle;
+const summary = `${articles.length} textos, ${questions.length} cuestiones, ${concepts.length} conceptos, ${areas.length} áreas, ${authors.length} autores, ${works.length} obras`;
 
 if (checkOnly) {
   if (stale.length) {

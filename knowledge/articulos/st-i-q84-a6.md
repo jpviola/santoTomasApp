@@ -26,5 +26,7 @@ Intellectual knowledge takes its beginning from the senses. Against Plato and ag
 - [Conocimiento](/conceptos/conocimiento.md)
 - [Intelecto](/conceptos/intelecto.md)
 
+Cuestión: [ST I, q.84 — How the soul while united to the body understands corporeal things beneath it](/cuestiones/st-i-q84.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

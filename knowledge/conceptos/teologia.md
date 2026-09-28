@@ -19,12 +19,16 @@ La *sacra doctrina* es necesaria porque el hombre está ordenado a un fin que ex
 <!-- okf:generated:start -->
 # Relaciones
 
-- **Relacionado:** [Encarnación](/conceptos/encarnacion.md), [Fe](/conceptos/fe.md), [Fe y razón](/conceptos/fe-y-razon.md)
+- **Relacionado:** [Encarnación](/conceptos/encarnacion.md), [Fe](/conceptos/fe.md), [Fe y razón](/conceptos/fe-y-razon.md), [Trinidad](/conceptos/trinidad.md)
 - **Área:** [Fe y teología](/areas/fe-y-teologia.md)
 
 # Dónde lo trata Tomás
 
 - [ST I, q.1, a.1](/articulos/st-i-q1-a1.md) — Whether, besides philosophy, any further doctrine is required
+
+# Cuestiones de la Summa
+
+- [ST I, q.1](/cuestiones/st-i-q1.md) — The nature and extent of sacred doctrine
 
 # Autores
 

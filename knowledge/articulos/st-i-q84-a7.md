@@ -27,5 +27,7 @@ In the present life the intellect cannot actually understand anything without tu
 - [Intelecto](/conceptos/intelecto.md)
 - [Abstracción](/conceptos/abstraccion.md)
 
+Cuestión: [ST I, q.84 — How the soul while united to the body understands corporeal things beneath it](/cuestiones/st-i-q84.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

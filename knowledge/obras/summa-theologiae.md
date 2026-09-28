@@ -10,89 +10,529 @@ generated: { by: "claude-code/claude-opus-5-5", at: "2026-09-27T19:30:00Z" }
 Tres partes: I (Dios y la creación), I-II y II-II (el hombre y su camino a Dios: fin, actos, virtudes, ley, gracia), III (Cristo y los sacramentos). Quedó inconclusa en III, q.90; los discípulos la completaron con un Suplemento. Se cita por parte, cuestión y artículo: ST I-II, q.94, a.2.
 
 <!-- okf:generated:start -->
-# Textos en el bundle
+# Cuestiones
 
-- [ST I, q.1, a.1](/articulos/st-i-q1-a1.md) — Whether, besides philosophy, any further doctrine is required
-- [ST I, q.1, a.8](/articulos/st-i-q1-a8.md) — Whether sacred doctrine is a matter of argument
-- [ST I, q.2, a.1](/articulos/st-i-q2-a1.md) — Whether the existence of God is self-evident
-- [ST I, q.2, a.2](/articulos/st-i-q2-a2.md) — Whether it can be demonstrated that God exists
-- [ST I, q.2, a.3](/articulos/st-i-q2-a3.md) — Whether God exists (the five ways)
-- [ST I, q.3, a.4](/articulos/st-i-q3-a4.md) — Whether essence and existence are the same in God
-- [ST I, q.3, a.7](/articulos/st-i-q3-a7.md) — Whether God is altogether simple
-- [ST I, q.5, a.1](/articulos/st-i-q5-a1.md) — Whether goodness differs really from being
-- [ST I, q.12, a.1](/articulos/st-i-q12-a1.md) — Whether any created intellect can see the essence of God
-- [ST I, q.12, a.12](/articulos/st-i-q12-a12.md) — Whether God can be known in this life by natural reason
-- [ST I, q.13, a.5](/articulos/st-i-q13-a5.md) — Whether what is said of God and of creatures is univocally predicated of them
-- [ST I, q.14, a.1](/articulos/st-i-q14-a1.md) — Whether there is knowledge in God
-- [ST I, q.16, a.1](/articulos/st-i-q16-a1.md) — Whether truth resides only in the intellect
-- [ST I, q.19, a.8](/articulos/st-i-q19-a8.md) — Whether the will of God imposes necessity on the things willed
-- [ST I, q.20, a.2](/articulos/st-i-q20-a2.md) — Whether God loves all things
-- [ST I, q.22, a.2](/articulos/st-i-q22-a2.md) — Whether everything is subject to the providence of God
-- [ST I, q.25, a.3](/articulos/st-i-q25-a3.md) — Whether God is omnipotent
-- [ST I, q.29, a.1](/articulos/st-i-q29-a1.md) — The definition of person
-- [ST I, q.44, a.1](/articulos/st-i-q44-a1.md) — Whether it is necessary that every being be created by God
-- [ST I, q.46, a.2](/articulos/st-i-q46-a2.md) — Whether it is an article of faith that the world began
-- [ST I, q.48, a.1](/articulos/st-i-q48-a1.md) — Whether evil is a nature
-- [ST I, q.75, a.1](/articulos/st-i-q75-a1.md) — Whether the soul is a body
-- [ST I, q.75, a.2](/articulos/st-i-q75-a2.md) — Whether the human soul is something subsistent
-- [ST I, q.75, a.4](/articulos/st-i-q75-a4.md) — Whether the soul is man
-- [ST I, q.75, a.6](/articulos/st-i-q75-a6.md) — Whether the human soul is incorruptible
-- [ST I, q.76, a.1](/articulos/st-i-q76-a1.md) — Whether the intellectual principle is united to the body as its form
-- [ST I, q.76, a.2](/articulos/st-i-q76-a2.md) — Whether the intellectual principle is multiplied according to the number of bodies
-- [ST I, q.79, a.1](/articulos/st-i-q79-a1.md) — Whether the intellect is a power of the soul
-- [ST I, q.79, a.3](/articulos/st-i-q79-a3.md) — Whether there is an agent intellect
-- [ST I, q.79, a.12](/articulos/st-i-q79-a12.md) — Whether synderesis is a special power of the soul distinct from the others
-- [ST I, q.79, a.13](/articulos/st-i-q79-a13.md) — Whether conscience is a power
-- [ST I, q.82, a.1](/articulos/st-i-q82-a1.md) — Whether the will desires something of necessity
-- [ST I, q.83, a.1](/articulos/st-i-q83-a1.md) — Whether man has free will
-- [ST I, q.84, a.6](/articulos/st-i-q84-a6.md) — Whether intellectual knowledge is derived from sensible things
-- [ST I, q.84, a.7](/articulos/st-i-q84-a7.md) — Whether the intellect can understand without turning to phantasms
-- [ST I, q.85, a.2](/articulos/st-i-q85-a2.md) — Whether the intelligible species abstracted from phantasms are related to our intellect as that which is understood
-- [ST I, q.93, a.4](/articulos/st-i-q93-a4.md) — Whether the image of God is found in every man
-- [ST I, q.96, a.4](/articulos/st-i-q96-a4.md) — Whether in the state of innocence man would have been master over man
-- [ST I-II, q.1, a.1](/articulos/st-i-ii-q1-a1.md) — Whether it belongs to man to act for an end
-- [ST I-II, q.1, a.4](/articulos/st-i-ii-q1-a4.md) — Whether there is a last end of human life
-- [ST I-II, q.2, a.8](/articulos/st-i-ii-q2-a8.md) — Whether any created good constitutes man's happiness
-- [ST I-II, q.3, a.8](/articulos/st-i-ii-q3-a8.md) — Whether man's happiness consists in the vision of the divine essence
-- [ST I-II, q.5, a.3](/articulos/st-i-ii-q5-a3.md) — Whether one can be happy in this life
-- [ST I-II, q.5, a.5](/articulos/st-i-ii-q5-a5.md) — Whether man can attain happiness by his natural powers
-- [ST I-II, q.6, a.1](/articulos/st-i-ii-q6-a1.md) — Whether there is anything voluntary in human acts
-- [ST I-II, q.18, a.4](/articulos/st-i-ii-q18-a4.md) — Whether the goodness or malice of a human action depends on the end
-- [ST I-II, q.19, a.5](/articulos/st-i-ii-q19-a5.md) — Whether the will is evil when it is at variance with erring reason
-- [ST I-II, q.19, a.6](/articulos/st-i-ii-q19-a6.md) — Whether the will is good when it abides by erring reason
-- [ST I-II, q.26, a.4](/articulos/st-i-ii-q26-a4.md) — Whether love is properly divided into love of friendship and love of concupiscence
-- [ST I-II, q.55, a.4](/articulos/st-i-ii-q55-a4.md) — Whether virtue is suitably defined
-- [ST I-II, q.57, a.4](/articulos/st-i-ii-q57-a4.md) — Whether prudence is a distinct virtue from art
-- [ST I-II, q.61, a.2](/articulos/st-i-ii-q61-a2.md) — Whether there are four cardinal virtues
-- [ST I-II, q.62, a.1](/articulos/st-i-ii-q62-a1.md) — Whether there are any theological virtues
-- [ST I-II, q.64, a.1](/articulos/st-i-ii-q64-a1.md) — Whether moral virtues observe the mean
-- [ST I-II, q.65, a.1](/articulos/st-i-ii-q65-a1.md) — Whether the moral virtues are connected with one another
-- [ST I-II, q.90, a.1](/articulos/st-i-ii-q90-a1.md) — Whether law is something pertaining to reason
-- [ST I-II, q.90, a.4](/articulos/st-i-ii-q90-a4.md) — Whether promulgation is essential to a law
-- [ST I-II, q.91, a.1](/articulos/st-i-ii-q91-a1.md) — Whether there is an eternal law
-- [ST I-II, q.91, a.2](/articulos/st-i-ii-q91-a2.md) — Whether there is in us a natural law
-- [ST I-II, q.94, a.2](/articulos/st-i-ii-q94-a2.md) — Whether the natural law contains several precepts, or only one
-- [ST I-II, q.94, a.4](/articulos/st-i-ii-q94-a4.md) — Whether the natural law is the same in all men
-- [ST I-II, q.95, a.2](/articulos/st-i-ii-q95-a2.md) — Whether every human law is derived from the natural law
-- [ST I-II, q.96, a.2](/articulos/st-i-ii-q96-a2.md) — Whether it belongs to human law to repress all vices
-- [ST I-II, q.96, a.4](/articulos/st-i-ii-q96-a4.md) — Whether human law binds a man in conscience
-- [ST I-II, q.109, a.2](/articulos/st-i-ii-q109-a2.md) — Whether man can will and do good without grace
-- [ST II-II, q.2, a.4](/articulos/st-ii-ii-q2-a4.md) — Whether it is necessary to believe those things which can be proved by natural reason
-- [ST II-II, q.4, a.1](/articulos/st-ii-ii-q4-a1.md) — Whether this is a fitting definition of faith: faith is the substance of things hoped for, the evidence of things that appear not
-- [ST II-II, q.10, a.8](/articulos/st-ii-ii-q10-a8.md) — Whether unbelievers ought to be compelled to the faith
-- [ST II-II, q.23, a.1](/articulos/st-ii-ii-q23-a1.md) — Whether charity is friendship
-- [ST II-II, q.23, a.8](/articulos/st-ii-ii-q23-a8.md) — Whether charity is the form of the virtues
-- [ST II-II, q.40, a.1](/articulos/st-ii-ii-q40-a1.md) — Whether it is always sinful to wage war
-- [ST II-II, q.47, a.2](/articulos/st-ii-ii-q47-a2.md) — Whether prudence is in the practical reason alone or also in the speculative reason
-- [ST II-II, q.57, a.1](/articulos/st-ii-ii-q57-a1.md) — Whether right is the object of justice
-- [ST II-II, q.58, a.1](/articulos/st-ii-ii-q58-a1.md) — Whether justice is fittingly defined as the perpetual and constant will to render to each one his right
-- [ST II-II, q.61, a.1](/articulos/st-ii-ii-q61-a1.md) — Whether two species of justice are suitably assigned, namely commutative and distributive
-- [ST II-II, q.64, a.5](/articulos/st-ii-ii-q64-a5.md) — Whether it is lawful to kill oneself
-- [ST II-II, q.64, a.7](/articulos/st-ii-ii-q64-a7.md) — Whether it is lawful to kill a man in self-defense
-- [ST II-II, q.66, a.2](/articulos/st-ii-ii-q66-a2.md) — Whether it is lawful for a man to possess a thing as his own
-- [ST II-II, q.66, a.7](/articulos/st-ii-ii-q66-a7.md) — Whether it is lawful to steal through stress of need
-- [ST II-II, q.110, a.3](/articulos/st-ii-ii-q110-a3.md) — Whether every lie is a sin
-- [ST II-II, q.188, a.6](/articulos/st-ii-ii-q188-a6.md) — Whether a religious order devoted to the contemplative life is more excellent than one given to the active life
-- [ST III, q.1, a.2](/articulos/st-iii-q1-a2.md) — Whether it was necessary for the restoration of the human race that the Word of God should become incarnate
-- [ST III, q.75, a.4](/articulos/st-iii-q75-a4.md) — Whether bread can be converted into the body of Christ
+## Prima pars (I)
+
+- [ST I, q.1](/cuestiones/st-i-q1.md) — The nature and extent of sacred doctrine
+- [ST I, q.2](/cuestiones/st-i-q2.md) — The existence of God
+- [ST I, q.3](/cuestiones/st-i-q3.md) — The simplicity of God
+- [ST I, q.4](/cuestiones/st-i-q4.md) — The perfection of God
+- [ST I, q.5](/cuestiones/st-i-q5.md) — Goodness in general
+- [ST I, q.6](/cuestiones/st-i-q6.md) — The goodness of God
+- [ST I, q.7](/cuestiones/st-i-q7.md) — The infinity of God
+- [ST I, q.8](/cuestiones/st-i-q8.md) — The existence of God in things
+- [ST I, q.9](/cuestiones/st-i-q9.md) — The immutability of God
+- [ST I, q.10](/cuestiones/st-i-q10.md) — The eternity of God
+- [ST I, q.11](/cuestiones/st-i-q11.md) — The unity of God
+- [ST I, q.12](/cuestiones/st-i-q12.md) — How God is known by us
+- [ST I, q.13](/cuestiones/st-i-q13.md) — The names of God
+- [ST I, q.14](/cuestiones/st-i-q14.md) — God's knowledge
+- [ST I, q.15](/cuestiones/st-i-q15.md) — Ideas
+- [ST I, q.16](/cuestiones/st-i-q16.md) — Truth
+- [ST I, q.17](/cuestiones/st-i-q17.md) — Falsity
+- [ST I, q.18](/cuestiones/st-i-q18.md) — The life of God
+- [ST I, q.19](/cuestiones/st-i-q19.md) — The will of God
+- [ST I, q.20](/cuestiones/st-i-q20.md) — God's love
+- [ST I, q.21](/cuestiones/st-i-q21.md) — The justice and mercy of God
+- [ST I, q.22](/cuestiones/st-i-q22.md) — The providence of God
+- [ST I, q.23](/cuestiones/st-i-q23.md) — Predestination
+- [ST I, q.24](/cuestiones/st-i-q24.md) — The book of life
+- [ST I, q.25](/cuestiones/st-i-q25.md) — The power of God
+- [ST I, q.26](/cuestiones/st-i-q26.md) — The divine beatitude
+- [ST I, q.27](/cuestiones/st-i-q27.md) — The procession of the divine persons
+- [ST I, q.28](/cuestiones/st-i-q28.md) — The divine relations
+- [ST I, q.29](/cuestiones/st-i-q29.md) — The divine persons
+- [ST I, q.30](/cuestiones/st-i-q30.md) — The plurality of persons in God
+- [ST I, q.31](/cuestiones/st-i-q31.md) — The unity or plurality in God
+- [ST I, q.32](/cuestiones/st-i-q32.md) — The knowledge of the divine persons
+- [ST I, q.33](/cuestiones/st-i-q33.md) — The person of the Father
+- [ST I, q.34](/cuestiones/st-i-q34.md) — The person of the Son
+- [ST I, q.35](/cuestiones/st-i-q35.md) — The Image
+- [ST I, q.36](/cuestiones/st-i-q36.md) — The person of the Holy Ghost
+- [ST I, q.37](/cuestiones/st-i-q37.md) — The name of the Holy Ghost—Love
+- [ST I, q.38](/cuestiones/st-i-q38.md) — The name of the Holy Ghost, as Gift
+- [ST I, q.39](/cuestiones/st-i-q39.md) — The persons in relation to the essence
+- [ST I, q.40](/cuestiones/st-i-q40.md) — The persons as compared to the relations or properties
+- [ST I, q.41](/cuestiones/st-i-q41.md) — The persons in reference to the notional acts
+- [ST I, q.42](/cuestiones/st-i-q42.md) — Equality and likeness among the divine persons
+- [ST I, q.43](/cuestiones/st-i-q43.md) — The mission of the divine persons
+- [ST I, q.44](/cuestiones/st-i-q44.md) — The procession of creatures from God, and of the first cause of all things
+- [ST I, q.45](/cuestiones/st-i-q45.md) — The mode of emanation of things from the first principle
+- [ST I, q.46](/cuestiones/st-i-q46.md) — The beginning of the duration of creatures
+- [ST I, q.47](/cuestiones/st-i-q47.md) — The distinction of things in general
+- [ST I, q.48](/cuestiones/st-i-q48.md) — The distinction of things in particular
+- [ST I, q.49](/cuestiones/st-i-q49.md) — The cause of evil
+- [ST I, q.50](/cuestiones/st-i-q50.md) — The substance of the angels absolutely considered
+- [ST I, q.51](/cuestiones/st-i-q51.md) — The angels in comparison with bodies
+- [ST I, q.52](/cuestiones/st-i-q52.md) — The angels in relation to place
+- [ST I, q.53](/cuestiones/st-i-q53.md) — The local movement of the angels
+- [ST I, q.54](/cuestiones/st-i-q54.md) — The knowledge of the angels
+- [ST I, q.55](/cuestiones/st-i-q55.md) — The medium of the angelic knowledge
+- [ST I, q.56](/cuestiones/st-i-q56.md) — The angel's knowledge of immaterial things
+- [ST I, q.57](/cuestiones/st-i-q57.md) — The angel's knowledge of material things
+- [ST I, q.58](/cuestiones/st-i-q58.md) — The mode of angelic knowledge
+- [ST I, q.59](/cuestiones/st-i-q59.md) — The will of the angels
+- [ST I, q.60](/cuestiones/st-i-q60.md) — The love or dilection of the angels
+- [ST I, q.61](/cuestiones/st-i-q61.md) — The production of the angels in the order of natural being
+- [ST I, q.62](/cuestiones/st-i-q62.md) — The perfection of the angels in the order of grace and of glory
+- [ST I, q.63](/cuestiones/st-i-q63.md) — The malice of the angels with regard to sin
+- [ST I, q.64](/cuestiones/st-i-q64.md) — The punishment of the demons
+- [ST I, q.65](/cuestiones/st-i-q65.md) — The work of creation of corporeal creatures
+- [ST I, q.66](/cuestiones/st-i-q66.md) — The order of creation towards distinction
+- [ST I, q.67](/cuestiones/st-i-q67.md) — The work of distinction in itself
+- [ST I, q.68](/cuestiones/st-i-q68.md) — The work of the second day
+- [ST I, q.69](/cuestiones/st-i-q69.md) — The work of the third day
+- [ST I, q.70](/cuestiones/st-i-q70.md) — The work of adornment, as regards the fourth day
+- [ST I, q.71](/cuestiones/st-i-q71.md) — The work of the fifth day
+- [ST I, q.72](/cuestiones/st-i-q72.md) — The work of the sixth day
+- [ST I, q.73](/cuestiones/st-i-q73.md) — The things that belong to the seventh day
+- [ST I, q.74](/cuestiones/st-i-q74.md) — All the seven days in common
+- [ST I, q.75](/cuestiones/st-i-q75.md) — Man who is composed of a spiritual and a corporeal substance: and in the first place, concerning what belongs to the essence of the soul
+- [ST I, q.76](/cuestiones/st-i-q76.md) — The union of body and soul
+- [ST I, q.77](/cuestiones/st-i-q77.md) — The powers of the soul in general
+- [ST I, q.78](/cuestiones/st-i-q78.md) — The specific powers of the soul
+- [ST I, q.79](/cuestiones/st-i-q79.md) — The intellectual powers
+- [ST I, q.80](/cuestiones/st-i-q80.md) — The appetitive powers in general
+- [ST I, q.81](/cuestiones/st-i-q81.md) — The power of sensuality
+- [ST I, q.82](/cuestiones/st-i-q82.md) — The will
+- [ST I, q.83](/cuestiones/st-i-q83.md) — Free-will
+- [ST I, q.84](/cuestiones/st-i-q84.md) — How the soul while united to the body understands corporeal things beneath it
+- [ST I, q.85](/cuestiones/st-i-q85.md) — The mode and order of understanding
+- [ST I, q.86](/cuestiones/st-i-q86.md) — What our intellect knows in material things
+- [ST I, q.87](/cuestiones/st-i-q87.md) — How the intellectual soul knows itself and all within itself
+- [ST I, q.88](/cuestiones/st-i-q88.md) — How the human soul knows what is above itself
+- [ST I, q.89](/cuestiones/st-i-q89.md) — The knowledge of the separated soul
+- [ST I, q.90](/cuestiones/st-i-q90.md) — The first production of man's soul
+- [ST I, q.91](/cuestiones/st-i-q91.md) — The production of the first man's body
+- [ST I, q.92](/cuestiones/st-i-q92.md) — The production of the woman
+- [ST I, q.93](/cuestiones/st-i-q93.md) — The end or term of the production of man
+- [ST I, q.94](/cuestiones/st-i-q94.md) — The state and condition of the first man as regards his intellect
+- [ST I, q.95](/cuestiones/st-i-q95.md) — Things pertaining to the first man's will—namely, grace and righteousness
+- [ST I, q.96](/cuestiones/st-i-q96.md) — The mastership belonging to man in the state of innocence
+- [ST I, q.97](/cuestiones/st-i-q97.md) — The preservation of the individual in the primitive state
+- [ST I, q.98](/cuestiones/st-i-q98.md) — The preservation of the species
+- [ST I, q.99](/cuestiones/st-i-q99.md) — The condition of the offspring as to the body
+- [ST I, q.100](/cuestiones/st-i-q100.md) — The condition of the offspring as regards righteousness
+- [ST I, q.101](/cuestiones/st-i-q101.md) — The condition of the offspring as regards knowledge
+- [ST I, q.102](/cuestiones/st-i-q102.md) — Man's abode, which is paradise
+- [ST I, q.103](/cuestiones/st-i-q103.md) — The government of things in general
+- [ST I, q.104](/cuestiones/st-i-q104.md) — The special effects of the divine government
+- [ST I, q.105](/cuestiones/st-i-q105.md) — The change of creatures by God
+- [ST I, q.106](/cuestiones/st-i-q106.md) — How one creature moves another
+- [ST I, q.107](/cuestiones/st-i-q107.md) — The speech of the angels
+- [ST I, q.108](/cuestiones/st-i-q108.md) — The angelic degrees of hierarchies and orders
+- [ST I, q.109](/cuestiones/st-i-q109.md) — The ordering of the bad angels
+- [ST I, q.110](/cuestiones/st-i-q110.md) — How angels act on bodies
+- [ST I, q.111](/cuestiones/st-i-q111.md) — The action of the angels on man
+- [ST I, q.112](/cuestiones/st-i-q112.md) — The mission of the angels
+- [ST I, q.113](/cuestiones/st-i-q113.md) — The guardianship of the good angels
+- [ST I, q.114](/cuestiones/st-i-q114.md) — The assaults of the demons
+- [ST I, q.115](/cuestiones/st-i-q115.md) — The action of the corporeal creature
+- [ST I, q.116](/cuestiones/st-i-q116.md) — Fate
+- [ST I, q.117](/cuestiones/st-i-q117.md) — The action of man
+- [ST I, q.118](/cuestiones/st-i-q118.md) — The production of man from man as to the soul
+- [ST I, q.119](/cuestiones/st-i-q119.md) — The propagation of man as to the body
+
+## Prima secundae (I-II)
+
+- [ST I-II, q.1](/cuestiones/st-i-ii-q1.md) — Man's last end
+- [ST I-II, q.2](/cuestiones/st-i-ii-q2.md) — Things in which man's happiness consists
+- [ST I-II, q.3](/cuestiones/st-i-ii-q3.md) — What is happiness
+- [ST I-II, q.4](/cuestiones/st-i-ii-q4.md) — Things that are required for happiness
+- [ST I-II, q.5](/cuestiones/st-i-ii-q5.md) — The attainment of happiness
+- [ST I-II, q.6](/cuestiones/st-i-ii-q6.md) — The voluntary and the involuntary
+- [ST I-II, q.7](/cuestiones/st-i-ii-q7.md) — The circumstances of human acts
+- [ST I-II, q.8](/cuestiones/st-i-ii-q8.md) — The will, in regard to what it wills
+- [ST I-II, q.9](/cuestiones/st-i-ii-q9.md) — That which moves the will
+- [ST I-II, q.10](/cuestiones/st-i-ii-q10.md) — The manner in which the will is moved
+- [ST I-II, q.11](/cuestiones/st-i-ii-q11.md) — Enjoyment which is an act of the will
+- [ST I-II, q.12](/cuestiones/st-i-ii-q12.md) — Intention
+- [ST I-II, q.13](/cuestiones/st-i-ii-q13.md) — Choice, which is an act of the will with regard to the means
+- [ST I-II, q.14](/cuestiones/st-i-ii-q14.md) — Counsel, which precedes choice
+- [ST I-II, q.15](/cuestiones/st-i-ii-q15.md) — Consent, which is an act of the will in regard to the means
+- [ST I-II, q.16](/cuestiones/st-i-ii-q16.md) — Use, which is an act of the will in regard to the means
+- [ST I-II, q.17](/cuestiones/st-i-ii-q17.md) — The acts commanded by the will
+- [ST I-II, q.18](/cuestiones/st-i-ii-q18.md) — The good and evil of human acts, in general
+- [ST I-II, q.19](/cuestiones/st-i-ii-q19.md) — The goodness and malice of the interior act of the will
+- [ST I-II, q.20](/cuestiones/st-i-ii-q20.md) — Goodness and malice in external human affairs
+- [ST I-II, q.21](/cuestiones/st-i-ii-q21.md) — The consequences of human actions by reason of their goodness and malice
+- [ST I-II, q.22](/cuestiones/st-i-ii-q22.md) — The subject of the soul's passions
+- [ST I-II, q.23](/cuestiones/st-i-ii-q23.md) — How the passions differ from one another
+- [ST I-II, q.24](/cuestiones/st-i-ii-q24.md) — Good and evil in the passions of the soul
+- [ST I-II, q.25](/cuestiones/st-i-ii-q25.md) — The order of the passions to one another
+- [ST I-II, q.26](/cuestiones/st-i-ii-q26.md) — The passions of the soul in particular: and first, of love
+- [ST I-II, q.27](/cuestiones/st-i-ii-q27.md) — The cause of love
+- [ST I-II, q.28](/cuestiones/st-i-ii-q28.md) — The effects of love
+- [ST I-II, q.29](/cuestiones/st-i-ii-q29.md) — Hatred
+- [ST I-II, q.30](/cuestiones/st-i-ii-q30.md) — Concupiscence
+- [ST I-II, q.31](/cuestiones/st-i-ii-q31.md) — Pleasure considered in itself
+- [ST I-II, q.32](/cuestiones/st-i-ii-q32.md) — The cause of pleasure
+- [ST I-II, q.33](/cuestiones/st-i-ii-q33.md) — The effects of pleasure
+- [ST I-II, q.34](/cuestiones/st-i-ii-q34.md) — The goodness and malice of pleasures
+- [ST I-II, q.35](/cuestiones/st-i-ii-q35.md) — Pain or sorrow, in itself
+- [ST I-II, q.36](/cuestiones/st-i-ii-q36.md) — The causes of sorrow or pain
+- [ST I-II, q.37](/cuestiones/st-i-ii-q37.md) — The effects of pain or sorrow
+- [ST I-II, q.38](/cuestiones/st-i-ii-q38.md) — The remedies of sorrow or pain
+- [ST I-II, q.39](/cuestiones/st-i-ii-q39.md) — The goodness and malice of sorrow or pain
+- [ST I-II, q.40](/cuestiones/st-i-ii-q40.md) — The irascible passions, and first, of hope and despair
+- [ST I-II, q.41](/cuestiones/st-i-ii-q41.md) — Fear, in itself
+- [ST I-II, q.42](/cuestiones/st-i-ii-q42.md) — The object of fear
+- [ST I-II, q.43](/cuestiones/st-i-ii-q43.md) — The cause of fear
+- [ST I-II, q.44](/cuestiones/st-i-ii-q44.md) — The effects of fear
+- [ST I-II, q.45](/cuestiones/st-i-ii-q45.md) — Daring
+- [ST I-II, q.46](/cuestiones/st-i-ii-q46.md) — Anger, in itself
+- [ST I-II, q.47](/cuestiones/st-i-ii-q47.md) — The cause that provokes anger, and the remedies of anger
+- [ST I-II, q.48](/cuestiones/st-i-ii-q48.md) — The effects of anger
+- [ST I-II, q.49](/cuestiones/st-i-ii-q49.md) — Habits in general, as to their substance
+- [ST I-II, q.50](/cuestiones/st-i-ii-q50.md) — The subject of habits
+- [ST I-II, q.51](/cuestiones/st-i-ii-q51.md) — The cause of habits, as to their formation
+- [ST I-II, q.52](/cuestiones/st-i-ii-q52.md) — The increase of habits
+- [ST I-II, q.53](/cuestiones/st-i-ii-q53.md) — How habits are corrupted or diminished
+- [ST I-II, q.54](/cuestiones/st-i-ii-q54.md) — The distinction of habits
+- [ST I-II, q.55](/cuestiones/st-i-ii-q55.md) — The virtues, as to their essence
+- [ST I-II, q.56](/cuestiones/st-i-ii-q56.md) — The subject of virtue
+- [ST I-II, q.57](/cuestiones/st-i-ii-q57.md) — The intellectual virtues
+- [ST I-II, q.58](/cuestiones/st-i-ii-q58.md) — The difference between moral and intellectual virtues
+- [ST I-II, q.59](/cuestiones/st-i-ii-q59.md) — Moral virtue in relation to the passions
+- [ST I-II, q.60](/cuestiones/st-i-ii-q60.md) — How the moral virtues differ from one another
+- [ST I-II, q.61](/cuestiones/st-i-ii-q61.md) — The cardinal virtues
+- [ST I-II, q.62](/cuestiones/st-i-ii-q62.md) — The theological virtues
+- [ST I-II, q.63](/cuestiones/st-i-ii-q63.md) — The cause of virtues
+- [ST I-II, q.64](/cuestiones/st-i-ii-q64.md) — The mean of virtue
+- [ST I-II, q.65](/cuestiones/st-i-ii-q65.md) — The connection of virtues
+- [ST I-II, q.66](/cuestiones/st-i-ii-q66.md) — Equality among the virtues
+- [ST I-II, q.67](/cuestiones/st-i-ii-q67.md) — The duration of virtues after this life
+- [ST I-II, q.68](/cuestiones/st-i-ii-q68.md) — The gifts
+- [ST I-II, q.69](/cuestiones/st-i-ii-q69.md) — The beatitudes
+- [ST I-II, q.70](/cuestiones/st-i-ii-q70.md) — The fruits of the Holy Ghost
+- [ST I-II, q.71](/cuestiones/st-i-ii-q71.md) — Vice and sin considered in themselves
+- [ST I-II, q.72](/cuestiones/st-i-ii-q72.md) — The distinction of sins
+- [ST I-II, q.73](/cuestiones/st-i-ii-q73.md) — The comparison of one sin with another
+- [ST I-II, q.74](/cuestiones/st-i-ii-q74.md) — The subject of sin
+- [ST I-II, q.75](/cuestiones/st-i-ii-q75.md) — The causes of sin, in general
+- [ST I-II, q.76](/cuestiones/st-i-ii-q76.md) — The causes of sin, in particular
+- [ST I-II, q.77](/cuestiones/st-i-ii-q77.md) — The cause of sin, on the part of the sensitive appetite
+- [ST I-II, q.78](/cuestiones/st-i-ii-q78.md) — That cause of sin which is malice
+- [ST I-II, q.79](/cuestiones/st-i-ii-q79.md) — The external causes of sin
+- [ST I-II, q.80](/cuestiones/st-i-ii-q80.md) — The cause of sin, as regards the devil
+- [ST I-II, q.81](/cuestiones/st-i-ii-q81.md) — The cause of sin, on the part of man
+- [ST I-II, q.82](/cuestiones/st-i-ii-q82.md) — Original sin, as to its essence
+- [ST I-II, q.83](/cuestiones/st-i-ii-q83.md) — The subject of original sin
+- [ST I-II, q.84](/cuestiones/st-i-ii-q84.md) — The cause of sin, in respect of one sin being the cause of another
+- [ST I-II, q.85](/cuestiones/st-i-ii-q85.md) — The effects of sin, and, first, of the corruption of the good of nature
+- [ST I-II, q.86](/cuestiones/st-i-ii-q86.md) — The stain of sin
+- [ST I-II, q.87](/cuestiones/st-i-ii-q87.md) — The debt of punishment
+- [ST I-II, q.88](/cuestiones/st-i-ii-q88.md) — Venial and mortal sin
+- [ST I-II, q.89](/cuestiones/st-i-ii-q89.md) — Venial sin in itself
+- [ST I-II, q.90](/cuestiones/st-i-ii-q90.md) — The essence of law
+- [ST I-II, q.91](/cuestiones/st-i-ii-q91.md) — The various kinds of law
+- [ST I-II, q.92](/cuestiones/st-i-ii-q92.md) — The effects of law
+- [ST I-II, q.93](/cuestiones/st-i-ii-q93.md) — The eternal law
+- [ST I-II, q.94](/cuestiones/st-i-ii-q94.md) — The natural law
+- [ST I-II, q.95](/cuestiones/st-i-ii-q95.md) — Human law
+- [ST I-II, q.96](/cuestiones/st-i-ii-q96.md) — The power of human law
+- [ST I-II, q.97](/cuestiones/st-i-ii-q97.md) — Change in laws
+- [ST I-II, q.98](/cuestiones/st-i-ii-q98.md) — The old law
+- [ST I-II, q.99](/cuestiones/st-i-ii-q99.md) — The precepts of the old law
+- [ST I-II, q.100](/cuestiones/st-i-ii-q100.md) — The moral precepts of the old law
+- [ST I-II, q.101](/cuestiones/st-i-ii-q101.md) — The ceremonial precepts in themselves
+- [ST I-II, q.102](/cuestiones/st-i-ii-q102.md) — The causes of the ceremonial precepts
+- [ST I-II, q.103](/cuestiones/st-i-ii-q103.md) — The duration of the ceremonial precepts
+- [ST I-II, q.104](/cuestiones/st-i-ii-q104.md) — The judicial precepts
+- [ST I-II, q.105](/cuestiones/st-i-ii-q105.md) — The reason for the judicial precepts
+- [ST I-II, q.106](/cuestiones/st-i-ii-q106.md) — The law of the Gospel, called the New Law, considered in itself
+- [ST I-II, q.107](/cuestiones/st-i-ii-q107.md) — The new law as compared with the old
+- [ST I-II, q.108](/cuestiones/st-i-ii-q108.md) — Things that are contained in the New Law
+- [ST I-II, q.109](/cuestiones/st-i-ii-q109.md) — The necessity of grace
+- [ST I-II, q.110](/cuestiones/st-i-ii-q110.md) — The grace of God as regards its essence
+- [ST I-II, q.111](/cuestiones/st-i-ii-q111.md) — The division of grace
+- [ST I-II, q.112](/cuestiones/st-i-ii-q112.md) — The cause of grace
+- [ST I-II, q.113](/cuestiones/st-i-ii-q113.md) — The effects of grace
+- [ST I-II, q.114](/cuestiones/st-i-ii-q114.md) — Merit
+
+## Secunda secundae (II-II)
+
+- [ST II-II, q.1](/cuestiones/st-ii-ii-q1.md) — Faith
+- [ST II-II, q.2](/cuestiones/st-ii-ii-q2.md) — The act of faith
+- [ST II-II, q.3](/cuestiones/st-ii-ii-q3.md) — The outward act of faith
+- [ST II-II, q.4](/cuestiones/st-ii-ii-q4.md) — The virtue itself of faith
+- [ST II-II, q.5](/cuestiones/st-ii-ii-q5.md) — Those who have faith
+- [ST II-II, q.6](/cuestiones/st-ii-ii-q6.md) — The cause of faith
+- [ST II-II, q.7](/cuestiones/st-ii-ii-q7.md) — The effects of faith
+- [ST II-II, q.8](/cuestiones/st-ii-ii-q8.md) — The gift of understanding
+- [ST II-II, q.9](/cuestiones/st-ii-ii-q9.md) — The gift of knowledge
+- [ST II-II, q.10](/cuestiones/st-ii-ii-q10.md) — Unbelief in general
+- [ST II-II, q.11](/cuestiones/st-ii-ii-q11.md) — Heresy
+- [ST II-II, q.12](/cuestiones/st-ii-ii-q12.md) — Apostasy
+- [ST II-II, q.13](/cuestiones/st-ii-ii-q13.md) — The sin of blasphemy, in general
+- [ST II-II, q.14](/cuestiones/st-ii-ii-q14.md) — Blasphemy against the Holy Ghost
+- [ST II-II, q.15](/cuestiones/st-ii-ii-q15.md) — The vices opposed to knowledge and understanding
+- [ST II-II, q.16](/cuestiones/st-ii-ii-q16.md) — The precepts of faith, knowledge and understanding
+- [ST II-II, q.17](/cuestiones/st-ii-ii-q17.md) — Hope, considered in itself
+- [ST II-II, q.18](/cuestiones/st-ii-ii-q18.md) — The subject of hope
+- [ST II-II, q.19](/cuestiones/st-ii-ii-q19.md) — The gift of fear
+- [ST II-II, q.20](/cuestiones/st-ii-ii-q20.md) — Despair
+- [ST II-II, q.21](/cuestiones/st-ii-ii-q21.md) — Presumption
+- [ST II-II, q.22](/cuestiones/st-ii-ii-q22.md) — The precepts relating to hope and fear
+- [ST II-II, q.23](/cuestiones/st-ii-ii-q23.md) — Charity, considered in itself
+- [ST II-II, q.24](/cuestiones/st-ii-ii-q24.md) — The subject of charity
+- [ST II-II, q.25](/cuestiones/st-ii-ii-q25.md) — The object of charity
+- [ST II-II, q.26](/cuestiones/st-ii-ii-q26.md) — The order of charity
+- [ST II-II, q.27](/cuestiones/st-ii-ii-q27.md) — The principle act of charity, which is to love
+- [ST II-II, q.28](/cuestiones/st-ii-ii-q28.md) — Joy
+- [ST II-II, q.29](/cuestiones/st-ii-ii-q29.md) — Peace
+- [ST II-II, q.30](/cuestiones/st-ii-ii-q30.md) — Mercy
+- [ST II-II, q.31](/cuestiones/st-ii-ii-q31.md) — Beneficence
+- [ST II-II, q.32](/cuestiones/st-ii-ii-q32.md) — Almsdeeds
+- [ST II-II, q.33](/cuestiones/st-ii-ii-q33.md) — Fraternal correction
+- [ST II-II, q.34](/cuestiones/st-ii-ii-q34.md) — Hatred
+- [ST II-II, q.35](/cuestiones/st-ii-ii-q35.md) — Sloth
+- [ST II-II, q.36](/cuestiones/st-ii-ii-q36.md) — Envy
+- [ST II-II, q.37](/cuestiones/st-ii-ii-q37.md) — Discord, which is contrary to peace
+- [ST II-II, q.38](/cuestiones/st-ii-ii-q38.md) — Contention
+- [ST II-II, q.39](/cuestiones/st-ii-ii-q39.md) — Schism
+- [ST II-II, q.40](/cuestiones/st-ii-ii-q40.md) — War
+- [ST II-II, q.41](/cuestiones/st-ii-ii-q41.md) — Strife
+- [ST II-II, q.42](/cuestiones/st-ii-ii-q42.md) — Sedition
+- [ST II-II, q.43](/cuestiones/st-ii-ii-q43.md) — Scandal
+- [ST II-II, q.44](/cuestiones/st-ii-ii-q44.md) — The precepts of charity
+- [ST II-II, q.45](/cuestiones/st-ii-ii-q45.md) — The gift of wisdom
+- [ST II-II, q.46](/cuestiones/st-ii-ii-q46.md) — Folly which is opposed to wisdom
+- [ST II-II, q.47](/cuestiones/st-ii-ii-q47.md) — Prudence, considered in itself
+- [ST II-II, q.48](/cuestiones/st-ii-ii-q48.md) — The parts of prudence
+- [ST II-II, q.49](/cuestiones/st-ii-ii-q49.md) — Each quasi-integral part of prudence
+- [ST II-II, q.50](/cuestiones/st-ii-ii-q50.md) — The subjective parts of prudence
+- [ST II-II, q.51](/cuestiones/st-ii-ii-q51.md) — The virtues which are connected with prudence
+- [ST II-II, q.52](/cuestiones/st-ii-ii-q52.md) — The gift of counsel
+- [ST II-II, q.53](/cuestiones/st-ii-ii-q53.md) — Imprudence
+- [ST II-II, q.54](/cuestiones/st-ii-ii-q54.md) — Negligence
+- [ST II-II, q.55](/cuestiones/st-ii-ii-q55.md) — Vices opposed to prudence by way of resemblance
+- [ST II-II, q.56](/cuestiones/st-ii-ii-q56.md) — The precepts relating to prudence
+- [ST II-II, q.57](/cuestiones/st-ii-ii-q57.md) — Right
+- [ST II-II, q.58](/cuestiones/st-ii-ii-q58.md) — Justice
+- [ST II-II, q.59](/cuestiones/st-ii-ii-q59.md) — Injustice
+- [ST II-II, q.60](/cuestiones/st-ii-ii-q60.md) — Judgment
+- [ST II-II, q.61](/cuestiones/st-ii-ii-q61.md) — The parts of Justice
+- [ST II-II, q.62](/cuestiones/st-ii-ii-q62.md) — Restitution
+- [ST II-II, q.63](/cuestiones/st-ii-ii-q63.md) — Respect of persons
+- [ST II-II, q.64](/cuestiones/st-ii-ii-q64.md) — Murder
+- [ST II-II, q.65](/cuestiones/st-ii-ii-q65.md) — Other injuries committed on the person
+- [ST II-II, q.66](/cuestiones/st-ii-ii-q66.md) — Theft and robbery
+- [ST II-II, q.67](/cuestiones/st-ii-ii-q67.md) — The injustice of a judge, in judging
+- [ST II-II, q.68](/cuestiones/st-ii-ii-q68.md) — Matters concerning unjust accusation
+- [ST II-II, q.69](/cuestiones/st-ii-ii-q69.md) — Sins committed against justice: of the part of the defendant
+- [ST II-II, q.70](/cuestiones/st-ii-ii-q70.md) — Injustice with regard to the person of the witness
+- [ST II-II, q.71](/cuestiones/st-ii-ii-q71.md) — Injustice in judgment: the part of counsel
+- [ST II-II, q.72](/cuestiones/st-ii-ii-q72.md) — Reviling
+- [ST II-II, q.73](/cuestiones/st-ii-ii-q73.md) — Backbiting
+- [ST II-II, q.74](/cuestiones/st-ii-ii-q74.md) — Tale-bearing
+- [ST II-II, q.75](/cuestiones/st-ii-ii-q75.md) — Derision
+- [ST II-II, q.76](/cuestiones/st-ii-ii-q76.md) — Cursing
+- [ST II-II, q.77](/cuestiones/st-ii-ii-q77.md) — Cheating, which is committed in buying and selling
+- [ST II-II, q.78](/cuestiones/st-ii-ii-q78.md) — The sin of usury
+- [ST II-II, q.79](/cuestiones/st-ii-ii-q79.md) — The quasi-integral parts of Justice
+- [ST II-II, q.80](/cuestiones/st-ii-ii-q80.md) — The potential parts of Justice
+- [ST II-II, q.81](/cuestiones/st-ii-ii-q81.md) — Religion
+- [ST II-II, q.82](/cuestiones/st-ii-ii-q82.md) — Devotion
+- [ST II-II, q.83](/cuestiones/st-ii-ii-q83.md) — Prayer
+- [ST II-II, q.84](/cuestiones/st-ii-ii-q84.md) — Adoration
+- [ST II-II, q.85](/cuestiones/st-ii-ii-q85.md) — Sacrifice
+- [ST II-II, q.86](/cuestiones/st-ii-ii-q86.md) — Oblations and first-fruits
+- [ST II-II, q.87](/cuestiones/st-ii-ii-q87.md) — Tithes
+- [ST II-II, q.88](/cuestiones/st-ii-ii-q88.md) — Vows
+- [ST II-II, q.89](/cuestiones/st-ii-ii-q89.md) — Oaths
+- [ST II-II, q.90](/cuestiones/st-ii-ii-q90.md) — The taking of God's name by way of adjuration
+- [ST II-II, q.91](/cuestiones/st-ii-ii-q91.md) — Taking the divine name for the purpose of invoking it by means of praise
+- [ST II-II, q.92](/cuestiones/st-ii-ii-q92.md) — Superstition
+- [ST II-II, q.93](/cuestiones/st-ii-ii-q93.md) — Superstition consisting in undue worship of the true God
+- [ST II-II, q.94](/cuestiones/st-ii-ii-q94.md) — Idolatry
+- [ST II-II, q.95](/cuestiones/st-ii-ii-q95.md) — Superstition in divinations
+- [ST II-II, q.96](/cuestiones/st-ii-ii-q96.md) — Superstition in observances
+- [ST II-II, q.97](/cuestiones/st-ii-ii-q97.md) — The temptation of God
+- [ST II-II, q.98](/cuestiones/st-ii-ii-q98.md) — Perjury
+- [ST II-II, q.99](/cuestiones/st-ii-ii-q99.md) — Sacrilege
+- [ST II-II, q.100](/cuestiones/st-ii-ii-q100.md) — Simony
+- [ST II-II, q.101](/cuestiones/st-ii-ii-q101.md) — Piety
+- [ST II-II, q.102](/cuestiones/st-ii-ii-q102.md) — Observance, considered in itself, and its parts
+- [ST II-II, q.103](/cuestiones/st-ii-ii-q103.md) — Dulia
+- [ST II-II, q.104](/cuestiones/st-ii-ii-q104.md) — Obedience
+- [ST II-II, q.105](/cuestiones/st-ii-ii-q105.md) — Disobedience
+- [ST II-II, q.106](/cuestiones/st-ii-ii-q106.md) — Thankfulness or gratitude
+- [ST II-II, q.107](/cuestiones/st-ii-ii-q107.md) — Ingratitude
+- [ST II-II, q.108](/cuestiones/st-ii-ii-q108.md) — Vengeance
+- [ST II-II, q.109](/cuestiones/st-ii-ii-q109.md) — Truth
+- [ST II-II, q.110](/cuestiones/st-ii-ii-q110.md) — The vices opposed to truth, and first of lying
+- [ST II-II, q.111](/cuestiones/st-ii-ii-q111.md) — Dissimulation and hypocrisy
+- [ST II-II, q.112](/cuestiones/st-ii-ii-q112.md) — Boasting
+- [ST II-II, q.113](/cuestiones/st-ii-ii-q113.md) — Irony
+- [ST II-II, q.114](/cuestiones/st-ii-ii-q114.md) — The friendliness which is called affability
+- [ST II-II, q.115](/cuestiones/st-ii-ii-q115.md) — Flattery
+- [ST II-II, q.116](/cuestiones/st-ii-ii-q116.md) — Quarreling
+- [ST II-II, q.117](/cuestiones/st-ii-ii-q117.md) — Liberality
+- [ST II-II, q.118](/cuestiones/st-ii-ii-q118.md) — The vices opposed to liberality, and in the first place, of covetousness
+- [ST II-II, q.119](/cuestiones/st-ii-ii-q119.md) — Prodigality
+- [ST II-II, q.120](/cuestiones/st-ii-ii-q120.md) — "Epikeia" or equity
+- [ST II-II, q.121](/cuestiones/st-ii-ii-q121.md) — Piety
+- [ST II-II, q.122](/cuestiones/st-ii-ii-q122.md) — The precepts of justice
+- [ST II-II, q.123](/cuestiones/st-ii-ii-q123.md) — Fortitude
+- [ST II-II, q.124](/cuestiones/st-ii-ii-q124.md) — Martyrdom
+- [ST II-II, q.125](/cuestiones/st-ii-ii-q125.md) — Fear
+- [ST II-II, q.126](/cuestiones/st-ii-ii-q126.md) — Fearlessness
+- [ST II-II, q.127](/cuestiones/st-ii-ii-q127.md) — Daring
+- [ST II-II, q.128](/cuestiones/st-ii-ii-q128.md) — The parts of fortitude
+- [ST II-II, q.129](/cuestiones/st-ii-ii-q129.md) — Magnanimity
+- [ST II-II, q.130](/cuestiones/st-ii-ii-q130.md) — Presumption
+- [ST II-II, q.131](/cuestiones/st-ii-ii-q131.md) — Ambition
+- [ST II-II, q.132](/cuestiones/st-ii-ii-q132.md) — Vainglory
+- [ST II-II, q.133](/cuestiones/st-ii-ii-q133.md) — Pusillanimity
+- [ST II-II, q.134](/cuestiones/st-ii-ii-q134.md) — Magnificence
+- [ST II-II, q.135](/cuestiones/st-ii-ii-q135.md) — Meanness
+- [ST II-II, q.136](/cuestiones/st-ii-ii-q136.md) — Patience
+- [ST II-II, q.137](/cuestiones/st-ii-ii-q137.md) — Perseverance
+- [ST II-II, q.138](/cuestiones/st-ii-ii-q138.md) — The vices opposed to perseverance
+- [ST II-II, q.139](/cuestiones/st-ii-ii-q139.md) — The gift of fortitude
+- [ST II-II, q.140](/cuestiones/st-ii-ii-q140.md) — The precepts of fortitude
+- [ST II-II, q.141](/cuestiones/st-ii-ii-q141.md) — Temperance
+- [ST II-II, q.142](/cuestiones/st-ii-ii-q142.md) — The vices opposed to temperance
+- [ST II-II, q.143](/cuestiones/st-ii-ii-q143.md) — The parts of temperance, in general
+- [ST II-II, q.144](/cuestiones/st-ii-ii-q144.md) — Shamefacedness
+- [ST II-II, q.145](/cuestiones/st-ii-ii-q145.md) — Honesty
+- [ST II-II, q.146](/cuestiones/st-ii-ii-q146.md) — Abstinence
+- [ST II-II, q.147](/cuestiones/st-ii-ii-q147.md) — Fasting
+- [ST II-II, q.148](/cuestiones/st-ii-ii-q148.md) — Gluttony
+- [ST II-II, q.149](/cuestiones/st-ii-ii-q149.md) — Sobriety
+- [ST II-II, q.150](/cuestiones/st-ii-ii-q150.md) — Drunkenness
+- [ST II-II, q.151](/cuestiones/st-ii-ii-q151.md) — Chastity
+- [ST II-II, q.152](/cuestiones/st-ii-ii-q152.md) — Virginity
+- [ST II-II, q.153](/cuestiones/st-ii-ii-q153.md) — Lust
+- [ST II-II, q.154](/cuestiones/st-ii-ii-q154.md) — The parts of Lust
+- [ST II-II, q.155](/cuestiones/st-ii-ii-q155.md) — Continence
+- [ST II-II, q.156](/cuestiones/st-ii-ii-q156.md) — Incontinence
+- [ST II-II, q.157](/cuestiones/st-ii-ii-q157.md) — Clemency and meekness
+- [ST II-II, q.158](/cuestiones/st-ii-ii-q158.md) — Anger
+- [ST II-II, q.159](/cuestiones/st-ii-ii-q159.md) — Cruelty
+- [ST II-II, q.160](/cuestiones/st-ii-ii-q160.md) — Modesty
+- [ST II-II, q.161](/cuestiones/st-ii-ii-q161.md) — Humility
+- [ST II-II, q.162](/cuestiones/st-ii-ii-q162.md) — Pride
+- [ST II-II, q.163](/cuestiones/st-ii-ii-q163.md) — The first man's sin
+- [ST II-II, q.164](/cuestiones/st-ii-ii-q164.md) — The punishments of the first man's sin
+- [ST II-II, q.165](/cuestiones/st-ii-ii-q165.md) — Our first parents' temptation
+- [ST II-II, q.166](/cuestiones/st-ii-ii-q166.md) — Studiousness
+- [ST II-II, q.167](/cuestiones/st-ii-ii-q167.md) — Curiosity
+- [ST II-II, q.168](/cuestiones/st-ii-ii-q168.md) — Modesty as consisting in the outward movements of the body
+- [ST II-II, q.169](/cuestiones/st-ii-ii-q169.md) — Modesty in the outward apparel
+- [ST II-II, q.170](/cuestiones/st-ii-ii-q170.md) — The precepts of temperance
+- [ST II-II, q.171](/cuestiones/st-ii-ii-q171.md) — Prophecy
+- [ST II-II, q.172](/cuestiones/st-ii-ii-q172.md) — The cause of prophecy
+- [ST II-II, q.173](/cuestiones/st-ii-ii-q173.md) — The manner in which prophetic knowledge is conveyed
+- [ST II-II, q.174](/cuestiones/st-ii-ii-q174.md) — The division of prophecy
+- [ST II-II, q.175](/cuestiones/st-ii-ii-q175.md) — Rapture
+- [ST II-II, q.176](/cuestiones/st-ii-ii-q176.md) — The grace of tongues
+- [ST II-II, q.177](/cuestiones/st-ii-ii-q177.md) — The gratuitous grace consisting in words
+- [ST II-II, q.178](/cuestiones/st-ii-ii-q178.md) — The grace of miracles
+- [ST II-II, q.179](/cuestiones/st-ii-ii-q179.md) — The division of life into active and contemplative
+- [ST II-II, q.180](/cuestiones/st-ii-ii-q180.md) — The contemplative life
+- [ST II-II, q.181](/cuestiones/st-ii-ii-q181.md) — The active life
+- [ST II-II, q.182](/cuestiones/st-ii-ii-q182.md) — The active life in comparison with the contemplative life
+- [ST II-II, q.183](/cuestiones/st-ii-ii-q183.md) — Man's various duties and states in general
+- [ST II-II, q.184](/cuestiones/st-ii-ii-q184.md) — The state of perfection in general
+- [ST II-II, q.185](/cuestiones/st-ii-ii-q185.md) — Things pertaining to the episcopal state
+- [ST II-II, q.186](/cuestiones/st-ii-ii-q186.md) — Things in which the religious state properly consists
+- [ST II-II, q.187](/cuestiones/st-ii-ii-q187.md) — Things that are competent to religious
+- [ST II-II, q.188](/cuestiones/st-ii-ii-q188.md) — The different kinds of religious life
+- [ST II-II, q.189](/cuestiones/st-ii-ii-q189.md) — The entrance into religious life
+
+## Tertia pars (III)
+
+- [ST III, q.1](/cuestiones/st-iii-q1.md) — The fitness of the Incarnation
+- [ST III, q.2](/cuestiones/st-iii-q2.md) — The mode of union of the Word incarnate
+- [ST III, q.3](/cuestiones/st-iii-q3.md) — The mode of union on the part of the person assuming
+- [ST III, q.4](/cuestiones/st-iii-q4.md) — The mode of union of the part of the human nature
+- [ST III, q.5](/cuestiones/st-iii-q5.md) — The parts of human nature which were assumed
+- [ST III, q.6](/cuestiones/st-iii-q6.md) — The order of assumption
+- [ST III, q.7](/cuestiones/st-iii-q7.md) — The grace of Christ as an individual man
+- [ST III, q.8](/cuestiones/st-iii-q8.md) — The grace of Christ, as He is the head of the Church
+- [ST III, q.9](/cuestiones/st-iii-q9.md) — Christ's knowledge in general
+- [ST III, q.10](/cuestiones/st-iii-q10.md) — The beatific knowledge of Christ's soul
+- [ST III, q.11](/cuestiones/st-iii-q11.md) — The knowledge imprinted or infused in the soul of Christ
+- [ST III, q.12](/cuestiones/st-iii-q12.md) — The acquired or empiric knowledge of Christ's soul
+- [ST III, q.13](/cuestiones/st-iii-q13.md) — The power of Christ's soul
+- [ST III, q.14](/cuestiones/st-iii-q14.md) — The defects of body assumed by the Son of God
+- [ST III, q.15](/cuestiones/st-iii-q15.md) — The defects of soul assumed by Christ
+- [ST III, q.16](/cuestiones/st-iii-q16.md) — Things which are applicable to Christ in his being and becoming
+- [ST III, q.17](/cuestiones/st-iii-q17.md) — Christ's unity of being
+- [ST III, q.18](/cuestiones/st-iii-q18.md) — Christ's unity of will
+- [ST III, q.19](/cuestiones/st-iii-q19.md) — The unity of Christ's operation
+- [ST III, q.20](/cuestiones/st-iii-q20.md) — Christ's subjection to the Father
+- [ST III, q.21](/cuestiones/st-iii-q21.md) — Christ's prayer
+- [ST III, q.22](/cuestiones/st-iii-q22.md) — The priesthood of Christ
+- [ST III, q.23](/cuestiones/st-iii-q23.md) — Adoption as befitting to Christ
+- [ST III, q.24](/cuestiones/st-iii-q24.md) — The predestination of Christ
+- [ST III, q.25](/cuestiones/st-iii-q25.md) — The adoration of Christ
+- [ST III, q.26](/cuestiones/st-iii-q26.md) — Christ as called the mediator of God and man
+- [ST III, q.27](/cuestiones/st-iii-q27.md) — The sanctification of the Blessed Virgin
+- [ST III, q.28](/cuestiones/st-iii-q28.md) — The virginity of the Mother of God
+- [ST III, q.29](/cuestiones/st-iii-q29.md) — The espousals of the Mother of God
+- [ST III, q.30](/cuestiones/st-iii-q30.md) — The Annunciation of the Blessed Virgin
+- [ST III, q.31](/cuestiones/st-iii-q31.md) — The matter from which the Saviour's body was conceived
+- [ST III, q.32](/cuestiones/st-iii-q32.md) — The active principle in Christ's conception
+- [ST III, q.33](/cuestiones/st-iii-q33.md) — The mode and order of Christ's conception
+- [ST III, q.34](/cuestiones/st-iii-q34.md) — The perfection of the child conceived
+- [ST III, q.35](/cuestiones/st-iii-q35.md) — Christ's nativity
+- [ST III, q.36](/cuestiones/st-iii-q36.md) — The manifestation of the newly born Christ
+- [ST III, q.37](/cuestiones/st-iii-q37.md) — Christ's circumcision, and of the other legal observances accomplished in regard to the child Christ
+- [ST III, q.38](/cuestiones/st-iii-q38.md) — The baptism of John
+- [ST III, q.39](/cuestiones/st-iii-q39.md) — The baptizing of Christ
+- [ST III, q.40](/cuestiones/st-iii-q40.md) — Christ's manner of life
+- [ST III, q.41](/cuestiones/st-iii-q41.md) — Christ's temptation
+- [ST III, q.42](/cuestiones/st-iii-q42.md) — Christ's doctrine
+- [ST III, q.43](/cuestiones/st-iii-q43.md) — The miracles worked by Christ, in general
+- [ST III, q.44](/cuestiones/st-iii-q44.md) — Christ's miracles considered specifically
+- [ST III, q.45](/cuestiones/st-iii-q45.md) — Christ's transfiguration
+- [ST III, q.46](/cuestiones/st-iii-q46.md) — The passion of Christ
+- [ST III, q.47](/cuestiones/st-iii-q47.md) — The efficient cause of Christ's passion
+- [ST III, q.48](/cuestiones/st-iii-q48.md) — The efficiency of Christ's Passion
+- [ST III, q.49](/cuestiones/st-iii-q49.md) — The effects of Christ's Passion
+- [ST III, q.50](/cuestiones/st-iii-q50.md) — The death of Christ
+- [ST III, q.51](/cuestiones/st-iii-q51.md) — Christ's burial
+- [ST III, q.52](/cuestiones/st-iii-q52.md) — Christ's descent into hell
+- [ST III, q.53](/cuestiones/st-iii-q53.md) — Christ's Resurrection
+- [ST III, q.54](/cuestiones/st-iii-q54.md) — The quality of Christ rising again
+- [ST III, q.55](/cuestiones/st-iii-q55.md) — The manifestation of the Resurrection
+- [ST III, q.56](/cuestiones/st-iii-q56.md) — The causality of Christ's Resurrection
+- [ST III, q.57](/cuestiones/st-iii-q57.md) — The ascension of Christ
+- [ST III, q.58](/cuestiones/st-iii-q58.md) — Christ's sitting at the right hand of the Father
+- [ST III, q.59](/cuestiones/st-iii-q59.md) — Christ's judiciary power
+- [ST III, q.60](/cuestiones/st-iii-q60.md) — What is a sacrament?
+- [ST III, q.61](/cuestiones/st-iii-q61.md) — The necessity of the sacraments
+- [ST III, q.62](/cuestiones/st-iii-q62.md) — The sacraments' principal effect, which is grace
+- [ST III, q.63](/cuestiones/st-iii-q63.md) — The other effect of the sacraments, which is a character
+- [ST III, q.64](/cuestiones/st-iii-q64.md) — The causes of the sacraments
+- [ST III, q.65](/cuestiones/st-iii-q65.md) — The number of the sacraments
+- [ST III, q.66](/cuestiones/st-iii-q66.md) — The sacrament of Baptism
+- [ST III, q.67](/cuestiones/st-iii-q67.md) — The ministers by whom the sacrament of Baptism is conferred
+- [ST III, q.68](/cuestiones/st-iii-q68.md) — Those who receive Baptism
+- [ST III, q.69](/cuestiones/st-iii-q69.md) — The effects of Baptism
+- [ST III, q.70](/cuestiones/st-iii-q70.md) — Circumcision
+- [ST III, q.71](/cuestiones/st-iii-q71.md) — The preparations that accompany Baptism
+- [ST III, q.72](/cuestiones/st-iii-q72.md) — The sacrament of Confirmation
+- [ST III, q.73](/cuestiones/st-iii-q73.md) — The sacrament of the Eucharist
+- [ST III, q.74](/cuestiones/st-iii-q74.md) — The matter of this sacrament
+- [ST III, q.75](/cuestiones/st-iii-q75.md) — The change of bread and wine into the Body and Blood of Christ
+- [ST III, q.76](/cuestiones/st-iii-q76.md) — The way in which Christ is in this sacrament
+- [ST III, q.77](/cuestiones/st-iii-q77.md) — The accidents which remain in this sacrament
+- [ST III, q.78](/cuestiones/st-iii-q78.md) — The form of this sacrament
+- [ST III, q.79](/cuestiones/st-iii-q79.md) — The effects of this sacrament
+- [ST III, q.80](/cuestiones/st-iii-q80.md) — The use or receiving of this sacrament in general
+- [ST III, q.81](/cuestiones/st-iii-q81.md) — The use which Christ made of this sacrament at its institution
+- [ST III, q.82](/cuestiones/st-iii-q82.md) — The minister of this sacrament
+- [ST III, q.83](/cuestiones/st-iii-q83.md) — The rite of this sacrament
+- [ST III, q.84](/cuestiones/st-iii-q84.md) — The sacrament of Penance
+- [ST III, q.85](/cuestiones/st-iii-q85.md) — Penance as a virtue
+- [ST III, q.86](/cuestiones/st-iii-q86.md) — The effect of Penance, as regards the pardon of mortal sin
+- [ST III, q.87](/cuestiones/st-iii-q87.md) — The remission of venial sin
+- [ST III, q.88](/cuestiones/st-iii-q88.md) — The return of sins which have been taken away by Penance
+- [ST III, q.89](/cuestiones/st-iii-q89.md) — The recovery of virtue by means of Penance
+- [ST III, q.90](/cuestiones/st-iii-q90.md) — The parts of Penance, in general
 <!-- okf:generated:end -->

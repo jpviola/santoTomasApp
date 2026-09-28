@@ -26,5 +26,7 @@ There cannot be an infinite series of ends, since then nothing would be desired 
 - [Fin último](/conceptos/fin-ultimo.md)
 - [Felicidad](/conceptos/felicidad.md)
 
+Cuestión: [ST I-II, q.1 — Man's last end](/cuestiones/st-i-ii-q1.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->

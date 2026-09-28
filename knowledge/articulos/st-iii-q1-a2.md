@@ -25,5 +25,7 @@ The Incarnation was not absolutely necessary, since God could have restored huma
 
 - [Encarnación](/conceptos/encarnacion.md)
 
+Cuestión: [ST III, q.1 — The fitness of the Incarnation](/cuestiones/st-iii-q1.md).
+
 Obra: [Summa Theologiae](/obras/summa-theologiae.md).
 <!-- okf:generated:end -->
