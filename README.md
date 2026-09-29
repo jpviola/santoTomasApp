@@ -108,6 +108,8 @@ Required variables:
 | `DATABASE_URL` | PostgreSQL connection string | - |
 | `DEBATE_MAX_TOKENS` | Token limit for the full article | `4000` |
 | `KNOWLEDGE_DATABASE_URL` | Neon Postgres with pgvector for semantic search | - |
+| `GEMINI_API_KEY` | Free embeddings via Google Gemini (`gemini-embedding-001`, multilingual, query/document task types) | - |
+| `JINA_API_KEY` | Free embeddings via Jina (`jina-embeddings-v5-text-small`; free key is non-commercial only) | - |
 | `EMBEDDING_PROVIDER=openrouter` | Embeddings via OpenRouter with the chat key (`baai/bge-m3`, multilingual) | - |
 | `NEON_AI_GATEWAY_TOKEN` / `NEON_AI_GATEWAY_BASE_URL` | Embeddings via Neon AI Gateway (`qwen3-embedding-0-6b`) | - |
 | `EMBEDDING_API_KEY` / `EMBEDDING_BASE_URL` | Embeddings via OpenAI or any compatible API (`text-embedding-3-small`) | OpenAI URL |
@@ -151,7 +153,7 @@ knowledge/
 
 **Search** (`src/lib/knowledge/search.ts`) fuses with Reciprocal Rank Fusion: lexical matching (bilingual, accent- and plural-insensitive), concept labels found in the question, graph expansion to neighbouring concepts, and embeddings when available. The matched concepts' definitions are also passed to the disputation prompt.
 
-**Embeddings (optional):** vectors live in Postgres + pgvector (`knowledge_embeddings`, 1024 dims, HNSW cosine index; schema in `scripts/knowledge/schema.sql`), reached through `KNOWLEDGE_DATABASE_URL` with the Neon serverless driver, so the app's main `DATABASE_URL` can stay where it is. Configure a provider (OpenRouter with your existing key is the simplest: `EMBEDDING_PROVIDER=openrouter`; or Neon AI Gateway, or an OpenAI-compatible key; see the table above) and run `npm run knowledge:embed`; it is incremental (content hashes), creates the schema if missing and deletes vectors of removed documents. `npm run knowledge:embed -- --dry-run` estimates tokens without calling the API (the full corpus is ~630k tokens). Without a provider or database, search runs on the lexical and graph signals only. Similarity thresholds can be tuned with `EMBEDDING_MIN_SIMILARITY` (0.35) and `EMBEDDING_MIN_CONCEPT_SIMILARITY` (0.4).
+**Embeddings (optional):** vectors live in Postgres + pgvector (`knowledge_embeddings`, 1024 dims, HNSW cosine index; schema in `scripts/knowledge/schema.sql`), reached through `KNOWLEDGE_DATABASE_URL` with the Neon serverless driver, so the app's main `DATABASE_URL` can stay where it is. Configure a provider: free with a Google AI Studio key (`GEMINI_API_KEY`) or a Jina key (`JINA_API_KEY`, non-commercial), or paid via OpenRouter (`EMBEDDING_PROVIDER=openrouter`), OpenAI or Neon AI Gateway (see the table above). Gemini and Jina embed questions and documents with different task types, which improves retrieval. On free tiers use `npm run knowledge:embed -- --batch 32 --pause 2000`; every batch is saved as it arrives, so a run cut short by a quota resumes where it stopped and run `npm run knowledge:embed`; it is incremental (content hashes), creates the schema if missing and deletes vectors of removed documents. `npm run knowledge:embed -- --dry-run` estimates tokens without calling the API (the full corpus is ~630k tokens). Without a provider or database, search runs on the lexical and graph signals only. Similarity thresholds can be tuned with `EMBEDDING_MIN_SIMILARITY` (0.35) and `EMBEDDING_MIN_CONCEPT_SIMILARITY` (0.4).
 
 **GraphDB (optional):** `GRAPHDB_ENDPOINT_URL=... npm run knowledge:graphdb` uploads the generated TTL.
 

@@ -3,11 +3,12 @@
  * Incremental: solo embebe los documentos cuyo texto cambió (hash) o que no tienen vector para el modelo actual,
  * y borra los vectores de documentos que ya no existen.
  *
- * Requiere KNOWLEDGE_DATABASE_URL y un proveedor (ver src/lib/llm/embeddings.ts):
- *   EMBEDDING_API_KEY [+ EMBEDDING_BASE_URL, EMBEDDING_MODEL]   o   NEON_AI_GATEWAY_TOKEN + NEON_AI_GATEWAY_BASE_URL
+ * Requiere KNOWLEDGE_DATABASE_URL y un proveedor (ver src/lib/llm/embeddings.ts), p. ej. GEMINI_API_KEY o JINA_API_KEY.
  *
- * Uso: npm run knowledge:embed                 (lee .env.local)
- *      npm run knowledge:embed -- --dry-run    (cuenta lo pendiente y estima tokens, sin llamar a la API)
+ * Uso: npm run knowledge:embed                          (lee .env.local)
+ *      npm run knowledge:embed -- --dry-run             (cuenta lo pendiente y estima tokens, sin llamar a la API)
+ *      npm run knowledge:embed -- --batch 32 --pause 2000   (lotes más chicos y espera entre lotes, para planes gratuitos)
+ * Cada lote se guarda apenas llega: si un límite de uso corta la corrida, volver a correrlo retoma donde quedó.
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -17,8 +18,13 @@ import { deleteVectorsExcept, ensureSchema, storedHashes, upsertVectors, vectorS
 import { embedTexts, embeddingConfig } from "../../src/lib/llm/embeddings";
 
 const ROOT = join(__dirname, "..", "..");
-const BATCH = 64;
+const arg = (name: string) => {
+  const i = process.argv.indexOf(`--${name}`);
+  return i >= 0 ? Number(process.argv[i + 1]) : undefined;
+};
 const dryRun = process.argv.includes("--dry-run");
+const pauseMs = arg("pause") ?? 0;
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Carga .env.local sin dependencias (solo claves que no estén ya en el entorno).
 const envFile = join(ROOT, ".env.local");
@@ -47,18 +53,28 @@ async function main() {
   console.log(`${inputs.length} documentos; ${pending.length} pendientes para ${model} (~${estimatedTokens.toLocaleString("es")} tokens).`);
   if (dryRun) return;
   if (!config) {
-    console.error("Falta un proveedor de embeddings: EMBEDDING_API_KEY o NEON_AI_GATEWAY_TOKEN + NEON_AI_GATEWAY_BASE_URL.");
+    console.error("Falta un proveedor de embeddings: GEMINI_API_KEY, JINA_API_KEY, EMBEDDING_API_KEY o NEON_AI_GATEWAY_TOKEN (ver .env.example).");
     process.exit(1);
   }
 
-  for (let i = 0; i < pending.length; i += BATCH) {
-    const batch = pending.slice(i, i + BATCH);
-    const vectors = await embedTexts(batch.map((b) => b.text), config);
-    await upsertVectors(
-      batch.map((b, j) => ({ key: b.key, kind: b.key.split(":")[0] as VectorKind, hash: b.hash, vector: vectors[j] })),
-      config.model,
-    );
-    console.log(`  ${Math.min(i + BATCH, pending.length)}/${pending.length}`);
+  // Gemini acepta hasta 100 textos por pedido; 64 es un buen tamaño para todos.
+  const batchSize = Math.min(arg("batch") ?? 64, 100);
+  console.log(`Proveedor: ${config.provider} · modelo ${config.model} · lotes de ${batchSize}`);
+  for (let i = 0; i < pending.length; i += batchSize) {
+    const batch = pending.slice(i, i + batchSize);
+    try {
+      const vectors = await embedTexts(batch.map((b) => b.text), config, "document");
+      await upsertVectors(
+        batch.map((b, j) => ({ key: b.key, kind: b.key.split(":")[0] as VectorKind, hash: b.hash, vector: vectors[j] })),
+        config.model,
+      );
+    } catch (error) {
+      console.error(`\nSe cortó en ${i}/${pending.length}: ${error instanceof Error ? error.message : String(error)}`);
+      console.error("Lo embebido hasta acá quedó guardado. Si es un límite de uso, esperá y volvé a correr el comando: retoma donde quedó.");
+      process.exit(1);
+    }
+    console.log(`  ${Math.min(i + batchSize, pending.length)}/${pending.length}`);
+    if (pauseMs && i + batchSize < pending.length) await sleep(pauseMs);
   }
 
   const removed = await deleteVectorsExcept(inputs.map((i) => i.key));
