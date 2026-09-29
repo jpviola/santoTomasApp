@@ -3,15 +3,31 @@ import { logger } from "@/lib/utils/logger";
 
 /**
  * Embeddings vía una API compatible con OpenAI (`/embeddings`). Proveedores, en orden de preferencia:
- *   1. EMBEDDING_API_KEY (+ EMBEDDING_BASE_URL, por defecto OpenAI) — modelo por defecto text-embedding-3-small
- *   2. NEON_AI_GATEWAY_TOKEN + NEON_AI_GATEWAY_BASE_URL — modelo por defecto qwen3-embedding-0-6b (multilingüe)
+ *   1. EMBEDDING_PROVIDER=openrouter — reusa la key de OpenRouter (EMBEDDING_API_KEY, OPENROUTER_API_KEY u OPENAI_API_KEY);
+ *      modelo por defecto baai/bge-m3 (multilingüe, 1024 dimensiones nativas)
+ *   2. EMBEDDING_API_KEY (+ EMBEDDING_BASE_URL, por defecto OpenAI) — modelo por defecto text-embedding-3-small
+ *   3. NEON_AI_GATEWAY_TOKEN + NEON_AI_GATEWAY_BASE_URL — modelo por defecto qwen3-embedding-0-6b (multilingüe)
  * EMBEDDING_MODEL cambia el modelo. Siempre 1024 dimensiones: es el tamaño de la columna en Postgres.
  */
 export const EMBEDDING_DIMENSIONS = 1024;
 
-export type EmbeddingConfig = { apiKey: string; baseURL: string; model: string; provider: "openai-compatible" | "neon-ai-gateway" };
+export type EmbeddingConfig = {
+  apiKey: string;
+  baseURL: string;
+  model: string;
+  provider: "openrouter" | "openai-compatible" | "neon-ai-gateway";
+};
 
-export function embeddingConfig(env: NodeJS.ProcessEnv = process.env): EmbeddingConfig | null {
+/** Modelos que aceptan el parámetro `dimensions` (Matryoshka). A los demás no se les manda. */
+export const acceptsDimensionsParam = (model: string) => /text-embedding-3|qwen3-embedding|gemini-embedding/i.test(model);
+
+export function embeddingConfig(env: Record<string, string | undefined> = process.env): EmbeddingConfig | null {
+  if (env.EMBEDDING_PROVIDER === "openrouter") {
+    const apiKey = env.EMBEDDING_API_KEY || env.OPENROUTER_API_KEY || env.OPENAI_API_KEY;
+    return apiKey
+      ? { apiKey, baseURL: "https://openrouter.ai/api/v1", model: env.EMBEDDING_MODEL || "baai/bge-m3", provider: "openrouter" }
+      : null;
+  }
   if (env.EMBEDDING_API_KEY) {
     return {
       apiKey: env.EMBEDDING_API_KEY,
@@ -47,7 +63,7 @@ export async function embedTexts(texts: string[], config: EmbeddingConfig): Prom
   const response = await clientFor(config).embeddings.create({
     model: config.model,
     input: texts,
-    dimensions: EMBEDDING_DIMENSIONS,
+    ...(acceptsDimensionsParam(config.model) ? { dimensions: EMBEDDING_DIMENSIONS } : {}),
     // Neon avisa que sin esto algunas versiones del SDK devuelven vectores en cero.
     encoding_format: "float",
   });

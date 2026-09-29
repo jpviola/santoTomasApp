@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { embeddingConfig } from "@/lib/llm/embeddings";
+import { acceptsDimensionsParam, embeddingConfig } from "@/lib/llm/embeddings";
 import { toVectorLiteral, vectorStoreConfigured } from "@/lib/knowledge/vectorStore";
 
 describe("embeddingConfig", () => {
@@ -23,6 +23,23 @@ describe("embeddingConfig", () => {
       model: "qwen3-embedding-0-6b",
       provider: "neon-ai-gateway",
     });
+  });
+
+  it("reuses the OpenRouter key with the multilingual bge-m3 model", () => {
+    expect(embeddingConfig({ EMBEDDING_PROVIDER: "openrouter", OPENROUTER_API_KEY: "sk-or-x" })).toEqual({
+      apiKey: "sk-or-x",
+      baseURL: "https://openrouter.ai/api/v1",
+      model: "baai/bge-m3",
+      provider: "openrouter",
+    });
+    expect(embeddingConfig({ EMBEDDING_PROVIDER: "openrouter", OPENAI_API_KEY: "sk-or-y" })?.apiKey).toBe("sk-or-y");
+    expect(embeddingConfig({ EMBEDDING_PROVIDER: "openrouter" })).toBeNull();
+  });
+
+  it("only sends the dimensions parameter to models that support it", () => {
+    expect(acceptsDimensionsParam("openai/text-embedding-3-small")).toBe(true);
+    expect(acceptsDimensionsParam("qwen3-embedding-0-6b")).toBe(true);
+    expect(acceptsDimensionsParam("baai/bge-m3")).toBe(false);
   });
 
   it("prefers EMBEDDING_API_KEY and honours EMBEDDING_MODEL", () => {

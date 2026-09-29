@@ -23,7 +23,7 @@ const SCHEMA_STATEMENTS = [
   "CREATE INDEX IF NOT EXISTS knowledge_embeddings_hnsw ON knowledge_embeddings USING hnsw (embedding vector_cosine_ops)",
 ];
 
-export function vectorStoreConfigured(env: NodeJS.ProcessEnv = process.env): boolean {
+export function vectorStoreConfigured(env: Record<string, string | undefined> = process.env): boolean {
   return Boolean(env.KNOWLEDGE_DATABASE_URL);
 }
 

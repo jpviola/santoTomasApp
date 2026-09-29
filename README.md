@@ -108,6 +108,7 @@ Required variables:
 | `DATABASE_URL` | PostgreSQL connection string | - |
 | `DEBATE_MAX_TOKENS` | Token limit for the full article | `4000` |
 | `KNOWLEDGE_DATABASE_URL` | Neon Postgres with pgvector for semantic search | - |
+| `EMBEDDING_PROVIDER=openrouter` | Embeddings via OpenRouter with the chat key (`baai/bge-m3`, multilingual) | - |
 | `NEON_AI_GATEWAY_TOKEN` / `NEON_AI_GATEWAY_BASE_URL` | Embeddings via Neon AI Gateway (`qwen3-embedding-0-6b`) | - |
 | `EMBEDDING_API_KEY` / `EMBEDDING_BASE_URL` | Embeddings via OpenAI or any compatible API (`text-embedding-3-small`) | OpenAI URL |
 | `EMBEDDING_MODEL` | Overrides the embedding model (must return 1024 dims) | per provider |
@@ -150,7 +151,7 @@ knowledge/
 
 **Search** (`src/lib/knowledge/search.ts`) fuses with Reciprocal Rank Fusion: lexical matching (bilingual, accent- and plural-insensitive), concept labels found in the question, graph expansion to neighbouring concepts, and embeddings when available. The matched concepts' definitions are also passed to the disputation prompt.
 
-**Embeddings (optional):** vectors live in Postgres + pgvector (`knowledge_embeddings`, 1024 dims, HNSW cosine index; schema in `scripts/knowledge/schema.sql`), reached through `KNOWLEDGE_DATABASE_URL` with the Neon serverless driver, so the app's main `DATABASE_URL` can stay where it is. Configure a provider (Neon AI Gateway or an OpenAI-compatible key, see the table above) and run `npm run knowledge:embed`; it is incremental (content hashes), creates the schema if missing and deletes vectors of removed documents. `npm run knowledge:embed -- --dry-run` estimates tokens without calling the API (the full corpus is ~630k tokens). Without a provider or database, search runs on the lexical and graph signals only. Similarity thresholds can be tuned with `EMBEDDING_MIN_SIMILARITY` (0.35) and `EMBEDDING_MIN_CONCEPT_SIMILARITY` (0.4).
+**Embeddings (optional):** vectors live in Postgres + pgvector (`knowledge_embeddings`, 1024 dims, HNSW cosine index; schema in `scripts/knowledge/schema.sql`), reached through `KNOWLEDGE_DATABASE_URL` with the Neon serverless driver, so the app's main `DATABASE_URL` can stay where it is. Configure a provider (OpenRouter with your existing key is the simplest: `EMBEDDING_PROVIDER=openrouter`; or Neon AI Gateway, or an OpenAI-compatible key; see the table above) and run `npm run knowledge:embed`; it is incremental (content hashes), creates the schema if missing and deletes vectors of removed documents. `npm run knowledge:embed -- --dry-run` estimates tokens without calling the API (the full corpus is ~630k tokens). Without a provider or database, search runs on the lexical and graph signals only. Similarity thresholds can be tuned with `EMBEDDING_MIN_SIMILARITY` (0.35) and `EMBEDDING_MIN_CONCEPT_SIMILARITY` (0.4).
 
 **GraphDB (optional):** `GRAPHDB_ENDPOINT_URL=... npm run knowledge:graphdb` uploads the generated TTL.
 
