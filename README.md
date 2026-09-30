@@ -44,10 +44,10 @@ Scholastic multi-agent debate system inspired by Thomas Aquinas. Generate struct
 
 ## Agent Flow
 
-1. **Moderator** - Restates the question, frames the debate, identifies ambiguities and ontology terms
-2. **OntologyEngine** - Queries GraphDB via SPARQL for relevant scholastic concepts
-3. **Retrieval** - Fetches Aquinas sources (local corpus + ontology-enriched + web localization)
-4. **ScholasticDebate** - Single-pass generation of objections, sed contra, respondeo, replies, and application
+1. **Moderator** - Restates the question, frames it, lists the distinctions the answer needs, and proposes search keywords and the Summa articles where Aquinas treats the question
+2. **Retrieval** - Combines the proposed loci with a hybrid search over the knowledge base (`knowledge/`, see below) and, optionally, GraphDB
+3. **Hydration** - Replaces each Summa source with Aquinas's real text in the answer language (EN: New Advent, ES: hjg.com.ar, LA: Corpus Thomisticum). Proposed citations that can't be fetched are dropped, so invented references never reach the reader; sources are labeled `text` or `summary`
+4. **ScholasticDebate** - Single-pass generation of objections, sed contra, respondeo, replies, and application, using the moderator's distinctions and the chosen level
 5. **Persist** - Saves the debate to PostgreSQL via Prisma
 6. **Stream** - Sends progress updates and final result via Server-Sent Events (NDJSON)
 
@@ -106,6 +106,14 @@ Required variables:
 | `OPENAI_BASE_URL` | API base URL | `https://openrouter.ai/api/v1` |
 | `OPENAI_FALLBACK_MODEL` | Fallback model | `openai/gpt-4o-mini-2024-07-18` |
 | `DATABASE_URL` | PostgreSQL connection string | - |
+| `DEBATE_MAX_TOKENS` | Token limit for the full article | `4000` |
+| `KNOWLEDGE_DATABASE_URL` | Neon Postgres with pgvector for semantic search | - |
+| `GEMINI_API_KEY` | Free embeddings via Google Gemini (`gemini-embedding-001`, multilingual, query/document task types) | - |
+| `JINA_API_KEY` | Free embeddings via Jina (`jina-embeddings-v5-text-small`; free key is non-commercial only) | - |
+| `EMBEDDING_PROVIDER=openrouter` | Embeddings via OpenRouter with the chat key (`baai/bge-m3`, multilingual) | - |
+| `NEON_AI_GATEWAY_TOKEN` / `NEON_AI_GATEWAY_BASE_URL` | Embeddings via Neon AI Gateway (`qwen3-embedding-0-6b`) | - |
+| `EMBEDDING_API_KEY` / `EMBEDDING_BASE_URL` | Embeddings via OpenAI or any compatible API (`text-embedding-3-small`) | OpenAI URL |
+| `EMBEDDING_MODEL` | Overrides the embedding model (must return 1024 dims) | per provider |
 
 ### 3. Set up the database
 
@@ -121,6 +129,39 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Knowledge base (OKF)
+
+`knowledge/` is the app's "brain": an [Open Knowledge Format v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format) bundle, plain markdown with YAML frontmatter, readable by people, agents and any markdown tool.
+
+```
+knowledge/
+  index.md, */index.md    generated listings (OKF §8); root declares okf_version
+  log.md                  change history (edit by hand)
+  conceptos/              the ontology — type: Concept, SKOS-style `broader` / `related`, labels in ES/EN/LA
+  cuestiones/             the Summa's 512 questions — type: Summa Question, with treatise and concepts
+  articulos/              Aquinas's texts — type: Aquinas Text, `citation`, `tags` = concept ids;
+                          `content: summary` (curated, AI-written) or `excerpt` (verbatim respondeo, 1920 translation)
+  areas/ autores/ obras/  type: Area / Author / Work
+```
+
+**Editing:** change the frontmatter or the text above the `<!-- okf:generated:start -->` marker, then run `npm run knowledge:build`. The build validates the bundle (OKF conformance, unknown relations, `broader` cycles, citation/id mismatches), rewrites the generated sections (relations, texts per concept, backlinks), the `index.md` files, `src/data/knowledge/bundle.json` (what the app reads) and `scripts/generated/knowledge.ttl`. `npm run knowledge:check` fails if anything is out of date, and `npm test` checks it too.
+
+**Importing the Summa:** `npm run knowledge:import` fetches every question of the Summa Theologiae from New Advent (the 1920 English Dominican translation, public domain), one request per second with a local cache in `.cache/`, and writes a question document plus one text per article with an excerpt of the respondeo. Concepts are assigned from the treatise map in `scripts/knowledge/summa-treatises.json` and from concept labels found in the titles. It never overwrites documents it did not generate (the curated summaries win). Options: `-- --parts I-II --limit 10 --delay 1000`. Then run `npm run knowledge:build`.
+
+**Trust:** the curated summaries and concepts are AI-generated and marked `status: draft` with no `verified` field. When someone reviews a document, add `verified: { by: human:<id>, at: <ISO date> }` (and `status: stable`); the build derives the trust tier (OKF §5.3).
+
+**Search** (`src/lib/knowledge/search.ts`) fuses with Reciprocal Rank Fusion: lexical matching (bilingual, accent- and plural-insensitive), concept labels found in the question, graph expansion to neighbouring concepts, and embeddings when available. The matched concepts' definitions are also passed to the disputation prompt.
+
+**Embeddings (optional):** vectors live in Postgres + pgvector (`knowledge_embeddings`, 1024 dims, HNSW cosine index; schema in `scripts/knowledge/schema.sql`), reached through `KNOWLEDGE_DATABASE_URL` with the Neon serverless driver, so the app's main `DATABASE_URL` can stay where it is. Configure a provider: free with a Google AI Studio key (`GEMINI_API_KEY`) or a Jina key (`JINA_API_KEY`, non-commercial), or paid via OpenRouter (`EMBEDDING_PROVIDER=openrouter`), OpenAI or Neon AI Gateway (see the table above). Gemini and Jina embed questions and documents with different task types, which improves retrieval. On free tiers use `npm run knowledge:embed -- --batch 32 --pause 2000`; every batch is saved as it arrives, so a run cut short by a quota resumes where it stopped and run `npm run knowledge:embed`; it is incremental (content hashes), creates the schema if missing and deletes vectors of removed documents. `npm run knowledge:embed -- --dry-run` estimates tokens without calling the API (the full corpus is ~630k tokens). Without a provider or database, search runs on the lexical and graph signals only. Similarity thresholds can be tuned with `EMBEDDING_MIN_SIMILARITY` (0.35) and `EMBEDDING_MIN_CONCEPT_SIMILARITY` (0.4).
+
+**GraphDB (optional):** `GRAPHDB_ENDPOINT_URL=... npm run knowledge:graphdb` uploads the generated TTL.
+
+## Learning mode
+
+`/learn` is a learning path on Aquinas's philosophy and its context: 9 modules and 19 lessons (ES/EN) in `src/data/learning/`. Each lesson has key ideas, a glossary, a primary text fetched live from the corpus (`/api/learn/source/[id]`), a quiz with explanations, questions that open a disputation (`/?q=...`) and a Socratic AI tutor (`POST /api/learn/tutor`, streamed plain text). Progress and tutor conversations are stored in the browser.
+
+When adding a lesson, add it to both `es.ts` and `en.ts`: `src/lib/learning/curriculum.test.ts` checks that ids, quiz answers and primary texts match.
 
 ## GraphDB Setup (Optional)
 
@@ -144,9 +185,11 @@ docker run -p 7200:7200 ontotext/graphdb:latest
 ### 3. Seed the ontology
 
 ```bash
-# Upload the TTL file via the GraphDB web UI:
-# Import → Upload RDF data → Select scripts/ontology-seed.ttl
+npm run knowledge:build      # regenerates scripts/generated/knowledge.ttl from knowledge/
+GRAPHDB_ENDPOINT_URL=http://localhost:7200/repositories/santoTomas npm run knowledge:graphdb
 ```
+
+`scripts/ontology-seed.ttl` is the older hand-written ontology, kept for reference.
 
 ### 4. Configure the endpoint
 
@@ -154,12 +197,6 @@ Add to `.env.local`:
 
 ```env
 GRAPHDB_ENDPOINT_URL=http://localhost:7200/repositories/santoTomas
-```
-
-### 5. Seed corpus data (optional)
-
-```bash
-npx tsx scripts/seedGraphDb.ts
 ```
 
 ## Testing

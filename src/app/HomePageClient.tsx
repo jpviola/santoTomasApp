@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useDebateManager } from "@/app/useDebateManager";
 import DebateForm from "@/components/DebateForm";
 import DebateSidebar from "@/components/DebateSidebar";
@@ -11,8 +12,10 @@ import LoadingState from "@/components/LoadingState";
 import ThemeToggle from "@/components/ThemeToggle";
 import BuyMeACoffeeButton from "@/components/BuyMeACoffeeButton";
 import AuthControls from "@/components/AuthControls";
+import ModeNav from "@/components/ModeNav";
 import content from "@/data/content.json";
 import { DebateOutput as DebateOutputType } from "@/types/debate";
+import type { Audience } from "@/lib/schemas/debate";
 
 interface ContentStructure {
   [key: string]: {
@@ -53,7 +56,10 @@ export default function HomePageClient() {
 
   const [language, setLanguage] = useState<"es" | "en">("es");
   const [answerLanguage, setAnswerLanguage] = useState<"es" | "en" | "la">("es");
+  const [audience, setAudience] = useState<Audience>("undergraduate");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  // Pregunta recibida por ?q= (p. ej. desde el modo aprendizaje); se lanza una vez cargadas las preferencias.
+  const [pendingQuestion, setPendingQuestion] = useState<string | null>(null);
 
   useEffect(() => {
     setSuggestedSeed(Math.floor(Math.random() * 1000));
@@ -65,6 +71,17 @@ export default function HomePageClient() {
     if (storedLang === "en") setLanguage("en");
     const storedAnswerLang = window.localStorage.getItem("stotomas.answerLanguage");
     if (storedAnswerLang === "en" || storedAnswerLang === "la") setAnswerLanguage(storedAnswerLang);
+    const storedAudience = window.localStorage.getItem("stotomas.audience");
+    if (storedAudience === "graduate" || storedAudience === "seminary") setAudience(storedAudience);
+
+    const params = new URLSearchParams(window.location.search);
+    const queued = params.get("q")?.trim();
+    if (queued) {
+      setPendingQuestion(queued);
+      params.delete("q");
+      const rest = params.toString();
+      window.history.replaceState(null, "", `${window.location.pathname}${rest ? `?${rest}` : ""}`);
+    }
   }, []);
 
   const {
@@ -110,7 +127,7 @@ export default function HomePageClient() {
   useEffect(() => {
     // No cachear respuestas degradadas (fallback local sin LLM).
     if (result && result.question && !isRunningDebate && !isDegraded) {
-      const cacheKey = `${CACHE_PREFIX}${answerLanguage}_${result.question.toLowerCase().trim()}`;
+      const cacheKey = `${CACHE_PREFIX}${answerLanguage}_${result.metadata.audience}_${result.question.toLowerCase().trim()}`;
       if (!getCachedDebate(cacheKey)) {
         setCachedDebate(cacheKey, result);
       }
@@ -120,7 +137,7 @@ export default function HomePageClient() {
   const runDebateWithCache = useCallback(
     async (params: { question: string; context?: string }, langOverride?: "es" | "en" | "la") => {
       const targetLang = langOverride || answerLanguage;
-      const cacheKey = `${CACHE_PREFIX}${targetLang}_${params.question.toLowerCase().trim()}`;
+      const cacheKey = `${CACHE_PREFIX}${targetLang}_${audience}_${params.question.toLowerCase().trim()}`;
       const cachedResult = getCachedDebate(cacheKey);
 
       if (cachedResult) {
@@ -128,16 +145,23 @@ export default function HomePageClient() {
         return;
       }
 
-      await handleRunDebate(params, langOverride);
+      await handleRunDebate({ ...params, audience }, langOverride);
       setSuggestedSeed((seed) => seed + 1);
     },
-    [answerLanguage, getCachedDebate, handleRunDebate, setResult],
+    [answerLanguage, audience, getCachedDebate, handleRunDebate, setResult],
   );
+
+  useEffect(() => {
+    if (!pendingQuestion) return;
+    setPendingQuestion(null);
+    void runDebateWithCache({ question: pendingQuestion });
+  }, [pendingQuestion, runDebateWithCache]);
 
   useEffect(() => {
     window.localStorage.setItem("stotomas.language", language);
     window.localStorage.setItem("stotomas.answerLanguage", answerLanguage);
-  }, [language, answerLanguage]);
+    window.localStorage.setItem("stotomas.audience", audience);
+  }, [language, answerLanguage, audience]);
 
   useEffect(() => {
     if (!result) {
@@ -181,6 +205,9 @@ export default function HomePageClient() {
           degraded: "Respuesta local de respaldo: el proveedor LLM no estuvo disponible. Esta disputa no se guardó en tu historial.",
           emptyTitle: "Santo Tomás de Aquino",
           emptyCopy: "Formula una cuestión y recibe una disputa organizada con objeciones, sed contra, respondeo, réplicas y fuentes.",
+          learnTitle: "¿Primera vez con Tomás?",
+          learnCopy: "Recorré el itinerario: su vida y su siglo, el método escolástico y las grandes ideas, con un tutor para conversar.",
+          learnCta: "Empezar a aprender",
           footer: "hecho con",
           footerBy: "por",
         }
@@ -198,6 +225,9 @@ export default function HomePageClient() {
           degraded: "Local fallback answer: the LLM provider was unavailable. This disputation was not saved to your history.",
           emptyTitle: "Thomas Aquinas",
           emptyCopy: "Ask a question and receive a structured disputation with objections, sed contra, respondeo, replies, and sources.",
+          learnTitle: "New to Aquinas?",
+          learnCopy: "Follow the learning path: his life and century, the scholastic method and the great ideas, with a tutor to talk things through.",
+          learnCta: "Start learning",
           footer: "made with",
           footerBy: "by",
         };
@@ -244,6 +274,7 @@ export default function HomePageClient() {
               <h1 className="truncate font-serif text-base font-semibold leading-5 text-[var(--foreground)] sm:text-[17px]">{t.title}</h1>
               <p className="hidden truncate text-xs text-[var(--muted)] sm:block">{t.subtitle}</p>
             </div>
+            <ModeNav active="debate" language={language} className="ml-2 hidden md:flex" />
           </div>
 
           <div className="flex items-center gap-1.5">
@@ -293,6 +324,9 @@ export default function HomePageClient() {
             <ThemeToggle className="h-8 w-8 shrink-0" />
           </div>
         </header>
+        <div className="flex justify-center border-b border-[var(--border)] bg-[var(--surface)] px-2 py-1.5 md:hidden">
+          <ModeNav active="debate" language={language} />
+        </div>
 
         {isRunningDebate && activeTask && (
           <DebateProgressBar
@@ -363,6 +397,19 @@ export default function HomePageClient() {
                   </div>
                 </section>
 
+                <Link
+                  href="/learn"
+                  className="group flex flex-col items-start justify-between gap-3 rounded-[12px] border border-[var(--border)] bg-[var(--surface-muted)] p-3 transition hover:border-[var(--border-strong)] sm:flex-row sm:items-center sm:p-4"
+                >
+                  <div className="min-w-0">
+                    <p className="font-serif text-[15px] font-semibold text-[var(--foreground)]">{t.learnTitle}</p>
+                    <p className="mt-0.5 text-[13px] leading-5 text-[var(--muted-strong)]">{t.learnCopy}</p>
+                  </div>
+                  <span className="shrink-0 rounded-lg bg-[var(--accent)] px-3 py-1.5 text-xs font-semibold text-[var(--surface)] transition group-hover:opacity-90">
+                    {t.learnCta}
+                  </span>
+                </Link>
+
                 <section>
                   <div className="mb-1.5 flex items-center justify-between">
                     <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">{t.suggested}</h3>
@@ -388,7 +435,13 @@ export default function HomePageClient() {
 
         <div className="border-t border-[var(--border)] bg-[color-mix(in_srgb,var(--background)_82%,transparent)] p-2 backdrop-blur sm:p-3">
           <div className="mx-auto max-w-3xl">
-            <DebateForm onSubmit={runDebateWithCache} isLoading={isRunningDebate} language={language} />
+            <DebateForm
+              onSubmit={runDebateWithCache}
+              isLoading={isRunningDebate}
+              language={language}
+              audience={audience}
+              onAudienceChange={setAudience}
+            />
           </div>
         </div>
 

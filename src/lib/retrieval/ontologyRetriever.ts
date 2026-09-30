@@ -2,56 +2,46 @@ import type { SourceSnippet } from "@/lib/schemas/debate";
 import { getOntologyEngine, type OntologyTerm } from "@/lib/agents/OntologyEngine";
 import { retrieveAquinasSources } from "./aquinasRetriever";
 
-type OntologyEnrichedSnippet = SourceSnippet & {
-  ontologyTerms: string[];
-  relatedArticles: string[];
-};
+/**
+ * Fuentes aportadas por GraphDB: definiciones de conceptos y artículos vinculados.
+ * Devuelve [] cuando GraphDB no está configurado o no hay términos.
+ */
+export async function retrieveOntologySources(terms: OntologyTerm[], limit = 2): Promise<SourceSnippet[]> {
+  if (terms.length === 0) return [];
 
+  const articleResults = await Promise.all(
+    terms.slice(0, 3).map((term) => getOntologyEngine().getArticlesByTopic(term.id)),
+  );
+
+  const conceptSources: SourceSnippet[] = terms.slice(0, 1).map((term) => ({
+    id: `ontology:${term.id}`,
+    title: `Concepto: ${term.name}`,
+    citation: "Ontología StoTomas",
+    text: term.description,
+    kind: "summary",
+  }));
+
+  const articleSources: SourceSnippet[] = articleResults
+    .flat()
+    .filter((article) => article.text)
+    .map((article) => ({
+      id: `graphdb:${article.id}`,
+      title: article.title,
+      citation: article.citation,
+      text: article.text,
+      kind: "summary",
+    }));
+
+  return [...conceptSources, ...articleSources].slice(0, limit);
+}
+
+/** Corpus local + contexto de la ontología (usado por scripts/testGraphDbIntegration.ts). */
 export async function retrieveOntologyEnrichedSources(
   question: string,
   topK = 5,
   knownTerms?: OntologyTerm[],
 ): Promise<SourceSnippet[]> {
-  const relevantTerms = knownTerms ?? await getOntologyEngine().findRelevantTerms(question);
-  
-  if (relevantTerms.length === 0) {
-    return retrieveAquinasSources(question, topK);
-  }
-
-  const articlePromises = relevantTerms
-    .slice(0, 3)
-    .map(term => getOntologyEngine().getArticlesByTopic(term.id));
-  
-  const articleResults = await Promise.all(articlePromises);
-  const allArticles = articleResults.flat();
-  
-  const uniqueArticleIds = [...new Set(allArticles.map(a => a.id))];
-  
-  const baseSources = await retrieveAquinasSources(question, topK);
-  
-  const enriched: OntologyEnrichedSnippet[] = baseSources.map(source => ({
-    ...source,
-    ontologyTerms: relevantTerms.map(t => t.name),
-    relatedArticles: uniqueArticleIds.filter(id => id !== source.id).slice(0, 3),
-  }));
-
-  const ontologyContext: SourceSnippet[] = relevantTerms.slice(0, 2).map(term => ({
-    id: `ontology:${term.id}`,
-    title: `Concepto: ${term.name}`,
-    citation: "Ontología StoTomas",
-    text: term.description,
-  }));
-
-  const relatedArticleSources: SourceSnippet[] = allArticles
-    .slice(0, 2)
-    .map(article => ({
-      id: `graphdb:${article.id}`,
-      title: article.title,
-      citation: article.citation,
-      text: article.text,
-    }));
-
-  const combined = [...ontologyContext, ...relatedArticleSources, ...enriched];
-  
-  return combined.slice(0, topK);
+  const relevantTerms = knownTerms ?? (await getOntologyEngine().findRelevantTerms(question));
+  const ontologySources = await retrieveOntologySources(relevantTerms);
+  return [...ontologySources, ...retrieveAquinasSources(question, topK)].slice(0, topK);
 }

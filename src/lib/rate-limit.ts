@@ -125,4 +125,6 @@ export const RATE_LIMITS = {
   debateStream: { windowMs: 60 * 1000, maxRequests: 3 },
   history: { windowMs: 60 * 1000, maxRequests: 30 },
   export: { windowMs: 60 * 1000, maxRequests: 10 },
+  tutor: { windowMs: 60 * 1000, maxRequests: 12 },
+  learnSource: { windowMs: 60 * 1000, maxRequests: 30 },
 } as const;

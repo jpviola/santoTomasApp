@@ -28,8 +28,10 @@ vi.mock("@/lib/agents/moderator", () => ({
   runModerator: vi.fn().mockResolvedValue({
     question: "Utrum veritas sit?",
     framing: "Framing.",
-    precisionNotes: [],
+    precisionNotes: ["Truth of being vs. truth of the intellect."],
     ontologyTopics: [],
+    searchKeywords: ["truth", "verdad"],
+    candidateLoci: ["ST I, q.16, a.1"],
   }),
 }));
 
@@ -37,12 +39,11 @@ vi.mock("@/lib/agents/scholasticDebate", () => ({
   runScholasticDebate: vi.fn(async () => debateResult),
 }));
 
-vi.mock("@/lib/retrieval/ontologyRetriever", () => ({
-  retrieveOntologyEnrichedSources: vi.fn(async () => [sampleSource]),
-}));
-
-vi.mock("@/lib/retrieval/aquinasRetriever", () => ({
-  localizeAquinasSources: vi.fn(async (sources: unknown[]) => sources),
+vi.mock("@/lib/retrieval/retrieveSources", () => ({
+  retrieveSourcesForDebate: vi.fn(async () => ({
+    sources: [sampleSource],
+    concepts: ["Verdad: la adecuación del intelecto y la cosa."],
+  })),
 }));
 
 describe("runDebate", () => {
@@ -91,18 +92,32 @@ describe("runDebate", () => {
     expect(progress.at(-1)).toBe(100);
   });
 
-  it("localizes sources when the language is not English", async () => {
-    const { localizeAquinasSources } = await import("@/lib/retrieval/aquinasRetriever");
+  it("guides retrieval with the moderator's keywords and proposed loci", async () => {
+    const { retrieveSourcesForDebate } = await import("@/lib/retrieval/retrieveSources");
 
     await runDebate({ question: "¿Existe la verdad?", audience: "graduate", language: "es" });
-    expect(localizeAquinasSources).toHaveBeenCalledWith([sampleSource], "es");
+    expect(retrieveSourcesForDebate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        question: "¿Existe la verdad?",
+        language: "es",
+        keywords: ["truth", "verdad"],
+        candidateLoci: ["ST I, q.16, a.1"],
+      }),
+    );
   });
 
-  it("skips localization for English", async () => {
-    const { localizeAquinasSources } = await import("@/lib/retrieval/aquinasRetriever");
+  it("passes the moderator's distinctions to the debate agent", async () => {
+    const { runScholasticDebate } = await import("@/lib/agents/scholasticDebate");
 
     await runDebate({ question: "Does truth exist?", audience: "graduate", language: "en" });
-    expect(localizeAquinasSources).not.toHaveBeenCalled();
+    expect(runScholasticDebate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        framing: "Framing.",
+        precisionNotes: ["Truth of being vs. truth of the intellect."],
+        sources: [sampleSource],
+        ontologyTerms: expect.arrayContaining(["Verdad: la adecuación del intelecto y la cosa."]),
+      }),
+    );
   });
 
   it("rejects an invalid input", async () => {

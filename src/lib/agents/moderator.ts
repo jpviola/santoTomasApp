@@ -20,26 +20,19 @@ type RunModeratorParams = {
 export async function runModerator({ question, audience, context, language = "en", ontologyTerms }: RunModeratorParams): Promise<ModeratorOutput> {
   // 1. Contexto semántico de la ontología (reutiliza los términos si ya fueron resueltos)
   const relevantTerms = ontologyTerms ?? await getOntologyEngine().findRelevantTerms(question);
-  const ontologyContext = relevantTerms.length > 0 
-    ? `Relevant Scholastic Concepts identified (IDs to include in 'ontologyTopics' if applicable):\n${relevantTerms.map(t => `- ${t.name} (${t.id}): ${t.description}`).join('\n')}`
+  const ontologyContext = relevantTerms.length > 0
+    ? `Relevant scholastic concepts from the ontology (include their IDs in 'ontologyTopics' if applicable):\n${relevantTerms.map(t => `- ${t.name} (${t.id}): ${t.description}`).join('\n')}`
     : "";
 
   // 2. Preparar el prompt con el conocimiento de la ontología
   const targetLabel = language === "es" ? "Spanish" : language === "la" ? "Latin" : "English";
-  const systemPrompt =
-    language === "es"
-      ? `${moderatorSystemPrompt}\n\nAll JSON string fields must be written in Spanish. Identify and include relevant 'st:topics' from the Scholastic Ontology.\n`
-      : language === "la"
-        ? `${moderatorSystemPrompt}\n\nAll JSON string fields must be written in Latin.\n`
-      : moderatorSystemPrompt;
 
   const userPrompt = `
-Target language:
+Target language for "question", "framing" and "precisionNotes":
 ${targetLabel}
+("searchKeywords" always in English and Spanish; "candidateLoci" always in the fixed citation format.)
 
 ${ontologyContext}
-
-Write all generated text fields in the target language.
 
 Question:
 ${question}
@@ -48,7 +41,7 @@ Audience:
 ${audience}
 
 Optional context:
-${context ?? "None provided"}
+${context || "None provided"}
 
 Return JSON only.
 `;
@@ -56,7 +49,7 @@ Return JSON only.
   return withRetry(
     async () => {
       const raw = await callModel({
-        systemPrompt,
+        systemPrompt: moderatorSystemPrompt,
         userPrompt,
         temperature: 0.2,
         operationName: "moderator-agent-model-call",

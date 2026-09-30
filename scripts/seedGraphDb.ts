@@ -381,9 +381,10 @@ async function main() {
   }
 
   try {
-    const corpusPath = join(__dirname, '../src/data/corpus/summa-sample.json');
-    const corpusRaw = readFileSync(corpusPath, 'utf-8');
-    const articles: SummaArticle[] = JSON.parse(corpusRaw);
+    // Legado: el grafo completo se genera desde knowledge/ (npm run knowledge:build) y se sube con npm run knowledge:graphdb.
+    const bundlePath = join(__dirname, '../src/data/knowledge/bundle.json');
+    const bundle = JSON.parse(readFileSync(bundlePath, 'utf-8')) as { articles: (SummaArticle & { concepts: string[] })[] };
+    const articles: SummaArticle[] = bundle.articles.map((a) => ({ ...a, topics: a.concepts }));
 
     turtle += '# ============================================\n';
     turtle += '# Artículos de la Summa Theologiae\n';

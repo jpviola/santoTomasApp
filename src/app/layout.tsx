@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Aplica el tema guardado antes del primer pintado para evitar un destello claro a quien eligió oscuro.
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");var d=t==="dark"||(t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);var r=document.documentElement;r.classList.add(d?"dark":"light");r.style.colorScheme=d?"dark":"light"}catch(e){}})()`;
+
 export default async function RootLayout({
   children
 }: Readonly<{
@@ -40,12 +43,16 @@ export default async function RootLayout({
     <html
       lang="es"
       className={`${inter.variable} ${sourceSerif.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:border focus:border-white/10 focus:bg-white/10 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-100 focus:backdrop-blur"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:border focus:border-[var(--border)] focus:bg-[var(--surface)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[var(--foreground)] focus:shadow-[var(--shadow-soft)]"
           >
             Saltar al contenido
           </a>

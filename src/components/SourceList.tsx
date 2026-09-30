@@ -30,6 +30,24 @@ export default function SourceList({ sources, language = "en" }: SourceListProps
               <p className="text-sm font-semibold leading-5 text-[var(--foreground)]">{source.title}</p>
               <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--muted)]">
                 <span>{source.citation}</span>
+                {source.kind ? (
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] ${
+                      source.kind === "text"
+                        ? "bg-[var(--accent-soft)] text-[var(--accent)]"
+                        : "bg-[var(--surface-strong)] text-[var(--muted-strong)]"
+                    }`}
+                    title={
+                      source.kind === "text"
+                        ? language === "es" ? "Fragmento del texto de Tomás" : "Excerpt from Aquinas's text"
+                        : language === "es" ? "Resumen del pasaje, no cita textual" : "Summary of the passage, not a quotation"
+                    }
+                  >
+                    {source.kind === "text"
+                      ? language === "es" ? "Texto" : "Text"
+                      : language === "es" ? "Resumen" : "Summary"}
+                  </span>
+                ) : null}
                 {source.url ? (
                   <a
                     href={source.url}
@@ -41,7 +59,7 @@ export default function SourceList({ sources, language = "en" }: SourceListProps
                   </a>
                 ) : null}
               </div>
-              <p className="mt-3 font-serif text-[15px] leading-7 text-[var(--muted-strong)]">{source.text}</p>
+              <p className="mt-3 whitespace-pre-line font-serif text-[15px] leading-7 text-[var(--muted-strong)]">{source.text}</p>
             </div>
           </div>
         </li>
