@@ -52,7 +52,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:border focus:border-white/10 focus:bg-white/10 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-100 focus:backdrop-blur"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:border focus:border-[var(--border)] focus:bg-[var(--surface)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[var(--foreground)] focus:shadow-[var(--shadow-soft)]"
           >
             Saltar al contenido
           </a>

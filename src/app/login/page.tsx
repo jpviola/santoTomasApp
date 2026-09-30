@@ -1,14 +1,20 @@
+import Link from "next/link";
 import LoginForm from "@/app/login/ui/LoginForm";
 
 export default function LoginPage() {
   return (
-    <main id="main-content" className="min-h-screen">
-      <div className="mx-auto max-w-md px-4 py-14">
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_18px_60px_rgba(0,0,0,0.45)] backdrop-blur">
+    <main id="main-content" className="flex min-h-screen items-center justify-center px-4 py-10">
+      <div className="w-full max-w-sm">
+        <Link
+          href="/"
+          className="mb-4 inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--muted)] transition hover:text-[var(--foreground)]"
+        >
+          <span aria-hidden="true">←</span> StoTomas AI
+        </Link>
+        <div className="rounded-[14px] border border-[var(--border)] bg-[var(--surface)] p-6 shadow-[var(--shadow-soft)]">
           <LoginForm />
         </div>
       </div>
     </main>
   );
 }
-

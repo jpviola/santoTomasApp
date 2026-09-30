@@ -38,6 +38,8 @@ export default function DebateSidebar({
           authCta: "Entrar",
           refresh: "Actualizar",
           close: "Cerrar",
+          learnTitle: "Aprender sobre Tomás",
+          learnCopy: "Su vida, su método y su filosofía, con un tutor.",
         }
       : {
           title: "Library",
@@ -47,6 +49,8 @@ export default function DebateSidebar({
           authCta: "Sign in",
           refresh: "Refresh",
           close: "Close",
+          learnTitle: "Learn about Aquinas",
+          learnCopy: "His life, method and philosophy, with a tutor.",
         };
 
   return (
@@ -147,6 +151,17 @@ export default function DebateSidebar({
               ))}
             </ul>
           )}
+        </div>
+
+        <div className="border-t border-[var(--border)] p-2">
+          <Link
+            href="/learn"
+            onClick={onClose}
+            className="group block rounded-lg border border-[var(--border)] bg-[var(--surface-muted)] px-3 py-2.5 transition hover:border-[var(--border-strong)]"
+          >
+            <p className="font-serif text-[14px] font-semibold text-[var(--foreground)] group-hover:text-[var(--accent)]">{t.learnTitle}</p>
+            <p className="mt-0.5 text-[11px] leading-4 text-[var(--muted-strong)]">{t.learnCopy}</p>
+          </Link>
         </div>
       </aside>
     </>
