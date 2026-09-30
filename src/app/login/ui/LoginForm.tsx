@@ -21,10 +21,19 @@ export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    let lang: "es" | "en" = "es";
     try {
-      if (window.localStorage.getItem("stotomas.language") === "en") setLanguage("en");
+      if (window.localStorage.getItem("stotomas.language") === "en") lang = "en";
     } catch {
       // Sin localStorage: queda en español.
+    }
+    setLanguage(lang);
+    // Vuelta desde /auth/callback cuando no se pudo abrir la sesión automáticamente.
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("confirmed")) {
+      setNotice(lang === "es" ? "Tu cuenta está confirmada. Entrá con tu email y contraseña." : "Your account is confirmed. Sign in with your email and password.");
+    } else if (params.has("error")) {
+      setError(lang === "es" ? "El link de confirmación no es válido o ya venció. Probá entrar o registrarte de nuevo." : "The confirmation link is invalid or expired. Try signing in or signing up again.");
     }
   }, []);
 
@@ -75,7 +84,13 @@ export default function LoginForm() {
     setNotice(null);
     try {
       if (mode === "sign_up") {
-        const { data, error: signUpError } = await supabase.auth.signUp({ email, password });
+        // Vuelve al dominio desde el que se registró (debe estar en Redirect URLs de Supabase;
+        // si no, Supabase usa su Site URL).
+        const { data, error: signUpError } = await supabase.auth.signUp({
+          email,
+          password,
+          options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+        });
         if (signUpError) throw signUpError;
         // Con confirmación por email activada, Supabase no devuelve sesión hasta que se confirme.
         if (!data.session) {
