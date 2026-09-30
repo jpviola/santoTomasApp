@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Aplica el tema guardado antes del primer pintado para evitar un destello claro a quien eligió oscuro.
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");var d=t==="dark"||(t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);var r=document.documentElement;r.classList.add(d?"dark":"light");r.style.colorScheme=d?"dark":"light"}catch(e){}})()`;
+
 export default async function RootLayout({
   children
 }: Readonly<{
@@ -40,7 +43,11 @@ export default async function RootLayout({
     <html
       lang="es"
       className={`${inter.variable} ${sourceSerif.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <a
